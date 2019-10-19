@@ -70,4 +70,4 @@ _______________________________________________________________________________
 
 ## Licença
 
-Este software está licenciado sob a [Licença MIT](LICENSE).
+Este tutorial está licenciado sob a [Licença MIT](LICENSE).
