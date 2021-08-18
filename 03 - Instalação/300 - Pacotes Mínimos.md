@@ -21,7 +21,7 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
 [x] [ 1] bash ................... The GNU Bourne Again shell  
     [ 2] bzip2 .................. ! A high-quality data compression program  
     [ 3] coreutils .............. ! The basic file, shell and text manipulation utilities of the GNU operating system  
-    [ 4] file ................... File type identification utility  
+    [ 4] file ................... ! File type identification utility  
     [ 5] filesystem ............. ! Base Arch Linux files  
     [ 6] findutils .............. ! GNU utilities to locate files  
     [ 7] gawk ................... ! GNU version of awk  
@@ -29,21 +29,21 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
     [ 9] gettext ................ > GNU internationalization library [grub]  
     [10] glibc .................. ! GNU C Library  
     [11] grep ................... ! A string search utility  
-    [12] gzip ................... ! GNU compression utility  
+[x] [12] gzip ................... GNU compression utility  
     [13] iproute2 ............... > IP Routing Utilities  [network-manager-applet > networkmanager]  
     [14] iputils ................ Network monitoring tools, including ping  
     [15] licenses ............... Standard licenses distribution package  
 [x] [16] pacman ................. A library-based package manager with dependency support  
     [17] pciutils ............... PCI bus configuration space access library and tools  
-    [18] procps-ng .............. Utilities for monitoring your system and its processes  
+    [18] procps-ng .............. > Utilities for monitoring your system and its processes  
     [19] psmisc ................. Miscellaneous procfs tools  
 [x] [20] sed .................... GNU stream editor  
     [21] shadow ................. ! Password and account management tool suite with support for shadow files and PAM  
     [22] systemd ................ ! System and service manager  
 [x] [23] systemd-sysvcompat ..... sysvinit compat for systemd  
     [24] tar .................... > Utility used to store, backup, and transport files [network-manager-applet]  
-    [25] util-linux ............. Miscellaneous system utilities for Linux  
-    [26] xz .................... ! Library and command line tools for XZ and LZMA compressed files  
+    [25] util-linux ............. > Miscellaneous system utilities for Linux  
+    [26] xz ..................... ! Library and command line tools for XZ and LZMA compressed files  
 [x] [27] linux .................. The Linux kernel and modules  
 </pre>
 
@@ -69,10 +69,10 @@ conseguirá dar um boot e nem acessar a internet.
 
 ``` shell
   # Para a coleção "base" a partir de 2019-11-13
-  Enter a selection (default=all): 1 16 20 23 27
-
+  Enter a selection (default=all): 1 12 16 20 23 27
+ 
   # OU, use o comando abaixo
-  pacstrap /mnt bash pacman sed systemd-sysvcompat linux
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux
 ```
 
 Para a seleção feita a partir de 2019-11-13 será perguntado sobre qual dependência você deseja 
@@ -114,10 +114,10 @@ Eles são usados para compilar e instalar programas/pacotes de forma avulsa (sem
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet vim sshfs wget less
 
   # BIOS
-  pacstrap /mnt bash pacman sed systemd-sysvcompat linux sudo grub network-manager-applet vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub network-manager-applet vim sshfs wget less
 ```
 
 
@@ -127,8 +127,8 @@ Eles são usados para compilar e instalar programas/pacotes de forma avulsa (sem
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
 
   # BIOS
-  pacstrap /mnt bash pacman sed systemd-sysvcompat linux sudo grub network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
 ```

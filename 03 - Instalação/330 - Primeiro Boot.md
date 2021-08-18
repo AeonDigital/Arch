@@ -25,9 +25,7 @@
 ``` shell
   # se o diretório '/boot/grub/locale' não existir, crie-o
   mkdir /boot/grub/locale
-
-  # não foi usado da última vez... 
-  #? cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
   grub-mkconfig -o /boot/grub/grub.cfg
 ```
