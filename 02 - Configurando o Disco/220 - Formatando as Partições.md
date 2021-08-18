@@ -1,16 +1,14 @@
-# 220 - Criando o FileSystem, Formatando e Montando as partições
+# 220 - Criando o FileSystem
 
-Neste momento as partições apenas existem de forma lógica mas não estão prontas para uso.
+Neste momento as partições apenas existem de forma lógica no disco mas não estão prontas para uso.  
 Cada partição precisa ser formatada respeitando o tipo que foi definida no passo anterior.
 
-Para evitar confusão, o tutorial está dividido em ``UEFI`` e ``BIOS``. Apesar dos comandos e 
-funções usadas serem quase iguais.
 
 
+&nbsp;
 
-## 220.1 - [UEFI]
-### 220.1.1 - Criando o FileSystem
-#### 220.1.1.1 - Partição de Boot
+## 220.1 - Criando as Partições
+### 220.1.1 - [Apenas em UEFI] Partição EFI System
 
 Esta partição precisa ser formatada em ``Fat32``, para isto, use o comando:
 
@@ -19,61 +17,73 @@ Esta partição precisa ser formatada em ``Fat32``, para isto, use o comando:
 ```
 
 
+&nbsp;
 
-#### 220.1.1.2 - Partição ``/`` (root)
+### 220.1.2 - [Apenas em Bios] Partição BIOS Boot
 
-Esta partição pode ser formatado em ``ext4`` que é o formato padrão usado no mundo Linux.
+Esta partição precisa ser formatada em ``Fat32``, para isto, use o comando:
 
 ``` shell
-  mkfs.ext4 /dev/sda2
+  mkfs.fat -F32 /dev/sda1
 ```
 
 
-#### 220.1.1.3 - Partição ``/home``
+&nbsp;
 
-Esta partição também pode ser formatado em ``ext4``.
+### 220.1.3 - Partição para o ``swap``
+
+Esta partição deve ser formatada usando:
+
+``` shell
+  mkswap /dev/sda2
+```
+
+
+&nbsp;
+
+### 220.1.4 - Partição root; ``/``
+
+Esta partição pode ser formatado em ``ext4`` que é o formato padrão usado no mundo Linux.
 
 ``` shell
   mkfs.ext4 /dev/sda3
 ```
 
 
-#### 220.1.1.4 - Partição para o ``swap``
+&nbsp;
 
-Esta partição deve ser formatada usando:
+### 220.1.5 - Partição home; ``/home`` (opcional)
+
+Se existir, esta partição também pode ser formatado em ``ext4``.
 
 ``` shell
-  mkswap /dev/sda4
+  mkfs.ext4 /dev/sda4
 ```
 
 
 
+&nbsp;
 
+## 230.2 - Criando um ``DUMP`` do seu sistema de partições (opcional)
 
-## 220.2 - [Bios]
-### 220.2.1 - Criando o FileSystem
-#### 220.2.1.2 - Partição ``/`` (root)
-
-Esta partição pode ser formatado em ``ext4`` que é o formato padrão usado no mundo Linux.
+Se você quiser, pode exportar o esquema de partições criado para ser mais fácil replica-lo quando
+desejar, ou mesmo, para automatizar processos.
+O comando abaixo irá exportar as informações de partições que compõe o seu disco e lhe permitirá
+executar tudo de uma só vez conforme mostra o próximo tópico.
 
 ``` shell
-  mkfs.ext4 /dev/sda1
+  sfdisk -d /dev/sda > my-partitions.out
 ```
 
 
-#### 220.2.1.3 - Partição ``/home``
 
-Esta partição também pode ser formatado em ``ext4``.
+&nbsp;
 
-``` shell
-  mkfs.ext4 /dev/sda2
-```
+## 230.3 - Usando um ``DUMP`` do seu sistema de partições (opcional)
 
-
-#### 220.2.1.4 - Partição para o ``swap``
-
-Esta partição deve ser formatada usando:
+Uma vêz que você tem um DUMP de seu sistema de partições que deseja usar em formato de arquivo
+você pode utilizá-lo conforme o comando abaixo.
 
 ``` shell
-  mkswap /dev/sda3
+  sfdisk -d /dev/sda < my-partitions.out
 ```
