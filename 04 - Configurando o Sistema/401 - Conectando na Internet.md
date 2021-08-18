@@ -3,7 +3,7 @@
 Esta etapa apenas funcionará se você instalou os pacotes do item 320.2
 
 ``` shell
-  # Inicia o "NetworkManager"
+  # Inicia o "NetworkManager" para qualquer tipo de rede (cabo/wi-fi)
   NetworkManager start
   NetworkManager restart
   

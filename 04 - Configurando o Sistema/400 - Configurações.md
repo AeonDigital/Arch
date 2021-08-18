@@ -4,82 +4,77 @@ As configurações descritas abaixo são em grande parte opcionais e podem ser f
 o primeiro boot.
 
 
-
-## 400.1 - Alterando o seu fuso-horário
-
 ``` shell
-  mkdir /etc/localtime
-  ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+  # configure o teclado pt-BR 
+  # mais abaixo você verá como manter esta opção como padrão.
+  loadkeys br-abnt2
 ```
 
 
 
-## 400.2 - Sincronize o clock do sistema com o da BIOS.
+&nbsp;
+
+## 400.1 - Definindo seu fuso-horário
 
 ``` shell
+  # Sincronize o clock do sistema com o da BIOS.
   hwclock --systohc --utc
-  date 
+
+  # Use o comando abaixo para listar os timezones
+  timedatectl list-timezones
+
+  # Selecione o seu [abaixo está 'America/Sao_Paulo']
+  timedatectl set-timezone America/Sao_Paulo
+  date
 ```
 
 
 
-## 400.3 - Habilitar o idioma pt-BR
+&nbsp;
+
+## 400.2 - Habilitar o idioma pt-BR; Layout do teclado e Fonte
 
 **Edite o seguinte arquivo**
 ``` shell
   vim /etc/locale.gen
 ```
 
-Procure pelo valor ``pt_BR.UTF-8 UTF-8`` e descomente-o, após, ative-o usando:
+Procure pelo valor ``pt_BR.UTF-8 UTF-8`` e descomente-o, após, ative-o usando o comando indicado
+no bloco abaixo
 
 ``` shell
   locale-gen
-```
 
-
-
-## 400.4 - Colocar a variável de linguagem em ``locale.conf``
-
-``` shell
+  # Coloque a variável 'LANG' no arquivo 'locale.conf'
   echo LANG=pt_BR.UTF-8 >> /etc/locale.conf
-```
 
-
-
-## 400.5 - Configurar o teclado e fonte
-
-As configurações abaixo preparam o seu teclado para ser reconhecido como sendo do padrão brasileiro
-ABNT2 e seta a fonte para uma que tem maior conformidade com a lingua portuguesa.
-
-``` shell
+  # As configurações abaixo preparam o seu teclado para ser reconhecido como sendo do padrão 
+  # brasileiro ABNT2 e seta a fonte para uma que tem maior conformidade com a lingua portuguesa.
   echo KEYMAP=br-abnt2 >> /etc/vconsole.conf
   echo FONT=lat1-16 >> /etc/vconsole.conf
 ```
 
 
 
-## 400.6 - Configurar o nome do computador na rede
+&nbsp;
+
+## 400.3 - Configurar o nome do computador na rede e o arquivo o ``hosts``
 
 ``` shell
   echo [NCR] >> /etc/hostname
-```
 
-
-
-## 400.7 - Configurar o ``hosts``
-
-**Edite o seguinte arquivo**
-``` shell
   vim /etc/hosts
+  # Insira o seguinte conteúdo:
+  # 127.0.0.1       localhost.localdomain   localhost
+  # ::1             localhost.localdomain   localhost
+  # 127.0.0.1       [NCR].localdomain       [NCR]
 ```
-  Insira o seguinte conteúdo:
-  > 127.0.0.1       localhost.localdomain   localhost
-  > ::1             localhost.localdomain   localhost
-  > 127.0.0.1       [NCR].localdomain       [NCR]
 
 
 
-## 400.8 - Trocar/Definir senha do usuário ``root``
+&nbsp;
+
+## 400.4 - Trocar/Definir senha do usuário ``root``
 
 ``` shell
   passwd
@@ -89,13 +84,19 @@ ABNT2 e seta a fonte para uma que tem maior conformidade com a lingua portuguesa
 
 
 
-## 400.9 - Criar novos usuários
+&nbsp;
+
+## 400.5 - Criar novos usuários
 
 A primeira linha é realmente necessária. 
 As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma interface 
 gráfica.
 
 ``` shell
+  # Modelo
+  # useradd -m -g users [user]
+  # useradd -m -g users -G [grupo1 grupo2] [user]
+
   useradd -m -g users -G wheel [user]
   passwd [user]
   New password: 
@@ -111,8 +112,9 @@ gráfica.
 ```
 
 
+&nbsp;
 
-### 400.9.1 - Adicionando seu usuário no ``sudors`` 
+### 400.5.1 - Adicionando seu usuário no ``sudoers`` 
 
 **Edite o seguinte arquivo**
 ``` shell
