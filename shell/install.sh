@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # Torne este arquivo executável executando o comando abaixo
-# chmod u+x fullInstall.sh
+# chmod u+x install.sh
 #
 # Execute assim
-# ./fullInstall.sh
+# ./install.sh
 #
 
 
@@ -96,7 +96,7 @@ echo -e ""
 echo -e "- Iniciando a instalação do ${CYAN}Arch Linux${NONE}."
 echo -e ""
 echo -e ""
-echo -e "01 - Download dos arquivos de script"
+echo -e "- Download dos arquivos de script"
 echo -e ""
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-01.sh
 
@@ -112,9 +112,9 @@ chmod u+x install-02.sh
 echo -e ""
 echo -e ""
 
-echo -e "- Scripts de instalação foram baixados."
+echo -e "${CYAN}Scripts de instalação foram baixados.${NONE}"
 echo -e "- Use o comando abaixo para prosseguir."
-echo -e "${CYAN}install-01.sh${NONE}"
+echo -e "> ${CYAN}install-01.sh${NONE}"
 
 echo -e ""
 echo -e ""
