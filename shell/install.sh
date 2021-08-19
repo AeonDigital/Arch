@@ -102,30 +102,24 @@ echo -e ""
 echo -e "- Iniciando a instalação do ${CYAN}Arch Linux${NONE}."
 echo -e ""
 echo -e ""
-echo -e "- Download dos arquivos de script"
+echo -e "- Efetuando o download dos arquivos de script para a instalação"
 echo -e ""
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-01.sh
+chmod u+x install-01.sh
 
 echo -e ""
 echo -e ""
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-02.sh
-
-echo -e ""
-echo -e ""
-
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-03.sh
-
-chmod u+x install-01.sh
 chmod u+x install-02.sh
-chmod u+x install-03.sh
+
 
 echo -e ""
 echo -e ""
 
 echo -e "${CYAN}Scripts de instalação foram baixados.${NONE}"
 echo -e "- Use o comando abaixo para prosseguir."
-echo -e "> ${CYAN}install-01.sh${NONE}"
+echo -e "> ${GREEN}install-01.sh${NONE}"
 
 echo -e ""
 echo -e ""

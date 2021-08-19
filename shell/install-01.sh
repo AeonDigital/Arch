@@ -99,13 +99,36 @@ readNext() {
 echo -e ""
 clear
 echo -e ""
-echo -e "- Preparando o disco para instalação do ${CYAN}Arch Linux${NONE}."
+echo -e "${CYAN}Arch Linux${NONE}"
+echo -e "${CYAN}Etapa 01${NONE} - Preparação do disco."
+
 echo -e ""
 echo -e ""
-readMotherBoard "- Qual o tipo da placa mãe em que esta instalação está sendo feita?"
+
+
+readMotherBoard "${CYAN}01.1${NONE} - Qual o tipo da placa mãe em que esta instalação está sendo feita?"
+
+
+echo -e ""
+echo -e "${CYAN}01.2${NONE} - Iniciando o sistema de partições."
+if [ "$mother_board" == "UEFI" ]; then
+  echo -e "${YELLOW}UEFI - GPT${NONE}."
+  echo -e "g\nn\n\n\n+512M\nt\n1\nn\n\n\n+512M\nt\n\n19\nn\n\n\n\nw" | fdisk /dev/sda
+else
+  echo -e "${YELLOW}BIOS - MBR${NONE}."
+  echo -e "o\nn\n\n\n+512M\nt\n4\nn\n\n\n+512M\nt\n\n19\nn\n\n\n\nw" | fdisk /dev/sda
+fi
+
+
+echo -e ""
+echo -e ""
+echo -e "Preparo do sistema de partições concluído; Confira o resultado abaixo."
+fdisk -l /dev/sda
+
+
+echo -e ""
+echo -e ""
 readNext "-- Deseja prosseguir?"
-
-
 if [ "$next" != "SIM" ]; then
   echo -e ""
   echo "-- Instalação encerrada!"
@@ -113,52 +136,97 @@ if [ "$next" != "SIM" ]; then
   echo -e ""
 else
   echo -e ""
-  echo -e "   - Preparando a unidade de armazenamento persistente"
-  if [ "$mother_board" == "UEFI" ]; then
-    echo -e "     Preparando para receber sistema usando placa mãe do tipo ${CYAN}UEFI - GPT${NONE}."
-    echo -e "g\nn\n\n\n+512M\nt\n1\nn\n\n\n+512M\nt\n\n19\nn\n\n\n\nw" | fdisk /dev/sda
-  else
-    echo -e "     Preparando para receber sistema usando placa mãe do tipo ${CYAN}BIOS - MBR${NONE}."
-    echo -e "o\nn\n\n\n+512M\nt\n4\nn\n\n\n+512M\nt\n\n19\nn\n\n\n\nw" | fdisk /dev/sda
-  fi
+  echo -e "${CYAN}01.3${NONE} - Formatando as partições."
+  mkfs.fat -F32 /dev/sda1
+  mkswap /dev/sda2
+  mkfs.ext4 /dev/sda3
 
 
-  echo -e "   - Preparo da unidade de armazenamento persistente concluído:"
-  fdisk -l /dev/sda
 
+  echo -e ""
+  echo -e ""
+  echo -e "${CYAN}01.4${NONE} - Montando as partições e preparando o filesystem."
+  mount /dev/sda3 /mnt
+  mkdir /mnt/boot 
+  mkdir /mnt/home
+  mount /dev/sda1 /mnt/boot
+  swapon /dev/sda2
+
+
+
+  echo -e ""
+  echo -e ""
+  echo -e "${CYAN}Etapa 01${NONE} - Preparação do disco concluída!."
+
+
+
+  echo -e ""
+  echo -e ""
+  echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais."
+  echo -e "           Serão instalados os seguintes pacotes:"
+  echo -e ""
+  echo -e "${NONE}Essencial           \tBoot"
+  echo -e "- ${CYAN}bash${NONE}           \t- ${RED}grub${NONE}  [BIOS]"
+  echo -e "- ${CYAN}gzip${NONE}           \t- ${RED}grub-efi-x86_64${NONE}"
+  echo -e "- ${CYAN}pacman${NONE}         \t- ${RED}efibootmgr${NONE}"
+  echo -e "- ${CYAN}sed${NONE}"
+  echo -e "- ${CYAN}systemd-sysvcompat${NONE}"
+  echo -e "- ${CYAN}linux${NONE}"
+  echo -e ""
+  echo -e "${NONE}Servidor            \tInternet"
+  echo -e "- ${YELLOW}sudo${NONE}         \t\t- ${PURPLE}network-manager-applet${NONE}"
+  echo -e "- ${YELLOW}vim${NONE}          \t\t- ${PURPLE}wget${NONE}"
+  echo -e "- ${YELLOW}sshfs${NONE}"
+  echo -e "- ${YELLOW}less${NONE}"
+
+
+
+  echo -e ""
+  echo -e ""
   readNext "-- Deseja prosseguir?"
   if [ "$next" != "SIM" ]; then
-    echo -e ""
+    echo ""
     echo "-- Instalação encerrada!"
-    echo -e ""
-    echo -e ""
+    echo ""
+    echo ""
   else
-    echo -e ""
-    echo -e "- Formatando as partições criadas"
-    mkfs.fat -F32 /dev/sda1
-    mkswap /dev/sda2
-    mkfs.ext4 /dev/sda3
+    if [ "$mother_board" == "UEFI" ]; then
+      pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget 
+    else
+      pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
+    fi
 
-
-    echo -e ""
-    echo -e ""
-
-    echo -e "- Montando as partições e preparando o filesystem"
-    mount /dev/sda3 /mnt
-    mkdir /mnt/boot 
-    mkdir /mnt/home
-    mount /dev/sda1 /mnt/boot
-    swapon /dev/sda2
 
 
     echo -e ""
     echo -e ""
+    readNext "-- Deseja prosseguir?"
+    if [ "$next" != "SIM" ]; then
+      echo ""
+      echo "-- Instalação encerrada!"
+      echo ""
+      echo ""
+    else
+      echo -e ""
+      echo -e "${CYAN}02.1${NONE} - Preparando o arquivo de boot fstab"
+      genfstab -U -p /mnt >> /mnt/etc/fstab
 
-    echo -e "${CYAN}Processo de configuração do disco finalizado.${NONE}"
-    echo -e "- Use o comando abaixo para prosseguir."
-    echo -e "> ${CYAN}install-02.sh${NONE}"
 
-    echo -e ""
-    echo -e ""
+      echo -e ""
+      echo -e ""
+      echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais concluída!."
+      echo -e "           Esta parte do processo finalizou."
+      echo -e "           Você será levado para a instalação que está sendo preparada e,"
+      echo -e "           para concluí-la precisará executar a segunda parte do instalador"
+      echo -e "           conforme está demonstrado no exemplo abaixo"
+      echo -e ""
+      echo -e "> ${GREEN}chmod u+x install-02.sh${NONE}"
+      echo -e "> ${GREEN}./install-02.sh${NONE}"
+      echo -e ""
+      echo -e ""
+      echo -e "${CYAN}Executando o switch para o novo sistema.${NONE}"
+      cp -a install-02.sh /mnt/install-02.sh
+      arch-chroot /mnt
+    fi
   fi
 fi
