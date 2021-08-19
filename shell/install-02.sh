@@ -106,7 +106,7 @@ readMotherBoard "- Qual o tipo da placa mãe em que esta instalação está send
 echo -e ""
 echo -e "- Serão instalados os seguintes pacotes:"
 echo -e ""
-echo -e "${NONE}Essencial               \tBoot"
+echo -e "${NONE}Essencial           \tBoot"
 echo -e "- ${CYAN}bash${NONE}           \t- ${RED}grub${NONE}  [BIOS]"
 echo -e "- ${CYAN}gzip${NONE}           \t- ${RED}grub-efi-x86_64${NONE}"
 echo -e "- ${CYAN}pacman${NONE}         \t- ${RED}efibootmgr${NONE}"
@@ -114,7 +114,7 @@ echo -e "- ${CYAN}sed${NONE}"
 echo -e "- ${CYAN}systemd-sysvcompat${NONE}"
 echo -e "- ${CYAN}linux${NONE}"
 echo -e ""
-echo -e "${NONE}Servidor                \t\tInternet"
+echo -e "${NONE}Servidor            \tInternet"
 echo -e "- ${YELLOW}sudo${NONE}         \t\t- ${PURPLE}network-manager-applet${NONE}"
 echo -e "- ${YELLOW}vim${NONE}          \t\t- ${PURPLE}wget${NONE}"
 echo -e "- ${YELLOW}sshfs${NONE}"
@@ -155,51 +155,14 @@ else
 
     echo -e ""
     echo -e ""
+    echo -e "${CYAN}A etapa do instalador finalizou.${NONE}"
+    echo -e "${CYAN}Rode os comandos abaixo para completar a instalação.${NONE}"
+    echo -e ""
+    echo -e "${PURPLE}curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-03.sh${NONE}"
+    echo -e "${PURPLE}chmod u+x install-03.sh${NONE}"
+    echo -e ""
+    echo -e ""
     echo -e "- Switch para o novo sistema."
     arch-chroot /mnt
-
-    echo -e ""
-    echo -e ""
-    echo -e "- Configura o Grub conforme o tipo de placa mãe."
-    if [ "$mother_board" == "UEFI" ]; then
-      grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-    else
-      grub-install --target=i386-pc --recheck /dev/sda
-    fi
-
-    cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-    grub-mkconfig -o /boot/grub/grub.cfg
-
-
-    echo -e ""
-    echo -e ""
-    echo -e "- Terminada a configuração do Grub."
-    echo -e ""
-    echo -e ""
-    echo -e "${CYAN}Configure uma senha para o usuário root.${NONE}"
-    passwd
-
-
-
-    echo -e ""
-    echo -e "- Seu computador está pronto para ser reiniciado."
-    echo -e ""
-
-    readNext "-- Deseja efetuar o reboot agora?"
-
-    if [ "$next" == "SIM" ]; then
-      echo ""
-      echo "-- Fim da execução! Reiniciando..."
-      echo ""
-      echo ""
-      exit
-      umount -R /mnt
-      reboot
-    else
-      echo ""
-      echo "-- Fim da execução!"
-      echo ""
-      echo ""
-    fi
   fi
 fi
