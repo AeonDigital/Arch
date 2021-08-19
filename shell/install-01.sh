@@ -167,6 +167,7 @@ else
     echo ""
   else
     echo -e ""
+    clear
     echo -e ""
     echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais."
     echo -e "           Serão instalados os seguintes pacotes:"
@@ -226,12 +227,12 @@ else
         echo -e "           para concluí-la precisará executar a segunda parte do instalador"
         echo -e "           conforme está demonstrado no exemplo abaixo"
         echo -e ""
-        echo -e "> ${GREEN}chmod u+x install-02.sh${NONE}"
-        echo -e "> ${GREEN}./install-02.sh${NONE}"
+        echo -e "> ${GREEN}chmod u+x install.sh${NONE}"
+        echo -e "> ${GREEN}./install.sh${NONE}"
         echo -e ""
         echo -e ""
         echo -e "${CYAN}Executando o switch para o novo sistema.${NONE}"
-        cp -a install-02.sh /mnt/install-02.sh
+        cp -a install-02.sh /mnt/install.sh
         arch-chroot /mnt
       fi
     fi

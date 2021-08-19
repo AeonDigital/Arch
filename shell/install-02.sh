@@ -143,7 +143,7 @@ if [ "$next" == "SIM" ]; then
   echo -e "${GREEN}reboot${NONE}"
   echo ""
   echo ""
-  rm install-03.sh
+  rm install.sh
   exit
 else
   echo ""
