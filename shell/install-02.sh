@@ -106,7 +106,7 @@ echo -e ""
 echo -e ""
 
 
-readMotherBoard "${CYAN}01.1${NONE} - Qual o tipo da placa mãe em que esta instalação está sendo feita?"
+readMotherBoard " - Qual o tipo da placa mãe em que esta instalação está sendo feita?"
 if [ "$mother_board" == "UEFI" ]; then
   grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 else

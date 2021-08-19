@@ -106,7 +106,7 @@ echo -e ""
 echo -e ""
 
 
-readMotherBoard "${CYAN}01.1${NONE} - Qual o tipo da placa mãe em que esta instalação está sendo feita?"
+readMotherBoard " - Qual o tipo da placa mãe em que esta instalação está sendo feita?"
 
 
 echo -e ""
@@ -122,7 +122,7 @@ fi
 
 echo -e ""
 echo -e ""
-echo -e "Preparo do sistema de partições concluído; Confira o resultado abaixo."
+echo -e "${CYAN}Preparo do sistema de partições concluído; Confira o resultado abaixo.${NONE}"
 fdisk -l /dev/sda
 
 
