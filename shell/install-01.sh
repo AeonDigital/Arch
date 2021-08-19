@@ -157,30 +157,6 @@ else
   echo -e ""
   echo -e ""
   echo -e "${CYAN}Etapa 01${NONE} - Preparação do disco concluída!."
-
-
-
-  echo -e ""
-  echo -e ""
-  echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais."
-  echo -e "           Serão instalados os seguintes pacotes:"
-  echo -e ""
-  echo -e "${NONE}Essencial           \tBoot"
-  echo -e "- ${CYAN}bash${NONE}           \t- ${RED}grub${NONE}  [BIOS]"
-  echo -e "- ${CYAN}gzip${NONE}           \t- ${RED}grub-efi-x86_64${NONE}"
-  echo -e "- ${CYAN}pacman${NONE}         \t- ${RED}efibootmgr${NONE}"
-  echo -e "- ${CYAN}sed${NONE}"
-  echo -e "- ${CYAN}systemd-sysvcompat${NONE}"
-  echo -e "- ${CYAN}linux${NONE}"
-  echo -e ""
-  echo -e "${NONE}Servidor            \tInternet"
-  echo -e "- ${YELLOW}sudo${NONE}         \t\t- ${PURPLE}network-manager-applet${NONE}"
-  echo -e "- ${YELLOW}vim${NONE}          \t\t- ${PURPLE}wget${NONE}"
-  echo -e "- ${YELLOW}sshfs${NONE}"
-  echo -e "- ${YELLOW}less${NONE}"
-
-
-
   echo -e ""
   echo -e ""
   readNext "-- Deseja prosseguir?"
@@ -190,11 +166,24 @@ else
     echo ""
     echo ""
   else
-    if [ "$mother_board" == "UEFI" ]; then
-      pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget 
-    else
-      pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
-    fi
+    echo -e ""
+    echo -e ""
+    echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais."
+    echo -e "           Serão instalados os seguintes pacotes:"
+    echo -e ""
+    echo -e "${NONE}Essencial           \tBoot"
+    echo -e "- ${CYAN}bash${NONE}           \t- ${RED}grub${NONE}  [BIOS]"
+    echo -e "- ${CYAN}gzip${NONE}           \t- ${RED}grub-efi-x86_64${NONE}"
+    echo -e "- ${CYAN}pacman${NONE}         \t- ${RED}efibootmgr${NONE}"
+    echo -e "- ${CYAN}sed${NONE}"
+    echo -e "- ${CYAN}systemd-sysvcompat${NONE}"
+    echo -e "- ${CYAN}linux${NONE}"
+    echo -e ""
+    echo -e "${NONE}Servidor            \tInternet"
+    echo -e "- ${YELLOW}sudo${NONE}         \t\t- ${PURPLE}network-manager-applet${NONE}"
+    echo -e "- ${YELLOW}vim${NONE}          \t\t- ${PURPLE}wget${NONE}"
+    echo -e "- ${YELLOW}sshfs${NONE}"
+    echo -e "- ${YELLOW}less${NONE}"
 
 
 
@@ -207,26 +196,44 @@ else
       echo ""
       echo ""
     else
-      echo -e ""
-      echo -e "${CYAN}02.1${NONE} - Preparando o arquivo de boot fstab"
-      genfstab -U -p /mnt >> /mnt/etc/fstab
+      if [ "$mother_board" == "UEFI" ]; then
+        pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget 
+      else
+        pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
+      fi
 
 
+
       echo -e ""
       echo -e ""
-      echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais concluída!."
-      echo -e "           Esta parte do processo finalizou."
-      echo -e "           Você será levado para a instalação que está sendo preparada e,"
-      echo -e "           para concluí-la precisará executar a segunda parte do instalador"
-      echo -e "           conforme está demonstrado no exemplo abaixo"
-      echo -e ""
-      echo -e "> ${GREEN}chmod u+x install-02.sh${NONE}"
-      echo -e "> ${GREEN}./install-02.sh${NONE}"
-      echo -e ""
-      echo -e ""
-      echo -e "${CYAN}Executando o switch para o novo sistema.${NONE}"
-      cp -a install-02.sh /mnt/install-02.sh
-      arch-chroot /mnt
+      readNext "-- Deseja prosseguir?"
+      if [ "$next" != "SIM" ]; then
+        echo ""
+        echo "-- Instalação encerrada!"
+        echo ""
+        echo ""
+      else
+        echo -e ""
+        echo -e "${CYAN}02.1${NONE} - Preparando o arquivo de boot fstab"
+        genfstab -U -p /mnt >> /mnt/etc/fstab
+
+
+        echo -e ""
+        echo -e ""
+        echo -e "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais concluída!."
+        echo -e "           Esta parte do processo finalizou."
+        echo -e "           Você será levado para a instalação que está sendo preparada e,"
+        echo -e "           para concluí-la precisará executar a segunda parte do instalador"
+        echo -e "           conforme está demonstrado no exemplo abaixo"
+        echo -e ""
+        echo -e "> ${GREEN}chmod u+x install-02.sh${NONE}"
+        echo -e "> ${GREEN}./install-02.sh${NONE}"
+        echo -e ""
+        echo -e ""
+        echo -e "${CYAN}Executando o switch para o novo sistema.${NONE}"
+        cp -a install-02.sh /mnt/install-02.sh
+        arch-chroot /mnt
+      fi
     fi
   fi
 fi
