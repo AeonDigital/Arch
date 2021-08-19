@@ -111,9 +111,14 @@ echo -e ""
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-02.sh
 
+echo -e ""
+echo -e ""
+
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-03.sh
 
 chmod u+x install-01.sh
 chmod u+x install-02.sh
+chmod u+x install-03.sh
 
 echo -e ""
 echo -e ""

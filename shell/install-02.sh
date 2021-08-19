@@ -158,11 +158,12 @@ else
     echo -e "${CYAN}A etapa do instalador finalizou.${NONE}"
     echo -e "${CYAN}Rode os comandos abaixo para completar a instalação.${NONE}"
     echo -e ""
-    echo -e "${PURPLE}curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-03.sh${NONE}"
     echo -e "${PURPLE}chmod u+x install-03.sh${NONE}"
+    echo -e "${PURPLE}./install-03.sh${NONE}"
     echo -e ""
     echo -e ""
     echo -e "- Switch para o novo sistema."
+    cp install-03.sh /mnt/install-03.sh
     arch-chroot /mnt
   fi
 fi
