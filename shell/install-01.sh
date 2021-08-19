@@ -12,20 +12,20 @@
 
 
 
-echo ""
+echo -e ""
 clear
 
 echo -e "- Preparando o disco para instalação do ${CYAN}Arch Linux${NONE}."
-echo ""
-echo ""
+echo -e ""
+echo -e ""
 readMotherBoard "01: Qual o tipo da placa mãe em que esta instalação está sendo feita?"
 readNext "-- Deseja prosseguir?"
 
 if [ "$next" != "SIM" ]; then
-  echo ""
+  echo -e ""
   echo "-- Instalação encerrada!"
-  echo ""
-  echo ""
+  echo -e ""
+  echo -e ""
 else
   echo -e ""
   echo -e "02: Preparando a unidade de armazenamento persistente"
@@ -43,10 +43,10 @@ else
 
   readNext "-- Deseja prosseguir?"
   if [ "$next" != "SIM" ]; then
-    echo ""
+    echo -e ""
     echo "-- Instalação encerrada!"
-    echo ""
-    echo ""
+    echo -e ""
+    echo -e ""
   else
     echo -e ""
     echo -e "03: Formatando as partições criadas"
@@ -55,8 +55,8 @@ else
     mkfs.ext4 /dev/sda3
 
 
-    echo ""
-    echo ""
+    echo -e ""
+    echo -e ""
 
     echo -e "04: Montando as partições e preparando o filesystem"
     mount /dev/sda3 /mnt
@@ -66,13 +66,13 @@ else
     swapon /dev/sda2
 
 
-    echo ""
-    echo ""
+    echo -e ""
+    echo -e ""
 
     echo -e "${CYAN}Processo de configuração do disco finalizado${NONE}."
     echo -e "- Use o comando abaixo para prosseguir."
     echo -e "${CYAN}install-02.sh${NONE}"
-    echo ""
-    echo ""
+    echo -e ""
+    echo -e ""
   fi
 fi
