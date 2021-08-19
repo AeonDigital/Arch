@@ -38,6 +38,7 @@ BLINK="\033[05m"
 # Variáveis
 mother_board=""
 next=""
+ncr=""
 
 
 
@@ -92,6 +93,19 @@ readNext() {
   fi
 }
 
+## Identifica o nome do computador remoto
+readNCR() {
+  while [ "$ncr" == "" ]; do
+    echo ""
+    echo "$1"
+    read -p " > " ncr
+
+    if [ "$ncr" == "" ]; then
+      echo "   Você precisa digitar um nome válido"
+    fi
+  done
+}
+
 
 
 
@@ -129,7 +143,36 @@ passwd
 
 echo -e ""
 echo -e ""
-echo -e "${CYAN}03.2${NONE} - Seu computador está pronto para ser reiniciado."
+echo -e "${CYAN}03.2${NONE} - Definindo o fuso-horário para 'America/Sao_Paulo'"
+timedatectl set-timezone America/Sao_Paulo
+
+
+
+echo -e ""
+echo -e ""
+echo -e "${CYAN}03.3${NONE} - Habilitando o idioma pt-BR; Configurando Layout do teclado e Fonte"
+sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/g' /etc/locale.gen
+echo LANG=pt_BR.UTF-8 >> /etc/locale.conf
+echo KEYMAP=br-abnt2 >> /etc/vconsole.conf
+echo FONT=lat1-16 >> /etc/vconsole.conf
+
+
+
+echo -e ""
+echo -e ""
+echo -e "${CYAN}03.4${NONE} - Configurar o nome do computador e o arquivo 'hosts'"
+readNCR " - Qual o nome deste computador?"
+echo "$ncr" >> /etc/hostname
+echo 127.0.0.1       localhost.localdomain   localhost >> /etc/hosts
+echo ::1             localhost.localdomain   localhost >> /etc/hosts
+echo 127.0.0.1       "$ncr".localdomain "$ncr" >> /etc/hosts
+
+
+
+
+echo -e ""
+echo -e ""
+echo -e "${CYAN}03.5${NONE} - Seu computador está pronto para ser reiniciado."
 
 
 

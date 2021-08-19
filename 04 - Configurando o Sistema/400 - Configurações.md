@@ -58,7 +58,7 @@ no bloco abaixo
 
 &nbsp;
 
-## 400.3 - Configurar o nome do computador na rede e o arquivo o ``hosts``
+## 400.3 - Configurar o nome do computador e o arquivo ``hosts``
 
 ``` shell
   echo [NCR] >> /etc/hostname

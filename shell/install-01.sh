@@ -38,6 +38,7 @@ BLINK="\033[05m"
 # Variáveis
 mother_board=""
 next=""
+ncr=""
 
 
 
@@ -90,6 +91,19 @@ readNext() {
   if [ "$next" == "NAO" ] || [ "$next" == "N" ]; then
     next="NAO"
   fi
+}
+
+## Identifica o nome do computador remoto
+readNCR() {
+  while [ "$ncr" == "" ]; do
+    echo ""
+    echo "$1"
+    read -p " > " ncr
+
+    if [ "$ncr" == "" ]; then
+      echo "   Você precisa digitar um nome válido"
+    fi
+  done
 }
 
 
