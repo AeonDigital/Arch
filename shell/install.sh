@@ -117,9 +117,5 @@ chmod u+x install-02.sh
 echo -e ""
 echo -e ""
 
-echo -e "${CYAN}Scripts de instalação foram baixados.${NONE}"
-echo -e "- Use o comando abaixo para prosseguir."
-echo -e "> ${GREEN}install-01.sh${NONE}"
-
-echo -e ""
-echo -e ""
+echo -e "${CYAN}Scripts de instalação foram baixados e preparados para uso...${NONE}"
+./install-01.sh

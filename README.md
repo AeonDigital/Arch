@@ -23,6 +23,27 @@ eu mesma.
 
 _______________________________________________________________________________
 
+## Shut up and install 
+
+Use o boot do Arch para dar boot em uma máquina e cegamente use os comandos:  
+
+``` shell
+  # pura comodidade para facilitar o uso de teclados pt-BR
+  loadkeys br-abnt2
+
+  # faz download do script de instalação; dá permissão de execução e executa-o
+  curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install.sh
+  chmod u+x install.sh
+  ./install.sh
+```
+
+
+&nbsp;
+&nbsp;
+
+
+_______________________________________________________________________________
+
 ## Fonte de informações
 
 Obviamente catei na internet vários artigos, vídeos e demais fontes de
