@@ -89,16 +89,16 @@ necessários para uma instalação mínima +:
 
 <pre>
 - sudo .................... : se você não sabe para que serve, você não deveria estar aqui.
+- vim ..................... : editor de arquivos.
+- sshfs ................... : pra dar acesso SSH ao computador onde está sendo instalado o Arch.
+- less .................... : facilita a visualização de textos no terminal.
 - grub .................... : para configurar o boot em BIOS.
 - grub-efi-x86_64 ......... : para configurar o boot em UEFI.
 - efibootmgr .............. : para configurar o boot em UEFI.
 - network-manager-applet .. : para configurar a internet.
 - wireless_tools .......... : para configurar a internet sem fio.
 - wpa_supplicant .......... : para configurar a internet sem fio.
-- vim ..................... : editor de arquivos.
-- sshfs ................... : pra dar acesso SSH ao computador onde está sendo instalado o Arch.
 - wget .................... : para fazer downloads "avulsos".
-- less .................... : facilita a visualização de textos no terminal.
 </pre>
 
 Estes aqui eu recomendo mas eu mesma não os usei ainda.
@@ -114,10 +114,10 @@ Eles são usados para compilar e instalar programas/pacotes de forma avulsa (sem
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget 
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub network-manager-applet vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
 ```
 
 
@@ -127,8 +127,8 @@ Eles são usados para compilar e instalar programas/pacotes de forma avulsa (sem
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget 
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo grub network-manager-applet wireless_tools wpa_supplicant vim sshfs wget less
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget
 ```
