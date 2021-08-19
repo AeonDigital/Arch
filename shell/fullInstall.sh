@@ -92,14 +92,22 @@ readNext() {
 
 echo ""
 clear
-
+echo ""
 echo -e "- Iniciando a instalação do ${CYAN}Arch Linux${NONE}."
-
-
+echo ""
+echo ""
 echo -e "01 - Download dos arquivos de script"
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-01.sh
+
+echo ""
+echo ""
+
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install-02.sh
 
 
 chmod u+x install-01.sh
 chmod u+x install-02.sh
+
+echo -e "- Scripts de instalação foram baixados."
+echo -e "- Use o comando abaixo para prosseguir."
+echo -e "${CYAN}install-01.sh${NONE}."
