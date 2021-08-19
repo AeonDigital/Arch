@@ -41,6 +41,8 @@ next=""
 
 
 
+
+
 # Funções
 ## Converte o argumento passado para minusculas
 toLowerCase() {
@@ -89,6 +91,10 @@ readNext() {
     next="NAO"
   fi
 }
+
+
+
+
 
 echo -e ""
 clear

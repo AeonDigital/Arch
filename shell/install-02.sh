@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # Torne este arquivo executável executando o comando abaixo
-# chmod u+x install-01.sh
+# chmod u+x install-02.sh
 #
 # Execute assim
-# ./install-01.sh
+# ./install-02.sh
 #
 
 
