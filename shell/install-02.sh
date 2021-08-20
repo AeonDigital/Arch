@@ -180,7 +180,7 @@ echo -e ""
 echo -e ""
 echo -e "${CYAN}03.6${NONE} - Ativa a internet"
 systemctl enable NetworkManager
-systemctl start NetworkManager
+#systemctl start NetworkManager
 
 
 
@@ -199,13 +199,12 @@ if [ "$next" == "SIM" ]; then
   echo -e "${CYAN}Etapa 03${NONE} - Configuração do sistema concluída!."
   echo -e "           Rode os comandos abaixo para executar o reboot."
   echo -e ""
+  echo -e "${GREEN}exit${NONE}"
   echo -e "${GREEN}umount -R /mnt${NONE}"
   echo -e "${GREEN}reboot${NONE}"
   echo ""
   echo ""
-  rm ~/.bash_history
   rm install.sh
-  exit
 else
   echo ""
   echo "-- Fim da execução!"
