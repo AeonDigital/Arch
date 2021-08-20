@@ -1,14 +1,14 @@
 # 300 - Instalação das configurações iniciais e pacotes básicos
 
-Ao final do passo anterior o básico do básico está feito para você começar a efetivamente montar seu S/O. A partir de 
-agora você irá personalizá-lo conforme seu gosto.
+Ao final do passo anterior o básico do básico está feito para você começar a efetivamente montar 
+seu S/O. A partir de agora você irá personalizá-lo conforme seu gosto.
 
-Ao longo deste passo serão feitas descrições de instalações que EU, baseada nas informações colhidas pelos tutoriais, 
-considero realmente mínimos e/ou interessantes de serem instaladas.
+Ao longo deste passo serão feitas descrições de instalações que EU, baseada nas informações 
+colhidas pelos tutoriais, considero realmente mínimos e/ou interessantes de serem instaladas.
 
 O primeiro passo é instalar uma coleção de pacotes **basicão** para começar esta etapa.  
-Com o comando abaixo, o grupo ``base`` terá seus pacotes listados e enumerados e o prompt aguardará que você indique o 
-número de cada item que deve ser instalado.
+Com o comando abaixo, o grupo ``base`` terá seus pacotes listados e enumerados e o prompt 
+aguardará que você indique o número de cada item que deve ser instalado.
 
 ``` shell
   pacstrap -i /mnt base
@@ -47,16 +47,17 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
 [x] [27] linux .................. The Linux kernel and modules  
 </pre>
 
-Os itens cuja descrição é precedida de um ``!`` são aqueles em que a instalação será feita como dependência de um dos 
-que estão selecionados.
-Já os itens cuja descrição é precedida de um ``>`` são instalados como dependência de um ou outro pacote recomendado 
-ao longo deste tutorial.
+Os itens cuja descrição é precedida de um ``!`` são aqueles em que a instalação será feita como 
+dependência de um dos que estão selecionados.
+Já os itens cuja descrição é precedida de um ``>`` são instalados como dependência de um ou outro 
+pacote recomendado ao longo deste tutorial.
 
 
 Para maiores informações visite a relação oficial em:
 > https://archlinux.org/packages/core/any/base/
 
-Os itens marcados com [x] são considerados realmente essenciais e deveriam ser mantidos na sua instalação.
+Os itens marcados com [x] são considerados realmente essenciais e deveriam ser mantidos na sua 
+instalação.
 
 
 
@@ -64,8 +65,8 @@ Os itens marcados com [x] são considerados realmente essenciais e deveriam ser 
 
 ## 300.1 - Pacote extremamente mínimo
 
-Com estes itens você instala o Arch Linux com o mínimo possível e pode seguir o tutorial. Neste momento você ainda não 
-conseguirá dar um boot e nem acessar a internet.
+Com estes itens você instala o Arch Linux com o mínimo possível e pode seguir o tutorial. Neste 
+momento você ainda não conseguirá dar um boot e nem acessar a internet.
 
 ``` shell
   # Para a coleção "base" a partir de 2019-11-13

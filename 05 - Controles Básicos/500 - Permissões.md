@@ -123,11 +123,11 @@ Abaixo segue uma descrição de todos os dados que aparecem quando você usa um 
 em conjunto com o parametro ``-l`` (lista os atributos de cada objeto no local indicado).
 
 ```
-  -rw-rw-r-- 1 rianna users 5 Jun 5 4:30 filename.txt
-  ^^  ^  ^   ^ ^      ^     ^ ^          ^
-  ||  |  |   | |      |     | |          |
-  ||  |  |   | |      |     | |          Nome do arquivo
-  ||  |  |   | |      |     | Data e hora da última modificação
+  -rw-rw-r-- 1 rianna users 05 Jun 5 04:30 filename.txt
+  ^^  ^  ^   ^ ^      ^     ^  ^           ^
+  ||  |  |   | |      |     |  |           |
+  ||  |  |   | |      |     |  |           Nome do arquivo
+  ||  |  |   | |      |     |  Data e hora da última modificação
   ||  |  |   | |      |     Tamanho do arquivo em bytes
   ||  |  |   | |      Grupo ao qual o objeto pertence
   ||  |  |   | Proprietário do arquivo

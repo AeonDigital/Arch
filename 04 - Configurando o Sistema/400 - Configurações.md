@@ -89,15 +89,14 @@ no bloco abaixo
 ## 400.5 - Criar novos usuários
 
 A primeira linha é realmente necessária. 
-As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma interface 
-gráfica.
+As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma 
+interface gráfica.
 
 ``` shell
   # Modelo
-  # useradd -m -g users [user]
-  # useradd -m -g users -G [grupo1 grupo2] [user]
+  # useradd -m [user]
 
-  useradd -m -g users -G wheel [user]
+  useradd -m [user]
   passwd [user]
   New password: 
   Retype new password

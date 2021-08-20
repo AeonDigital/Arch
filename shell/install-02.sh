@@ -169,10 +169,27 @@ echo 127.0.0.1       "$ncr".localdomain "$ncr" >> /etc/hosts
 
 
 
+echo -e ""
+echo -e ""
+echo -e "${CYAN}03.5${NONE} - Libera o grupo 'wheel' para que ele seja um 'sudoer'"
+sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+
+
 
 echo -e ""
 echo -e ""
-echo -e "${CYAN}03.5${NONE} - Seu computador está pronto para ser reiniciado."
+echo -e "${CYAN}03.6${NONE} - Ativa a internet"
+systemctl enable NetworkManager
+systemctl start NetworkManager
+
+
+
+
+
+
+echo -e ""
+echo -e ""
+echo -e "${CYAN}03.7${NONE} - Seu computador está pronto para ser reiniciado."
 
 
 
@@ -186,6 +203,7 @@ if [ "$next" == "SIM" ]; then
   echo -e "${GREEN}reboot${NONE}"
   echo ""
   echo ""
+  rm ~/.bash_history
   rm install.sh
   exit
 else

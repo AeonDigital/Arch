@@ -21,7 +21,8 @@ O comando abaixo **mapeia** a partição para dentro do diretório ``mnt``.
   mount /dev/sda3 /mnt
 ```
 
-Após esta montagem inicial, você precisará criar algumas pastas especiais que serão usadas posteriormente pelo S/O. 
+Após esta montagem inicial, você precisará criar algumas pastas especiais que serão usadas 
+posteriormente pelo S/O. 
 Para isto use os seguintes comandos:
 
 ``` shell
