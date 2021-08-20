@@ -72,9 +72,8 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 Abaixo segue a cópia dos padrões de definição que você pode utilizar.
 
 <pre>
-  # O exemplo abaixo está usando entidades HTML para representar os caracteres &lt; e &gt;
-  # para que a visualização em renderizadores de markdown ocorra corretamente.
-  # tenha em mente que é preciso substituir tais entidades pelos caracteres originais para que
+  # O exemplo abaixo está usando entidades HTML para representar os caracteres '&lt;' e '&gt;'.
+  # Tenha em mente que é preciso substituir tais entidades pelos caracteres originais para que
   # o exemplo funcione corretamente.
   \e[FUNDO;ATTR;FONTEm
   \e[FUNDO;ATTR;FONTE&lt;r&gt;;FONTE&lt;g&gt;;FONTE&lt;b&gt;m
