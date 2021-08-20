@@ -25,7 +25,7 @@ _______________________________________________________________________________
 
 ## Shut up and install 
 
-Use o boot do Arch para dar boot em uma máquina e cegamente use os comandos:  
+Use o boot do Arch na máquina alvo e cegamente use os comandos:  
 
 ``` shell
   # pura comodidade para facilitar o uso de teclados pt-BR
