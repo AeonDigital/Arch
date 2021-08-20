@@ -245,7 +245,7 @@ else
         echo -e "> ${GREEN}./install.sh${NONE}"
         echo -e ""
         echo -e ""
-        echo -e "${CYAN}Executando o switch para o novo sistema.${NONE}"
+        echo -e "${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
         cp -a install-02.sh /mnt/install.sh
         arch-chroot /mnt
       fi
