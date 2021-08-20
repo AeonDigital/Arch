@@ -10,6 +10,8 @@ que tenham um mesmo *assunto*.
 
 
 
+&nbsp;
+
 ## 630.1 - Crie um arquivo
 
 Este novo arquivo que você pode nomear como quiser irá receber o conteúdo do script de funções que
@@ -21,6 +23,8 @@ você deseja disponibilizar em seu ambiente.
 ```
 
 
+
+&nbsp;
 
 ## 630.2 - Dando permissão de execução
 
@@ -35,6 +39,8 @@ Se você não der permissão de execução não será possível usar o script.
 ```
 
 
+
+&nbsp;
 
 ## 630.3 - Configurando o seu .bashrc
 

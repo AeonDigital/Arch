@@ -23,6 +23,8 @@ desta forma será aquele que será usado pelo seu usuário sempre que fizer o lo
 
 
 
+&nbsp;
+
 ## 640.1 - Comandos de personalização
 
 Os seguintes comandos podem ser usados para configurar o prompt:
@@ -62,6 +64,8 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 
 
 
+&nbsp;
+
 ## 640.2 - Usando cores
 
 Abaixo segue a cópia dos padrões de definição que você pode utilizar.
@@ -89,6 +93,7 @@ das 256 cores disponíveis caso esteja limitado a um ambiente de 8 bits.
 
 
 
+&nbsp;
 
 ## 640.3 - Efetuando testes
 
@@ -104,6 +109,8 @@ configurações até chegar em alguma que lhe agrade.
 
 
 
+&nbsp;
+
 ### 640.3.1 - Padrões que eu curto
 
 #### 640.3.1.1 - Monocolor
@@ -111,21 +118,30 @@ configurações até chegar em alguma que lhe agrade.
 > PSTYLE01="\$ \u@\h : "
 
 
+&nbsp;
+
 #### 640.3.1.2 - Verde Clássico
 ##### 640.3.1.2.1 - Minimalista 1
 > $ rianna@archlinux : _
 > PSTYLE02A="\[\e[40;01;32m\]\$ \u@\h : \[\e[40;00;37m\]"
 
 
+&nbsp;
+
 ##### 640.3.1.2.2 - Minimalista 2
 > $ rianna@archlinux : _
 > PSTYLE02B="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u@\h \[\e[40;01;36m\]: \[\e[40;00;37m\]"
 
 
+&nbsp;
+
 ##### 640.3.1.2.3 - Minimalista 3
 > $ rianna@archlinux : _
 > PSTYLE02C="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;36m\] : \[\e[40;00;37m\]"
 
+
+
+&nbsp;
 
 #### 640.3.1.3 - Detalhado, com Prompt na próxima linha
 ##### 640.3.1.3.1 - Detalhado 1
@@ -134,17 +150,23 @@ configurações até chegar em alguma que lhe agrade.
 > PSTYLE03A="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;01;34m\]\076 \[\e[40;00;37m\]"
 
 
+&nbsp;
+
 ##### 640.3.1.3.2 - Detalhado 2
 > ┌── $ rianna@archlinux in ~/DirName/SubDir
 > └──╼ _
 > PSTYLE03B="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\e[40;00;37m\]"
 
 
+&nbsp;
+
 ##### 640.3.1.3.3 - Detalhado 3
 > ┌── $ rianna@archlinux in ~/DirName/SubDir
 > └──> _
 > PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\342\224\200\076 \[\e[40;00;37m\]"
 
+
+&nbsp;
 
 Se você observou atentamente, notou que coloquei cada definição de prompt dentro de uma variável
 diferente. Fiz isto para que todos fiquem definidos na sessão e possam ser alternados conforme
