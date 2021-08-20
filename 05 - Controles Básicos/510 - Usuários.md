@@ -5,17 +5,17 @@ diretórios dentro de sistemas Linux, agora você entenderá melhor como criar e
 usuários do seu sistema.
 
 
-**IMPORTANTE**
+**IMPORTANTE**  
 Todos os usuários no Linux possuem um ``User ID`` e um ``Group ID``, ambos identificados com 
 numeros únicos chamados respectivamente ``UID`` e ``GID``.
 
-**IMPORTANTE**
+**IMPORTANTE**  
 Sempre que um novo usuário é criado, um grupo de mesmo nome será também criado e o novo usuário
 passará a fazer parte de seu próprio grupo.
 
 
 
-Apenas por curiosidade. 
+Apenas por curiosidade.  
 Se você quiser conhecer todos os usuários existentes no seu sistema use o comando abaixo.
 
 ``` shell
@@ -28,7 +28,7 @@ Se você quiser conhecer todos os usuários existentes no seu sistema use o coma
 
 ## 510.1 - Criando usuários
 
-O comando para criar novos usuários é o ``adduser``.
+O comando para criar novos usuários é o ``adduser``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ```
@@ -51,8 +51,8 @@ Algumas das opções são:
 * -s ou --shell       : Define o shell do usuário.
 
 
-**OBSERVAÇÃO**
-Note que, se você não especificar um grupo padrão (opção -g), será criado um grupo com o mesmo 
+**OBSERVAÇÃO**  
+Note que, se você não especificar um grupo padrão (opção ``-g``), será criado um grupo com o mesmo 
 nome do usuário e este será seu grupo padrão.
 
 
@@ -97,7 +97,7 @@ nome do usuário e este será seu grupo padrão.
 
 ### 510.1.1 - Alterando configurações do usuário
 
-Você pode alterar configurações estipuladas na criação do usuário usando o comando ``usermod``.
+Você pode alterar configurações estipuladas na criação do usuário usando o comando ``usermod``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ``` shell
@@ -118,18 +118,22 @@ As opções são:
 
 ### 510.1.2 - Senha e acesso
 
-Para definir uma senha de acesso para o usuário criado use o comando ``passws``.
+Para definir uma senha de acesso para o usuário criado use o comando ``passws``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ``` shell
   passwd [username]
 ```
 
+&nbsp;
+
 Se você quiser, pode travar a conta de um usuário usando:
 
 ``` shell
   passwd -l [username]
 ``` 
+
+&nbsp;
 
 E para destravar a conta use:
 

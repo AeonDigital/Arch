@@ -4,11 +4,11 @@ No Linux os grupos são um mecanismo para gerenciar uma coleção de usuários d
 
 
 
-**IMPORTANTE**
+**IMPORTANTE**  
 Todos os usuários no Linux possuem um ``User ID`` e um ``Group ID``, ambos identificados com 
 numeros únicos chamados respectivamente ``UID`` e ``GID``.
 
-**IMPORTANTE**
+**IMPORTANTE**  
 Sempre que um novo usuário é criado, um grupo de mesmo nome será também criado e o novo usuário
 passará a fazer parte de seu próprio grupo.
 
@@ -18,7 +18,7 @@ passará a fazer parte de seu próprio grupo.
 
 ## 520.1 - Criando grupos
 
-O comando para criar novos usuários é o ``addgroup``.
+O comando para criar novos usuários é o ``addgroup``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ```
@@ -33,6 +33,8 @@ Algumas das opções são:
 * -g ou --gid         : Usando esta opção você pode definir o GID do grupo.
 
 
+&nbsp;
+
 **EXEMPLOS**
 
 ``` shell
@@ -46,7 +48,7 @@ Algumas das opções são:
 
 ### 520.1.1 - Alterando configurações do grupo
 
-Você pode alterar configurações estipuladas na criação do grupo usando o comando ``groupmod``.
+Você pode alterar configurações estipuladas na criação do grupo usando o comando ``groupmod``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ``` shell
@@ -79,7 +81,7 @@ na parte de Usuários.
 
 ### 520.2.2 - Removendo usuários de um grupo
 
-Para remover usuários de um grupo específico use o comando ``deluser``
+Para remover usuários de um grupo específico use o comando ``deluser``.
 
 ``` shell
   deluser [username] [groupname]
@@ -111,7 +113,7 @@ Já se quiser conhecer todos os usuários de um determinado grupo pode usar o se
 
 ## 520.4 - Excluindo grupos
 
-Para excluir grupos use o comando ``delgroup``.
+Para excluir grupos use o comando ``delgroup``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ```

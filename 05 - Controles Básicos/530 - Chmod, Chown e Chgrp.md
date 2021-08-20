@@ -2,7 +2,7 @@
 
 Sabidamente, é possível alterar as permissões definidas para objetos do sistema podendo inclusive
 alterar quem é seu dono ou o grupo ao qual ele pertence. Para isto, o usuário que efetua tal 
-alteração precisa, ele próprio, ter permissão para efetuar tais alterações. 
+alteração precisa, ele próprio, ter permissão para efetuar tais alterações.  
 Apenas o usuário **root** tem permissão para usar os comandos abaixo.
 
 
@@ -12,7 +12,7 @@ Apenas o usuário **root** tem permissão para usar os comandos abaixo.
 ## 530.1 - CHMOD
 
 O comando ``chmod`` (change mod) permite que você edite as permissões atualmente definidas para 
-um objeto.
+um objeto.  
 Use a seguinte sintaxe:
 
 ``` shell

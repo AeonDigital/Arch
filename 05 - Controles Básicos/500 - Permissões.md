@@ -39,8 +39,8 @@ Seguindo o mesmo raciocínio, observe o exemplo abaixo
 ```
 
 Neste exemplo, o usuário teria capacidade apenas de leitura e execução mas não de escrita para o 
-referido arquivo.
-Novamente, convertendo o valor binário ``101`` para decimal, chegamos no número ``5 (cinco)``.
+referido arquivo.  
+Novamente, convertendo o valor binário ``101`` para decimal, chegamos no número ``5 (cinco)``.  
 Sabendo que temos 3 possibilidades diferentes (rwx) e dois estados possíveis (0 e 1), podemos obter
 até 8 combinações diferentes de permissões. São elas:
 
@@ -70,8 +70,8 @@ até 8 combinações diferentes de permissões. São elas:
   111 = 7 [Ler, escrever e executar]
 ```
 
-Observe que um traço "-" representa o bit desligado daquela permissão, ou seja, sem permissão. 
-Além disso, diretórios recebem um "d" inicial. 
+Observe que um traço "-" representa o bit desligado daquela permissão, ou seja, sem permissão.  
+Além disso, diretórios recebem um "d" inicial.  
 Exemplo:
 
 ```
@@ -80,8 +80,8 @@ Exemplo:
 ```
 
 
-**OBSERVAÇÃO**
-Quando trata-se de arquivos, as 3 permisões significam exatamente o que seus nomes referem-se.
+**OBSERVAÇÃO**  
+Quando trata-se de arquivos, as 3 permisões significam exatamente o que seus nomes referem-se.  
 Já quando tratamos de diretórios, o entendimento das 3 permissões são:
 - read    : Permite listar o que há dentro do diretório
 - write   : Permite criar novos arquivos e diretórios dentro do diretório.
@@ -96,8 +96,8 @@ Já quando tratamos de diretórios, o entendimento das 3 permissões são:
 As permissões de uso acima são aplicados individualmente a 3 casos de uso diferente para que o 
 sistema saiba exatamente como cada item pode ser usado em cada situação. 
 
-O primeiro caso de uso refere-se ao proprio dono do arquivo ou diretório e é chamado de **owner**.
-O segundo caso de uso refere-se ao grupo que o objeto pertence e é chamado de **group**.
+O primeiro caso de uso refere-se ao proprio dono do arquivo ou diretório e é chamado de **owner**.  
+O segundo caso de uso refere-se ao grupo que o objeto pertence e é chamado de **group**.  
 E o terceiro caso é o "outros" e refere-se a todos os demais grupos e usuários que não é o próprio
 dono e também não pertencem ao mesmo grupo ao qual o objeto faz parte. Chama-se **others**.
 
@@ -122,6 +122,8 @@ No exemplo acima podemos identificar todas as permissões dadas a todos os casos
 * [owner] : Nesta posição estará o nome do usuário que é o dono do objeto.
 * [group] : Nesta posição estará o nome do grupo ao qual o objeto pertence.
 
+
+&nbsp;
 
 Abaixo segue uma descrição de todos os dados que aparecem quando você usa um comando como o ``ls``
 em conjunto com o parametro ``-l`` (lista os atributos de cada objeto no local indicado).
