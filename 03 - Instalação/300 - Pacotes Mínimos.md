@@ -48,9 +48,9 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
 </pre>
 
 Os itens cuja descrição é precedida de um ``!`` são aqueles em que a instalação será feita como 
-dependência de um dos que estão selecionados.
+dependência de um dos que estão selecionados.  
 Já os itens cuja descrição é precedida de um ``>`` são instalados como dependência de um ou outro 
-pacote recomendado ao longo deste tutorial.
+pacote recomendado ao longo deste tutorial.  
 
 
 Para maiores informações visite a relação oficial em:
