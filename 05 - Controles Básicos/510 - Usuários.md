@@ -51,10 +51,14 @@ Algumas das opções são:
 * -s ou --shell       : Define o shell do usuário.
 
 
+&nbsp;
+
 **OBSERVAÇÃO**  
 Note que, se você não especificar um grupo padrão (opção ``-g``), será criado um grupo com o mesmo 
 nome do usuário e este será seu grupo padrão.
 
+
+&nbsp;
 
 **EXEMPLOS**
 
