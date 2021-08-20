@@ -2,8 +2,8 @@
 
 Uma das primeiras coisas que você pode alterar é a fonte de apresentação usada no seu terminal.  
 É aconselhado conferir se a fonte que vem configurada por padrão é adequada a sua linguagem.  
-Neste momento [2019-10-07] a fonte que o Arch configura por padrão é a ``default8x16``. É uma 
-fonte que, para mim, tem como único defeito a ausencia do caracter ``ã``!
+Neste momento [2019-10-07] a fonte que o Arch configura por padrão é a ``default8x16``.  
+É uma fonte que, para mim, tem como único defeito a ausencia do caracter ``ã``!
 
 &nbsp;
 
