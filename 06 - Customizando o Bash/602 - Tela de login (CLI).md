@@ -10,7 +10,6 @@ o login e imediatamente ANTES do ``shell`` do usuário ser iniciado.
 Na manipulação destes dois arquivos você pode gerar uma tela inicial para a máquina que está
 sendo configurada.
 
-&nbsp;
 
 **FONTE**  
 https://unix.stackexchange.com/questions/16255/how-can-i-change-whats-displayed-at-a-login-shell

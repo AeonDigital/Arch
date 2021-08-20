@@ -5,18 +5,15 @@ Uma das primeiras coisas que você pode alterar é a fonte de apresentação usa
 Neste momento [2019-10-07] a fonte que o Arch configura por padrão é a ``default8x16``.  
 É uma fonte que, para mim, tem como único defeito a ausencia do caracter ``ã``!
 
-&nbsp;
 
 **OBSERVAÇÃO**  
 Se você seguiu todas as configurações indicadas na etapa **400** então sua fonte já está definida
 como **lat1-16**. 
 
-&nbsp;
 
 **IMPORTANTE 01**  
 As dicas descritas aqui se direcionam para uma instalação SEM UMA INTERFACE GRÁFICA.
 
-&nbsp;
 
 **IMPORTANTE 02**  
 As alterações de fonte descritas aqui apenas serão visiveis se você estiver acessando DIRETAMENTE
