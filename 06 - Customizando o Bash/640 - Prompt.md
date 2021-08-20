@@ -71,12 +71,15 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 
 Abaixo segue a cópia dos padrões de definição que você pode utilizar.
 
-> \e[FUNDO;ATTR;FONTEm
-> \e[FUNDO;ATTR;FONTE<r>;FONTE<g>;FONTE<b>m
-> \# Exemplo
-> \e[38;2;255m
+<pre>
+  \e[FUNDO;ATTR;FONTEm
+  \e[FUNDO;ATTR;FONTE<r>;FONTE<g>;FONTE<b>m
+  
+  - Exemplo
+  \e[38;2;255m
+</pre>
 
-FUNDO                 | ATTR              | FONTE
+    FUNDO             | ATTR              | FONTE
 
     40 - Preto        | 00 - Nenhum       | 30 - Preto
     41 - Vermelho     | 01 - Negrito      | 31 - Vermelho
