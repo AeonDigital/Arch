@@ -19,10 +19,8 @@ https://unix.stackexchange.com/questions/16255/how-can-i-change-whats-displayed-
 
 ## 602.1 - Comandos para a configuração 
 
-Use os comandos abaixo para configurar o seu sistema.  
+Use os comandos abaixo para configurar o seu sistema:
 
-
-``` shell
   \b -- Baudrate of the current line.
   \d -- Data atual.
   \s -- Nome do sistema, o nome do Sistema Operacional.
@@ -35,7 +33,7 @@ Use os comandos abaixo para configurar o seu sistema.
   \u -- Número de usuários atualmente logados.
   \U -- Mesmo que \u mas usa a versão escrita como: "1 user" ou "x users".
   \v -- Versão do Sistema Operacional, ex. the build-date etc.
-```
+
 
 
 
