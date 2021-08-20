@@ -73,7 +73,7 @@ Abaixo segue a cópia dos padrões de definição que você pode utilizar.
 
 > \e[FUNDO;ATTR;FONTEm
 > \e[FUNDO;ATTR;FONTE<r>;FONTE<g>;FONTE<b>m
-> # Exemplo
+> \# Exemplo
 > \e[38;2;255m
 
 FUNDO                 | ATTR              | FONTE
