@@ -1,10 +1,10 @@
 # 210 - Criando as partições
 
 O instalador do ``Arch`` traz dois programas que lhe permitem lidar com as partições dos seus HDs.
-Um é o ``fdisk`` cuja interface é mais básica e 'procedural';
-Já o outro é o ``cfdisk`` cuja interface é mais amigável e é a usada neste tutorial para facilitar
-o entendimento.
-Abaixo há a explicação de ambos os casos de uso; A vantagem do primeiro é que é possível torna-lo
+Um é o ``fdisk`` cuja interface é mais básica e 'procedural'; Já o outro é o ``cfdisk`` cuja 
+interface é mais amigável e é a usada neste tutorial para facilitar o entendimento.  
+
+Abaixo há a explicação de ambos os casos de uso; A vantagem do primeiro é que é possível torná-lo
 ``scriptável`` ;)
 
 
@@ -28,7 +28,7 @@ Use o comando ``cfdisk`` e passe como parametro o disco que você deseja alterar
   efetivada.
 
 
-**Atenção**
+**Atenção**  
 Altere o tipo de cada partição ainda dentro do programa ``cfdisk`` ANTES de salvar cada 
 alteração.  
 Selecione cada partição definida e clique em ``write`` e então digite ``yes`` para confirmar.
@@ -83,7 +83,7 @@ Type      : Linux filesystem
 ### 210.1.5 - Partição home; ``/home`` (opcional)
 
 Aqui ficam os arquivos de cada usuário e as instalações que são tipicas de cada qual, portanto 
-precisa ser uma partição maior pois abrigará uma quantidade bem maior de informações.
+precisa ser uma partição maior pois abrigará uma quantidade bem maior de informações.  
 Você pode optar por não criar esta partição e deixar todo o restante do espaço alocado na
 partição de root (esta opção parece mais acertada para máquinas virtuais).
 
@@ -136,8 +136,8 @@ As orientações abaixo geram o mesmo efeito das que foram explicadas no tópico
         # \n aceita valor proposto para o primeiro setor
         # \n para usar todo o restante do espaço livre.
 ```
-  O comando ``m`` lista todas as opções de alteração que você pode realizar usando este comando.
-  Se fizer alguma alteração que quiser efetivar, lembre de usar o comando ``w``.
+  O comando ``m`` lista todas as opções de alteração que você pode realizar usando este comando.  
+  Se fizer alguma alteração que quiser efetivar, lembre de usar o comando ``w``.  
   Se não tiver certeza do que está fazendo e quiser sair sem salvar, use o comando ``q``.
 
 
@@ -145,7 +145,7 @@ As orientações abaixo geram o mesmo efeito das que foram explicadas no tópico
 
 ### 210.2.1 - Automatizando os comandos com ``fdisk``
 
-Abaixo, como executar os mesmos comandos do tópico anterior usando uma única linha no shell.
+Abaixo, como executar os mesmos comandos do tópico anterior usando uma única linha no shell.  
 Repare que a cada 'enter' é adicionado um '\n'
 
 ``` shell
