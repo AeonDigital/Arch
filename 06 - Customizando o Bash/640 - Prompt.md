@@ -152,8 +152,8 @@ configurações até chegar em alguma que lhe agrade.
 
 #### 640.3.1.3 - Detalhado, com Prompt na próxima linha
 ##### 640.3.1.3.1 - Detalhado 1
-> $ rianna@archlinux in ~/DirName/SubDir
-> > _  
+> $ rianna@archlinux in ~/DirName/SubDir  
+> &gt; _  
 > PSTYLE03A="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;01;34m\]\076 \[\e[40;00;37m\]"
 
 
@@ -169,7 +169,7 @@ configurações até chegar em alguma que lhe agrade.
 
 ##### 640.3.1.3.3 - Detalhado 3
 > ┌── $ rianna@archlinux in ~/DirName/SubDir  
-> └──> _  
+> └──&gt; _  
 > PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\342\224\200\076 \[\e[40;00;37m\]"
 
 
