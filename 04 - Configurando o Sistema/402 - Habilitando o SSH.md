@@ -2,8 +2,9 @@
 
 Caso sua instalação seja com intenção para um servidor somente texto, e irá querer acessá-lo via 
 ``SSH`` remotamente instale o pacote ``sshfs``, e habilite (enable) o mesmo para iniciar o serviço 
-com o boot. Se você apenas quer usar ``SSH`` para acessar outros servidores remotamente, não 
-habilite o mesmo, apenas instale o pacote.
+com o boot.  
+Se você apenas quer usar ``SSH`` para acessar outros servidores remotamente, não habilite o mesmo, 
+apenas instale o pacote.
 
 ``` shell 
   sudo systemctl enable sshd 
@@ -13,10 +14,10 @@ habilite o mesmo, apenas instale o pacote.
   poderá conectar-se remotamente no mesmo.
 
 
-**OBSERVAÇÃO**
-Neste mesmo tutorial há uma explicação bem mais completa e detalhada sobre como habilitar e 
-configurar o SSH. As informações que constam aqui são superficiais e tem objetivo apenas de 
-demonstrar o passo mais básico sobre este tipo de serviço.
+**OBSERVAÇÃO**  
+Neste mesmo tutorial há uma explicação mais completa e detalhada sobre como habilitar e configurar 
+o SSH. As informações que constam aqui são superficiais e tem objetivo apenas de demonstrar o 
+passo mais básico sobre este tipo de serviço.
 
 
 
@@ -52,7 +53,7 @@ demonstrar o passo mais básico sobre este tipo de serviço.
 O windows disponibiliza um recurso opcional que é o "Cliente OpenSSH" que permite você efetuar 
 conexões ``SSH`` sem precisar aplicativos de terceiros.
 
-Para instalar ele vá em "Configurações" -> "Aplicativos" -> "Recursos Opcionais".
+Para instalar ele vá em "Configurações" -> "Aplicativos" -> "Recursos Opcionais".  
 Selecione e instale o "Cliente OpenSSH".
 
 
@@ -63,6 +64,8 @@ Após, abra um terminal e use:
 ```
   Após, digite a senha e pronto.
 
+
+&nbsp;
 
 Se precisar informar uma porta diferente da 22 use:
 

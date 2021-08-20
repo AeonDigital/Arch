@@ -6,7 +6,15 @@ Esta etapa apenas funcionará se você instalou os pacotes do item 320.2
   # Inicia o "NetworkManager" para qualquer tipo de rede (cabo/wi-fi)
   NetworkManager start
   NetworkManager restart
-  
+
+
+
+  # Configura o sistema para sempre iniciar e habilitar o serviço
+  sudo systemctl enable NetworkManager
+  sudo systemctl start NetworkManager
+
+
+
   # Lista redes wifi próximas:
   nmcli device wifi list
 
@@ -35,8 +43,5 @@ Esta etapa apenas funcionará se você instalou os pacotes do item 320.2
   # Desliga o wifi:
   nmcli radio wifi off
   
-  # Configura o sistema para sempre iniciar e habilitar o serviço
-  sudo systemctl enable NetworkManager
-  sudo systemctl start NetworkManager
   reboot
 ```

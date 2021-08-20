@@ -34,16 +34,22 @@ o primeiro boot.
 
 ## 400.2 - Habilitar o idioma pt-BR; Layout do teclado e Fonte
 
-**Edite o seguinte arquivo**
-``` shell
-  vim /etc/locale.gen
-```
-
+Primeiro, abra o arquivo ``/etc/locale.gen``.  
 Procure pelo valor ``pt_BR.UTF-8 UTF-8`` e descomente-o, após, ative-o usando o comando indicado
 no bloco abaixo
 
 ``` shell
+  # use o comando abaixo para abrir o arquivo. Após alterá-lo, salve
+  vim /etc/locale.gen
+
+  # Se quiser, pode usar o comando abaixo para automatizar esta ação de descomentar
+  # o locale pt-BR
+  sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/g' /etc/locale.gen
+
+
+  # Execute o comando abaixo para fixar as alterações.
   locale-gen
+
 
   # Coloque a variável 'LANG' no arquivo 'locale.conf'
   echo LANG=pt_BR.UTF-8 >> /etc/locale.conf
@@ -59,6 +65,9 @@ no bloco abaixo
 &nbsp;
 
 ## 400.3 - Configurar o nome do computador e o arquivo ``hosts``
+
+O valor definido no lugar de ``[NCR]`` (Nome do Computador Remoto) será usado para identificar a
+máquina que está sendo configurada na rede.
 
 ``` shell
   echo [NCR] >> /etc/hostname
@@ -86,9 +95,9 @@ no bloco abaixo
 
 &nbsp;
 
-## 400.5 - Criar novos usuários
+## 400.5 - Criar novos usuários [opcional]
 
-A primeira linha é realmente necessária. 
+A primeira linha é realmente necessária caso queira criar um novo usuário.  
 As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma 
 interface gráfica.
 
