@@ -11,7 +11,7 @@
 ## 200.1 - Configuração do layout do teclado.
 
 Uma das primeiras coisas a fazer é configurar o **Arch** para reconhecer seu teclado usando a 
-configuração do mesmo.
+configuração do mesmo.  
 Teclados **ABNT2** (que é o padrão brasileiro) podem ser configurados usando o seguinte comando:
 
 ``` shell
@@ -24,10 +24,9 @@ Teclados **ABNT2** (que é o padrão brasileiro) podem ser configurados usando o
 
 ## 200.2 - Configuração da internet
 
-Para conseguir baixar os pacotes e efetivamente montar o seu S/O é importante ter internet. Se 
-você está com seu computador conectado com um cabo o instalador provavelmente já conseguiu um 
-``IP`` mas se você está em uma máquina que 
-deseja conectar via ``wifi``, use os seguintes comandos:
+Para conseguir baixar os pacotes e efetivamente montar o seu S/O é importante ter internet.  
+Se você está com seu computador conectado com um cabo o instalador provavelmente já conseguiu um 
+``IP`` mas se você está em uma máquina que deseja conectar via ``wifi``, use os seguintes comandos:
 
 - Confira se sua máquina já possui um ``IP`` com:
 ``` shell
@@ -38,8 +37,8 @@ deseja conectar via ``wifi``, use os seguintes comandos:
 ``` shell
   wifi-menu
 ```
-  Na primeira tela você deve selecionar qual rede quer se conectar
-  Na segunda, você pode selecionar um nome para sua máquina na rede.
+  Na primeira tela você deve selecionar qual rede quer se conectar.  
+  Na segunda, você pode selecionar um nome para sua máquina na rede.  
   Por fim, adicione a senha da rede, se ela for protegida.
 
 
@@ -49,8 +48,9 @@ deseja conectar via ``wifi``, use os seguintes comandos:
 ## 200.3 - Configurando o disco (``HDD`` ou ``SSD``) de instalação 
 
 Para a instalação adequada é preciso criar 3 ou 4 partições no seu disco (varia conforme o tipo de 
-modo que sua placa mae trabalha). Neste tutorial é usado o nome ``BIOS`` para se referir ao modo 
-``LEGACY`` que é o antigo sistema usado nas placas mães antes da adoção do sistema ``UEFI``.  
+modo que sua placa mae trabalha).  
+Neste tutorial é usado o nome ``BIOS`` para se referir ao modo ``LEGACY`` que é o antigo sistema 
+usado nas placas mães antes da adoção do sistema ``UEFI``.  
 Para placas mãe do tipo ``BIOS`` serão 3 partições e em modelos ``UEFI`` serão 4.  
 
 Você pode verificar quais discos estão no momento reconhecidos pelo instalador usando o comando:
