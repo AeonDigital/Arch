@@ -188,10 +188,10 @@ echo -e ""
 echo -e ""
 echo -e "${CYAN}03.7${NONE} - Configura a 'tela de login' do sistema"
 > /etc/issue
-echo       Arch \s (\m) >> /etc/issue
-echo        :: Version \r >> /etc/issue
-echo        :: Build \v >> /etc/issue
-echo        :: TeleTYpewriter \l >> /etc/issue
+echo       Arch \\s (\\m) >> /etc/issue
+echo        :: Version \\r >> /etc/issue
+echo        :: Build \\v >> /etc/issue
+echo        :: TeleTYpewriter \\l >> /etc/issue
 echo  ____________________________________________________________________ >> /etc/issue
 echo  >> /etc/issue
 echo                             AeonDigital >> /etc/issue
@@ -199,10 +199,10 @@ echo                      http://aeondigital.com.br >> /etc/issue
 echo  ____________________________________________________________________ >> /etc/issue
 echo  >> /etc/issue
 echo                              Machine >> /etc/issue
-echo                  Name: \n >> /etc/issue
-echo                Domain: \o >> /etc/issue
-echo                  Date: \d  \t >> /etc/issue
-echo                 Users: \u >> /etc/issue
+echo                  Name: \\n >> /etc/issue
+echo                Domain: \\o >> /etc/issue
+echo                  Date: \\d  \\t >> /etc/issue
+echo                 Users: \\u >> /etc/issue
 echo  ____________________________________________________________________ >> /etc/issue
 
 
