@@ -66,8 +66,8 @@ Se existir, esta partição também pode ser formatado em ``ext4``.
 
 ## 230.2 - Criando um ``DUMP`` do seu sistema de partições (opcional)
 
-Se você quiser, pode exportar o esquema de partições criado para ser mais fácil replica-lo quando
-desejar, ou mesmo, para automatizar processos.
+Se você quiser, pode exportar o esquema de partições criado para ser mais fácil replicá-lo quando
+desejar, ou mesmo, para automatizar processos.  
 O comando abaixo irá exportar as informações de partições que compõe o seu disco e lhe permitirá
 executar tudo de uma só vez conforme mostra o próximo tópico.
 
