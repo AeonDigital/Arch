@@ -20,6 +20,8 @@ demonstrar o passo mais básico sobre este tipo de serviço.
 
 
 
+&nbsp;
+
 ## 402.1 - Conheça o IP do servidor
 
 ``` shell
@@ -42,6 +44,8 @@ demonstrar o passo mais básico sobre este tipo de serviço.
 ```
 
 
+
+&nbsp;
 
 ## 402.2 - Conectando via SSH com o Windows 
 

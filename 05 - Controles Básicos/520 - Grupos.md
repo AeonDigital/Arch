@@ -14,6 +14,8 @@ passará a fazer parte de seu próprio grupo.
 
 
 
+&nbsp;
+
 ## 520.1 - Criando grupos
 
 O comando para criar novos usuários é o ``addgroup``.
@@ -40,6 +42,8 @@ Algumas das opções são:
 
 
 
+&nbsp;
+
 ### 520.1.1 - Alterando configurações do grupo
 
 Você pode alterar configurações estipuladas na criação do grupo usando o comando ``groupmod``.
@@ -58,6 +62,8 @@ As opções são:
 
 
 
+&nbsp;
+
 ### 520.2.1 - Adicionando usuários em um grupo
 
 Para adicionar usuários em um grupo específico use o comando ``adduser`` já descrito anteriormente
@@ -69,6 +75,8 @@ na parte de Usuários.
 
 
 
+&nbsp;
+
 ### 520.2.2 - Removendo usuários de um grupo
 
 Para remover usuários de um grupo específico use o comando ``deluser``
@@ -78,6 +86,8 @@ Para remover usuários de um grupo específico use o comando ``deluser``
 ```
 
 
+
+&nbsp;
 
 ### 520.3 - Conhecendo os grupos e usuários do sistema
 
@@ -96,6 +106,8 @@ Já se quiser conhecer todos os usuários de um determinado grupo pode usar o se
 ```
 
 
+
+&nbsp;
 
 ## 520.4 - Excluindo grupos
 

@@ -10,6 +10,8 @@ Fontes:
 
 
 
+&nbsp;
+
 ## 500.1 - Permissões de uso e acesso
 
 Primeiramente você precisa compreender que existem 3 formas básicas de controlar o acesso e o uso
@@ -86,6 +88,8 @@ Já quando tratamos de diretórios, o entendimento das 3 permissões são:
 - execute : Permite que você possa entrar no diretório e acessar seus arquivos e outros diretórios.
 
 
+
+&nbsp;
 
 ## 500.2 - Proprietário, Grupo e Outros
 

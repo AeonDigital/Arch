@@ -1,4 +1,4 @@
-﻿# 602 - Funcionamento
+﻿# 603 - Funcionamento
 
 Nesta etapa vamos estar sempre lidando com arquivos de script que serão, em algum momento, 
 executados pelo Linux e estes trarão variáveis de ambiente e configurações para o mesmo.
@@ -25,7 +25,9 @@ E quando ocorre o início de uma nova sessão sem login ocorrerá a execução d
 
 
 
-## 602.1 - Início
+&nbsp;
+
+## 603.1 - Início
 
 Usuário   : root
 Local     : /etc/profile
@@ -39,7 +41,9 @@ alguma configuração ou variável fique por padrão disponível a qualquer usu�
 
 
 
-## 602.2 - Mensagem de boas vindas
+&nbsp;
+
+## 603.2 - Mensagem de boas vindas
 
 Usuário		: root
 Local     : /etc/bash.bachrc
@@ -79,7 +83,9 @@ Dos comandos acima, o único realmente necessário para mostrar a mensagem de bo
 
 
 
-## 602.3 - Configurando o início de uma sessão 
+&nbsp;
+
+## 603.3 - Configurando o início de uma sessão 
 
 Usuário   : [user]
 Local     : ~/.bash_profile
@@ -101,7 +107,9 @@ Adicione dentro do ``~/.bash_profile`` o seguinte comando:
 
 
 
-## 602.4 - Personalizando a sua sessão
+&nbsp;
+
+## 603.4 - Personalizando a sua sessão
 
 Usuário   : [user]
 Local     : ~/.bashrc

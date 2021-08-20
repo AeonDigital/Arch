@@ -7,6 +7,8 @@ Apenas o usuário **root** tem permissão para usar os comandos abaixo.
 
 
 
+&nbsp;
+
 ## 530.1 - CHMOD
 
 O comando ``chmod`` (change mod) permite que você edite as permissões atualmente definidas para 
@@ -27,6 +29,8 @@ Use a seguinte sintaxe:
 
 
 
+&nbsp;
+
 ## 530.2 - CHOWN
 
 O comando ``chown`` (change owner) permite que você redefina o dono de um arquivo ou diretório.
@@ -42,6 +46,8 @@ O comando ``chown`` (change owner) permite que você redefina o dono de um arqui
                   terá seu dono alterado conforme está sendo definido.
 
 
+
+&nbsp;
 
 ## 530.2 - CHGRP
 

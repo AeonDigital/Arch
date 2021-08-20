@@ -24,6 +24,8 @@ Se você quiser conhecer todos os usuários existentes no seu sistema use o coma
 
 
 
+&nbsp;
+
 ## 510.1 - Criando usuários
 
 O comando para criar novos usuários é o ``adduser``.
@@ -91,6 +93,8 @@ nome do usuário e este será seu grupo padrão.
 
 
 
+&nbsp;
+
 ### 510.1.1 - Alterando configurações do usuário
 
 Você pode alterar configurações estipuladas na criação do usuário usando o comando ``usermod``.
@@ -109,6 +113,8 @@ As opções são:
 * -p    : Substitui a senha já criptografada do usuário.
 
 
+
+&nbsp;
 
 ### 510.1.2 - Senha e acesso
 
@@ -132,6 +138,8 @@ E para destravar a conta use:
 ```
 
 
+
+&nbsp;
 
 ## 510.2 - Excluindo usuários
 

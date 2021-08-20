@@ -12,6 +12,8 @@ falando.
 
 
 
+&nbsp;
+
 ## 600.1 - Usando cores [observações gerais]
 
 Observe que nem sempre o terminal possui suporte a cores e quando possui, nem sempre ele está 
