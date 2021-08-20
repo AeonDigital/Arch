@@ -1,21 +1,21 @@
 ﻿# 640 - Configurando o Prompt
 
 Esta é uma das partes mais interessantes pois permite que você organize as informações que aparecem
-no prompt de comando a cada linha executada.
+no prompt de comando a cada linha executada.  
 
 Uma das variáveis de configuração do ``bash`` é a ``PS1``. Ela geralmente é definida no arquivo 
 ``/etc/bash.bachrc`` e fica disponível para todos os usuários. Nela estão as instruções que compõe 
-o prompt demonstrado no terminal.
+o prompt demonstrado no terminal.  
 
 Exemplo:
 ``` /etc/bash.bachrc
   PS1="\$ \u@\h : "
 ```
 
-Isto mostrará um prompt com as seguintes informações:
-  $ usuario@hostname: 
-  ou
-  $ rianna@archlinux: 
+Isto mostrará um prompt com as seguintes informações:  
+  $ usuario@hostname:   
+  ou  
+  $ rianna@archlinux:  
 
 Se você entendeu bem o tópico ``Como Configurar o Bash`` sabe que pode usar o seu arquivo 
 ``~/.bash`` para redefinir esta variável. Como ele será lido por último, o valor que você definir
@@ -27,8 +27,9 @@ desta forma será aquele que será usado pelo seu usuário sempre que fizer o lo
 
 ## 640.1 - Comandos de personalização
 
-Os seguintes comandos podem ser usados para configurar o prompt:
+Os seguintes comandos podem ser usados para configurar o prompt:  
 
+<pre>
   \a    Caracter invisível, emite um "beep" quando usado
   \d    Data no formato "Dia Mês Data"
   \D{format}  The format is passed to strftime(3) and the result is inserted in the prompt string;
@@ -61,7 +62,7 @@ Os seguintes comandos podem ser usados para configurar o prompt:
   \[    Begin a sequence of non-printing characters. This could be used to embed a terminal 
         control sequence into the prompt. 
   \]    End a sequence of non-printing characters. 
-
+</pre>
 
 
 &nbsp;
