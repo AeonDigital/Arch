@@ -10,7 +10,9 @@ o login e imediatamente ANTES do ``shell`` do usuário ser iniciado.
 Na manipulação destes dois arquivos você pode gerar uma tela inicial para a máquina que está
 sendo configurada.
 
-**FONTE**
+&nbsp;
+
+**FONTE**  
 https://unix.stackexchange.com/questions/16255/how-can-i-change-whats-displayed-at-a-login-shell
 
 
@@ -21,6 +23,7 @@ https://unix.stackexchange.com/questions/16255/how-can-i-change-whats-displayed-
 
 Use os comandos abaixo para configurar o seu sistema:
 
+<pre>
   \b -- Baudrate of the current line.
   \d -- Data atual.
   \s -- Nome do sistema, o nome do Sistema Operacional.
@@ -33,7 +36,7 @@ Use os comandos abaixo para configurar o seu sistema:
   \u -- Número de usuários atualmente logados.
   \U -- Mesmo que \u mas usa a versão escrita como: "1 user" ou "x users".
   \v -- Versão do Sistema Operacional, ex. the build-date etc.
-
+</pre>
 
 
 
