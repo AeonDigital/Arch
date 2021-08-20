@@ -28,7 +28,7 @@ Atente para a necessidade específica de cada tipo de placa mãe (BIOS e UEFI).
 
 &nbsp;
 
-## 320.2 - Pacotes para habilitar internet [opcional]
+## 320.2 - Pacotes para habilitar internet wi-fi [opcional]
 
 ``` shell
   pacman -S network-manager-applet wireless_tools wpa_supplicant

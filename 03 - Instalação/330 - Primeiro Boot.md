@@ -1,18 +1,11 @@
 # 330 - Preparando o primeiro boot
 ## 330.1 - Usando o grub
-### 330.1.1 - Em UEFI
 
 ``` shell
+  # em UEFI
   grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-```
 
-
-
-&nbsp;
-
-### 330.1.2 - Em BIOS
-
-``` shell
+  # em BIOS
   grub-install --target=i386-pc --recheck /dev/sda
 ```
 
@@ -37,9 +30,9 @@
 Na última vez que executei este mesmo tutorial notei que ao fazer o reboot (a seguir) não foi 
 possível efetuar o login pois não tinha feito uma senha para o usuário root e por algum motivo 
 estranho o Arch (ao que tudo indica) gerou uma ele mesmo. Não consegui acessar nem deixando a 
-senha vazia, nem usando como 'root' ou 'admin' ou outras variações comuns. Devido a esta 
-situação que consegui contornar graças a um video-tutorial bem rápido e direto ao ponto resolvi 
-adicionar esta ação aqui neste item para evitar que isto ocorra novamente.  
+senha vazia, nem usando como 'root' ou 'admin' ou outras variações comuns.  
+Devido a esta situação que consegui contornar graças a um video-tutorial bem rápido e direto ao 
+ponto resolvi adicionar esta ação aqui neste item para evitar que isto ocorra novamente.  
 
 [O tutorial que me salvou foi este aqui](https://www.youtube.com/watch?v=AXSLkrd92BY)
 
