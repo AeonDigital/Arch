@@ -256,8 +256,8 @@ else
 
         cp -a .bash_profile /mnt/etc/skel/.bash_profile
         cp -a .bashrc /mnt/etc/skel/.bashrc
-        cp -a .bash_profile /mnt/root/.bash_profile-n
-        cp -a .bashrc /mnt/root/.bashrc-n
+        cp -a .bash_profile /mnt/root/.bash_profile
+        cp -a .bashrc /mnt/root/.bashrc
 
         cp -a install-02.sh /mnt/install.sh
         arch-chroot /mnt
