@@ -10,8 +10,8 @@ echo  " "
 cat /etc/bash-message-wellcome
 echo  ""
 date +"          %A, %d de %B - %Y [%T (%Z)]"
-echo  "          Bem Vind@ $USER  :)"
-echo  "          Você está em : \"${PWD}\""
+echo  "          Wellcome  \"$USER\"  :)"
+echo  "          You´re in \"${PWD}\"" directory
 echo  ""
 
 
