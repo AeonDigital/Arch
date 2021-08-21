@@ -246,6 +246,17 @@ else
         echo -e ""
         echo -e ""
         echo -e "${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
+
+        cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
+        cp -a bash-function-pallete256.sh /mnt/etc/bash-function-pallete256.sh
+        cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
+        cp -a bash-message-wellcome /mnt/etc/bash-message-wellcome
+        cp -a bash-prompt.sh /mnt/etc/bash-prompt.sh
+        cp -a bash-variables.sh /mnt/etc/bash-variables.sh
+
+        cp -a .bash_profile.sh /mnt/etc/skel/bash-aliases.sh
+        cp -a .bashrc.sh /mnt/etc/skel/.bashrc.sh
+
         cp -a install-02.sh /mnt/install.sh
         arch-chroot /mnt
       fi

@@ -95,7 +95,7 @@ Abaixo segue a cópia dos padrões de definição que você pode utilizar.
 
 
 Você pode usar a função ``printPallete`` disponível no script ``bash-function-pallete256.sh`` que
-está no diretório ``bash-files`` deste tutorial para conhecer qual o código deve usar para cada uma
+está no diretório ``/shell/etc`` deste tutorial para conhecer qual o código deve usar para cada uma
 das 256 cores disponíveis caso esteja limitado a um ambiente de 8 bits.
 
 
