@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # Definição de variáveis para uso em mensagens coloridas
 NONE="\033[00m"

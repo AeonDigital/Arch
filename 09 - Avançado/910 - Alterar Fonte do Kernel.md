@@ -1,4 +1,4 @@
-﻿# 910 - Alterar a fonte do kernel
+# 910 - Alterar a fonte do kernel
 
 Isto parece meio excêntrico - e de fato é - mas como eu disse noutra etapa deste tutorial, eu gosto
 do meu computador como EU gosto. ;)

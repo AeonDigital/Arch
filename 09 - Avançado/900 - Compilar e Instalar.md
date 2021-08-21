@@ -1,4 +1,4 @@
-﻿# 900 - Compilar e instalar pacotes
+# 900 - Compilar e instalar pacotes
 
 Uma atividade eventual para um usuário de Linux é, ao receber o código fonte de uma aplicação, 
 realizar a extração dos dados, compilar e então instalar. Abaixo segue uma breve descrição do 
