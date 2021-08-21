@@ -254,8 +254,10 @@ else
         cp -a bash-prompt.sh /mnt/etc/bash-prompt.sh
         cp -a bash-variables.sh /mnt/etc/bash-variables.sh
 
-        cp -a .bash_profile.sh /mnt/etc/skel/bash-aliases.sh
-        cp -a .bashrc.sh /mnt/etc/skel/.bashrc.sh
+        cp -a .bash_profile /mnt/etc/skel/.bash_profile
+        cp -a .bashrc /mnt/etc/skel/.bashrc
+        cp -a .bash_profile /mnt/root/.bash_profile-n
+        cp -a .bashrc /mnt/root/.bashrc-n
 
         cp -a install-02.sh /mnt/install.sh
         arch-chroot /mnt

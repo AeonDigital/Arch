@@ -137,8 +137,8 @@ curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-prompt.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-variables.sh
 
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bashrc.sh
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bashrc
 
 
 
