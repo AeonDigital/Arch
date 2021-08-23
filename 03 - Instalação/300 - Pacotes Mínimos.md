@@ -102,11 +102,31 @@ necessários para uma instalação mínima +:
 - wget .................... : para fazer downloads "avulsos".
 </pre>
 
-Estes aqui eu recomendo mas eu mesma não os usei ainda.
-Eles são usados para compilar e instalar programas/pacotes de forma avulsa (sem o ``pacman`` ou 
-``apt-get`` por exemplo).
-- gcc                       : compilador ``c``.
-- make                      : instalador para pacotes avulsos.
+
+&nbsp;
+
+**Compilador C**  
+
+Já os usei eventualmente para compilar e instalar programas/pacotes de forma avulsa (sem o 
+``pacman`` ou ``apt-get`` por exemplo).  
+
+<pre>
+- gcc ..................... : compilador ``c``.
+- make .................... : instalador para pacotes avulsos.
+</pre>
+
+
+&nbsp;
+
+**Ferramentas de rede, segurança e afins**  
+
+Dependendo do caso você pode precisar destes aqui.  
+
+<pre>
+- iputils.................. : Network monitoring tools, including ping.  
+- openssl ................. : Implementation of the SSL and TLS protocols.  
+</pre>
+
 
 
 &nbsp;

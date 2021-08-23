@@ -7,7 +7,7 @@
 # Mensagem de Boas Vindas
 clear
 echo  " "
-cat /etc/bash-message-wellcome
+cat /etc/bash-message-wellcome-01
 echo  ""
 date +"          %A, %d de %B - %Y [%T (%Z)]"
 echo  "          Wellcome  \"$USER\"  :)"

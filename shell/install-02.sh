@@ -188,11 +188,9 @@ echo -e ""
 echo -e ""
 echo -e "${CYAN}03.7${NONE} - Configura a 'tela de login' do sistema"
 > /etc/issue
-echo "
-      Arch \s (\m)
+echo "      Arch \s (\m)
         :: Version \r
         :: Build \v
-        :: TeleTYpewriter \l
   ____________________________________________________________________
 
               __   ____  __   __ _  
@@ -207,13 +205,12 @@ echo "
 
   ____________________________________________________________________
 
-                              Machine
+                          Machine (on \l)
                   Name: \n
                 Domain: \o
                   Date: \d  \t
                  Users: \u
   ____________________________________________________________________
-
 
 " >> /etc/issue
 

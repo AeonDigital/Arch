@@ -250,7 +250,8 @@ else
         cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
         cp -a bash-function-pallete256.sh /mnt/etc/bash-function-pallete256.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
-        cp -a bash-message-wellcome /mnt/etc/bash-message-wellcome
+        cp -a bash-message-wellcome-01 /mnt/etc/bash-message-wellcome-01
+        cp -a bash-message-wellcome-02 /mnt/etc/bash-message-wellcome-02
         cp -a bash-prompt.sh /mnt/etc/bash-prompt.sh
         cp -a bash-variables.sh /mnt/etc/bash-variables.sh
 
