@@ -9,9 +9,9 @@ clear
 echo  " "
 cat /etc/bash-message-wellcome-01
 echo  ""
-date +"          %A, %d de %B - %Y [%T (%Z)]"
-echo  "          Wellcome  \"$USER\"  :)"
-echo  "          You´re in \"${PWD}\"" directory
+echo  "    Wellcome  \"$USER\"  :)"
+echo  "    You´re in \"${PWD}\"" directory
+date +"    %A, %d de %B - %Y [%T (%Z)]"
 echo  ""
 
 
