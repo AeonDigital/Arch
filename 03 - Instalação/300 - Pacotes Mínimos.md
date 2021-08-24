@@ -100,6 +100,7 @@ necessários para uma instalação mínima +:
 - wireless_tools .......... : para configurar a internet sem fio.
 - wpa_supplicant .......... : para configurar a internet sem fio.
 - wget .................... : para fazer downloads "avulsos".
+- tzdata .................. : Fontes para trabalhar com fuso horário.
 </pre>
 
 
@@ -135,10 +136,10 @@ Dependendo do caso você pode precisar destes aqui.
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget 
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget tzdata
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget tzdata
 ```
 
 
@@ -148,8 +149,8 @@ Dependendo do caso você pode precisar destes aqui.
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget 
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget tzdata
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget tzdata
 ```

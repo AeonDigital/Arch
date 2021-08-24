@@ -1,31 +1,30 @@
 #
 # ~./bash_profile
 #
+NOW=$(date + "$Y-%m-%d")
+
+NONE="\033[00m"
+CYAN="\033[36m"
 
 
 
 # Mensagem de Boas Vindas
 clear
-
-NONE="\033[00m"
-BLUE="\033[34m"
-PURPLE="\033[35m"
-CYAN="\033[36m"
-
-echo  "${CYAN} 
+echo  -e "${CYAN} 
            #####
           #######
            #####
 
    #####   #####      
-  ####### #######${NONE}     Wellcome ${PURPLE}$USER${NONE}  :)${CYAN}
-   #####   #####${NONE}      You´re in ${PURPLE}${PWD}${NONE} directory${CYAN}
+  ####### #######${NONE}     Wellcome ${CYAN}$USER${NONE}  :)${CYAN}
+   #####   #####${NONE}      You´re in ${CYAN}${PWD}${NONE} directory${CYAN}
 
    #####           #####
   #######         #######
    #####           #####
 ${NONE}"
 date +"  %A, %d de %B - %Y [%T (%Z)]"
+echo  ""
 echo  ""
 
 
