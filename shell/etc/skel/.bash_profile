@@ -6,19 +6,25 @@
 
 # Mensagem de Boas Vindas
 clear
-echo  " 
+
+NONE="\033[00m"
+BLUE="\033[34m"
+PURPLE="\033[35m"
+CYAN="\033[36m"
+
+echo  "${CYAN} 
            #####
           #######
            #####
 
    #####   #####      
-  ####### #######     Wellcome $USER  :)
-   #####   #####      You´re in ${PWD} directory
+  ####### #######${NONE}     Wellcome ${PURPLE}$USER${NONE}  :)${CYAN}
+   #####   #####${NONE}      You´re in ${PURPLE}${PWD}${NONE} directory${CYAN}
 
    #####           #####
   #######         #######
    #####           #####
-"
+${NONE}"
 date +"  %A, %d de %B - %Y [%T (%Z)]"
 echo  ""
 
