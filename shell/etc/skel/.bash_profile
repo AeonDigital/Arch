@@ -1,6 +1,9 @@
 #
 # ~./bash_profile
 #
+
+
+timedatectl set-timezone America/Sao_Paulo
 NOW=$(date + "$Y-%m-%d")
 
 NONE="\033[00m"
