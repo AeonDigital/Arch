@@ -12,14 +12,14 @@ echo  "
            #####
 
    #####   #####      
-  ####### #######     Wellcome  \"$USER\"  :)
-   #####   #####      You´re in \"${PWD}\" directory
+  ####### #######     Wellcome $USER  :)
+   #####   #####      You´re in ${PWD} directory
 
    #####           #####
   #######         #######
    #####           #####
-
-date +"    %A, %d de %B - %Y [%T (%Z)]"
+"
+date +"  %A, %d de %B - %Y [%T (%Z)]"
 echo  ""
 
 

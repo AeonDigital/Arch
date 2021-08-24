@@ -9,7 +9,7 @@
 # Carrega os scripts de ambiente
 source /etc/bash-variables.sh
 source /etc/bash-aliases.sh
-#source /etc/bash-prompt.sh | limpar o conteúdo... tem algum lixo impedindo o funcionamento correto
+#source /etc/bash-prompt.sh
 #source /etc/bash-function-user.sh | limpar o conteúdo... tem algum lixo impedindo o funcionamento correto
 #source /etc/bash-function-pallete256.sh | limpar o conteúdo... tem algum lixo impedindo o funcionamento correto
 
@@ -22,4 +22,4 @@ set +e
 
 
 # Define o estilo do prompt
-#PS1=$PSTYLE03C
+PS1=$PSTYLE03C
