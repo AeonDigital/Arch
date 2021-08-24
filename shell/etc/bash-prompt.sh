@@ -1,23 +1,42 @@
 #!/bin/bash
 
 # Definição de variáveis para uso em mensagens coloridas
-NONE="\033[00m"
+## Cores
+### 'D' indica 'Dark'
+### 'L' indica 'Light'
 
-## Cor de Fonte
-BLACK="\033[30m"
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-BLUE="\033[34m"
-PURPLE="\033[35m"
-CYAN="\033[36m"
-WHITE="\033[37m"
+NONE="\e[00m"
+
+BLACK="\e[30m"
+DGREY="\e[1;30m"
+LGREY="\e[1;37m"
+WHITE="\e[37m"
+
+RED="\e[31m"
+LRED="\e[1;31m"
+
+GREEN="\e[32m"
+LGREEN="\e[1;32m"
+
+BROWN="\e[33m"
+YELLOW="\e[1;33m"
+
+BLUE="\e[34m"
+LBLUE="\e[1;34m"
+
+PURPLE="\e[35m"
+LPURPLE="\e[1;35m"
+
+CYAN="\e[36m"
+LCYAN="\e[1;36m"
 
 
 ## Atributo
-BOLD="\033[01m"
-UNDERLINE="\033[03m"
-BLINK="\033[05m"
+BOLD="\e[01m"
+UNDERLINE="\e[03m"
+BLINK="\e[05m"
+
+
 
 
 # Exemplo de uso
@@ -62,8 +81,25 @@ PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]
 
 
 
+showColorOptions() {
+  printf "\n\n"
+  printf "As seguintes opções de cores estão disponíveis:"
+  printf "\n\n"
+
+  printf "Preto:          ${BLACK}Arch Linux${NONE}  | Marrom:         ${BROWN}Arch Linux${NONE} \n"
+  printf "Cinza escuro:   ${DGREY}Arch Linux${NONE}  | Amarelo:        ${YELLOW}Arch Linux${NONE} \n"
+  printf "Cinza claro:    ${LGREY}Arch Linux${NONE}  | Azul:           ${BLUE}Arch Linux${NONE} \n"
+  printf "Branco:         ${WHITE}Arch Linux${NONE}  | Azul claro:     ${LBLUE}Arch Linux${NONE} \n"
+  printf "Vermelho:       ${RED}Arch Linux${NONE}  | Púrpura:        ${PURPLE}Arch Linux${NONE} \n"
+  printf "Vermelho claro: ${LRED}Arch Linux${NONE}  | Púrpura claro:  ${LPURPLE}Arch Linux${NONE} \n"
+  printf "Verde:          ${GREEN}Arch Linux${NONE}  | Ciano:          ${CYAN}Arch Linux${NONE} \n"
+  printf "Verde claro:    ${LGREEN}Arch Linux${NONE}  | Ciano claro:    ${LCYAN}Arch Linux${NONE} \n"
+}
+
+
+
 showPromptOptions() {
-  printf "\n\n\nAs seguintes opcoes de prompt estao disponiveis:"
+  printf "\n\n\nAs seguintes opções de prompt estão disponíveis:"
   printf "\n\n"
   printf "> PSTYLE01 \n"
   printf "$PRINTSTYLE01"
