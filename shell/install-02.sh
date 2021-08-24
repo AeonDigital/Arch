@@ -188,7 +188,7 @@ echo -e ""
 echo -e ""
 echo -e "${CYAN}03.7${NONE} - Configura a 'tela de login' do sistema"
 > /etc/issue
-echo "\e[37m    Arch \s (\m ver. \r :: \l) \e[00m
+echo "\e[37m    Arch \s \m  ver: \r :: \l \e[00m
 \e[1;30m    \v
   __________________________________________________________
         __   ____  __   __ _  
