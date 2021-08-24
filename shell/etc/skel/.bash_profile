@@ -4,51 +4,49 @@
 
 timedatectl set-timezone America/Sao_Paulo
 
+NOW=$(date +"%Y-%m-%d %T")
+NOWD=$(date +"%Y-%m-%d")
+NOWT=$(date +"%T")
 
-NONE="\e[00m"
+# Uptime do sistema
+uptime="cat /proc/uptime | cut -f1 -d."
+upDays=$((uptime/60/60/24))
+upHours=$((uptime/60/60%24))
+upMins=$((uptime/60%60))
+upSecs=$((uptime%60))
 
-BLACK="\e[30m"
-DGREY="\e[1;30m"
-LGREY="\e[1;37m"
-WHITE="\e[37m"
 
-RED="\e[31m"
-LRED="\e[1;31m"
+# Informações do sistema
+HOSTNAME="uname -n"
+KERNEL="uname -r"
+CPU="awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo"
+ARCH="uname -m"
+PACMAN="checkupdates | wc -l"
+DETECTDISK="mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'"
+DISC="df -h | grep $DETECTDISK | awk '{print $5 }'"
+MEMORY1="free -t -m | grep "Mem" | awk '{print $6" MB";}'"
+MEMORY2="free -t -m | grep "Mem" | awk '{print $2" MB";}'"
+MEMPERCENT="free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'"
+MEM=($MEMORY1 / $MEMORY2) - $MEMPERCENT
 
-GREEN="\e[32m"
-LGREEN="\e[1;32m"
-
-BROWN="\e[33m"
-YELLOW="\e[1;33m"
-
-BLUE="\e[34m"
-LBLUE="\e[1;34m"
-
-PURPLE="\e[35m"
-LPURPLE="\e[1;35m"
-
-CYAN="\e[36m"
-LCYAN="\e[1;36m"
 
 
 
 # Mensagem de Boas Vindas
 clear
-echo  -e "${LCYAN} 
+echo -e "\e[1;30m
            #####
-          #######
-           #####
-
-   #####   #####      
-  ####### #######${NONE}     Wellcome ${CYAN}$USER${NONE}  :)${CYAN}
-   #####   #####${NONE}      You´re in ${CYAN}${PWD}${NONE} directory${CYAN}
-
-   #####           #####
+          #######\e[00m                
+           #####\e[00m                 User: \e[1;34m$USER\e[00m\e[1;30m
+                            Directory: \e[1;34m$PWD\e[00m\e[1;30m
+   #####   #####\e[00m                 Date: \e[1;34m$NOW\e[00m\e[1;30m
+  ####### #######\e[00m              Uptime: \e[1;34m$upDays days $upHours hours $upMins minutes\e[00m\e[1;30m
+   #####   #####\e[00m                  CPU: \e[1;34m$CPU\e[00m\e[1;30m
+                               Memory: \e[1;34m$MEM\e[00m\e[1;30m
+   #####           #####\e[00m     Use Disk: \e[1;34m$DISC\e[00m\e[1;30m
   #######         #######
    #####           #####
-${NONE}"
-date +"  %A, %d de %B - %Y [%T (%Z)]"
-echo  ""
+\e[00m"
 echo  ""
 
 
