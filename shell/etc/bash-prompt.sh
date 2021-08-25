@@ -42,6 +42,12 @@ PRINTSTYLE03C="${NONE}${CYAN}\342\224\214\342\224\200\342\224\200${LBLUE} \$ ${G
 PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\076 \[\e[40;00;37m\]"
 
 
+# ┌── $ rianna@archlinux in ~/DirName/SubDir
+# └─> _
+PRINTSTYLE03D="${NONE}${DGREY}\342\224\214\342\224\200\342\224\200${LBLUE} \$ username${WHITE}@${LBLUE}host in ${CYAN}~/atual/directory/path \n${DGREY}\342\224\224\342\224\200\076 ${NONE}"
+PSTYLE03D="\[\e[40;01;30m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \u\[\e[40;00;37m\]@\[\e[40;01;34m\]\h in \[\e[40;00;36m\]\w \n\[\e[40;01;30m\]\342\224\224\342\224\200\076 \[\e[40;00;37m\]"
+
+
 
 
 showColorOptions() {
@@ -85,6 +91,9 @@ showPromptOptions() {
   printf "\n\n"
   printf "> PSTYLE03C \n"
   printf "$PRINTSTYLE03C"
+  printf "\n\n"
+  printf "> PSTYLE03D \n"
+  printf "$PRINTSTYLE03D"
   printf "\n__________________________________________________"
   printf "\n\n\n"
 }
