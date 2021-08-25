@@ -9,7 +9,7 @@ NOWD=$(date +"%Y-%m-%d")
 NOWT=$(date +"%T")
 
 # Uptime do sistema
-uptime="cat /proc/uptime | cut -f1 -d."
+uptime=`cat /proc/uptime | cut -f1 -d.`
 upDays=$((uptime/60/60/24))
 upHours=$((uptime/60/60%24))
 upMins=$((uptime/60%60))
@@ -17,17 +17,17 @@ upSecs=$((uptime%60))
 
 
 # Informações do sistema
-HOSTNAME="uname -n"
-KERNEL="uname -r"
-CPU="awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo"
-ARCH="uname -m"
-PACMAN="checkupdates | wc -l"
-DETECTDISK="mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'"
-DISC="df -h | grep $DETECTDISK | awk '{print $5 }'"
-MEMORY1="free -t -m | grep "Mem" | awk '{print $6" MB";}'"
-MEMORY2="free -t -m | grep "Mem" | awk '{print $2" MB";}'"
-MEMPERCENT="free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'"
-MEM=($MEMORY1 / $MEMORY2) - $MEMPERCENT
+HOSTNAME=`uname -n`
+KERNEL=`uname -r`
+CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+ARCH=`uname -m`
+PACMAN=`checkupdates | wc -l`
+DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
+DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
+MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
+MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
+MEM=$((($MEMORY1/$MEMORY2)-$MEMPERCENT))
 
 
 
