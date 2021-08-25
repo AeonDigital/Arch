@@ -10,6 +10,28 @@ arrFunctionDescriptions=()
 
 
 #
+# Atualiza os arquivos que compõe o bash personalizado
+#
+updateBash() {
+  curl -O "${AEONGIT}update-bash.sh"
+  chmod u+x update-bash.sh
+  ./update-bash.sh
+  rm update-bash.sh
+}
+
+
+
+#
+# Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
+#
+updateBashForMyUser() {
+  cp -a /etc/skel/.bash_profile ~/.bash_profile
+  cp -a /etc/skel/.bashrc ~/.bashrc
+}
+
+
+
+#
 # Efetua o registro de funções de usuário aos arrays de controle.
 #
 # param $1 nome da função
