@@ -27,7 +27,7 @@ DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
 MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
 MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
 MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
-MEM=$((($MEMORY1/$MEMORY2)-$MEMPERCENT))
+MEM="$MEMORY1 / $MEMORY2 - $MEMPERCENT"
 
 
 
@@ -36,14 +36,14 @@ MEM=$((($MEMORY1/$MEMORY2)-$MEMPERCENT))
 clear
 echo -e "\e[1;30m
            #####
-          #######\e[00m                
-           #####\e[00m                 User: \e[1;34m$USER\e[00m\e[1;30m
+          #######
+           #####\e[00m                 User: \e[1;34m$USER\e[00m
                             Directory: \e[1;34m$PWD\e[00m\e[1;30m
    #####   #####\e[00m                 Date: \e[1;34m$NOW\e[00m\e[1;30m
   ####### #######\e[00m              Uptime: \e[1;34m$upDays days $upHours hours $upMins minutes\e[00m\e[1;30m
-   #####   #####\e[00m                  CPU: \e[1;34m$CPU\e[00m\e[1;30m
+   #####   #####\e[00m                  CPU: \e[1;34m$CPU\e[00m
                                Memory: \e[1;34m$MEM\e[00m\e[1;30m
-   #####           #####\e[00m     Use Disk: \e[1;34m$DISC\e[00m\e[1;30m
+   #####           #####\e[00m     Use Disk: \e[1;34m$DISC (used)\e[00m\e[1;30m
   #######         #######
    #####           #####
 \e[00m"
