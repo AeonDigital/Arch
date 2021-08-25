@@ -15,7 +15,7 @@ source /etc/bash-variables.sh
 source /etc/bash-aliases.sh
 source /etc/bash-prompt.sh
 source /etc/bash-function-user.sh
-#source /etc/bash-function-pallete256.sh | Examinar este script com um usuário diferente por que ele buga geral!
+source /etc/bash-function-pallete256.sh
 
 
 # Define o estilo do prompt
