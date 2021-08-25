@@ -41,6 +41,10 @@ ponto resolvi adicionar esta ação aqui neste item para evitar que isto ocorra 
   passwd
   New password: 
   Retype new password
+
+  # se necessário, faça como no tutorial e use o comando abaixo para ignorar as personalizações
+  # carregadas para os usuários.
+  # init=/bin/bash --noprofile --norc
 ```
 
 

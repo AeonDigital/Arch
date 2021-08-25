@@ -7,7 +7,8 @@
 
 # Impede que seja causado um "exit" caso ocorra alguma falha
 # de execução de algum comando.
-set +e
+set -euo pipefail
+shopt -s inherit_errexit nullglob
 
 
 # Carrega os scripts de ambiente
