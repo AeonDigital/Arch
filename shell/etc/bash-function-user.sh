@@ -13,7 +13,7 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 #
 # Atualiza os arquivos que compõe o bash personalizado
 #
-updateBash() {
+updateBash() {~
   curl -O "${AEONGIT}update-bash.sh"
   chmod u+x update-bash.sh
   ./update-bash.sh
@@ -28,6 +28,8 @@ updateBash() {
 updateBashForMyUser() {
   cp -a /etc/skel/.bash_profile ~/.bash_profile
   cp -a /etc/skel/.bashrc ~/.bashrc
+  source ~/.bash_profile
+  echo -e "${LGRAY}Seu ambiente bash está atualizado${NONE}"
 }
 
 
