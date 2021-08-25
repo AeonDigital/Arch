@@ -247,6 +247,8 @@ else
         echo -e ""
         echo -e "${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
 
+        cp -a issue /mnt/etc/issue
+
         cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
         cp -a bash-function-pallete256.sh /mnt/etc/bash-function-pallete256.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh

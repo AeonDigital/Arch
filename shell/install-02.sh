@@ -186,34 +186,7 @@ systemctl enable NetworkManager
 
 echo -e ""
 echo -e ""
-echo -e "${CYAN}03.7${NONE} - Configura a 'tela de login' do sistema"
-> /etc/issue
-echo "\e[37m    Arch \s \m  ver: \r :: \l \e[00m
-\e[1;30m    \v
-  __________________________________________________________
-        __   ____  __   __ _  
-       / _\\\\ (  __)/  \\\\ (  ( \\\\  
-      /    \\\\ ) _)(  O )/    /  
-      \\\\_/\\\\_/(____)\\\\__/ \\\\_)__)  
-               ____  __  ___  __  ____  __   __  
-              (    \\\\(  )/ __)(  )(_  _)/ _\\\\ (  )  
-               ) D ( )(( (_ \\\\ )(   )( /    \\\\/ (_/\\\\  
-              (____/(__)\\\\___/(__) (__)\\\\_/\\\\_/\\\\____/ 
-                         http://aeondigital.com.br 
-  __________________________________________________________
-\e[00m
-                         Machine
-                 Name:\e[1;34m \n \e[00m
-               Domain:\e[1;34m \o \e[00m
-                 Date:\e[1;34m \d  \t \e[00m\e[1;30m
-  __________________________________________________________
-\e[00m" >> /etc/issue
-
-
-
-echo -e ""
-echo -e ""
-echo -e "${CYAN}03.7${NONE} - Seu computador está pronto para ser reiniciado."
+echo -e "${CYAN}03.6${NONE} - Seu computador está pronto para ser reiniciado."
 
 
 
