@@ -43,8 +43,10 @@ echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
                                
    #####           #####\e[00m         User: \e[1;34m$USER\e[00m\e[1;30m
   #######         #######\e[00m        Host: \e[1;34m$HOSTNAME\e[00m\e[1;30m
-   #####           #####\e[00m         Date: \e[1;34m$NOW\e[00m"
-echo  ""
+   #####           #####\e[00m         Date: \e[1;34m$NOW\e[00m
+
+"
+
 
 
 
