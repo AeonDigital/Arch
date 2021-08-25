@@ -7,6 +7,7 @@
 
 arrFunctionNames=()
 arrFunctionDescriptions=()
+AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
 
 
 #

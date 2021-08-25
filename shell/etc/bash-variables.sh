@@ -49,5 +49,3 @@ BLINK="\e[05m"
 
 # Exemplo de uso
 # echo -e "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."
-
-AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
