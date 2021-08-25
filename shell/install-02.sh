@@ -202,13 +202,12 @@ echo "\e[37m    Arch \s \m  ver: \r :: \l \e[00m
                          http://aeondigital.com.br 
   __________________________________________________________
 \e[00m
-                Machine
-      Name:\e[1;30m \n \e[00m
-    Domain:\e[1;30m \o \e[00m
-      Date:\e[1;30m \d  \t 
+                         Machine
+                 Name:\e[1;34m \n \e[00m
+               Domain:\e[1;34m \o \e[00m
+                 Date:\e[1;34m \d  \t \e[00m\e[1;30m
   __________________________________________________________
-\e[00m
-" >> /etc/issue
+\e[00m" >> /etc/issue
 
 
 

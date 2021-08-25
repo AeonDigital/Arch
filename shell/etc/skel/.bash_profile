@@ -31,7 +31,7 @@ HOSTNAME=`uname -n`
 
 # Mensagem de Boas Vindas
 clear
-echo -e "\e[37m    Arch Linux $KERNEL $ARCH \e[00m
+echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 \e[1;30m
            #####
           #######
