@@ -26,20 +26,20 @@ PSTYLE02C="\[\e[40;00;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\
 
 # $ rianna@archlinux in ~/DirName/SubDir
 # > _
-PRINTSTYLE03A="${NONE}${LBLUE}$ ${GREEN}username${WHITE}@${GREEN}host ${LBLUE}in ${CYAN}~/atual/directory/path \n> ${NONE}"
+PRINTSTYLE03A="${NONE}${LBLUE}$ ${GREEN}username${WHITE}@${GREEN}host ${LBLUE}in ${CYAN}~/atual/directory/path \n${CYAN}> ${NONE}"
 PSTYLE03A="\[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\076 \[\e[40;00;37m\]"
 
 
 # ┌── $ rianna@archlinux in ~/DirName/SubDir
 # └─╼ _
 PRINTSTYLE03B="${NONE}${CYAN}\342\224\214\342\224\200\342\224\200${LBLUE} $ ${GREEN}username${WHITE}@${GREEN}host ${LBLUE}in ${CYAN}~/atual/directory/path \n${CYAN}\342\224\224\342\224\200\342\225\274 ${NONE}"
-PSTYLE03B="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\342\224\224\342\225\274 \[\e[40;00;37m\]"
+PSTYLE03B="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\225\274 \[\e[40;00;37m\]"
 
 
 # ┌── $ rianna@archlinux in ~/DirName/SubDir
 # └─> _
 PRINTSTYLE03C="${NONE}${CYAN}\342\224\214\342\224\200\342\224\200${LBLUE} $ ${GREEN}username${WHITE}@${GREEN}host ${LBLUE}in ${CYAN}~/atual/directory/path \n${CYAN}\342\224\224\342\224\200\076 ${NONE}"
-PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\342\224\224\342\224\200\076 \[\e[40;00;37m\]"
+PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200\[\e[40;01;34m\] \$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\076 \[\e[40;00;37m\]"
 
 
 
