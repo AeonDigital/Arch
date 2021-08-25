@@ -10,13 +10,13 @@ PSTYLE01="\[\e[40;00;37m\]\$ \u@\h : "
 
 
 # $ rianna@archlinux : _
-PRINTSTYLE02A="${NONE}${LGREEN}$ username@host : ${NONE}"
-PSTYLE02A="\[\e[40;01;32m\]\$ \u@\h : \[\e[40;00;37m\]"
+PRINTSTYLE02A="${NONE}${GREEN}$ username@host : ${NONE}"
+PSTYLE02A="\[\e[40;00;32m\]\$ \u@\h : \[\e[40;00;37m\]"
 
 
 # $ rianna@archlinux : _
-PRINTSTYLE02B="${CYAN}$ ${GREEN}username@host ${CYAN}: ${NONE}"
-PSTYLE02B="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u@\h \[\e[40;01;36m\]: \[\e[40;00;37m\]"
+PRINTSTYLE02B="${NONE}${CYAN}$ ${GREEN}username@host ${CYAN}: ${NONE}"
+PSTYLE02B="\[\e[40;00;36m\]\$ \[\e[40;00;32m\]\u@\h \[\e[40;00;36m\]: \[\e[40;00;37m\]"
 
 
 # $ rianna@archlinux : _
@@ -52,7 +52,7 @@ showColorOptions() {
   printf "Preto:          ${BLACK}Arch Linux${NONE}  | Marrom:         ${BROWN}Arch Linux${NONE} \n"
   printf "Cinza escuro:   ${DGREY}Arch Linux${NONE}  | Amarelo:        ${YELLOW}Arch Linux${NONE} \n"
   printf "Branco:         ${WHITE}Arch Linux${NONE}  | Azul:           ${BLUE}Arch Linux${NONE} \n"
-  printf "Prata:          ${LGREY}Arch Linux${NONE}  | Azul claro:     ${LBLUE}Arch Linux${NONE} \n"
+  printf "Prata:          ${SILVER}Arch Linux${NONE}  | Azul claro:     ${LBLUE}Arch Linux${NONE} \n"
   printf "Vermelho:       ${RED}Arch Linux${NONE}  | Púrpura:        ${PURPLE}Arch Linux${NONE} \n"
   printf "Vermelho claro: ${LRED}Arch Linux${NONE}  | Púrpura claro:  ${LPURPLE}Arch Linux${NONE} \n"
   printf "Verde:          ${GREEN}Arch Linux${NONE}  | Ciano:          ${CYAN}Arch Linux${NONE} \n"
