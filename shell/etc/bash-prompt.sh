@@ -1,77 +1,40 @@
 #!/bin/bash
 
-# Definição de variáveis para uso em mensagens coloridas
-## Cores
-### 'D' indica 'Dark'
-### 'L' indica 'Light'
-
-NONE="\e[00m"
-
-BLACK="\e[30m"
-DGREY="\e[1;30m"
-LGREY="\e[1;37m"
-WHITE="\e[37m"
-
-RED="\e[31m"
-LRED="\e[1;31m"
-
-GREEN="\e[32m"
-LGREEN="\e[1;32m"
-
-BROWN="\e[33m"
-YELLOW="\e[1;33m"
-
-BLUE="\e[34m"
-LBLUE="\e[1;34m"
-
-PURPLE="\e[35m"
-LPURPLE="\e[1;35m"
-
-CYAN="\e[36m"
-LCYAN="\e[1;36m"
 
 
-## Atributo
-BOLD="\e[01m"
-UNDERLINE="\e[03m"
-BLINK="\e[05m"
+# - Padrões de prompt
 
+## $ rianna@archlinux : _
+PRINTSTYLE01="${NONE}$ username@host : "
+PSTYLE01="\[\e[40;00;37m\]\$ \u@\h : "
 
-
-
-# Exemplo de uso
-# echo -e "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."
-
-
-
-
-
-## - Padrões de prompt
-# $ rianna@archlinux : _
-PRINTSTYLE01="$ username@host : ${NONE}"
-PSTYLE01="\$ \u@\h : "
 
 # $ rianna@archlinux : _
-PRINTSTYLE02A="${GREEN}$ username@host : ${NONE}"
+PRINTSTYLE02A="${NONE}${LGREEN}$ username@host : ${NONE}"
 PSTYLE02A="\[\e[40;01;32m\]\$ \u@\h : \[\e[40;00;37m\]"
+
 
 # $ rianna@archlinux : _
 PRINTSTYLE02B="${CYAN}$ ${GREEN}username@host ${CYAN}: ${NONE}"
 PSTYLE02B="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u@\h \[\e[40;01;36m\]: \[\e[40;00;37m\]"
 
+
 # $ rianna@archlinux : _
 PRINTSTYLE02C="${CYAN}$ ${GREEN}username${WHITE}@${GREEN}host ${CYAN}: ${NONE}"
 PSTYLE02C="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;36m\] : \[\e[40;00;37m\]"
+
 
 # $ rianna@archlinux in ~/DirName/SubDir
 # > _
 PRINTSTYLE03A="${CYAN}$ ${GREEN}username${WHITE}@${GREEN}host ${BLUE}in ${CYAN}~/atual/directory/path \n> ${NONE}"
 PSTYLE03A="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;01;34m\]\076 \[\e[40;00;37m\]"
 
+
 # ┌── $ rianna@archlinux in ~/DirName/SubDir
 # └─╼ _
 PRINTSTYLE03B="${CYAN}\342\224\214\342\224\200\342\224\200 $ ${GREEN}username${WHITE}@${GREEN}host ${BLUE}in ${CYAN}~/atual/directory/path \n${CYAN}\342\224\224\342\224\200\342\225\274 ${NONE}"
 PSTYLE03B="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\225\274 \[\e[40;00;37m\]"
+
 
 # ┌── $ rianna@archlinux in ~/DirName/SubDir
 # └─> _
@@ -88,12 +51,13 @@ showColorOptions() {
 
   printf "Preto:          ${BLACK}Arch Linux${NONE}  | Marrom:         ${BROWN}Arch Linux${NONE} \n"
   printf "Cinza escuro:   ${DGREY}Arch Linux${NONE}  | Amarelo:        ${YELLOW}Arch Linux${NONE} \n"
-  printf "Cinza claro:    ${LGREY}Arch Linux${NONE}  | Azul:           ${BLUE}Arch Linux${NONE} \n"
-  printf "Branco:         ${WHITE}Arch Linux${NONE}  | Azul claro:     ${LBLUE}Arch Linux${NONE} \n"
+  printf "Branco:         ${WHITE}Arch Linux${NONE}  | Azul:           ${BLUE}Arch Linux${NONE} \n"
+  printf "Prata:          ${LGREY}Arch Linux${NONE}  | Azul claro:     ${LBLUE}Arch Linux${NONE} \n"
   printf "Vermelho:       ${RED}Arch Linux${NONE}  | Púrpura:        ${PURPLE}Arch Linux${NONE} \n"
   printf "Vermelho claro: ${LRED}Arch Linux${NONE}  | Púrpura claro:  ${LPURPLE}Arch Linux${NONE} \n"
   printf "Verde:          ${GREEN}Arch Linux${NONE}  | Ciano:          ${CYAN}Arch Linux${NONE} \n"
   printf "Verde claro:    ${LGREEN}Arch Linux${NONE}  | Ciano claro:    ${LCYAN}Arch Linux${NONE} \n"
+  printf "\n\n"
 }
 
 
