@@ -22,4 +22,4 @@ set +e
 
 
 # Define o estilo do prompt
-PS1=$PSTYLE03C
+PS1=$PRINTSTYLE03D
