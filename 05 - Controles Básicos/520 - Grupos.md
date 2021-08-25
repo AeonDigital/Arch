@@ -68,11 +68,11 @@ As opções são:
 
 ### 520.2.1 - Adicionando usuários em um grupo
 
-Para adicionar usuários em um grupo específico use o comando ``adduser`` já descrito anteriormente
+Para adicionar usuários em um grupo específico use o comando ``useradd`` já descrito anteriormente
 na parte de Usuários.
 
 ``` shell
-  adduser [username] [groupname]
+  useradd [username] [groupname]
 ```
 
 

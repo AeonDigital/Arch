@@ -28,11 +28,11 @@ Se você quiser conhecer todos os usuários existentes no seu sistema use o coma
 
 ## 510.1 - Criando usuários
 
-O comando para criar novos usuários é o ``adduser``.  
+O comando para criar novos usuários é o ``useradd``.  
 Segue abaixo as instruções de uso do mesmo.
 
 ```
-  adduser [opções] [username]
+  useradd [opções] [username]
 ```
 
 Algumas das opções são:
@@ -64,35 +64,35 @@ nome do usuário e este será seu grupo padrão.
 
 ``` shell
   #Cria o usuário
-  adduser [username]
+  useradd [username]
 
   #Cria o usuário com comentário
-  adduser -c "Nome completo" [username]
+  useradd -c "Nome completo" [username]
 
   #Cria o usuário definindo o HOME e a data em que a conta irá expirar.
-  adduser -d /tmp/[username] -e 2000-10-10 [username]
+  useradd -d /tmp/[username] -e 2000-10-10 [username]
 
   #Cria o usuário em outro grupo - supondo que há no meu sistema um grupo chamado "cpd".
-  adduser -g cpd [username]
+  useradd -g cpd [username]
 
   #Cria o usuário inserindo ele em outros grupos sem alterar o seu grupo padrão.
-  adduser -G cpd [username]
+  useradd -G cpd [username]
 
   #Cria o usuário sem diretório HOME
-  adduser -M [username]
+  useradd -M [username]
 
   #Cria o usuário com o padrão definido no /etc/skel
-  adduser -m [username]
+  useradd -m [username]
 
   #Cria o usuário com o mesmo UID de um usuário existente no sistema 
   #Imaginamos que há um usuário no sistema cujo UID dele é 500.
-  adduser -o --uid 500 [username]
+  useradd -o --uid 500 [username]
 
   #Cria um usuário definindo o shell padrão
-  adduser [username] -s /bin/bash
+  useradd [username] -s /bin/bash
 
   #Cria o usuário mas ele não pode logar no sistema, por que não possui um shell
-  adduser [username] -s /sbin/nologin
+  useradd [username] -s /sbin/nologin
 ```
 
 
