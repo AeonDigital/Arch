@@ -14,8 +14,8 @@ set +e
 source /etc/bash-variables.sh
 source /etc/bash-aliases.sh
 source /etc/bash-prompt.sh
-source /etc/bash-function-user.sh
 source /etc/bash-function-pallete256.sh
+source /etc/bash-function-user.sh
 
 
 # Define o estilo do prompt
