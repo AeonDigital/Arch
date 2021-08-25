@@ -12,7 +12,7 @@ printable_colours=256
 
 # Return a colour that contrasts with the given colour
 # Bash only does integer division, so keep it integral
-contrast_colour {
+contrast_colour() {
   local r g b luminance
   colour="$1"
 
@@ -53,7 +53,7 @@ contrast_colour {
 
 
 # Print a coloured block with the number of that colour
-print_colour {
+print_colour() {
   local colour="$1" contrast
   contrast=$(contrast_colour "$1")
   printf "\e[48;5;%sm" "$colour"                # Start block of colour
@@ -64,7 +64,7 @@ print_colour {
 
 
 # Starting at $1, print a run of $2 colours
-print_run {
+print_run() {
   local i
   for (( i = "$1"; i < "$1" + "$2" && i < printable_colours; i++ )) do
     print_colour "$i"
@@ -75,7 +75,7 @@ print_run {
 
 
 # Print blocks of colours
-print_blocks {
+print_blocks() {
   local start="$1" i
   local end="$2" # inclusive
   local block_cols="$3"
