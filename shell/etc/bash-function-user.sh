@@ -13,7 +13,7 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 #
 # Atualiza os arquivos que compõe o bash personalizado
 #
-updateBash() {~
+updateBash() {
   curl -O "${AEONGIT}update-bash.sh"
   chmod u+x update-bash.sh
   ./update-bash.sh
