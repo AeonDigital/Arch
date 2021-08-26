@@ -10,6 +10,9 @@ NOWT=$(date +"%T")
 
 
 # Variáveis de uso geral
+ALERT_MSG=()
+ALERT_INDENT="    "
+
 PROMPT_OPTIONS="sim(s) | nao(n)"
 PROMPT_MSG=()
 PROMPT_INDENT="    "
@@ -80,6 +83,28 @@ toUpperCase() {
   echo "${1^^}"
 }
 #
+# Mostra uma mensagem de alerta para o usuário.
+# A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
+# onde, cada item do array será definido em uma linha do terminal
+#
+#   example
+#     ALERT_MSG=()
+#     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
+#
+#     alertUser 
+#
+alertUser() {
+  if [ ${#ALERT_MSG[@]} = 0 ]; then
+    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;ALERT_MSG\e[00m"
+    echo -e ""
+  else
+    for msg in "${ALERT_MSG[@]}"; do 
+      echo "${ALERT_INDENT}$msg"
+    done
+  fi
+}
+#
 # Mostra uma mensagem para o usuário e questiona sobre Sim ou Não
 # A mensagem mostrada deve ser preparada no array ${PROMPT_MSG}
 # onde, cada item do array será definido em uma linha do terminal.
@@ -92,7 +117,7 @@ toUpperCase() {
 #   example
 #     PROMPT_MSG=()
 #     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
-#     PROMPT_MSG[0]=$(printf "Deseja prosseguir?")
+#     PROMPT_MSG[1]=$(printf "Deseja prosseguir?")
 #
 #     promptUser 
 #     if [ "$PROMPT_RESULT" == "1" ]; then
@@ -106,7 +131,7 @@ promptUser() {
 
   
   if [ ${#PROMPT_MSG[@]} = 0 ]; then
-    echo -e "\e[01;37mERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
+    echo -e "\e[01;37m${PROMPT_INDENT}ERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
     echo -e ""
   else
   
