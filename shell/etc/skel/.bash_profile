@@ -11,6 +11,7 @@ NOWT=$(date +"%T")
 
 # Variáveis de uso geral
 PROMPT_OPTIONS="sim(s) | nao(n)"
+PROMPT_INDENT="    "
 PROMPT_RESULT=""
 BASH_PERSONALIZE=1
 
@@ -103,7 +104,7 @@ promptUser() {
 
     echo ""
     echo "$1"
-    read -p "   [ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
+    read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
     PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
   done
 
@@ -124,7 +125,7 @@ promptUser() {
 # de personalização
 #
 if [ "$USER" == "root" ]; then
-  promptUser "-- Carregar scripts iniciais?"
+  promptUser "${PROMPT_INDENT}${SILVER}Deseja carregar scripts iniciais?${NONE}"
   BASH_PERSONALIZE=${PROMPT_RESULT}
   PROMPT_RESULT=""
 fi

@@ -16,7 +16,7 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 #
 updateBash() {
   msg=$(printf "
-  ${SILVER}ATENÇÃO!${NONE}
+    ${SILVER}ATENÇÃO!${NONE}
     Esta ação irá atualizar os scripts de sessão.
     Qualquer personalização dos mesmos feitos até o momento serão perdidos
     
@@ -52,7 +52,7 @@ updateBash() {
 #
 updateBashForMyUser() {
   msg=$(printf "
-  ${SILVER}ATENÇÃO!${NONE}
+    ${SILVER}ATENÇÃO!${NONE}
     Esta ação irá substituir seus arquivos pessoais:
     - ${LCYAN}~/.bash_profile${NONE}
     - ${LCYAN}~/.bashrc${NONE}
