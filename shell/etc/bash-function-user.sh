@@ -14,7 +14,7 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 #
 # Atualiza os arquivos que compõe o bash personalizado
 #
-updateBash() {
+updateBashScripts() {
   PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
   PROMPT_MSG[1]=$(printf "Esta ação irá atualizar os scripts de sessão.")
@@ -34,7 +34,7 @@ updateBash() {
 
     ALERT_MSG[0]=""
     ALERT_MSG[1]=$(printf "${SILVER}Os scripts de sessão foram atualizados${NONE}")
-    ALERT_MSG[2]=$(printf "Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
+    ALERT_MSG[2]=$(printf "Use o comando ${GREEN}updateMyBash${NONE} para atualizar sua conta de usuário.")
     ALERT_MSG[3]=""
   else
     ALERT_MSG[0]=""
@@ -51,7 +51,7 @@ updateBash() {
 #
 # Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
 #
-updateBashForMyUser() {
+updateMyBash() {
   PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
   PROMPT_MSG[1]=$(printf "Esta ação irá substituir seus arquivos pessoais:")
