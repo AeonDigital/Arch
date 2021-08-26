@@ -2,43 +2,16 @@
 # ~./bash_profile
 #
 
+
+
 timedatectl set-timezone America/Sao_Paulo
-
-NOW=$(date +"%Y-%m-%d %T")
-NOWD=$(date +"%Y-%m-%d")
-NOWT=$(date +"%T")
-
-
-# Variáveis de uso geral
-ALERT_MSG=()
-ALERT_INDENT="    "
-
-PROMPT_OPTIONS="sim(s) | nao(n)"
-PROMPT_MSG=()
-PROMPT_INDENT="    "
-PROMPT_RESULT=""
-BASH_PERSONALIZE=1
-
-
-# Informações do sistema
-KERNEL=`uname -r`
-ARCH=`uname -m`
-CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
-
-MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
-MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
-MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
-
-DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
-DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
-
-UP=`uptime -p`
-PACMAN=`checkupdates | wc -l`
-HOSTNAME=`uname -n`
+source /etc/bash-variables.sh || true
+source /etc/bash-function-pallete256.sh || true
+source /etc/bash-function-user.sh || true
 
 
 
-
+#
 # Mensagem de Boas Vindas
 clear
 

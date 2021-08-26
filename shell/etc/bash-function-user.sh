@@ -7,7 +7,7 @@
 
 arrFunctionNames=()
 arrFunctionDescriptions=()
-AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
+
 
 
 
@@ -27,7 +27,7 @@ updateBashScripts() {
   ALERT_MSG=()
 
   if [ "$PROMPT_RESULT" == 1 ]; then
-    curl -O "${AEONGIT}update-bash.sh"
+    curl -O "${SCRIPTS_REPO_URL}update-bash.sh"
     chmod u+x update-bash.sh
     ./update-bash.sh
     rm update-bash.sh
@@ -45,6 +45,8 @@ updateBashScripts() {
   PROMPT_RESULT=""
   alertUser
 }
+
+
 
 
 
@@ -81,6 +83,8 @@ updateMyBash() {
   PROMPT_RESULT=""
   alertUser
 }
+
+
 
 
 

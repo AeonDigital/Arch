@@ -2,6 +2,26 @@
 
 
 
+#
+# Informações do sistema
+KERNEL=`uname -r`
+ARCH=`uname -m`
+CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+
+MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
+MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
+
+DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
+DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
+
+UP=`uptime -p`
+PACMAN=`checkupdates | wc -l`
+HOSTNAME=`uname -n`
+
+
+
+#
 # Configuração do bash
 HISTCONTROL=ignoreboth
 HISTSIZE=256
@@ -9,7 +29,36 @@ HISTTIMEFORMAT="%d/%m/%y %T "
 
 
 
-# Definição de variáveis para uso em mensagens coloridas
+#
+# Repositório dos scripts
+SCRIPTS_REPO_URL="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
+
+
+
+#
+# Data e hora
+NOW=$(date +"%Y-%m-%d %T")
+NOWD=$(date +"%Y-%m-%d")
+NOWT=$(date +"%T")
+
+
+
+#
+# Variáveis de sessão para uso com as funções globais
+BASH_PERSONALIZE=1
+
+ALERT_MSG=()
+ALERT_INDENT="    "
+
+PROMPT_OPTIONS="sim(s) | nao(n)"
+PROMPT_MSG=()
+PROMPT_INDENT="    "
+PROMPT_RESULT=""
+
+
+
+#
+# Definição de cores para uso em strings
 ## Cores
 ### 'D' indica 'Dark'
 ### 'L' indica 'Light'
@@ -45,6 +94,7 @@ LCYAN="\e[01;36m"
 BOLD="\e[01m"
 UNDERLINE="\e[03m"
 BLINK="\e[05m"
+
 
 
 # Exemplo de uso

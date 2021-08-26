@@ -8,11 +8,8 @@
 
 #
 # Carrega os scripts de ambiente
-source /etc/bash-variables.sh || true
 source /etc/bash-aliases.sh || true
 source /etc/bash-prompt.sh || true
-source /etc/bash-function-pallete256.sh || true
-source /etc/bash-function-user.sh || true
 
 
 
