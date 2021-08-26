@@ -134,11 +134,11 @@ curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/variables.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/thirdp_functions_pallete256.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/functions.sh
+curl -o env_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/functions.sh
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/aliases.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/prompt.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/functions.sh
+curl -o usr_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/functions.sh
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bashrc

@@ -64,6 +64,6 @@ if [ "$USER" != "" ]; then
   #
   if [ "$LOAD_BASHRC" == 1 ]; then
     source ~/.bashrc || true
-  else
+  fi
 
 fi
