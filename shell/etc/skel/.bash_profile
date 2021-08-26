@@ -11,6 +11,7 @@ NOWT=$(date +"%T")
 
 # Variáveis de uso geral
 PROMPT_OPTIONS="sim(s) | nao(n)"
+PROMPT_MSG=()
 PROMPT_INDENT="    "
 PROMPT_RESULT=""
 BASH_PERSONALIZE=1
@@ -80,40 +81,57 @@ toUpperCase() {
 }
 #
 # Mostra uma mensagem para o usuário e questiona sobre Sim ou Não
+# A mensagem mostrada deve ser preparada no array ${PROMPT_MSG}
+# onde, cada item do array será definido em uma linha do terminal.
+#
 # O resultado selecionado pelo usuário ficará definido na variável ${PROMPT_RESULT}
 # armazenando os valores:
 #   0 : nao(n)
 #   1 : sim(s)
 #
-#  param string $1 mensagem questionando o usuário.
-#  example
-#    promptUser "-- Deseja prosseguir?"
-#    if [ "$PROMPT_RESULT" = "1" ]; then
-#      echo "Escolhido Sim"
-#    else
-#      echo "Escolhido Não"
-#    fi
+#   example
+#     PROMPT_MSG=()
+#     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
+#     PROMPT_MSG[0]=$(printf "Deseja prosseguir?")
+#
+#     promptUser 
+#     if [ "$PROMPT_RESULT" == "1" ]; then
+#       echo "Escolhido Sim"
+#     else
+#       echo "Escolhido Não"
+#     fi
 #
 promptUser() {
   PROMPT_RESULT=""
+
   
-  while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
-    if [ "$PROMPT_RESULT" != "" ]; then
-      echo "   Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\""
+  if [ ${#PROMPT_MSG[@]} = 0 ]; then
+    echo -e "\e[01;37mERROR: empty array \e[01;32mPROMPT_MSG\e[00m"
+  else
+  
+    while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
+      if [ "$PROMPT_RESULT" != "" ]; then
+        echo "   Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\""
+      fi
+
+      echo ""
+      for msg in "${PROMPT_MSG[@]}"; do 
+        echo "$msg"
+      done
+
+      read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
+      PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
+    done
+
+
+    if [ "$PROMPT_RESULT" == "nao" ] || [ "$PROMPT_RESULT" == "n" ]; then
+      PROMPT_RESULT=0
     fi
 
-    echo ""
-    echo "$1"
-    read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
-    PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
-  done
+    if [ "$PROMPT_RESULT" == "sim" ] || [ "$PROMPT_RESULT" == "s" ]; then
+      PROMPT_RESULT=1
+    fi
 
-  if [ "$PROMPT_RESULT" == "nao" ] || [ "$PROMPT_RESULT" == "n" ]; then
-    PROMPT_RESULT=0
-  fi
-
-  if [ "$PROMPT_RESULT" == "sim" ] || [ "$PROMPT_RESULT" == "s" ]; then
-    PROMPT_RESULT=1
   fi
 }
 
