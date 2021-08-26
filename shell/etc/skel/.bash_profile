@@ -6,7 +6,7 @@
 
 timedatectl set-timezone America/Sao_Paulo
 source /etc/myBashEnvironment/01_variables.sh || true
-source /etc/bash_env_02_functions_pallete256.sh || true
+source /etc/myBashEnvironment/02_thirdp_functions_pallete256.sh || true
 source /etc/bash_env_02_functions.sh || true
 
 
