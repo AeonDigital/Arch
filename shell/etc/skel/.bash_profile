@@ -143,7 +143,7 @@ promptUser() {
 # de personalização
 #
 if [ "$USER" == "root" ]; then
-  promptUser "${PROMPT_INDENT}${SILVER}Deseja carregar scripts iniciais?${NONE}"
+  promptUser "${PROMPT_INDENT}\e[01;37mDeseja carregar scripts iniciais?\e[00;30m"
   BASH_PERSONALIZE=${PROMPT_RESULT}
   PROMPT_RESULT=""
 fi

@@ -69,11 +69,11 @@ updateBashForMyUser() {
     source ~/.bash_profile
 
     msgReturn=$(printf "
-    ${SILVER}Seu ambiente bash está atualizado${NONE}
+    \e[01;37mSeu ambiente bash está atualizado\e[00;30m
     ")
   else
     msgReturn=$(printf "
-    ${SILVER}Nenhuma ação foi feita${NONE}
+    \e[01;37mNenhuma ação foi feita\e[00;30m
     ")
   fi
 
