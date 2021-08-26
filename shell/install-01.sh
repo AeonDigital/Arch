@@ -211,17 +211,24 @@ else
       echo ""
       echo ""
     else
-      if [ "$mother_board" == "UEFI" ]; then
-        pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget
-      else
-        pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
-      fi
+
+      $next="NAO"
+      while [ "$next" != "SIM" ]; do
+        if [ "$mother_board" == "UEFI" ]; then
+          pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget
+        else
+          pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
+        fi
+
+        readNext "-- Os pacotes foram instalados? Digite 's' para prosseguir ou 'n' para refazer"
+      done
+
 
 
 
       echo -e ""
       echo -e ""
-      readNext "-- Deseja prosseguir?"
+      readNext "-- Deseja prosseguir com a instalação?"
       if [ "$next" != "SIM" ]; then
         echo ""
         echo "-- Instalação encerrada!"
