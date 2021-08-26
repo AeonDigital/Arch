@@ -132,9 +132,9 @@ echo -e ""
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/issue
 
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/01_variables.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/02_thirdp_functions_pallete256.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/03_functions.sh
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/variables.sh
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/thirdp_functions_pallete256.sh
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/functions.sh
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/aliases.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/prompt.sh

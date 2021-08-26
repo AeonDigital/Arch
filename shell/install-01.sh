@@ -250,9 +250,9 @@ else
         cp -a issue /mnt/etc/issue
 
         mkdir /etc/myBashEnvironment
-        cp -a 01_variables.sh /mnt/etc/myBashEnvironment/01_variables.sh
-        cp -a 02_thirdp_functions_pallete256.sh /mnt/etc/myBashEnvironment/02_thirdp_functions_pallete256.sh
-        cp -a 03_functions.sh /mnt/etc/myBashEnvironment/03_functions.sh
+        cp -a variables.sh /mnt/etc/myBashEnvironment/variables.sh
+        cp -a thirdp_functions_pallete256.sh /mnt/etc/myBashEnvironment/thirdp_functions_pallete256.sh
+        cp -a functions.sh /mnt/etc/myBashEnvironment/functions.sh
 
         mkdir /etc/skel/myBashConfig
         cp -a aliases.sh /mnt/etc/skel/myBashConfig/aliases.sh

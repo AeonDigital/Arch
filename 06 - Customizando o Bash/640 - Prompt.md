@@ -94,7 +94,7 @@ Abaixo segue a cópia dos padrões de definição que você pode utilizar.
     48 - Branco       |                   | 37 - Branco 
 
 
-Você pode usar a função ``printPallete`` disponível no script ``02_thirdp_functions_pallete256.sh`` que
+Você pode usar a função ``printPallete`` disponível no script ``thirdp_functions_pallete256.sh`` que
 está no diretório ``/shell/etc/myBashEnvironment`` deste tutorial para conhecer qual o código deve usar para cada uma
 das 256 cores disponíveis caso esteja limitado a um ambiente de 8 bits.
 
