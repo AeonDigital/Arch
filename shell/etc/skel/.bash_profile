@@ -117,7 +117,7 @@ promptUser() {
 
       echo ""
       for msg in "${PROMPT_MSG[@]}"; do 
-        echo "$msg"
+        echo "${PROMPT_INDENT}$msg"
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
@@ -144,7 +144,8 @@ promptUser() {
 # de personalização
 #
 if [ "$USER" == "root" ]; then
-  PROMPT_MSG[0]=$(printf "${PROMPT_INDENT}\e[01;37mDeseja carregar scripts iniciais?\e[00;30m")
+  PROMPT_MSG=()
+  PROMPT_MSG[0]=$(printf "\e[01;37mDeseja carregar scripts iniciais?\e[00m")
 
   promptUser 
   BASH_PERSONALIZE=${PROMPT_RESULT}

@@ -15,15 +15,15 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 # Atualiza os arquivos que compõe o bash personalizado
 #
 updateBash() {
-  msg=$(printf "
-    ${SILVER}ATENÇÃO!${NONE}
-    Esta ação irá atualizar os scripts de sessão.
-    Qualquer personalização dos mesmos feitos até o momento serão perdidos
-    
-    Tem certeza que deseja prosseguir?")
+  PROMPT_MSG=()
+  PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
+  PROMPT_MSG[1]=$(printf "Esta ação irá atualizar os scripts de sessão.")
+  PROMPT_MSG[2]=$(printf "Qualquer personalização dos mesmos feitos até o momento serão perdidos.")
+  PROMPT_MSG[3]=$(printf "")
+  PROMPT_MSG[3]=$(printf "Tem certeza que deseja prosseguir?")
 
 
-  promptUser "${msg}"
+  promptUser
   msgReturn=""
 
   if [ "$PROMPT_RESULT" == 1 ]; then
@@ -52,16 +52,16 @@ updateBash() {
 # Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
 #
 updateBashForMyUser() {
-  msg=$(printf "
-    ${SILVER}ATENÇÃO!${NONE}
-    Esta ação irá substituir seus arquivos pessoais:
-    - ${LCYAN}~/.bash_profile${NONE}
-    - ${LCYAN}~/.bashrc${NONE}
-    
-    Tem certeza que deseja prosseguir?")
+  PROMPT_MSG=()
+  PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
+  PROMPT_MSG[1]=$(printf "Esta ação irá substituir seus arquivos pessoais:")
+  PROMPT_MSG[2]=$(printf "- ${LCYAN}~/.bash_profile${NONE}")
+  PROMPT_MSG[3]=$(printf "- ${LCYAN}~/.bashrc${NONE}")
+  PROMPT_MSG[4]=$(printf "")
+  PROMPT_MSG[5]=$(printf "Tem certeza que deseja prosseguir?")
 
 
-  promptUser "${msg}"
+  promptUser
   msgReturn=""
 
   if [ "$PROMPT_RESULT" == 1 ]; then
