@@ -250,7 +250,7 @@ else
         cp -a issue /mnt/etc/issue
 
         cp -a bash_env_01_variables.sh /mnt/etc/bash_env_01_variables.sh
-        cp -a bash_02_env_functions.sh /mnt/etc/bash_02_env_functions.sh
+        cp -a bash_env_02_functions.sh /mnt/etc/bash_env_02_functions.sh
         cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
         cp -a bash_03_env_print_pallete256.sh /mnt/etc/bash_03_env_print_pallete256.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
