@@ -18,7 +18,7 @@ updateBash() {
   PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
   PROMPT_MSG[1]=$(printf "Esta ação irá atualizar os scripts de sessão.")
-  PROMPT_MSG[2]=$(printf "Qualquer personalização dos mesmos feitos até o momento serão perdidos.")
+  PROMPT_MSG[2]=$(printf "Qualquer personalização feita nos mesmos será perdida.")
   PROMPT_MSG[3]=""
   PROMPT_MSG[4]=$(printf "Tem certeza que deseja prosseguir?")
 
