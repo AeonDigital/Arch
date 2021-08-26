@@ -257,7 +257,7 @@ else
         mkdir /etc/skel/myBashConfig
         cp -a aliases.sh /mnt/etc/skel/myBashConfig/aliases.sh
         cp -a prompt.sh /mnt/etc/skel/myBashConfig/prompt.sh
-        cp -a bash_users_functions.sh /mnt/etc/bash_users_functions.sh
+        cp -a functions.sh /mnt/etc/skel/myBashConfig/functions.sh
 
         cp -a .bash_profile /mnt/etc/skel/.bash_profile
         cp -a .bashrc /mnt/etc/skel/.bashrc

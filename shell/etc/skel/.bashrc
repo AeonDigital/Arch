@@ -10,7 +10,7 @@
 # Carrega os scripts de ambiente
 source ~/myBashConfig/aliases.sh || true
 source ~/myBashConfig/prompt.sh || true
-source /etc/bash_users_functions.sh || true
+source ~/myBashConfig/functions.sh || true
 
 
 

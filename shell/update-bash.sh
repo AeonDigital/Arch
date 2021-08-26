@@ -9,7 +9,7 @@ curl -o /etc/myBashEnvironment/03_functions.sh https://raw.githubusercontent.com
 
 curl -o /etc/skel/myBashConfig/aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/aliases.sh
 curl -o /etc/skel/myBashConfig/prompt.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/prompt.sh
-curl -o /etc/bash_users_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_functions.sh
+curl -o /etc/skel/myBashConfig/functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/functions.sh
 
 curl -o /etc/skel/.bash_profile https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile
 curl -o /etc/skel/.bashrc https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bashrc
