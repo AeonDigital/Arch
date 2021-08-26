@@ -10,9 +10,9 @@ NOWT=$(date +"%T")
 
 
 # Variáveis de uso geral
-ENVIRONMENT="DEV"
 PROMPT_OPTIONS="sim(s) | nao(n)"
 PROMPT_RESULT=""
+BASH_PERSONALIZE=1
 
 
 # Informações do sistema
@@ -119,6 +119,23 @@ promptUser() {
 
 
 
+#
+# Dá a chance do root optar por carregar ou não os scripts
+# de personalização
+#
+if [ "$USER" = "root" ]; then
+  promptUser "-- Carregar scripts iniciais?"
+  BASH_PERSONALIZE=PROMPT_RESULT
+  PROMPT_RESULT=""
+fi
 
+
+
+#
 # Carrega configurações personalizadas ao efetuar login
-source ~/.bashrc || true
+#
+if [ "$BASH_PERSONALIZE" = "1" ]; then
+  source ~/.bashrc || true
+else
+  PS1="\[\e[40;01;30m\]\$ \u@\h : \[\e[40;00;37m\]"
+fi
