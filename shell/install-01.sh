@@ -249,18 +249,25 @@ else
 
         cp -a issue /mnt/etc/issue
 
-        mkdir /etc/myBashEnvironment
+        mkdir /mnt/etc/myBashEnvironment
         cp -a variables.sh /mnt/etc/myBashEnvironment/variables.sh
         cp -a thirdp_functions_pallete256.sh /mnt/etc/myBashEnvironment/thirdp_functions_pallete256.sh
         cp -a functions.sh /mnt/etc/myBashEnvironment/functions.sh
 
-        mkdir /etc/skel/myBashConfig
+        mkdir /mnt/etc/skel/myBashConfig
         cp -a aliases.sh /mnt/etc/skel/myBashConfig/aliases.sh
         cp -a prompt.sh /mnt/etc/skel/myBashConfig/prompt.sh
         cp -a functions.sh /mnt/etc/skel/myBashConfig/functions.sh
 
         cp -a .bash_profile /mnt/etc/skel/.bash_profile
         cp -a .bashrc /mnt/etc/skel/.bashrc
+
+
+        mkdir /mnt/root/myBashConfig
+        cp -a aliases.sh /mnt/root/myBashConfig/aliases.sh
+        cp -a prompt.sh /mnt/root/myBashConfig/prompt.sh
+        cp -a functions.sh /mnt/root/myBashConfig/functions.sh
+
         cp -a .bash_profile /mnt/root/.bash_profile
         cp -a .bashrc /mnt/root/.bashrc
 
