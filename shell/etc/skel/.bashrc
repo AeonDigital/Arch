@@ -9,7 +9,7 @@
 #
 # Carrega os scripts de ambiente
 source /etc/bash_users_aliases.sh || true
-source /etc/bash-prompt.sh || true
+source /etc/bash_users_prompt.sh || true
 source /etc/bash-function-user.sh || true
 
 

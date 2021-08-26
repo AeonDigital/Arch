@@ -254,7 +254,7 @@ else
         cp -a bash_env_02_functions_pallete256.sh /mnt/etc/bash_env_02_functions_pallete256.sh
         cp -a bash_users_aliases.sh /mnt/etc/bash_users_aliases.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
-        cp -a bash-prompt.sh /mnt/etc/bash-prompt.sh
+        cp -a bash_users_prompt.sh /mnt/etc/bash_users_prompt.sh
 
         cp -a .bash_profile /mnt/etc/skel/.bash_profile
         cp -a .bashrc /mnt/etc/skel/.bashrc
