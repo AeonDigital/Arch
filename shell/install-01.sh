@@ -220,7 +220,7 @@ else
           pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget
         fi
 
-        readNext "-- Os pacotes foram instalados? Digite 's' para prosseguir ou 'n' para refazer"
+        readNext "-- Os pacotes foram instalados? Digite 's' para prosseguir ou 'n' para refazer a instalação"
       done
 
 
