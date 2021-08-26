@@ -273,7 +273,7 @@ else
         mkdir /mnt/root/myBashConfig
         cp -a aliases.sh /mnt/root/myBashConfig/aliases.sh
         cp -a prompt.sh /mnt/root/myBashConfig/prompt.sh
-        cp -a functions.sh /mnt/root/myBashConfig/functions.sh
+        cp -a usr_functions.sh /mnt/root/myBashConfig/functions.sh
 
         cp -a .bash_profile /mnt/root/.bash_profile
         cp -a .bashrc /mnt/root/.bashrc
