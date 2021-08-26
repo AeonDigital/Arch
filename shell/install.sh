@@ -134,7 +134,7 @@ curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell
 
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_env_01_variables.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_env_02_functions.sh
-curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_03_env_print_pallete256.sh
+curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_env_02_functions_pallete256.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-aliases.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-user.sh
 curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-prompt.sh
