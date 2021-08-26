@@ -9,6 +9,11 @@ NOWD=$(date +"%Y-%m-%d")
 NOWT=$(date +"%T")
 
 
+# Variáveis de uso geral
+ENVIRONMENT="DEV"
+PROMPT_OPTIONS="sim(s) | nao(n)"
+PROMPT_RESULT=""
+
 
 # Informações do sistema
 KERNEL=`uname -r`
@@ -52,7 +57,68 @@ echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 
 
 
+#
+# Converte o argumento passado para minúsculas.
+#
+#   param string $1 string que será convertida
+#   example
+#     result=$(toLowerCase "TEXT")
+#
+toLowerCase() {
+  echo "${1,,}"
+}
+#
+# Converte o argumento passado para maiúsculas.
+#
+#   param string $1 string que será convertida.
+#   example
+#     result=$(toUpperCase "TEXT")
+#
+toUpperCase() {
+  echo "${1^^}"
+}
+#
+# Mostra uma mensagem para o usuário e questiona sobre Sim ou Não
+# O resultado selecionado pelo usuário ficará definido na variável ${PROMPT_RESULT}
+# armazenando os valores:
+#   0 : nao(n)
+#   1 : sim(s)
+#
+#  param string $1 mensagem questionando o usuário.
+#  example
+#    promptUser "-- Deseja prosseguir?"
+#    if [ "$PROMPT_RESULT" = "1" ]; then
+#      echo "Escolhido Sim"
+#    else
+#      echo "Escolhido Não"
+#    fi
+#
+promptUser() {
+  PROMPT_RESULT=""
+  
+  while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
+    if [ "$PROMPT_RESULT" != "" ]; then
+      echo "   Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\""
+    fi
+
+    echo ""
+    echo "$1"
+    read -p "   [ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
+    PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
+  done
+
+  if [ "$PROMPT_RESULT" == "nao" ] || [ "$PROMPT_RESULT" == "n" ]; then
+    PROMPT_RESULT=0
+  fi
+
+  if [ "$PROMPT_RESULT" == "sim" ] || [ "$PROMPT_RESULT" == "s" ]; then
+    PROMPT_RESULT=1
+  fi
+}
+
+
+
+
 
 # Carrega configurações personalizadas ao efetuar login
-ENVIRONMENT="DEV"
 source ~/.bashrc || true
