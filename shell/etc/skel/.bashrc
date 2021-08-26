@@ -5,6 +5,11 @@
 [[ $- != *i* ]] && return
 
 
+# Impede que seja causado um "exit" caso ocorra alguma falha
+# de execução de algum comando.
+set +e
+
+
 # Carrega os scripts de ambiente
 source /etc/bash-variables.sh || true
 source /etc/bash-aliases.sh || true
