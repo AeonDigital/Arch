@@ -43,7 +43,7 @@ updateBash() {
   fi
 
   PROMPT_RESULT=""
-  promptAlert
+  alertUser
 }
 
 
@@ -79,7 +79,7 @@ updateBashForMyUser() {
   fi
 
   PROMPT_RESULT=""
-  promptAlert
+  alertUser
 }
 
 
