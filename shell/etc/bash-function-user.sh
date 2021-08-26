@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use este script para adicionar funções que deseja disponibilizar para todas as 
+# Use este script para adicionar funções que deseja disponibilizar para todas as
 # seções dos usuários desta máquina.
 
 
@@ -19,12 +19,12 @@ updateBash() {
   PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
   PROMPT_MSG[1]=$(printf "Esta ação irá atualizar os scripts de sessão.")
   PROMPT_MSG[2]=$(printf "Qualquer personalização dos mesmos feitos até o momento serão perdidos.")
-  PROMPT_MSG[3]=$(printf "")
-  PROMPT_MSG[3]=$(printf "Tem certeza que deseja prosseguir?")
+  PROMPT_MSG[3]=""
+  PROMPT_MSG[4]=$(printf "Tem certeza que deseja prosseguir?")
 
 
   promptUser
-  msgReturn=""
+  ALERT_MSG=()
 
   if [ "$PROMPT_RESULT" == 1 ]; then
     curl -O "${AEONGIT}update-bash.sh"
@@ -32,18 +32,18 @@ updateBash() {
     ./update-bash.sh
     rm update-bash.sh
 
-    msgReturn=$(printf "
-    ${SILVER}Os scripts de sessão foram atualizados${NONE}
-    Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.
-    ")
+    ALERT_MSG[0]=""
+    ALERT_MSG[1]=$(printf "${SILVER}Os scripts de sessão foram atualizados${NONE}")
+    ALERT_MSG[2]=$(printf "Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
+    ALERT_MSG[3]=""
   else
-    msgReturn=$(printf "
-    ${SILVER}Nenhuma ação foi feita${NONE}
-    ")
+    ALERT_MSG[0]=""
+    ALERT_MSG[1]=$(printf "${SILVER}Nenhuma ação foi feita${NONE}")
+    ALERT_MSG[2]=""
   fi
 
-  echo "${msgReturn}"
   PROMPT_RESULT=""
+  promptAlert
 }
 
 
@@ -57,29 +57,29 @@ updateBashForMyUser() {
   PROMPT_MSG[1]=$(printf "Esta ação irá substituir seus arquivos pessoais:")
   PROMPT_MSG[2]=$(printf "- ${LCYAN}~/.bash_profile${NONE}")
   PROMPT_MSG[3]=$(printf "- ${LCYAN}~/.bashrc${NONE}")
-  PROMPT_MSG[4]=$(printf "")
+  PROMPT_MSG[4]=""
   PROMPT_MSG[5]=$(printf "Tem certeza que deseja prosseguir?")
 
 
   promptUser
-  msgReturn=""
+  ALERT_MSG=()
 
   if [ "$PROMPT_RESULT" == 1 ]; then
     cp -a /etc/skel/.bash_profile ~/.bash_profile
     cp -a /etc/skel/.bashrc ~/.bashrc
     source ~/.bash_profile
 
-    msgReturn=$(printf "
-    \e[01;37mSeu ambiente bash está atualizado\e[00;30m
-    ")
+    ALERT_MSG[0]=""
+    ALERT_MSG[1]=$(printf "\e[01;37mSeu ambiente bash está atualizado\e[00;30m")
+    ALERT_MSG[2]=""
   else
-    msgReturn=$(printf "
-    \e[01;37mNenhuma ação foi feita\e[00;30m
-    ")
+    ALERT_MSG[0]=""
+    ALERT_MSG[1]=$(printf "\e[01;37mNenhuma ação foi feita\e[00;30m")
+    ALERT_MSG[2]=""
   fi
 
-  echo "${msgReturn}"
   PROMPT_RESULT=""
+  promptAlert
 }
 
 
@@ -110,7 +110,7 @@ registerUserFunction() {
 listUserFunctions() {
   length=${#arrFunctionNames[@]}
 
-  for ((i=0;i<length;i++)); do 
+  for ((i=0;i<length;i++)); do
     fName=${arrFunctionNames[i]}
     fDesc=${arrFunctionDescriptions[i]}
     num=i+1
@@ -139,7 +139,7 @@ sessionStart() {
 # Para ativar use: ``terminalUTF8 on``
 # Para ativar use: ``terminalUTF8 off``
 terminalUTF8() {
-  if test ".$1" = ".off" ; then    
+  if test ".$1" = ".off" ; then
     printf '\033%%@'
     echo -e "UTF-8 off"
   else

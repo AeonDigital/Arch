@@ -51,7 +51,7 @@ echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
    #####   #####\e[00m             Use Disk: \e[1;34m$DISC (used)\e[00m\e[1;30m
   ####### #######\e[00m              Uptime: \e[1;34m$UP\e[00m\e[1;30m
    #####   #####\e[00m               Pacman: \e[1;34m$PACMAN packages can be updated\e[00m\e[1;30m
-                               
+
    #####           #####\e[00m         User: \e[1;34m$USER\e[00m\e[1;30m
   #######         #######\e[00m        Host: \e[1;34m$HOSTNAME\e[00m\e[1;30m
    #####           #####\e[00m         Date: \e[1;34m$NOW\e[00m
@@ -92,16 +92,18 @@ toUpperCase() {
 #     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
 #     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
 #
-#     alertUser 
+#     alertUser
 #
 alertUser() {
   if [ ${#ALERT_MSG[@]} = 0 ]; then
     echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;ALERT_MSG\e[00m"
     echo -e ""
   else
-    for msg in "${ALERT_MSG[@]}"; do 
+    for msg in "${ALERT_MSG[@]}"; do
       echo "${ALERT_INDENT}$msg"
     done
+
+    ALERT_MSG=()
   fi
 }
 #
@@ -119,7 +121,7 @@ alertUser() {
 #     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
 #     PROMPT_MSG[1]=$(printf "Deseja prosseguir?")
 #
-#     promptUser 
+#     promptUser
 #     if [ "$PROMPT_RESULT" == "1" ]; then
 #       echo "Escolhido Sim"
 #     else
@@ -129,19 +131,19 @@ alertUser() {
 promptUser() {
   PROMPT_RESULT=""
 
-  
+
   if [ ${#PROMPT_MSG[@]} = 0 ]; then
     echo -e "\e[01;37m${PROMPT_INDENT}ERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
     echo -e ""
   else
-  
+
     while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
       if [ "$PROMPT_RESULT" != "" ]; then
         echo "   Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\""
       fi
 
       echo ""
-      for msg in "${PROMPT_MSG[@]}"; do 
+      for msg in "${PROMPT_MSG[@]}"; do
         echo "${PROMPT_INDENT}$msg"
       done
 
@@ -158,6 +160,7 @@ promptUser() {
       PROMPT_RESULT=1
     fi
 
+    PROMPT_MSG=()
   fi
 }
 
@@ -169,10 +172,9 @@ promptUser() {
 # de personalização
 #
 if [ "$USER" == "root" ]; then
-  PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "\e[01;37mDeseja carregar scripts iniciais?\e[00m")
 
-  promptUser 
+  promptUser
   BASH_PERSONALIZE=${PROMPT_RESULT}
   PROMPT_RESULT=""
 fi
