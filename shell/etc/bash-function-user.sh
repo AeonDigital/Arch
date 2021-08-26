@@ -29,7 +29,7 @@ updateBashForMyUser() {
   cp -a /etc/skel/.bash_profile ~/.bash_profile
   cp -a /etc/skel/.bashrc ~/.bashrc
   source ~/.bash_profile
-  echo -e "${LGRAY}Seu ambiente bash está atualizado${NONE}"
+  echo -e "${DGREY}Seu ambiente bash está atualizado${NONE}"
 }
 
 
