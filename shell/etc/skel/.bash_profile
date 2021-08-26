@@ -1,22 +1,31 @@
 #
 # ~./bash_profile
 #
-
-
-
-timedatectl set-timezone America/Sao_Paulo
-source /etc/myBashEnvironment/variables.sh || true
-source /etc/myBashEnvironment/thirdp_functions_pallete256.sh || true
-source /etc/myBashEnvironment/functions.sh || true
+set +e
 
 
 
 #
-# Mensagem de Boas Vindas
-clear
-LOAD_BASHRC=1
+# Prompt padrão
+PS1="\[\e[40;00;37m\]\$ \[\e[40;01;30m\]\u\[\e[40;00;37m\]@\[\e[40;01;30m\]\h : \[\e[40;00;37m\]"
 
-echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
+
+
+if [ "$USER" != "" ]; then
+
+  timedatectl set-timezone America/Sao_Paulo
+  source /etc/myBashEnvironment/variables.sh || true
+  source /etc/myBashEnvironment/thirdp_functions_pallete256.sh || true
+  source /etc/myBashEnvironment/functions.sh || true
+
+
+
+  #
+  # Mensagem de Boas Vindas
+  clear
+  LOAD_BASHRC=1
+
+  echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 \e[1;30m
            #####
           #######
@@ -36,25 +45,25 @@ echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 
 
 
-#
-# Dá a chance do root optar por carregar ou não os scripts
-# de personalização
-#
-if [ "$USER" == "root" ]; then
-  PROMPT_MSG[0]=$(printf "\e[01;37mDeseja carregar scripts iniciais?\e[00m")
+  #
+  # Dá a chance do root optar por carregar ou não os scripts
+  # de personalização
+  #
+  if [ "$USER" == "root" ]; then
+    PROMPT_MSG[0]=$(printf "\e[01;37mDeseja carregar scripts iniciais?\e[00m")
 
-  promptUser
-  LOAD_BASHRC=${PROMPT_RESULT}
-  PROMPT_RESULT=""
-fi
+    promptUser
+    LOAD_BASHRC=${PROMPT_RESULT}
+    PROMPT_RESULT=""
+  fi
 
 
 
-#
-# Carrega configurações personalizadas ao efetuar login
-#
-if [ "$LOAD_BASHRC" == 1 ]; then
-  source ~/.bashrc || true
-else
-  PS1="\[\e[40;00;37m\]\$ \[\e[40;01;30m\]\u\[\e[40;00;37m\]@\[\e[40;01;30m\]\h : \[\e[40;00;37m\]"
+  #
+  # Carrega configurações personalizadas ao efetuar login
+  #
+  if [ "$LOAD_BASHRC" == 1 ]; then
+    source ~/.bashrc || true
+  else
+
 fi

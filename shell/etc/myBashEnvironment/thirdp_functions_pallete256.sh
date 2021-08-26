@@ -1,4 +1,5 @@
 #!/bin/bash
+set +e
 
 # Tom Hale, 2016. MIT Licence.
 # Print out 256 colours, with each number printed in its corresponding colour

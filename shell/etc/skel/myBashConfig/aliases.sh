@@ -1,4 +1,5 @@
 #!/bin/bash
+set +e
 
 # Aliases de comandos
 ## Lidando com arquivos e diretórios
