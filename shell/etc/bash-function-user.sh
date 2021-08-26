@@ -15,10 +15,13 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 # Atualiza os arquivos que compõe o bash personalizado
 #
 updateBash() {
-  msg=$(echo -e "${SILVER}ATENÇÃO!${NONE}\n")
-  msg=$(echo -e "${msg}Esta ação irá atualizar os scripts de sessão\n")
-  msg=$(echo -e "${msg}Qualquer personalização dos mesmos feitos nesta instalação serão perdidos\n")
-  msg=$(echo -e "${msg}Tem certeza que deseja prosseguir?")
+  msg=$(printf "
+  ${SILVER}ATENÇÃO!${NONE}
+    Esta ação irá atualizar os scripts de sessão.
+    Qualquer personalização dos mesmos feitos até o momento serão perdidos
+    
+    Tem certeza que deseja prosseguir?")
+
 
   promptUser "${msg}"
   msgReturn=""
@@ -48,11 +51,14 @@ updateBash() {
 # Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
 #
 updateBashForMyUser() {
-  msg=$(echo -e "${SILVER}ATENÇÃO!${NONE}\n")
-  msg=$(echo -e "${msg}Esta ação irá substituir seus arquivos pessoais:\n")
-  msg=$(echo -e "${msg} - ${LCYAN}~/.bash_profile${NONE}\n")
-  msg=$(echo -e "${msg} - ${LCYAN}~/.bashrc${NONE}\n")
-  msg=$(echo -e "${msg}Tem certeza que deseja prosseguir?")
+  msg=$(printf "
+  ${SILVER}ATENÇÃO!${NONE}
+    Esta ação irá substituir seus arquivos pessoais:
+    - ${LCYAN}~/.bash_profile${NONE}
+    - ${LCYAN}~/.bashrc${NONE}
+    
+    Tem certeza que deseja prosseguir?")
+
 
   promptUser "${msg}"
   msgReturn=""
