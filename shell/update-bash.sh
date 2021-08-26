@@ -5,7 +5,7 @@ curl -o /etc/issue https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/m
 
 curl -o /etc/bash_01_env_variables.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_01_env_variables.sh
 curl -o /etc/bash_02_env_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_02_env_functions.sh
-curl -o /etc/bash_03_session_pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_03_session_pallete256.sh
+curl -o /etc/bash_03_env_print_pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_03_env_print_pallete256.sh
 
 curl -o /etc/bash-aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-aliases.sh
 

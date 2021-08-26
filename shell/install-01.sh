@@ -252,7 +252,7 @@ else
         cp -a bash_01_env_variables.sh /mnt/etc/bash_01_env_variables.sh
         cp -a bash_02_env_functions.sh /mnt/etc/bash_02_env_functions.sh
         cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
-        cp -a bash_03_session_pallete256.sh /mnt/etc/bash_03_session_pallete256.sh
+        cp -a bash_03_env_print_pallete256.sh /mnt/etc/bash_03_env_print_pallete256.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
         cp -a bash-message-wellcome-01 /mnt/etc/bash-message-wellcome-01
         cp -a bash-message-wellcome-02 /mnt/etc/bash-message-wellcome-02
