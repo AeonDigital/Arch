@@ -55,8 +55,8 @@ updateMyBash() {
   PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
   PROMPT_MSG[1]=$(printf "Esta ação irá substituir seus arquivos pessoais:")
-  PROMPT_MSG[2]=$(printf "- ${LCYAN}~/.bash_profile${NONE}")
-  PROMPT_MSG[3]=$(printf "- ${LCYAN}~/.bashrc${NONE}")
+  PROMPT_MSG[2]=$(printf -- "- ${LCYAN}~/.bash_profile${NONE}")
+  PROMPT_MSG[3]=$(printf -- "- ${LCYAN}~/.bashrc${NONE}")
   PROMPT_MSG[4]=""
   PROMPT_MSG[5]=$(printf "Tem certeza que deseja prosseguir?")
 
