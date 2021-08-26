@@ -254,7 +254,8 @@ else
         cp -a 02_thirdp_functions_pallete256.sh /mnt/etc/myBashEnvironment/02_thirdp_functions_pallete256.sh
         cp -a 03_functions.sh /mnt/etc/myBashEnvironment/03_functions.sh
 
-        cp -a bash_users_aliases.sh /mnt/etc/bash_users_aliases.sh
+        mkdir /etc/skel/myBashConfig
+        cp -a aliases.sh /mnt/etc/skel/myBashConfig/aliases.sh
         cp -a bash_users_functions.sh /mnt/etc/bash_users_functions.sh
         cp -a bash_users_prompt.sh /mnt/etc/bash_users_prompt.sh
 

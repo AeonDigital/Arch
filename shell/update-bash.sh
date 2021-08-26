@@ -7,7 +7,7 @@ curl -o /etc/myBashEnvironment/01_variables.sh https://raw.githubusercontent.com
 curl -o /etc/myBashEnvironment/02_thirdp_functions_pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/02_thirdp_functions_pallete256.sh
 curl -o /etc/myBashEnvironment/03_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/myBashEnvironment/03_functions.sh
 
-curl -o /etc/bash_users_aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_aliases.sh
+curl -o /etc/skel/myBashConfig/aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myBashConfig/aliases.sh
 curl -o /etc/bash_users_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_functions.sh
 curl -o /etc/bash_users_prompt.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_prompt.sh
 
