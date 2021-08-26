@@ -249,7 +249,8 @@ else
 
         cp -a issue /mnt/etc/issue
 
-        cp -a bash_env_01_variables.sh /mnt/etc/bash_env_01_variables.sh
+        mkdir /etc/myBashEnvironment
+        cp -a 01_variables.sh /mnt/etc/myBashEnvironment/01_variables.sh
         cp -a bash_env_02_functions.sh /mnt/etc/bash_env_02_functions.sh
         cp -a bash_env_02_functions_pallete256.sh /mnt/etc/bash_env_02_functions_pallete256.sh
         cp -a bash_users_aliases.sh /mnt/etc/bash_users_aliases.sh
