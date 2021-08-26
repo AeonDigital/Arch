@@ -137,5 +137,5 @@ fi
 if [ "$BASH_PERSONALIZE" = "1" ]; then
   source ~/.bashrc || true
 else
-  PS1="\[\e[40;01;30m\]\$ \u@\h : \[\e[40;00;37m\]"
+  PS1="\[\e[40;00;37m\]\$ \[\e[40;01;30m\]\u\[\e[40;00;37m\]@\[\e[40;01;30m\]\h : \[\e[40;00;37m\]"
 fi
