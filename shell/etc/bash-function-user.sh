@@ -23,7 +23,7 @@ updateBash() {
   promptUser "${msg}"
   msgReturn=""
 
-  if [ "$PROMPT_RESULT" == "1" ]; then
+  if [ "$PROMPT_RESULT" == 1 ]; then
     curl -O "${AEONGIT}update-bash.sh"
     chmod u+x update-bash.sh
     ./update-bash.sh
@@ -57,7 +57,7 @@ updateBashForMyUser() {
   promptUser "${msg}"
   msgReturn=""
 
-  if [ "$PROMPT_RESULT" == "1" ]; then
+  if [ "$PROMPT_RESULT" == 1 ]; then
     cp -a /etc/skel/.bash_profile ~/.bash_profile
     cp -a /etc/skel/.bashrc ~/.bashrc
     source ~/.bash_profile

@@ -125,7 +125,7 @@ promptUser() {
 #
 if [ "$USER" == "root" ]; then
   promptUser "-- Carregar scripts iniciais?"
-  BASH_PERSONALIZE=PROMPT_RESULT
+  BASH_PERSONALIZE=${PROMPT_RESULT}
   PROMPT_RESULT=""
 fi
 
@@ -134,7 +134,7 @@ fi
 #
 # Carrega configurações personalizadas ao efetuar login
 #
-if [ "$BASH_PERSONALIZE" == "1" ]; then
+if [ "$BASH_PERSONALIZE" == 1 ]; then
   source ~/.bashrc || true
 else
   PS1="\[\e[40;00;37m\]\$ \[\e[40;01;30m\]\u\[\e[40;00;37m\]@\[\e[40;01;30m\]\h : \[\e[40;00;37m\]"
