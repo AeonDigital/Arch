@@ -213,7 +213,7 @@ else
     else
 
       $next="NAO"
-      while [ "$next" != "SIM" ]; do
+      while [ "$next" == "NAO" ]; do
         if [ "$mother_board" == "UEFI" ]; then
           pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget
         else
