@@ -4,6 +4,7 @@
 curl -o /etc/issue https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/issue
 
 curl -o /etc/bash_01_variables.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_01_variables.sh
+curl -o /etc/bash_02_session_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_02_session_functions.sh
 curl -o /etc/bash-aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-aliases.sh
 curl -o /etc/bash-function-pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-pallete256.sh
 curl -o /etc/bash-function-user.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-user.sh

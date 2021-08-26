@@ -44,20 +44,6 @@ NOWT=$(date +"%T")
 
 
 #
-# Variáveis de sessão para uso com as funções globais
-BASH_PERSONALIZE=1
-
-ALERT_MSG=()
-ALERT_INDENT="    "
-
-PROMPT_OPTIONS="sim(s) | nao(n)"
-PROMPT_MSG=()
-PROMPT_INDENT="    "
-PROMPT_RESULT=""
-
-
-
-#
 # Definição de cores para uso em strings
 ## Cores
 ### 'D' indica 'Dark'
