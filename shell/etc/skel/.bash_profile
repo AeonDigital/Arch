@@ -106,7 +106,8 @@ promptUser() {
 
   
   if [ ${#PROMPT_MSG[@]} = 0 ]; then
-    echo -e "\e[01;37mERROR: empty array \e[01;32mPROMPT_MSG\e[00m"
+    echo -e "\e[01;37mERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
+    echo -e ""
   else
   
     while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
@@ -143,7 +144,9 @@ promptUser() {
 # de personalização
 #
 if [ "$USER" == "root" ]; then
-  promptUser "${PROMPT_INDENT}\e[01;37mDeseja carregar scripts iniciais?\e[00;30m"
+  PROMPT_MSG[0]=$(printf "${PROMPT_INDENT}\e[01;37mDeseja carregar scripts iniciais?\e[00;30m")
+
+  promptUser 
   BASH_PERSONALIZE=${PROMPT_RESULT}
   PROMPT_RESULT=""
 fi

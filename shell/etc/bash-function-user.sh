@@ -34,7 +34,8 @@ updateBash() {
 
     msgReturn=$(printf "
     ${SILVER}Os scripts de sessão foram atualizados${NONE}
-    Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
+    Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.
+    ")
   else
     msgReturn=$(printf "
     ${SILVER}Nenhuma ação foi feita${NONE}
