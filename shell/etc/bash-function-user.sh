@@ -15,10 +15,10 @@ AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shel
 # Atualiza os arquivos que compõe o bash personalizado
 #
 updateBash() {
-  msg="${SILVER}ATENÇÃO!${NONE}\n"
-  msg="${msg}Esta ação irá atualizar os scripts de sessão\n"
-  msg="${msg}Qualquer personalização dos mesmos feitos nesta instalação serão perdidos\n"
-  msg="${msg}Tem certeza que deseja prosseguir?"
+  msg=$(echo -e "${SILVER}ATENÇÃO!${NONE}\n")
+  msg=$(echo -e "${msg}Esta ação irá atualizar os scripts de sessão\n")
+  msg=$(echo -e "${msg}Qualquer personalização dos mesmos feitos nesta instalação serão perdidos\n")
+  msg=$(echo -e "${msg}Tem certeza que deseja prosseguir?")
 
   promptUser "${msg}"
   msgReturn=""
@@ -29,10 +29,10 @@ updateBash() {
     ./update-bash.sh
     rm update-bash.sh
 
-    msgReturn="${SILVER}Os scripts de sessão foram atualizados${NONE}\n"
-    msgReturn="${msgReturn}Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário."
+    msgReturn=$(echo -e "${SILVER}Os scripts de sessão foram atualizados${NONE}\n")
+    msgReturn=$(echo -e "${msgReturn}Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
   else
-    msgReturn="${SILVER}Nenhuma ação foi feita${NONE}"
+    msgReturn=$(echo -e "${SILVER}Nenhuma ação foi feita${NONE}")
   fi
 
   echo ""
@@ -48,11 +48,11 @@ updateBash() {
 # Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
 #
 updateBashForMyUser() {
-  msg="${SILVER}ATENÇÃO!${NONE}\n"
-  msg="${msg}Esta ação irá substituir seus arquivos pessoais:\n"
-  msg="${msg} - ${LCYAN}~/.bash_profile${NONE}\n"
-  msg="${msg} - ${LCYAN}~/.bashrc${NONE}\n"
-  msg="${msg}Tem certeza que deseja prosseguir?"
+  msg=$(echo -e "${SILVER}ATENÇÃO!${NONE}\n")
+  msg=$(echo -e "${msg}Esta ação irá substituir seus arquivos pessoais:\n")
+  msg=$(echo -e "${msg} - ${LCYAN}~/.bash_profile${NONE}\n")
+  msg=$(echo -e "${msg} - ${LCYAN}~/.bashrc${NONE}\n")
+  msg=$(echo -e "${msg}Tem certeza que deseja prosseguir?")
 
   promptUser "${msg}"
   msgReturn=""
@@ -62,9 +62,9 @@ updateBashForMyUser() {
     cp -a /etc/skel/.bashrc ~/.bashrc
     source ~/.bash_profile
 
-    msgReturn="${SILVER}Seu ambiente bash está atualizado${NONE}"
+    msgReturn=$(echo -e "${SILVER}Seu ambiente bash está atualizado${NONE}")
   else
-    msgReturn="${SILVER}Nenhuma ação foi feita${NONE}"
+    msgReturn=$(echo -e "${SILVER}Nenhuma ação foi feita${NONE}")
   fi
 
   echo ""
