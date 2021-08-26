@@ -10,8 +10,6 @@ curl -o /etc/bash_03_env_print_pallete256.sh https://raw.githubusercontent.com/A
 curl -o /etc/bash-aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-aliases.sh
 
 curl -o /etc/bash-function-user.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-user.sh
-curl -o /etc/bash-message-wellcome-01 https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-message-wellcome-01
-curl -o /etc/bash-message-wellcome-02 https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-message-wellcome-02
 curl -o /etc/bash-prompt.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-prompt.sh
 
 curl -o /etc/skel/.bash_profile https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile
