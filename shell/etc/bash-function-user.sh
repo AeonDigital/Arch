@@ -32,16 +32,16 @@ updateBash() {
     ./update-bash.sh
     rm update-bash.sh
 
-    msgReturn=$(echo -e "${SILVER}Os scripts de sessão foram atualizados${NONE}\n")
-    msgReturn=$(echo -e "${msgReturn}Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
+    msgReturn=$(printf "
+    ${SILVER}Os scripts de sessão foram atualizados${NONE}
+    Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário.")
   else
-    msgReturn=$(echo -e "${SILVER}Nenhuma ação foi feita${NONE}")
+    msgReturn=$(printf "
+    ${SILVER}Nenhuma ação foi feita${NONE}
+    ")
   fi
 
-  echo ""
   echo "${msgReturn}"
-  echo ""
-
   PROMPT_RESULT=""
 }
 
@@ -68,15 +68,16 @@ updateBashForMyUser() {
     cp -a /etc/skel/.bashrc ~/.bashrc
     source ~/.bash_profile
 
-    msgReturn=$(echo -e "${SILVER}Seu ambiente bash está atualizado${NONE}")
+    msgReturn=$(printf "
+    ${SILVER}Seu ambiente bash está atualizado${NONE}
+    ")
   else
-    msgReturn=$(echo -e "${SILVER}Nenhuma ação foi feita${NONE}")
+    msgReturn=$(printf "
+    ${SILVER}Nenhuma ação foi feita${NONE}
+    ")
   fi
 
-  echo ""
   echo "${msgReturn}"
-  echo ""
-
   PROMPT_RESULT=""
 }
 
