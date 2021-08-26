@@ -8,9 +8,8 @@ curl -o /etc/bash_env_02_functions.sh https://raw.githubusercontent.com/AeonDigi
 curl -o /etc/bash_env_02_functions_pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_env_02_functions_pallete256.sh
 
 curl -o /etc/bash_users_aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_aliases.sh
+curl -o /etc/bash_users_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_functions.sh
 curl -o /etc/bash_users_prompt.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_users_prompt.sh
-curl -o /etc/bash-function-user.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-user.sh
-
 
 curl -o /etc/skel/.bash_profile https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bash_profile
 curl -o /etc/skel/.bashrc https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/.bashrc
