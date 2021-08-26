@@ -10,14 +10,36 @@ arrFunctionDescriptions=()
 AEONGIT="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
 
 
+
 #
 # Atualiza os arquivos que compõe o bash personalizado
 #
 updateBash() {
-  curl -O "${AEONGIT}update-bash.sh"
-  chmod u+x update-bash.sh
-  ./update-bash.sh
-  rm update-bash.sh
+  msg="${SILVER}ATENÇÃO!${NONE}\n"
+  msg="${msg}Esta ação irá atualizar os scripts de sessão\n"
+  msg="${msg}Qualquer personalização dos mesmos feitos nesta instalação serão perdidos\n"
+  msg="${msg}Tem certeza que deseja prosseguir?"
+
+  promptUser "${msg}"
+  msgReturn=""
+
+  if [ "$PROMPT_RESULT" = "1" ]; then
+    curl -O "${AEONGIT}update-bash.sh"
+    chmod u+x update-bash.sh
+    ./update-bash.sh
+    rm update-bash.sh
+
+    msgReturn="${SILVER}Os scripts de sessão foram atualizados${NONE}\n"
+    msgReturn="${msgReturn}Use o comando ${GREEN}updateBashForMyUser${NONE} para atualizar sua conta de usuário."
+  else
+    msgReturn="${SILVER}Nenhuma ação foi feita${NONE}"
+  fi
+
+  echo ""
+  echo "${msgReturn}"
+  echo ""
+
+  PROMPT_RESULT=""
 }
 
 
@@ -26,10 +48,30 @@ updateBash() {
 # Atualiza os arquivos '.bashrc' e '.bash_profile' do usuário que chamou esta função.
 #
 updateBashForMyUser() {
-  cp -a /etc/skel/.bash_profile ~/.bash_profile
-  cp -a /etc/skel/.bashrc ~/.bashrc
-  source ~/.bash_profile
-  echo -e "${DGREY}Seu ambiente bash está atualizado${NONE}"
+  msg="${SILVER}ATENÇÃO!${NONE}\n"
+  msg="${msg}Esta ação irá substituir seus arquivos pessoais:\n"
+  msg="${msg} - ${LCYAN}~/.bash_profile${NONE}\n"
+  msg="${msg} - ${LCYAN}~/.bashrc${NONE}\n"
+  msg="${msg}Tem certeza que deseja prosseguir?"
+
+  promptUser "${msg}"
+  msgReturn=""
+
+  if [ "$PROMPT_RESULT" = "1" ]; then
+    cp -a /etc/skel/.bash_profile ~/.bash_profile
+    cp -a /etc/skel/.bashrc ~/.bashrc
+    source ~/.bash_profile
+
+    msgReturn="${SILVER}Seu ambiente bash está atualizado${NONE}"
+  else
+    msgReturn="${SILVER}Nenhuma ação foi feita${NONE}"
+  fi
+
+  echo ""
+  echo "${msgReturn}"
+  echo ""
+
+  PROMPT_RESULT=""
 }
 
 
