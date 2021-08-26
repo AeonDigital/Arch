@@ -4,9 +4,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-set -euo pipefail
-shopt -s inherit_errexit nullglob
-
 
 # Carrega os scripts de ambiente
 source /etc/bash-variables.sh || true

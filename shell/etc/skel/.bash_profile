@@ -31,6 +31,7 @@ HOSTNAME=`uname -n`
 
 # Mensagem de Boas Vindas
 clear
+
 echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 \e[1;30m
            #####
@@ -53,4 +54,5 @@ echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
 
 
 # Carrega configurações personalizadas ao efetuar login
-source ~/.bashrc
+ENVIRONMENT="DEV"
+source ~/.bashrc || true
