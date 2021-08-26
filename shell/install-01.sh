@@ -72,7 +72,7 @@ readMotherBoard() {
 ## Identifica se é para seguir adiante
 readNext() {
   next=""
-  
+
   while [ "$next" != "SIM" ] && [ "$next" != "S" ] && [ "$next" != "NAO" ] && [ "$next" != "N" ]; do
     if [ "$next" != "" ]; then
       echo "   Esperado apenas S/N: \"$next\""
@@ -161,7 +161,7 @@ else
   echo -e ""
   echo -e "${CYAN}01.4${NONE} - Montando as partições e preparando o filesystem."
   mount /dev/sda3 /mnt
-  mkdir /mnt/boot 
+  mkdir /mnt/boot
   mkdir /mnt/home
   mount /dev/sda1 /mnt/boot
   swapon /dev/sda2
@@ -249,13 +249,13 @@ else
 
         cp -a issue /mnt/etc/issue
 
+        cp -a bash_01_variables.sh /mnt/etc/bash_01_variables.sh
         cp -a bash-aliases.sh /mnt/etc/bash-aliases.sh
         cp -a bash-function-pallete256.sh /mnt/etc/bash-function-pallete256.sh
         cp -a bash-function-user.sh /mnt/etc/bash-function-user.sh
         cp -a bash-message-wellcome-01 /mnt/etc/bash-message-wellcome-01
         cp -a bash-message-wellcome-02 /mnt/etc/bash-message-wellcome-02
         cp -a bash-prompt.sh /mnt/etc/bash-prompt.sh
-        cp -a bash-variables.sh /mnt/etc/bash-variables.sh
 
         cp -a .bash_profile /mnt/etc/skel/.bash_profile
         cp -a .bashrc /mnt/etc/skel/.bashrc
