@@ -5,8 +5,10 @@ curl -o /etc/issue https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/m
 
 curl -o /etc/bash_01_variables.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_01_variables.sh
 curl -o /etc/bash_02_session_functions.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_02_session_functions.sh
+curl -o /etc/bash_03_session_pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash_03_session_pallete256.sh
+
 curl -o /etc/bash-aliases.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-aliases.sh
-curl -o /etc/bash-function-pallete256.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-pallete256.sh
+
 curl -o /etc/bash-function-user.sh https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-function-user.sh
 curl -o /etc/bash-message-wellcome-01 https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-message-wellcome-01
 curl -o /etc/bash-message-wellcome-02 https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/bash-message-wellcome-02
