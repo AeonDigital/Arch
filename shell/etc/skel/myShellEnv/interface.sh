@@ -263,3 +263,11 @@ updateMyShellEnv() {
   chmod u+x updateMyShellEnv.sh
   ./updateMyShellEnv.sh
 }
+#
+# Efetua a instalação completa do 'myShellEnv'.
+#
+reinstallMyShellEnv() {
+  curl -O "${URL_UPDATE}installMyShellEnv.sh"
+  chmod u+x installMyShellEnv.sh
+  ./installMyShellEnv.sh
+}
