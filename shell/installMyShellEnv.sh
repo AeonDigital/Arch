@@ -390,7 +390,7 @@ fi
 ALERT_MSG+=""
 
 
-rm installMyShellEnv.sh || true
+#rm installMyShellEnv.sh || true
 waitUser
 
 
