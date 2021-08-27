@@ -154,7 +154,7 @@ waitUser() {
     for msg in "${ALERT_MSG[@]}"; do
       printf "${ALERT_INDENT}$msg \n"
     done
-    read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ]"
+    read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ] \n"
 
     ALERT_MSG=()
     INTERFACE_MSG=()
@@ -271,21 +271,18 @@ if [ "$EUID" == 0 ]; then
   setIMessage "para ${SILVER}todo novo usuário${NONE} criado nesta máquina."
   alertUser
 
-  setIMessage "" 1
+  setIMessage "\n" 1
   setIMessage "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?"
   setIMessage "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]"
-  setIMessage ""
 
   promptUser
   INSTALL_IN_SKEL=$PROMPT_RESULT
   PROMPT_RESULT=""
 
 
-  setIMessage "" 1
-  setIMessage ""
+  setIMessage "\n" 1
   setIMessage "Você deseja instalar a mensagem de login?"
   setIMessage "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]"
-  setIMessage ""
 
   promptUser
   INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
@@ -298,9 +295,8 @@ fi
 
 #
 # Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
-setIMessage "" 1
+setIMessage "\n" 1
 setIMessage "Prosseguir instalação para o seu próprio usuário?"
-setIMessage ""
 
 promptUser
 INSTALL_IN_MY_USER=$PROMPT_RESULT
