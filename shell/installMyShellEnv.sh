@@ -216,7 +216,7 @@ clear
 ALERT_MSG=()
 ALERT_MSG+=("")
 ALERT_MSG+=($(printf "${SILVER}myShellEnv${NONE}"))
-ALERT_MSG+($(printf "Iniciando o processo de instalação."))
+ALERT_MSG+=($(printf "Iniciando o processo de instalação."))
 alertUser
 
 
