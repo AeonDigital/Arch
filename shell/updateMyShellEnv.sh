@@ -28,7 +28,7 @@ if [ "$PROMPT_RESULT" == "1" ]; then
   curl -s -o ~/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
   curl -s -o ~/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
   curl -s -o ~/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
-  curl -s -o ~/myShellEnv/shellEnvStart.sh "${URL_MYSHELLENV}shellEnvStart.sh"
+  curl -s -o ~/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
   curl -s -o ~/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
 
 
