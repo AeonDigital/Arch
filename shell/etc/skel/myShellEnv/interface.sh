@@ -75,6 +75,8 @@ PROMPT_RESULT=""
 FUNCTION_NAMES=()
 FUNCTION_DESCRIPTIONS=()
 
+GENERIC_MSG=()
+
 
 
 
@@ -107,21 +109,26 @@ toUpperCase() {
 #
 #   example
 #     ALERT_MSG=()
-#     ALERT_MSG+=$(printf "${SILVER}Sucesso!${NONE}")
-#     ALERT_MSG+=$(printf "Todos os scripts foram atualizados")
+#     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
 #
 #     alertUser
 #
 alertUser() {
-  if [ ${#ALERT_MSG[@]} = 0 ]; then
-    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;ALERT_MSG\e[00m"
+  if [ ${#ALERT_MSG[@]} == 0 ] && [ ${#GENERIC_MSG[@]} == 0 ]; then
+    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;32mALERT_MSG\e[00m"
     echo -e ""
   else
+    if [ ${#ALERT_MSG[@]} == 0 ]; then
+      ALERT_MSG=$GENERIC_MSG
+    fi
+
     for msg in "${ALERT_MSG[@]}"; do
       echo "${ALERT_INDENT}$msg"
     done
 
     ALERT_MSG=()
+    GENERIC_MSG=()
   fi
 }
 #
@@ -132,14 +139,14 @@ alertUser() {
 #
 #   example
 #     ALERT_MSG=()
-#     ALERT_MSG+=$(printf "${SILVER}Sucesso!${NONE}")
-#     ALERT_MSG+=$(printf "Todos os scripts foram atualizados")
+#     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
 #
 #     waitUser
 #
 waitUser() {
-  if [ ${#ALERT_MSG[@]} = 0 ]; then
-    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;ALERT_MSG\e[00m"
+  if [ ${#ALERT_MSG[@]} == 0 ]; then
+    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;32mALERT_MSG\e[00m"
     echo -e ""
   else
     for msg in "${ALERT_MSG[@]}"; do
@@ -162,8 +169,8 @@ waitUser() {
 #
 #   example
 #     PROMPT_MSG=()
-#     PROMPT_MSG+=$(printf "${SILVER}ATENÇÃO!${NONE}")
-#     PROMPT_MSG+=$(printf "Deseja prosseguir?")
+#     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
+#     PROMPT_MSG[1]=$(printf "Deseja prosseguir?")
 #
 #     promptUser
 #     if [ "$PROMPT_RESULT" == "1" ]; then
@@ -176,7 +183,7 @@ promptUser() {
   PROMPT_RESULT=""
 
 
-  if [ ${#PROMPT_MSG[@]} = 0 ]; then
+  if [ ${#PROMPT_MSG[@]} == 0 ]; then
     echo -e "\e[01;37m${PROMPT_INDENT}ERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
     echo -e ""
   else
@@ -205,6 +212,34 @@ promptUser() {
     fi
 
     PROMPT_MSG=()
+  fi
+}
+
+
+
+
+
+#
+# Adiciona uma nova linha de informação no array de mensagem
+# genérica ${GENERIC_MSG}
+#
+#   param string $1 nova linha da mensagem
+#   param bool $2 use '1' quando quiser que o array seja reiniciado.
+#                 Qualquer outro valor não causará efeitos
+#   example
+#     setGenericMessage "Atenção" 1
+#     setGenericMessage "Todos os arquivos serão excluídos."
+#
+setGenericMessage() {
+  if [ "$#" != "1" ] && [ "$#" != "2" ]; then
+    echo "Error: expected 1 argument"
+  else
+    if [ "$#" == "2" ] && [ "$2" == "1" ]; then
+      GENERIC_MSG=()
+    fi
+
+    l=${#GENERIC_MSG[@]}
+    GENERIC_MSG[l]=$1
   fi
 }
 
