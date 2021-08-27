@@ -62,6 +62,8 @@ fi
 # apresenta a mensagem de entrada.
 #
 if [ "$MYSHELLENV_START" == 1 ] && [ "$0" == "-bash" ]; then
+  clear
+
   echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
   \e[1;30m
            #####
