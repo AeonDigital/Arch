@@ -173,8 +173,9 @@ promptUser() {
 
 clear
 ALERT_MSG=()
-ALERT_MSG[0]=$(printf "${SILVER}myShellEnv${NONE}")
-ALERT_MSG[1]=$(printf "Iniciando o processo de instalação.")
+ALERT_MSG[0]=""
+ALERT_MSG[1]=$(printf "${SILVER}myShellEnv${NONE}")
+ALERT_MSG[2]=$(printf "Iniciando o processo de instalação.")
 alertUser
 
 
@@ -189,12 +190,13 @@ if [ "$EUID" == 0 ]; then
   ALERT_MSG[0]=""
   ALERT_MSG[1]=$(printf "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}")
   ALERT_MSG[2]=$(printf "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}")
-  ALERT_MSG[3]=$(printf "para todo novo usuário criado nesta máquina.")
+  ALERT_MSG[3]=$(printf "para ${SILVER}todo novo usuário${NONE} criado nesta máquina.")
   alertUser
 
   PROMPT_MSG=()
   PROMPT_MSG[0]=$(printf "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?")
   PROMPT_MSG[1]=$(printf "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]")
+  PROMPT_MSG[2]=""
 
   promptUser
   INSTALL_IN_SKEL=$PROMPT_RESULT
@@ -202,8 +204,10 @@ if [ "$EUID" == 0 ]; then
 
 
   PROMPT_MSG=()
-  PROMPT_MSG[0]=$(printf "Você deseja instalar a mensagem de login?")
-  PROMPT_MSG[1]=$(printf "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]")
+  PROMPT_MSG[0]=""
+  PROMPT_MSG[1]=$(printf "Você deseja instalar a mensagem de login?")
+  PROMPT_MSG[2]=$(printf "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]")
+  PROMPT_MSG[3]=""
 
   promptUser
   INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
@@ -233,7 +237,8 @@ if [ "$INSTALL_IN_SKEL" == "1" ]; then
 
 
   ALERT_MSG=()
-  ALERT_MSG[0]=$(printf "${SILVER}Instalação no skel concluída${NONE}")
+  ALERT_MSG[0]=""
+  ALERT_MSG[1]=$(printf "${SILVER}Instalação no skel concluída${NONE}")
   alertUser
 fi
 
@@ -247,7 +252,8 @@ if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
   curl -s -o /etc/issue "${URL_ETC}issue"
 
   ALERT_MSG=()
-  ALERT_MSG[0]=$(printf "${SILVER}Instalação da mensagem de login concluída${NONE}")
+  ALERT_MSG[0]=""
+  ALERT_MSG[1]=$(printf "${SILVER}Instalação da mensagem de login concluída${NONE}")
   alertUser
 fi
 
@@ -258,7 +264,7 @@ fi
 #
 # Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
 PROMPT_MSG=()
-PROMPT_MSG[0]=$(printf "Prosseguir instalação para o seu usuário?")
+PROMPT_MSG[0]=$(printf "Prosseguir instalação para o seu próprio usuário?")
 
 promptUser
 if [ "$PROMPT_RESULT" == "1" ]; then
@@ -278,7 +284,8 @@ if [ "$PROMPT_RESULT" == "1" ]; then
 
 
   ALERT_MSG=()
-  ALERT_MSG[0]=$(printf "${SILVER}Instalação para o seu usuário concluída${NONE}")
+  ALERT_MSG[0]=""
+  ALERT_MSG[1]=$(printf "${SILVER}Instalação para o seu usuário concluída${NONE}")
   alertUser
 fi
 PROMPT_RESULT=""
@@ -287,7 +294,7 @@ PROMPT_RESULT=""
 
 
 ALERT_MSG=()
-ALERT_MSG[0]=$(printf "${SILVER}Processo de instalação concluído!${NONE}")
+ALERT_MSG[0]=$(printf "${SILVER}Processo de instalação encerrado!${NONE}")
 alertUser
 
-rm installMyShellEnv | true
+rm installMyShellEnv.sh | true

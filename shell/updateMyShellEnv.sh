@@ -15,10 +15,11 @@ URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/mast
 
 
 PROMPT_MSG=()
-PROMPT_MSG[0]=$(printf "${SILVER}myShellEnv${NONE}")
-PROMPT_MSG[1]=$(printf "Iniciando o processo de atualização para o seu usuário.")
-PROMPT_MSG[2]=$(printf "Esta ação não pode ser desfeita.")
-PROMPT_MSG[2]=$(printf "Deseja prosseguir?")
+PROMPT_MSG[0]=""
+PROMPT_MSG[1]=$(printf "${SILVER}myShellEnv${NONE}")
+PROMPT_MSG[2]=$(printf "Iniciando o processo de atualização para o seu usuário.")
+PROMPT_MSG[3]=$(printf "Esta ação não pode ser desfeita.")
+PROMPT_MSG[4]=$(printf "Deseja prosseguir?")
 
 promptUser
 if [ "$PROMPT_RESULT" == "1" ]; then
@@ -38,7 +39,8 @@ if [ "$PROMPT_RESULT" == "1" ]; then
 
 
   ALERT_MSG=()
-  ALERT_MSG[0]=$(printf "${SILVER}Atualização concluída${NONE}")
+  ALERT_MSG[0]=""
+  ALERT_MSG[1]=$(printf "${SILVER}Atualização concluída${NONE}")
   alertUser
 fi
 PROMPT_RESULT=""
@@ -47,7 +49,7 @@ PROMPT_RESULT=""
 
 
 ALERT_MSG=()
-ALERT_MSG[0]=$(printf "${SILVER}Processo finalizado${NONE}")
+ALERT_MSG[0]=$(printf "${SILVER}Processo de atualização encerrado!${NONE}")
 alertUser
 
-rm updateMyShellEnv | true
+rm updateMyShellEnv.sh | true

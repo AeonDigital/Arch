@@ -25,7 +25,8 @@ if [ "$USER" != "" ]; then
   # Dá a chance do root optar por carregar ou não os scripts
   # de personalização
   #
-  if [ "$USER" == "root" ]; then
+  #if [ "$USER" == "root" ]; then
+  if [ "$EUID" == 0 ]; then
     PROMPT_MSG[0]=$(printf "\e[01;37mDeseja iniciar o myShellEnv?\e[00m")
 
     promptUser
