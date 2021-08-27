@@ -65,6 +65,7 @@ BLINK="\e[05m"
 # Variáveis para uso com as funções de interface
 ALERT_MSG=()
 ALERT_INDENT="    "
+ALERT_WAIT_PROMPT="Precione qualquer tecla para prosseguir."
 
 PROMPT_OPTIONS="sim(s) | nao(n)"
 PROMPT_MSG=()
@@ -100,6 +101,7 @@ toUpperCase() {
 }
 #
 # Mostra uma mensagem de alerta para o usuário.
+#
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
 # onde, cada item do array será definido em uma linha do terminal
 #
@@ -118,6 +120,32 @@ alertUser() {
     for msg in "${ALERT_MSG[@]}"; do
       echo "${ALERT_INDENT}$msg"
     done
+
+    ALERT_MSG=()
+  fi
+}
+#
+# Mostra uma mensagem de alerta para o usuário e aguarda ele digitar qualquer tecla.
+#
+# A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
+# onde, cada item do array será definido em uma linha do terminal
+#
+#   example
+#     ALERT_MSG=()
+#     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
+#
+#     waitUser
+#
+waitUser() {
+  if [ ${#ALERT_MSG[@]} = 0 ]; then
+    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;ALERT_MSG\e[00m"
+    echo -e ""
+  else
+    for msg in "${ALERT_MSG[@]}"; do
+      echo "${ALERT_INDENT}$msg"
+    done
+    read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ]"
 
     ALERT_MSG=()
   fi

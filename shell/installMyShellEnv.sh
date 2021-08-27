@@ -194,11 +194,11 @@ alertUser
 
 INSTALL_IN_SKEL=0
 INSTALL_LOGIN_MESSAGE=0
-INSTALL_USER_IS_ROOT=0
+INSTALL_IN_MY_USER=0
 
+
+# sendo um root...
 if [ "$EUID" == 0 ]; then
-  INSTALL_USER_IS_ROOT=1
-
   ALERT_MSG=()
   ALERT_MSG[0]=""
   ALERT_MSG[1]=$(printf "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}")
@@ -226,6 +226,20 @@ if [ "$EUID" == 0 ]; then
   INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
   PROMPT_RESULT=""
 fi
+
+
+
+
+
+#
+# Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
+PROMPT_MSG=()
+PROMPT_MSG[0]=$(printf "Prosseguir instalação para o seu próprio usuário?")
+PROMPT_MSG[1]=""
+
+promptUser
+INSTALL_IN_MY_USER=$PROMPT_RESULT
+PROMPT_RESULT=""
 
 
 
@@ -261,7 +275,7 @@ fi
 
 
 #
-# Sendo para instalar a mensagem de login
+# Sendo para instalar a mensagem de login...
 if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
   curl -s -o /etc/issue "${URL_ETC}issue"
 
@@ -276,12 +290,8 @@ fi
 
 
 #
-# Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
-PROMPT_MSG=()
-PROMPT_MSG[0]=$(printf "Prosseguir instalação para o seu próprio usuário?")
-
-promptUser
-if [ "$PROMPT_RESULT" == "1" ]; then
+# Sendo para instalar no próprio usuário...
+if [ "$INSTALL_IN_MY_USER" == "1" ]; then
   mkdir -p ~/myShellEnv
 
   curl -s -o ~/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
@@ -303,13 +313,27 @@ if [ "$PROMPT_RESULT" == "1" ]; then
   ALERT_MSG[1]=$(printf "${SILVER}Instalação para o seu usuário concluída${NONE}")
   alertUser
 fi
-PROMPT_RESULT=""
 
 
 
 
+
+#
+# Encerra o script
 ALERT_MSG=()
 ALERT_MSG[0]=$(printf "${SILVER}Processo de instalação encerrado!${NONE}")
-alertUser
+if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+  ALERT_MSG[1]=$(printf "As atualizações serão carregadas automaticamente.")
+  ALERT_MSG[2]=""
+else
+  ALERT_MSG[1]=""
+fi
 
-rm installMyShellEnv.sh | true
+
+rm installMyShellEnv.sh || true
+waitUser
+
+
+if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+  source ~/myShellEnv/start.sh || true
+fi
