@@ -155,10 +155,7 @@ waitUser() {
     for msg in "${ALERT_MSG[@]}"; do
       printf "${ALERT_INDENT}$msg \n"
     done
-
-    cr=`echo $'\n.'`
-    cr=${cr%.}
-    read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ] $cr"
+    read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ] $'\n'"
 
     ALERT_MSG=()
     INTERFACE_MSG=()
