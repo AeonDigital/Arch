@@ -156,7 +156,7 @@ waitUser() {
       printf "${ALERT_INDENT}$msg \n"
     done
 
-    cr="echo $'\n.'"
+    cr=`echo $'\n.'`
     cr=${cr%.}
     read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ] $cr"
 
