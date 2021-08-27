@@ -230,7 +230,7 @@ if [ "$EUID" == 0 ]; then
   ALERT_MSG=()
   ALERT_MSG+=""
   ALERT_MSG+=$(printf "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}")
-  ALERT_MSG+=($(printf "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}")
+  ALERT_MSG+=$(printf "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}")
   ALERT_MSG+=$(printf "para ${SILVER}todo novo usuário${NONE} criado nesta máquina.")
   alertUser
 
