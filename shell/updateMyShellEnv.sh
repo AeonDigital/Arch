@@ -68,3 +68,32 @@ waitUser
 if [ "$UPDATE_MY_USER" == "1" ]; then
   source ~/myShellEnv/start.sh || true
 fi
+
+
+
+
+
+
+
+#
+# Adiciona uma nova linha de informação no array de mensagem
+# genérica ${GENERIC_MSG}
+#
+#   param string $1 nova linha da mensagem
+#   param bool $2 use '1' quando quiser que o array seja reiniciado.
+#                 Qualquer outro valor não causará efeitos
+#   example
+#     result=$(toLowerCase "TEXT")
+#
+setGenericMessage() {
+  if [ "$#" != "1" ] && [ "$#" != "2" ]; then
+    echo "Error: expected 1 argument"
+  else
+    if [ "$#" == "2" ] && [ "$2" == "1" ]; then
+      GENERIC_MSG=()
+    fi
+
+    l=${#GENERIC_MSG[@]}
+    GENERIC_MSG[l]=$1
+  fi
+}

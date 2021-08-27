@@ -55,7 +55,7 @@ BLINK="\e[05m"
 
 
 # Exemplo de uso
-# echo -e "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and
+# printf "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and
 #    ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."
 
 
@@ -75,7 +75,7 @@ PROMPT_RESULT=""
 FUNCTION_NAMES=()
 FUNCTION_DESCRIPTIONS=()
 
-GENERIC_MSG=()
+INTERFACE_MSG=()
 
 
 
@@ -115,20 +115,19 @@ toUpperCase() {
 #     alertUser
 #
 alertUser() {
-  if [ ${#ALERT_MSG[@]} == 0 ] && [ ${#GENERIC_MSG[@]} == 0 ]; then
-    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;32mALERT_MSG\e[00m"
-    echo -e ""
+  if [ ${#ALERT_MSG[@]} == 0 ] && [ ${#INTERFACE_MSG[@]} == 0 ]; then
+    printf "${SILVER}${ALERT_INDENT}ERROR (fn alertUser): empty array ${LGREEN}ALERT_MSG${NONE} \n\n"
   else
     if [ ${#ALERT_MSG[@]} == 0 ]; then
-      ALERT_MSG=$GENERIC_MSG
+      ALERT_MSG=("${INTERFACE_MSG[@]}")
     fi
 
     for msg in "${ALERT_MSG[@]}"; do
-      echo "${ALERT_INDENT}$msg"
+      printf "${ALERT_INDENT}$msg \n"
     done
 
     ALERT_MSG=()
-    GENERIC_MSG=()
+    INTERFACE_MSG=()
   fi
 }
 #
@@ -145,16 +144,20 @@ alertUser() {
 #     waitUser
 #
 waitUser() {
-  if [ ${#ALERT_MSG[@]} == 0 ]; then
-    echo -e "\e[01;37m${ALERT_INDENT}ERROR (fn alertUser): empty array \e[01;32mALERT_MSG\e[00m"
-    echo -e ""
+  if [ ${#ALERT_MSG[@]} == 0 ] && [ ${#INTERFACE_MSG[@]} == 0 ]; then
+    printf "${SILVER}${ALERT_INDENT}ERROR (fn waitUser): empty array ${LGREEN}ALERT_MSG${NONE} \n\n"
   else
+    if [ ${#ALERT_MSG[@]} == 0 ]; then
+      ALERT_MSG=("${INTERFACE_MSG[@]}")
+    fi
+
     for msg in "${ALERT_MSG[@]}"; do
-      echo "${ALERT_INDENT}$msg"
+      printf "${ALERT_INDENT}$msg \n"
     done
     read -n 1 -s -r -p "${ALERT_INDENT}[ ${ALERT_WAIT_PROMPT} ]"
 
     ALERT_MSG=()
+    INTERFACE_MSG=()
   fi
 }
 #
@@ -174,28 +177,28 @@ waitUser() {
 #
 #     promptUser
 #     if [ "$PROMPT_RESULT" == "1" ]; then
-#       echo "Escolhido Sim"
+#       printf "Escolhido Sim"
 #     else
-#       echo "Escolhido Não"
+#       printf "Escolhido Não"
 #     fi
 #
 promptUser() {
   PROMPT_RESULT=""
 
-
-  if [ ${#PROMPT_MSG[@]} == 0 ]; then
-    echo -e "\e[01;37m${PROMPT_INDENT}ERROR (fn promptUser): empty array \e[01;32mPROMPT_MSG\e[00m"
-    echo -e ""
+  if [ ${#PROMPT_MSG[@]} == 0 ] && [ ${#INTERFACE_MSG[@]} == 0 ]; then
+    printf "${SILVER}${ALERT_INDENT}ERROR (fn promptUser): empty array ${LGREEN}PROMPT_MSG${NONE} \n\n"
   else
+    if [ ${#PROMPT_MSG[@]} == 0 ]; then
+      PROMPT_MSG=("${INTERFACE_MSG[@]}")
+    fi
 
     while [ "$PROMPT_RESULT" != "sim" ] && [ "$PROMPT_RESULT" != "s" ] && [ "$PROMPT_RESULT" != "nao" ] && [ "$PROMPT_RESULT" != "n" ]; do
       if [ "$PROMPT_RESULT" != "" ]; then
-        echo "   Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\""
+        printf "${PROMPT_INDENT}Esperado apenas [ ${PROMPT_OPTIONS} ]: \"$PROMPT_RESULT\" \n"
       fi
 
-      echo ""
       for msg in "${PROMPT_MSG[@]}"; do
-        echo "${PROMPT_INDENT}$msg"
+        printf "${PROMPT_INDENT}$msg \n"
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
@@ -212,6 +215,7 @@ promptUser() {
     fi
 
     PROMPT_MSG=()
+    INTERFACE_MSG=()
   fi
 }
 
@@ -221,25 +225,25 @@ promptUser() {
 
 #
 # Adiciona uma nova linha de informação no array de mensagem
-# genérica ${GENERIC_MSG}
+# de interface ${INTERFACE_MSG}
 #
 #   param string $1 nova linha da mensagem
 #   param bool $2 use '1' quando quiser que o array seja reiniciado.
 #                 Qualquer outro valor não causará efeitos
 #   example
-#     setGenericMessage "Atenção" 1
-#     setGenericMessage "Todos os arquivos serão excluídos."
+#     setIMessage "Atenção" 1
+#     setIMessage "Todos os arquivos serão excluídos."
 #
-setGenericMessage() {
-  if [ "$#" != "1" ] && [ "$#" != "2" ]; then
-    echo "Error: expected 1 argument"
+setIMessage() {
+  if [ $# != 1 ] && [ $# != 2 ]; then
+    printf "Error: expected 1 or 2 arguments \n"
   else
-    if [ "$#" == "2" ] && [ "$2" == "1" ]; then
-      GENERIC_MSG=()
+    if [ $# == 2 ] && [ $2 == 1 ]; then
+      INTERFACE_MSG=()
     fi
 
-    l=${#GENERIC_MSG[@]}
-    GENERIC_MSG[l]=$1
+    l=${#INTERFACE_MSG[@]}
+    INTERFACE_MSG[l]=$1
   fi
 }
 
@@ -248,9 +252,9 @@ setGenericMessage() {
 
 
 clear
-setGenericMessage "" 1
-setGenericMessage $(printf "${SILVER}myShellEnv${NONE}")
-setGenericMessage $(printf "Iniciando o processo de instalação.")
+setIMessage "" 1
+setIMessage "${SILVER}myShellEnv${NONE}"
+setIMessage "Iniciando o processo de instalação."
 alertUser
 
 
@@ -261,28 +265,27 @@ INSTALL_IN_MY_USER=0
 
 # sendo um root...
 if [ "$EUID" == 0 ]; then
-  ALERT_MSG=()
-  ALERT_MSG+=""
-  ALERT_MSG+=$(printf "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}")
-  ALERT_MSG+=($(printf "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}")
-  ALERT_MSG+=$(printf "para ${SILVER}todo novo usuário${NONE} criado nesta máquina.")
+  setIMessage "" 1
+  setIMessage "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}"
+  setIMessage "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}"
+  setIMessage "para ${SILVER}todo novo usuário${NONE} criado nesta máquina."
   alertUser
 
-  PROMPT_MSG=()
-  PROMPT_MSG+=$(printf "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?")
-  PROMPT_MSG+=$(printf "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]")
-  PROMPT_MSG+=""
+  setIMessage "" 1
+  setIMessage "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?"
+  setIMessage "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]"
+  setIMessage ""
 
   promptUser
   INSTALL_IN_SKEL=$PROMPT_RESULT
   PROMPT_RESULT=""
 
 
-  PROMPT_MSG=()
-  PROMPT_MSG+=""
-  PROMPT_MSG+=$(printf "Você deseja instalar a mensagem de login?")
-  PROMPT_MSG+=$(printf "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]")
-  PROMPT_MSG+=""
+  setIMessage "" 1
+  setIMessage ""
+  setIMessage "Você deseja instalar a mensagem de login?"
+  setIMessage "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]"
+  setIMessage ""
 
   promptUser
   INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
@@ -295,9 +298,9 @@ fi
 
 #
 # Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
-PROMPT_MSG=()
-PROMPT_MSG+=$(printf "Prosseguir instalação para o seu próprio usuário?")
-PROMPT_MSG+=""
+setIMessage "" 1
+setIMessage "Prosseguir instalação para o seu próprio usuário?"
+setIMessage ""
 
 promptUser
 INSTALL_IN_MY_USER=$PROMPT_RESULT
@@ -326,9 +329,8 @@ if [ "$INSTALL_IN_SKEL" == "1" ]; then
   curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 
-  ALERT_MSG=()
-  ALERT_MSG+=""
-  ALERT_MSG+=$(printf "${SILVER}Instalação no skel concluída${NONE}")
+  setIMessage "" 1
+  setIMessage "${SILVER}Instalação no skel concluída${NONE}"
   alertUser
 fi
 
@@ -341,9 +343,8 @@ fi
 if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
   curl -s -o /etc/issue "${URL_ETC}issue"
 
-  ALERT_MSG=()
-  ALERT_MSG+=""
-  ALERT_MSG+=$(printf "${SILVER}Instalação da mensagem de login concluída${NONE}")
+  setIMessage "" 1
+  setIMessage "${SILVER}Instalação da mensagem de login concluída${NONE}"
   alertUser
 fi
 
@@ -370,9 +371,8 @@ if [ "$INSTALL_IN_MY_USER" == "1" ]; then
   curl -s -o ~/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 
-  ALERT_MSG=()
-  ALERT_MSG+=""
-  ALERT_MSG+=$(printf "${SILVER}Instalação para o seu usuário concluída${NONE}")
+  setIMessage "" 1
+  setIMessage "${SILVER}Instalação para o seu usuário concluída${NONE}"
   alertUser
 fi
 
@@ -382,12 +382,12 @@ fi
 
 #
 # Encerra o script
-ALERT_MSG=()
-ALERT_MSG+=$(printf "${SILVER}Processo de instalação encerrado!${NONE}")
+setIMessage "" 1
+setIMessage "${SILVER}Processo de instalação encerrado!${NONE}"
 if [ "$INSTALL_IN_MY_USER" == "1" ]; then
-  ALERT_MSG+=$(printf "As atualizações serão carregadas automaticamente.")
+  setIMessage "As atualizações serão carregadas automaticamente."
 fi
-ALERT_MSG+=""
+setIMessage ""
 
 
 #rm installMyShellEnv.sh || true
