@@ -17,11 +17,11 @@ URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/mast
 #
 # Confirma a ação do usuário
 PROMPT_MSG=()
-PROMPT_MSG+=("")
-PROMPT_MSG+=($(printf "${SILVER}myShellEnv${NONE}"))
-PROMPT_MSG+=($(printf "Iniciando o processo de atualização para o seu usuário."))
-PROMPT_MSG+=($(printf "Esta ação não pode ser desfeita."))
-PROMPT_MSG+=($(printf "Deseja prosseguir?"))
+PROMPT_MSG+=""
+PROMPT_MSG+=$(printf "${SILVER}myShellEnv${NONE}")
+PROMPT_MSG+=$(printf "Iniciando o processo de atualização para o seu usuário.")
+PROMPT_MSG+=$(printf "Esta ação não pode ser desfeita.")
+PROMPT_MSG+=$(printf "Deseja prosseguir?")
 
 promptUser
 UPDATE_MY_USER=$PROMPT_RESULT
@@ -45,8 +45,8 @@ if [ "$UPDATE_MY_USER" == "1" ]; then
 
 
   ALERT_MSG=()
-  ALERT_MSG+=("")
-  ALERT_MSG+=($(printf "${SILVER}Atualização concluída${NONE}"))
+  ALERT_MSG+=""
+  ALERT_MSG+=$(printf "${SILVER}Atualização concluída${NONE}")
   alertUser
 fi
 
@@ -57,8 +57,8 @@ fi
 #
 # Encerra o script
 ALERT_MSG=()
-ALERT_MSG+=($(printf "${SILVER}Processo de atualização encerrado!${NONE}"))
-ALERT_MSG+=("")
+ALERT_MSG+=$(printf "${SILVER}Processo de atualização encerrado!${NONE}")
+ALERT_MSG+=""
 
 
 rm updateMyShellEnv.sh || true

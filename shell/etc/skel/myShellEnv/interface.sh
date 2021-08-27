@@ -107,8 +107,8 @@ toUpperCase() {
 #
 #   example
 #     ALERT_MSG=()
-#     ALERT_MSG+=($(printf "${SILVER}Sucesso!${NONE}"))
-#     ALERT_MSG+=($(printf "Todos os scripts foram atualizados"))
+#     ALERT_MSG+=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG+=$(printf "Todos os scripts foram atualizados")
 #
 #     alertUser
 #
@@ -132,8 +132,8 @@ alertUser() {
 #
 #   example
 #     ALERT_MSG=()
-#     ALERT_MSG+=($(printf "${SILVER}Sucesso!${NONE}"))
-#     ALERT_MSG+=($(printf "Todos os scripts foram atualizados"))
+#     ALERT_MSG+=$(printf "${SILVER}Sucesso!${NONE}")
+#     ALERT_MSG+=$(printf "Todos os scripts foram atualizados")
 #
 #     waitUser
 #
@@ -162,8 +162,8 @@ waitUser() {
 #
 #   example
 #     PROMPT_MSG=()
-#     PROMPT_MSG+=($(printf "${SILVER}ATENÇÃO!${NONE}"))
-#     PROMPT_MSG+=($(printf "Deseja prosseguir?"))
+#     PROMPT_MSG+=$(printf "${SILVER}ATENÇÃO!${NONE}")
+#     PROMPT_MSG+=$(printf "Deseja prosseguir?")
 #
 #     promptUser
 #     if [ "$PROMPT_RESULT" == "1" ]; then
