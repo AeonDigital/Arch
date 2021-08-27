@@ -1,7 +1,7 @@
 #!/bin/bash
 # myShellEnv v 1.0 [aeondigital.com.br]
 #
-set -eu
+set +e
 
 
 
@@ -184,132 +184,11 @@ promptUser() {
 
 
 
-clear
-ALERT_MSG=()
-ALERT_MSG[0]=""
-ALERT_MSG[1]=$(printf "${SILVER}myShellEnv${NONE}")
-ALERT_MSG[2]=$(printf "Iniciando o processo de instalação.")
-alertUser
-
-
-INSTALL_IN_SKEL=0
-INSTALL_LOGIN_MESSAGE=0
-INSTALL_USER_IS_ROOT=0
-
-if [ "$EUID" == 0 ]; then
-  INSTALL_USER_IS_ROOT=1
-
-  ALERT_MSG=()
-  ALERT_MSG[0]=""
-  ALERT_MSG[1]=$(printf "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}")
-  ALERT_MSG[2]=$(printf "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}")
-  ALERT_MSG[3]=$(printf "para ${SILVER}todo novo usuário${NONE} criado nesta máquina.")
-  alertUser
-
-  PROMPT_MSG=()
-  PROMPT_MSG[0]=$(printf "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?")
-  PROMPT_MSG[1]=$(printf "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]")
-  PROMPT_MSG[2]=""
-
-  promptUser
-  INSTALL_IN_SKEL=$PROMPT_RESULT
-  PROMPT_RESULT=""
-
-
-  PROMPT_MSG=()
-  PROMPT_MSG[0]=""
-  PROMPT_MSG[1]=$(printf "Você deseja instalar a mensagem de login?")
-  PROMPT_MSG[2]=$(printf "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]")
-  PROMPT_MSG[3]=""
-
-  promptUser
-  INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
-  PROMPT_RESULT=""
-fi
-
-
-
-
-
 #
-# Sendo para instalar no skel...
-if [ "$INSTALL_IN_SKEL" == "1" ]; then
-  mkdir -p /etc/skel/myShellEnv
-
-  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o /etc/skel/myShellEnv/interface.sh "${URL_MYSHELLENV}interface.sh"
-  curl -s -o /etc/skel/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
-  curl -s -o /etc/skel/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
-  curl -s -o /etc/skel/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
-  curl -s -o /etc/skel/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
-
-
-
-  mkdir -p /etc/skel/myShellEnv/thirdPartFunctions
-
-  curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
-
-
-  ALERT_MSG=()
-  ALERT_MSG[0]=""
-  ALERT_MSG[1]=$(printf "${SILVER}Instalação no skel concluída${NONE}")
-  alertUser
-fi
-
-
-
-
-
+# Atualiza os arquivos que compõe o 'myShellEnv'.
 #
-# Sendo para instalar a mensagem de login
-if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
-  curl -s -o /etc/issue "${URL_ETC}issue"
-
-  ALERT_MSG=()
-  ALERT_MSG[0]=""
-  ALERT_MSG[1]=$(printf "${SILVER}Instalação da mensagem de login concluída${NONE}")
-  alertUser
-fi
-
-
-
-
-
-#
-# Verifica se é para efetuar a instalação do 'myShellEnv' para o usuário atual.
-PROMPT_MSG=()
-PROMPT_MSG[0]=$(printf "Prosseguir instalação para o seu próprio usuário?")
-
-promptUser
-if [ "$PROMPT_RESULT" == "1" ]; then
-  mkdir -p ~/myShellEnv
-
-  curl -s -o ~/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o ~/myShellEnv/interface.sh "${URL_MYSHELLENV}interface.sh"
-  curl -s -o ~/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
-  curl -s -o ~/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
-  curl -s -o ~/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
-  curl -s -o ~/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
-
-
-
-  mkdir -p ~/myShellEnv/thirdPartFunctions
-
-  curl -s -o ~/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
-
-
-  ALERT_MSG=()
-  ALERT_MSG[0]=""
-  ALERT_MSG[1]=$(printf "${SILVER}Instalação para o seu usuário concluída${NONE}")
-  alertUser
-fi
-PROMPT_RESULT=""
-
-
-
-
-ALERT_MSG=()
-ALERT_MSG[0]=$(printf "${SILVER}Processo de instalação encerrado!${NONE}")
-alertUser
-
-rm installMyShellEnv.sh | true
+updateMyShellEnv() {
+  curl -O "${URL_MYSHELLENV}updateMyShellEnv.sh"
+  chmod u+x updateMyShellEnv.sh
+  ./updateMyShellEnv.sh
+}

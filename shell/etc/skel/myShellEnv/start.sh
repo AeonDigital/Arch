@@ -2,60 +2,66 @@
 # myShellEnv v 1.0 [aeondigital.com.br]
 #
 set +e
-
-
+clear
+timedatectl set-timezone America/Sao_Paulo
 
 
 
 #
 # Prompt padrão
 PS1="\[\e[40;00;37m\]\$ \[\e[40;01;30m\]\u\[\e[40;00;37m\]@\[\e[40;01;30m\]\h : \[\e[40;00;37m\]"
+MYSHELLENV_START=0
 
 
 
+#
+# Se $USER está definido...
 if [ "$USER" != "" ]; then
   MYSHELLENV_START=1
-
-  clear
-  timedatectl set-timezone America/Sao_Paulo
+  source ~/myShellEnv/interface.sh || true
 
 
 
   #
-  # Dá a chance do root optar por carregar ou não os scripts
-  # de personalização
+  # Dá a chance de usuários 'root' optarem por
+  # carregar ou não o 'myShellEnv'.
   #
-  #if [ "$USER" == "root" ]; then
   if [ "$EUID" == 0 ]; then
-    PROMPT_MSG[0]=$(printf "\e[01;37mDeseja iniciar o myShellEnv?\e[00m")
+    PROMPT_MSG[0]=$(printf "${SILVER}Deseja iniciar o myShellEnv?${NONE}")
 
     promptUser
     MYSHELLENV_START=${PROMPT_RESULT}
     PROMPT_RESULT=""
   fi
-
-
-
-  #
-  # Carrega configurações personalizadas
-  #
-  if [ "$MYSHELLENV_START" == 1 ]; then
-    source ~/myShellEnv/variables.sh || true
-    source ~/myShellEnv/aliases.sh || true
-    source ~/myShellEnv/prompt.sh || true
-    source ~/myShellEnv/functions.sh || true
-
-    PS1=$PSTYLE03D
-  else
-    source ~/myShellEnv/variables.sh || true
-  fi
+fi
 
 
 
 
 
-  #
-  # Mensagem de Boas Vindas
+#
+# Conforme processamento anterior
+# carrega o restante dos scripts
+#
+if [ "$MYSHELLENV_START" == 1 ]; then
+  source ~/myShellEnv/variables.sh || true
+  source ~/myShellEnv/aliases.sh || true
+  source ~/myShellEnv/prompt.sh || true
+  source ~/myShellEnv/functions.sh || true
+
+  PS1=$PSTYLE03D
+fi
+
+
+
+
+
+#
+# Apenas se está carregando o 'myShellEnv'
+# e está em uma sessão que iniciou por um login
+# apresenta a mensagem de entrada.
+#
+if [ "$MYSHELLENV_START" == 1 ] && [ "$0" == "-bash" ]; then
   echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
   \e[1;30m
            #####
