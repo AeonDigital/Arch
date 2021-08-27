@@ -11,6 +11,7 @@ set +e
 # Repositório dos scripts
 URL_ETC="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/"
 URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myShellEnv/"
+URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
 
 
 
@@ -258,7 +259,7 @@ setIMessage() {
 # Atualiza os arquivos que compõe o 'myShellEnv'.
 #
 updateMyShellEnv() {
-  curl -O "${URL_MYSHELLENV}updateMyShellEnv.sh"
+  curl -O "${URL_UPDATE}updateMyShellEnv.sh"
   chmod u+x updateMyShellEnv.sh
   ./updateMyShellEnv.sh
 }
