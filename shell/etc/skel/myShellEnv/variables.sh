@@ -21,7 +21,7 @@ DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
 DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
 
 UP=`uptime -p`
-PACMAN=`checkupdates | wc -l`
+PACMAN=`checkupdates | wc -l 2>/dev/null`
 HOSTNAME=`uname -n`
 
 
