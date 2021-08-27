@@ -1,5 +1,10 @@
 #!/bin/bash
+# myShellEnv v 1.0 [aeondigital.com.br]
+#
 set +e
+
+
+
 
 
 #
@@ -31,7 +36,9 @@ HISTTIMEFORMAT="%d/%m/%y %T "
 
 #
 # Repositório dos scripts
-SCRIPTS_REPO_URL="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
+URL_ETC="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/"
+URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myShellEnv/"
+
 
 
 
@@ -84,4 +91,5 @@ BLINK="\e[05m"
 
 
 # Exemplo de uso
-# echo -e "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."
+# echo -e "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and
+#    ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."

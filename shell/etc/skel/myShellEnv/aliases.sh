@@ -1,6 +1,13 @@
 #!/bin/bash
+# myShellEnv v 1.0 [aeondigital.com.br]
+#
 set +e
 
+
+
+
+
+#
 # Aliases de comandos
 ## Lidando com arquivos e diretórios
 alias copy="cp"

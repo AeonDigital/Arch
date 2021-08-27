@@ -1,9 +1,13 @@
 #!/bin/bash
+# myShellEnv v 1.0 [aeondigital.com.br]
+#
 set +e
 
 
-# - Padrões de prompt
 
+
+
+#
 ## $ rianna@archlinux : _
 PRINTSTYLE01="${NONE}$ username@host : "
 PSTYLE01="\[\e[40;00;37m\]\$ \u@\h : "
