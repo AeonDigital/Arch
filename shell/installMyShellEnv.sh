@@ -386,7 +386,7 @@ fi
 setIMessage ""
 
 
-#rm installMyShellEnv.sh || true
+rm installMyShellEnv.sh || true
 waitUser
 
 

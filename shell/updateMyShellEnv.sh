@@ -16,12 +16,11 @@ URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/mast
 
 #
 # Confirma a ação do usuário
-PROMPT_MSG=()
-PROMPT_MSG+=""
-PROMPT_MSG+=$(printf "${SILVER}myShellEnv${NONE}")
-PROMPT_MSG+=$(printf "Iniciando o processo de atualização para o seu usuário.")
-PROMPT_MSG+=$(printf "Esta ação não pode ser desfeita.")
-PROMPT_MSG+=$(printf "Deseja prosseguir?")
+setIMessage "\n" 1
+setIMessage "${SILVER}myShellEnv${NONE}"
+setIMessage "Iniciando o processo de atualização para o seu usuário."
+setIMessage "Esta ação não pode ser desfeita."
+setIMessage "Deseja prosseguir?"
 
 promptUser
 UPDATE_MY_USER=$PROMPT_RESULT
@@ -44,9 +43,8 @@ if [ "$UPDATE_MY_USER" == "1" ]; then
   curl -s -o ~/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 
-  ALERT_MSG=()
-  ALERT_MSG+=""
-  ALERT_MSG+=$(printf "${SILVER}Atualização concluída${NONE}")
+  setIMessage "" 1
+  setIMessage "${SILVER}Atualização concluída${NONE}"
   alertUser
 fi
 
@@ -56,9 +54,9 @@ fi
 
 #
 # Encerra o script
-ALERT_MSG=()
-ALERT_MSG+=$(printf "${SILVER}Processo de atualização encerrado!${NONE}")
-ALERT_MSG+=""
+setIMessage "" 1
+setIMessage "${SILVER}Processo de atualização encerrado!${NONE}"
+
 
 
 rm updateMyShellEnv.sh || true
@@ -68,32 +66,3 @@ waitUser
 if [ "$UPDATE_MY_USER" == "1" ]; then
   source ~/myShellEnv/start.sh || true
 fi
-
-
-
-
-
-
-
-#
-# Adiciona uma nova linha de informação no array de mensagem
-# genérica ${GENERIC_MSG}
-#
-#   param string $1 nova linha da mensagem
-#   param bool $2 use '1' quando quiser que o array seja reiniciado.
-#                 Qualquer outro valor não causará efeitos
-#   example
-#     result=$(toLowerCase "TEXT")
-#
-setGenericMessage() {
-  if [ "$#" != "1" ] && [ "$#" != "2" ]; then
-    echo "Error: expected 1 argument"
-  else
-    if [ "$#" == "2" ] && [ "$2" == "1" ]; then
-      GENERIC_MSG=()
-    fi
-
-    l=${#GENERIC_MSG[@]}
-    GENERIC_MSG[l]=$1
-  fi
-}
