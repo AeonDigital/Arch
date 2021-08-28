@@ -18,7 +18,7 @@ URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/s
 #
 # Confirma a ação do usuário
 setIMessage "\n" 1
-setIMessage "${SILVER}myShellEnv v 0.9.2 [2021-08-28]${NONE}"
+setIMessage "${SILVER}myShellEnv v 0.9.3 [2021-08-28]${NONE}"
 setIMessage "Iniciando o processo de atualização para o seu usuário."
 setIMessage "Esta ação não pode ser desfeita."
 setIMessage "Deseja prosseguir?"
@@ -28,19 +28,20 @@ UPDATE_MY_USER=$PROMPT_RESULT
 PROMPT_RESULT=""
 
 if [ "$UPDATE_MY_USER" == "1" ]; then
-  mkdir -p ~/myShellEnv
 
+  mkdir -p ~/myShellEnv
   curl -s -o ~/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o ~/myShellEnv/interface.sh "${URL_MYSHELLENV}interface.sh"
-  curl -s -o ~/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
   curl -s -o ~/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
   curl -s -o ~/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
   curl -s -o ~/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
 
 
+  mkdir -p ~/myShellEnv/functions
+  curl -s -o ~/myShellEnv/functions/interface.sh "${URL_MYSHELLENV}functions/interface.sh"
+  curl -s -o ~/myShellEnv/functions/string.sh "${URL_MYSHELLENV}functions/string.sh"
+
 
   mkdir -p ~/myShellEnv/thirdPartFunctions
-
   curl -s -o ~/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 

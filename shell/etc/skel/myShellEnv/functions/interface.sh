@@ -82,30 +82,6 @@ INTERFACE_MSG=()
 
 
 #
-# Converte o argumento passado para minúsculas.
-#
-#   @param string $1
-#   String que será convertida
-#
-#   @example
-#     result=$(toLowerCase "TEXT")
-#
-toLowerCase() {
-  echo "${1,,}"
-}
-#
-# Converte o argumento passado para maiúsculas.
-#
-#   @param string $1
-#   String que será convertida.
-#
-#   @example
-#     result=$(toUpperCase "TEXT")
-#
-toUpperCase() {
-  echo "${1^^}"
-}
-#
 # Mostra uma mensagem de alerta para o usuário.
 #
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
@@ -206,7 +182,7 @@ promptUser() {
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
-      PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
+      PROMPT_RESULT=$(echo "$1" | awk '{print tolower($0)}')
     done
 
 

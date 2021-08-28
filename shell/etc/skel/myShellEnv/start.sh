@@ -18,7 +18,7 @@ MYSHELLENV_START=0
 # Se $USER está definido...
 if [ "$USER" != "" ]; then
   MYSHELLENV_START=1
-  source ~/myShellEnv/interface.sh || true
+  source ~/myShellEnv/functions/interface.sh || true
 
 
 
@@ -47,7 +47,8 @@ if [ "$MYSHELLENV_START" == 1 ]; then
   source ~/myShellEnv/variables.sh || true
   source ~/myShellEnv/aliases.sh || true
   source ~/myShellEnv/prompt.sh || true
-  source ~/myShellEnv/functions.sh || true
+
+  source ~/myShellEnv/functions/string.sh || true
 
   PS1=$PSTYLE03D
 fi

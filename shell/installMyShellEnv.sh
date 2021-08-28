@@ -47,7 +47,6 @@ CYAN="\e[00;36m"
 LCYAN="\e[01;36m"
 
 
-
 ## Atributo de fonte
 BOLD="\e[01m"
 UNDERLINE="\e[03m"
@@ -83,32 +82,12 @@ INTERFACE_MSG=()
 
 
 #
-# Converte o argumento passado para minúsculas.
-#
-#   param string $1 string que será convertida
-#   example
-#     result=$(toLowerCase "TEXT")
-#
-toLowerCase() {
-  echo "${1,,}"
-}
-#
-# Converte o argumento passado para maiúsculas.
-#
-#   param string $1 string que será convertida.
-#   example
-#     result=$(toUpperCase "TEXT")
-#
-toUpperCase() {
-  echo "${1^^}"
-}
-#
 # Mostra uma mensagem de alerta para o usuário.
 #
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
 # onde, cada item do array será definido em uma linha do terminal
 #
-#   example
+#   @example
 #     ALERT_MSG=()
 #     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
 #     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
@@ -137,7 +116,7 @@ alertUser() {
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
 # onde, cada item do array será definido em uma linha do terminal
 #
-#   example
+#   @example
 #     ALERT_MSG=()
 #     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
 #     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
@@ -171,7 +150,7 @@ waitUser() {
 #   0 : nao(n)
 #   1 : sim(s)
 #
-#   example
+#   @example
 #     PROMPT_MSG=()
 #     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
 #     PROMPT_MSG[1]=$(printf "Deseja prosseguir?")
@@ -203,7 +182,7 @@ promptUser() {
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
-      PROMPT_RESULT=$(toLowerCase "$PROMPT_RESULT")
+      PROMPT_RESULT=$(echo "$1" | awk '{print tolower($0)}')
     done
 
 
@@ -228,10 +207,14 @@ promptUser() {
 # Adiciona uma nova linha de informação no array de mensagem
 # de interface ${INTERFACE_MSG}
 #
-#   param string $1 nova linha da mensagem
-#   param bool $2 use '1' quando quiser que o array seja reiniciado.
-#                 Qualquer outro valor não causará efeitos
-#   example
+#   @param string $1
+#   Nova linha da mensagem
+#
+#   @param bool $2
+#   Use '1' quando quiser que o array seja reiniciado.
+#   Qualquer outro valor não causará efeitos
+#
+#   @example
 #     setIMessage "Atenção" 1
 #     setIMessage "Todos os arquivos serão excluídos."
 #
@@ -254,7 +237,7 @@ setIMessage() {
 
 clear
 setIMessage "" 1
-setIMessage "${SILVER}myShellEnv v 1.0 [2021-08-28]${NONE}"
+setIMessage "${SILVER}myShellEnv v 0.9.3 [2021-08-28]${NONE}"
 setIMessage "Iniciando o processo de instalação."
 alertUser
 
@@ -310,19 +293,20 @@ PROMPT_RESULT=""
 #
 # Sendo para instalar no skel...
 if [ "$INSTALL_IN_SKEL" == "1" ]; then
-  mkdir -p /etc/skel/myShellEnv
 
+  mkdir -p /etc/skel/myShellEnv
   curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o /etc/skel/myShellEnv/interface.sh "${URL_MYSHELLENV}interface.sh"
-  curl -s -o /etc/skel/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
   curl -s -o /etc/skel/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
   curl -s -o /etc/skel/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
   curl -s -o /etc/skel/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
 
 
+  mkdir -p /etc/skel/myShellEnv/functions
+  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}functions/interface.sh"
+  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}functions/string.sh"
+
 
   mkdir -p /etc/skel/myShellEnv/thirdPartFunctions
-
   curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 
