@@ -18,7 +18,7 @@ URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/s
 #
 # Confirma a ação do usuário
 setIMessage "\n" 1
-setIMessage "${SILVER}myShellEnv v 1.0 [2021-08-28]${NONE}"
+setIMessage "${SILVER}myShellEnv v 0.9.1 [2021-08-28]${NONE}"
 setIMessage "Iniciando o processo de atualização para o seu usuário."
 setIMessage "Esta ação não pode ser desfeita."
 setIMessage "Deseja prosseguir?"
