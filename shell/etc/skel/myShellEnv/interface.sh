@@ -284,8 +284,8 @@ showMyShellEnvColors() {
     Cinza escuro:   DGREY:  ${DGREY}myShellEnv${NONE}   : Amarelo:        YELLOW:   ${YELLOW}myShellEnv${NONE} \n
     Branco:         WHITE:  ${WHITE}myShellEnv${NONE}   : Azul:           BLUE:     ${BLUE}myShellEnv${NONE} \n
     Prata:          SILVER: ${SILVER}myShellEnv${NONE}  : Azul claro:     LBLUE:    ${LBLUE}myShellEnv${NONE} \n
-    Vermelho:       RED:    ${RED}myShellEnv${NONE}     : Púrpura:        PURPLE:   ${PURPLE}myShellEnv${NONE} \n
-    Vermelho claro: LRED:   ${LRED}myShellEnv${NONE}    : Púrpura claro:  LPURPLE:  ${LPURPLE}myShellEnv${NONE} \n
+    Vermelho:       RED:    ${RED}myShellEnv${NONE}     : Purpura:        PURPLE:   ${PURPLE}myShellEnv${NONE} \n
+    Vermelho claro: LRED:   ${LRED}myShellEnv${NONE}    : Purpura claro:  LPURPLE:  ${LPURPLE}myShellEnv${NONE} \n
     Verde:          GREEN:  ${GREEN}myShellEnv${NONE}   : Ciano:          CYAN:     ${CYAN}myShellEnv${NONE} \n
     Verde claro:    LGREEN: ${LGREEN}myShellEnv${NONE}  : Ciano claro:    LCYAN:    ${LCYAN}myShellEnv${NONE} \n
   ")
