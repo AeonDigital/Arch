@@ -309,6 +309,9 @@ showMyShellEnvColors() {
   printf "\nAs seguintes opções de cores estão disponíveis: \n\n"
   COLOR_TEXT=$(sed 's/^\s*//g' <<< "${COLOR_TEXT}" | sed 's/\s*$//g' | sed 's/\s*:/:/g' | sed 's/:\s*/:/g')
   column -s ":" -o " | " -t -N "Cor,Raw,Variavel,Aparencia" <<< "${COLOR_TEXT}"
+  printf "\nDica:"
+  printf "Use o 'grep' caso precise filtrar os resultados: \n"
+  printf "Ex: showMyShellEnvColors | grep -in 'azul' \n"
   printf "\n"
 }
 #
