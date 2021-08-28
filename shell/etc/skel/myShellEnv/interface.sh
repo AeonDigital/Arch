@@ -84,8 +84,10 @@ INTERFACE_MSG=()
 #
 # Converte o argumento passado para minúsculas.
 #
-#   param string $1 string que será convertida
-#   example
+#   @param string $1
+#   String que será convertida
+#
+#   @example
 #     result=$(toLowerCase "TEXT")
 #
 toLowerCase() {
@@ -94,8 +96,10 @@ toLowerCase() {
 #
 # Converte o argumento passado para maiúsculas.
 #
-#   param string $1 string que será convertida.
-#   example
+#   @param string $1
+#   String que será convertida.
+#
+#   @example
 #     result=$(toUpperCase "TEXT")
 #
 toUpperCase() {
@@ -107,7 +111,7 @@ toUpperCase() {
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
 # onde, cada item do array será definido em uma linha do terminal
 #
-#   example
+#   @example
 #     ALERT_MSG=()
 #     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
 #     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
@@ -136,7 +140,7 @@ alertUser() {
 # A mensagem mostrada deve ser preparada no array ${ALERT_MSG}
 # onde, cada item do array será definido em uma linha do terminal
 #
-#   example
+#   @example
 #     ALERT_MSG=()
 #     ALERT_MSG[0]=$(printf "${SILVER}Sucesso!${NONE}")
 #     ALERT_MSG[1]=$(printf "Todos os scripts foram atualizados")
@@ -170,7 +174,7 @@ waitUser() {
 #   0 : nao(n)
 #   1 : sim(s)
 #
-#   example
+#   @example
 #     PROMPT_MSG=()
 #     PROMPT_MSG[0]=$(printf "${SILVER}ATENÇÃO!${NONE}")
 #     PROMPT_MSG[1]=$(printf "Deseja prosseguir?")
@@ -227,10 +231,14 @@ promptUser() {
 # Adiciona uma nova linha de informação no array de mensagem
 # de interface ${INTERFACE_MSG}
 #
-#   param string $1 nova linha da mensagem
-#   param bool $2 use '1' quando quiser que o array seja reiniciado.
-#                 Qualquer outro valor não causará efeitos
-#   example
+#   @param string $1
+#   Nova linha da mensagem
+#
+#   @param bool $2
+#   Use '1' quando quiser que o array seja reiniciado.
+#   Qualquer outro valor não causará efeitos
+#
+#   @example
 #     setIMessage "Atenção" 1
 #     setIMessage "Todos os arquivos serão excluídos."
 #
@@ -277,9 +285,7 @@ reinstallMyShellEnv() {
 # que podem ser utilizadas para a estilização das mensagens
 # de interface.
 #
-# Se quiser/precisar, use o 'grep' para filtrar as linhas que deseja.
-#
-#   example
+#   @example
 #     showMyShellEnvColors | grep -in 'azul'
 #     # o parametro '-in' torna a consulta case-insensitive
 #
@@ -311,7 +317,7 @@ showMyShellEnvColors() {
   column -s ":" -o " | " -t -N "Cor,Raw,Variavel,Aparencia" <<< "${COLOR_TEXT}"
   printf "\nDica:"
   printf "Use o 'grep' caso precise filtrar os resultados: \n"
-  printf "Ex: showMyShellEnvColors | grep -in 'azul' \n"
+  printf "  Ex: showMyShellEnvColors | grep -in 'azul' \n"
   printf "\n"
 }
 #

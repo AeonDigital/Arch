@@ -65,5 +65,6 @@ waitUser
 
 
 if [ "$UPDATE_MY_USER" == "1" ]; then
+  unset showMyShellEnvColors
   source ~/myShellEnv/start.sh || true
 fi
