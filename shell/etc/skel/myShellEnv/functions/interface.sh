@@ -182,7 +182,7 @@ promptUser() {
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
-      PROMPT_RESULT=$(echo "$1" | awk '{print tolower($0)}')
+      PROMPT_RESULT=$(echo "$PROMPT_RESULT" | awk '{print tolower($0)}')
     done
 
 
