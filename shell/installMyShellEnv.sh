@@ -254,7 +254,7 @@ setIMessage() {
 
 clear
 setIMessage "" 1
-setIMessage "${SILVER}myShellEnv${NONE}"
+setIMessage "${SILVER}myShellEnv v 1.0 [2021-08-28]${NONE}"
 setIMessage "Iniciando o processo de instalação."
 alertUser
 
