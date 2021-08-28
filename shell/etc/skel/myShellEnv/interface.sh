@@ -290,9 +290,10 @@ showMyShellEnvColors() {
     Verde claro:    LGREEN: ${LGREEN}myShellEnv${NONE}  : Ciano claro:    LCYAN:    ${LCYAN}myShellEnv${NONE} \n
   ")
 
-  printf "As seguintes opções de cores estão disponíveis: \n\n"
+  printf "\nAs seguintes opções de cores estão disponíveis: \n\n"
   COLOR_TEXT=$(sed 's/^\s*//g' <<< "${COLOR_TEXT}" | sed 's/\s*$//g' | sed 's/\s*:/:/g' | sed 's/:\s*/:/g')
   column -s ":" -o " | " -t -N "Cor,Codigo,Aparencia,Cor,Codigo,Aparencia" <<< "${COLOR_TEXT}"
+  printf "\n"
 }
 #
 # Mostra todas as opções de prompt que estão disponíveis para seleção.
