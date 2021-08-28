@@ -7,57 +7,6 @@ set +e
 
 
 
-#
-# Mostra as cores disponíveis no shell para estilização das mensagens.
-#
-showMyShellEnvColors() {
-  printf "\n\n"
-  printf "As seguintes opções de cores estão disponíveis:"
-  printf "\n\n"
-
-  printf "Preto:          ${BLACK}My Shell Env${NONE}  | Marrom:         ${BROWN}My Shell Env${NONE} \n"
-  printf "Cinza escuro:   ${DGREY}My Shell Env${NONE}  | Amarelo:        ${YELLOW}My Shell Env${NONE} \n"
-  printf "Branco:         ${WHITE}My Shell Env${NONE}  | Azul:           ${BLUE}My Shell Env${NONE} \n"
-  printf "Prata:          ${SILVER}My Shell Env${NONE}  | Azul claro:     ${LBLUE}My Shell Env${NONE} \n"
-  printf "Vermelho:       ${RED}My Shell Env${NONE}  | Púrpura:        ${PURPLE}My Shell Env${NONE} \n"
-  printf "Vermelho claro: ${LRED}My Shell Env${NONE}  | Púrpura claro:  ${LPURPLE}My Shell Env${NONE} \n"
-  printf "Verde:          ${GREEN}My Shell Env${NONE}  | Ciano:          ${CYAN}My Shell Env${NONE} \n"
-  printf "Verde claro:    ${LGREEN}My Shell Env${NONE}  | Ciano claro:    ${LCYAN}My Shell Env${NONE} \n"
-  printf "\n\n"
-}
-#
-# Mostra todas as opções de prompt que estão disponíveis para seleção.
-#
-showPromptOptions() {
-  # alterar isto para aceitar um array e mostrar casos 'on demmand' para o usuário
-  printf "\n\n\nAs seguintes opções de prompt estão disponíveis:"
-  printf "\n\n"
-  printf "> PSTYLE01 \n"
-  printf "$PRINTSTYLE01"
-  printf "\n\n"
-  printf "> PSTYLE02A \n"
-  printf "$PRINTSTYLE02A"
-  printf "\n\n"
-  printf "> PSTYLE02B \n"
-  printf "$PRINTSTYLE02B"
-  printf "\n\n"
-  printf "> PSTYLE02C \n"
-  printf "$PRINTSTYLE02C"
-  printf "\n\n"
-  printf "> PSTYLE03A \n"
-  printf "$PRINTSTYLE03A"
-  printf "\n\n"
-  printf "> PSTYLE03B \n"
-  printf "$PRINTSTYLE03B"
-  printf "\n\n"
-  printf "> PSTYLE03C \n"
-  printf "$PRINTSTYLE03C"
-  printf "\n\n"
-  printf "> PSTYLE03D \n"
-  printf "$PRINTSTYLE03D"
-  printf "\n__________________________________________________"
-  printf "\n\n\n"
-}
 
 
 

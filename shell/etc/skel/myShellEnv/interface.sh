@@ -47,7 +47,6 @@ CYAN="\e[00;36m"
 LCYAN="\e[01;36m"
 
 
-
 ## Atributo de fonte
 BOLD="\e[01m"
 UNDERLINE="\e[03m"
@@ -267,4 +266,63 @@ reinstallMyShellEnv() {
   curl -O "${URL_UPDATE}installMyShellEnv.sh"
   chmod u+x installMyShellEnv.sh
   ./installMyShellEnv.sh
+}
+
+
+
+
+
+#
+# Mostra as cores básicas disponíveis no shell
+# que podem ser utilizadas para a estilização das mensagens
+# de interface.
+#
+showMyShellEnvColors() {
+
+  COLOR_TEXT=$(printf "
+    Preto:          BLACK:  ${BLACK}myShellEnv${NONE}   : Marrom:         BROWN:    ${BROWN}myShellEnv${NONE} \n
+    Cinza escuro:   DGREY:  ${DGREY}myShellEnv${NONE}   : Amarelo:        YELLOW:   ${YELLOW}myShellEnv${NONE} \n
+    Branco:         WHITE:  ${WHITE}myShellEnv${NONE}   : Azul:           BLUE:     ${BLUE}myShellEnv${NONE} \n
+    Prata:          SILVER: ${SILVER}myShellEnv${NONE}  : Azul claro:     LBLUE:    ${LBLUE}myShellEnv${NONE} \n
+    Vermelho:       RED:    ${RED}myShellEnv${NONE}     : Púrpura:        PURPLE:   ${PURPLE}myShellEnv${NONE} \n
+    Vermelho claro: LRED:   ${LRED}myShellEnv${NONE}    : Púrpura claro:  LPURPLE:  ${LPURPLE}myShellEnv${NONE} \n
+    Verde:          GREEN:  ${GREEN}myShellEnv${NONE}   : Ciano:          CYAN:     ${CYAN}myShellEnv${NONE} \n
+    Verde claro:    LGREEN: ${LGREEN}myShellEnv${NONE}  : Ciano claro:    LCYAN:    ${LCYAN}myShellEnv${NONE} \n
+  ")
+  #printf "\n\n"
+  #printf "As seguintes opções de cores estão disponíveis:"
+  column -s ":" -t -N "Cor, Codigo, Aparencia, Cor, Codigo, Aparencia" <<< "${COLOR_TEXT}"
+}
+#
+# Mostra todas as opções de prompt que estão disponíveis para seleção.
+#
+showPromptOptions() {
+  # alterar isto para aceitar um array e mostrar casos 'on demmand' para o usuário
+  printf "\n\n\nAs seguintes opções de prompt estão disponíveis:"
+  printf "\n\n"
+  printf "> PSTYLE01 \n"
+  printf "$PRINTSTYLE01"
+  printf "\n\n"
+  printf "> PSTYLE02A \n"
+  printf "$PRINTSTYLE02A"
+  printf "\n\n"
+  printf "> PSTYLE02B \n"
+  printf "$PRINTSTYLE02B"
+  printf "\n\n"
+  printf "> PSTYLE02C \n"
+  printf "$PRINTSTYLE02C"
+  printf "\n\n"
+  printf "> PSTYLE03A \n"
+  printf "$PRINTSTYLE03A"
+  printf "\n\n"
+  printf "> PSTYLE03B \n"
+  printf "$PRINTSTYLE03B"
+  printf "\n\n"
+  printf "> PSTYLE03C \n"
+  printf "$PRINTSTYLE03C"
+  printf "\n\n"
+  printf "> PSTYLE03D \n"
+  printf "$PRINTSTYLE03D"
+  printf "\n__________________________________________________"
+  printf "\n\n\n"
 }
