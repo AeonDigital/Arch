@@ -327,9 +327,13 @@ downloadMyShellEnvScript() {
   else
     mkdir -p "$2"
 
-    for scripts in "${3[@]}"; do
-      curl -s -o "${2}${scripts}" "${1}${scripts}"
-    done
+    if [ ! -d "$2" ]; then
+      printf "Error: target directory $2 cannot be created \n"
+    else
+      for scripts in "${3[@]}"; do
+        curl -s -o "${2}${scripts}" "${1}${scripts}"
+      done
+    fi
   fi
 }
 
