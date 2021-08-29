@@ -98,6 +98,39 @@ alertUser() {
 
 
 
+#
+# Mostra uma mensagem de alerta para o usuário indicando um erro
+# ocorrido em algum script.
+#
+#   @param string $1
+#   Nome da função onde ocorreu o erro.
+#   Se não for definido, usará o valor padrão 'script'.
+#
+#   @param string $2
+#   Mensagem de erro.
+#
+#   @example
+#     errorAlert "" "expected 2 arguments"
+#     errorAlert ${FUNCNAME[0]} "expected 2 arguments"
+#
+errorAlert() {
+  if [ $# != 2 ]; then
+    errorAlert "${FUNCNAME[0]}" "expected 2 arguments"
+  else
+    LOCAL=$1
+    if [ $1 == "" ]; then
+      LOCAL="script"
+    fi
+
+    setIMessage "${ALERT_INDENT}${SILVER}ERROR (in ${LOCAL}) :${NONE} $2" 1
+    alertUser
+  fi
+}
+
+
+
+
+
 ALERT_WAIT_PROMPT="Precione qualquer tecla para prosseguir."
 
 
@@ -228,7 +261,7 @@ INTERFACE_MSG=()
 #
 setIMessage() {
   if [ $# != 1 ] && [ $# != 2 ]; then
-    printf "Error: expected 1 or 2 arguments \n"
+    printf "Error in ${FUNCNAME[0]}: expected 1 or 2 arguments \n"
   else
     if [ $# == 2 ] && [ $2 == 1 ]; then
       INTERFACE_MSG=()
@@ -303,9 +336,14 @@ PROMPT_RESULT=""
 
 
 
+TARGET_SCRIPTS=()
+
+
+
 #
 # Efetua o download e a instalação dos scripts alvos conforme as
 # informações passadas pelos parametros.
+# Os scripts alvo desta ação devem estar definidos no array ${TARGET_SCRIPTS}.
 #
 #   @param string $1
 #   URL do local (diretório) onde estão os scripts a serem baixados.
@@ -313,26 +351,27 @@ PROMPT_RESULT=""
 #   @param string $2
 #   Endereço completo até o diretório onde os scripts serão salvos.
 #
-#   @param array $3
-#   Array contendo o nome de cada script a ser baixado.
-#
 #   @example
-#     TARGET_SCRIPTS=("script01.sh", "script02.sh", "script03.sh")
-#     downloadMyShellEnvScript https://myrepo/dir ~/myShellEnv/ "${TARGET_SCRIPTS[@]}"
+#     TARGET_SCRIPTS=("script01.sh" "script02.sh" "script03.sh")
+#     downloadMyShellEnvScript "https://myrepo/dir" "~/myShellEnv/"
 #
 #
 downloadMyShellEnvScript() {
-  if [ $# != 3 ]; then
-    printf "Error: expected 3 arguments \n"
+  if [ $# != 2 ]; then
+    errorAlert "${FUNCNAME[0]}" "expected 2 arguments"
   else
-    mkdir -p "$2"
-
-    if [ ! -d "$2" ]; then
-      printf "Error: target directory $2 cannot be created \n"
+    if [ ${#TARGET_SCRIPTS[@]} == 0 ]; then
+      errorAlert "${FUNCNAME[0]}" "empty array ${LGREEN}TARGET_SCRIPTS${NONE}"
     else
-      for scripts in "${3[@]}"; do
-        curl -s -o "${2}${scripts}" "${1}${scripts}"
-      done
+      mkdir -p "$2"
+
+      if [ ! -d "$2" ]; then
+        errorAlert "${FUNCNAME[0]}" "target directory $2 cannot be created"
+      else
+        for scripts in "${TARGET_SCRIPTS}"; do
+          curl -s -o "${2}${scripts}" "${1}${scripts}"
+        done
+      fi
     fi
   fi
 }
@@ -351,7 +390,7 @@ downloadMyShellEnvScript() {
 #
 installMyShellEnvBasicScripts() {
   if [ $# != 1 ]; then
-    printf "Error: expected 1 arguments \n"
+    errorAlert "${FUNCNAME[0]}" "expected 1 arguments"
   else
 
     IS_SKEL=0
@@ -364,8 +403,8 @@ installMyShellEnvBasicScripts() {
       TARGET_DIR="/etc/skel/myShellEnv/"
     fi
 
-    TARGET_SCRIPTS=("aliases.sh", "start.sh", "textColors.sh")
-    downloadMyShellEnvScript $URL_MYSHELLENV $TARGET_DIR "${TARGET_SCRIPTS[@]}"
+    TARGET_SCRIPTS=("aliases.sh" "start.sh" "textColors.sh")
+    downloadMyShellEnvScript "$URL_MYSHELLENV" "$TARGET_DIR"
   fi
 }
 

@@ -50,7 +50,7 @@ FUNCTION_DESCRIPTIONS=()
 # return void
 registerUserFunction() {
   if [ "$#" != "2" ]; then
-    echo "Error: expected 2 arguments"
+    echo "Error in ${FUNCNAME[0]}: expected 2 arguments"
   else
     length=${#FUNCTION_NAMES[@]}
     FUNCTION_NAMES[length]=$1

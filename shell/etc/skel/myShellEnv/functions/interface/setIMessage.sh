@@ -30,7 +30,7 @@ INTERFACE_MSG=()
 #
 setIMessage() {
   if [ $# != 1 ] && [ $# != 2 ]; then
-    printf "Error: expected 1 or 2 arguments \n"
+    printf "Error in ${FUNCNAME[0]}: expected 1 or 2 arguments \n"
   else
     if [ $# == 2 ] && [ $2 == 1 ]; then
       INTERFACE_MSG=()
