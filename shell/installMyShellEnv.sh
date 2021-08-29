@@ -368,7 +368,7 @@ downloadMyShellEnvScript() {
       if [ ! -d "$2" ]; then
         errorAlert "${FUNCNAME[0]}" "target directory $2 cannot be created"
       else
-        for scripts in "${TARGET_SCRIPTS}"; do
+        for scripts in "${TARGET_SCRIPTS[@]}"; do
           curl -s -o "${2}${scripts}" "${1}${scripts}"
         done
       fi
