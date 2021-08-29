@@ -368,9 +368,14 @@ downloadMyShellEnvScript() {
       if [ ! -d "$2" ]; then
         errorAlert "${FUNCNAME[0]}" "target directory $2 cannot be created"
       else
-        for scripts in "${TARGET_SCRIPTS[@]}"; do
-          curl -s -o "${2}${scripts}" "${1}${scripts}"
+
+        printf "\n${ALERT_INDENT}Baixando arquivos para o diretório ${LBLUE}$2${NONE} ...\n"
+        for script in "${TARGET_SCRIPTS[@]}"; do
+          printf "${ALERT_INDENT} ... ${LBLUE}${script}${NONE} \n"
+          curl -s -o "${2}${script}" "${1}${script}"
         done
+        printf "${ALERT_INDENT}Finalizado.\n"
+
       fi
     fi
   fi
@@ -388,7 +393,7 @@ downloadMyShellEnvScript() {
 #   Use '1' para instalar os scripts no 'skel' ou '0' para
 #   instalar no ambiente do usuário atualmente logado
 #
-installMyShellEnvBasicScripts() {
+installMyShellEnvScripts() {
   if [ $# != 1 ]; then
     errorAlert "${FUNCNAME[0]}" "expected 1 arguments"
   else
@@ -403,8 +408,17 @@ installMyShellEnvBasicScripts() {
       TARGET_DIR="/etc/skel/myShellEnv/"
     fi
 
+
+    # Diretório e arquivos básicos
     TARGET_SCRIPTS=("aliases.sh" "start.sh" "textColors.sh")
     downloadMyShellEnvScript "$URL_MYSHELLENV" "$TARGET_DIR"
+
+
+    # Funções :: interface
+    FN_INTERFACE_DIR="${TARGET_DIR}functions/interface/"
+    FN_INTERFACE_URL="${URL_MYSHELLENV}functions/interface/"
+    TARGET_SCRIPTS=("alertUser.sh" "errorAlert.sh" "promptUser.sh" "setIMessage.sh" "waitUser.sh")
+    downloadMyShellEnvScript "$URL_MYSHELLENV" "$FN_INTERFACE_DIR"
   fi
 }
 
@@ -414,21 +428,7 @@ installMyShellEnvBasicScripts() {
 #
 # Sendo para instalar no skel...
 if [ "$INSTALL_IN_SKEL" == "1" ]; then
-
-  installMyShellEnvBasicScripts 1
-  #mkdir -p /etc/skel/myShellEnv
-  #curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  #curl -s -o /etc/skel/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
-  #curl -s -o /etc/skel/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
-  #curl -s -o /etc/skel/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
-
-  #mkdir -p /etc/skel/myShellEnv/functions
-  #curl -s -o /etc/skel/myShellEnv/functions/globalvars.sh "${URL_MYSHELLENV}functions/globalvars.sh"
-  #curl -s -o /etc/skel/myShellEnv/functions/interface.sh "${URL_MYSHELLENV}functions/interface.sh"
-  #curl -s -o /etc/skel/myShellEnv/functions/string.sh "${URL_MYSHELLENV}functions/string.sh"
-
-  #mkdir -p /etc/skel/myShellEnv/thirdPartFunctions
-  #curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
+  installMyShellEnvScripts 1
 
   setIMessage "" 1
   setIMessage "${SILVER}Instalação no skel concluída${NONE}"
