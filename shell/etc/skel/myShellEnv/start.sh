@@ -15,9 +15,28 @@ MYSHELLENV_START=0
 
 
 #
+# Data e hora
+NOW=$(date +"%Y-%m-%d %T")
+NOWD=$(date +"%Y-%m-%d")
+NOWT=$(date +"%T")
+
+
+
+#
+# Configuração do bash
+HISTCONTROL=ignoreboth
+HISTSIZE=256
+HISTTIMEFORMAT="%d/%m/%y %T "
+
+
+
+
+
+#
 # Se $USER está definido...
 if [ "$USER" != "" ]; then
   MYSHELLENV_START=1
+  source ~/myShellEnv/functions/globalvars.sh || true
   source ~/myShellEnv/functions/interface.sh || true
 
 
@@ -44,7 +63,6 @@ fi
 # carrega o restante dos scripts
 #
 if [ "$MYSHELLENV_START" == 1 ]; then
-  source ~/myShellEnv/variables.sh || true
   source ~/myShellEnv/aliases.sh || true
   source ~/myShellEnv/prompt.sh || true
 
@@ -64,6 +82,26 @@ fi
 #
 if [ "$MYSHELLENV_START" == 1 ] && [ "$0" == "-bash" ]; then
   clear
+
+
+  #
+  # Informações do sistema
+  KERNEL=`uname -r`
+  ARCH=`uname -m`
+  CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+
+  MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
+  MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+  MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
+
+  DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
+  DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
+
+  UP=`uptime -p`
+  PACMAN=`checkupdates | wc -l 2>/dev/null`
+  HOSTNAME=`uname -n`
+
+
 
   echo -e "\e[37m  Arch Linux $KERNEL $ARCH \e[00m
   \e[1;30m

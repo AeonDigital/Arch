@@ -8,7 +8,7 @@ set -eu
 
 
 #
-# Repositório dos scripts
+# Repositório dos scripts de instalação e atualização
 URL_ETC="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/"
 URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/etc/skel/myShellEnv/"
 URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
@@ -16,10 +16,12 @@ URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/s
 
 
 #
-# Definição de cores para uso em strings
-## Cores
-### 'D' indica 'Dark'
-### 'L' indica 'Light'
+# Variáveis que carregam as definição de cores que
+# podem ser usadas em mensagens de textos
+#
+# 'D' indica 'Dark'
+# 'L' indica 'Light'
+#
 
 NONE="\e[00m"
 
@@ -47,37 +49,18 @@ CYAN="\e[00;36m"
 LCYAN="\e[01;36m"
 
 
-## Atributo de fonte
+
+# Atributo de fonte
 BOLD="\e[01m"
 UNDERLINE="\e[03m"
 BLINK="\e[05m"
 
 
 
-# Exemplo de uso
-# printf "This text is ${RED}red${NONE} and ${GREEN}green${NONE} and
-#    ${BOLD}bold${NONE} and ${UNDERLINE}underlined${NONE}."
 
 
-
-
-#
-# Variáveis para uso com as funções de interface
 ALERT_MSG=()
 ALERT_INDENT="    "
-ALERT_WAIT_PROMPT="Precione qualquer tecla para prosseguir."
-
-PROMPT_OPTIONS="sim(s) | nao(n)"
-PROMPT_MSG=()
-PROMPT_INDENT="    "
-PROMPT_RESULT=""
-
-FUNCTION_NAMES=()
-FUNCTION_DESCRIPTIONS=()
-
-INTERFACE_MSG=()
-
-
 
 
 
@@ -110,6 +93,15 @@ alertUser() {
     INTERFACE_MSG=()
   fi
 }
+
+
+
+
+
+ALERT_WAIT_PROMPT="Precione qualquer tecla para prosseguir."
+
+
+
 #
 # Mostra uma mensagem de alerta para o usuário e aguarda ele digitar qualquer tecla.
 #
@@ -140,6 +132,18 @@ waitUser() {
     INTERFACE_MSG=()
   fi
 }
+
+
+
+
+
+PROMPT_OPTIONS="sim(s) | nao(n)"
+PROMPT_MSG=()
+PROMPT_INDENT="    "
+PROMPT_RESULT=""
+
+
+
 #
 # Mostra uma mensagem para o usuário e questiona sobre Sim ou Não
 # A mensagem mostrada deve ser preparada no array ${PROMPT_MSG}
@@ -182,7 +186,7 @@ promptUser() {
       done
 
       read -p "${PROMPT_INDENT}[ ${PROMPT_OPTIONS} ] : " PROMPT_RESULT
-      PROMPT_RESULT=$(echo "$1" | awk '{print tolower($0)}')
+      PROMPT_RESULT=$(echo "$PROMPT_RESULT" | awk '{print tolower($0)}')
     done
 
 
@@ -200,6 +204,10 @@ promptUser() {
 }
 
 
+
+
+
+INTERFACE_MSG=()
 
 
 
@@ -235,9 +243,14 @@ setIMessage() {
 
 
 
+
+
+
+
+
 clear
 setIMessage "" 1
-setIMessage "${SILVER}myShellEnv v 0.9.3 [2021-08-28]${NONE}"
+setIMessage "${SILVER}myShellEnv v 0.9.5 [2021-08-28]${NONE}"
 setIMessage "Iniciando o processo de instalação."
 alertUser
 
@@ -251,7 +264,7 @@ INSTALL_IN_MY_USER=0
 if [ "$EUID" == 0 ]; then
   setIMessage "" 1
   setIMessage "Você foi identificado como um usuário com privilégios ${LBLUE}root${NONE}"
-  setIMessage "Isto significa que você tem permissão para instalar o ${SILVER}myShellEnv${NONE}"
+  setIMessage "Isto significa que você tem permissão para instalar o ${LBLUE}myShellEnv${NONE}"
   setIMessage "para ${SILVER}todo novo usuário${NONE} criado nesta máquina."
   alertUser
 
@@ -291,24 +304,88 @@ PROMPT_RESULT=""
 
 
 #
+# Efetua o download e a instalação dos scripts alvos conforme as
+# informações passadas pelos parametros.
+#
+#   @param string $1
+#   URL do local (diretório) onde estão os scripts a serem baixados.
+#
+#   @param string $2
+#   Endereço completo até o diretório onde os scripts serão salvos.
+#
+#   @param array $3
+#   Array contendo o nome de cada script a ser baixado.
+#
+#   @example
+#     TARGET_SCRIPTS=("script01.sh", "script02.sh", "script03.sh")
+#     downloadMyShellEnvScript https://myrepo/dir ~/myShellEnv/ "${TARGET_SCRIPTS[@]}"
+#
+#
+downloadMyShellEnvScript() {
+  if [ $# != 3 ]; then
+    printf "Error: expected 3 arguments \n"
+  else
+    mkdir -p "$2"
+
+    for scripts in "${3[@]}"; do
+      curl -s -o "${2}${scripts}" "${1}${scripts}"
+    done
+  fi
+}
+
+
+
+
+
+#
+# Efetua a instalação dos scripts básicos para o funcionamento
+# do 'myShellEnv'
+#
+#   @param bool $1
+#   Use '1' para instalar os scripts no 'skel' ou '0' para
+#   instalar no ambiente do usuário atualmente logado
+#
+installMyShellEnvBasicScripts() {
+  if [ $# != 1 ]; then
+    printf "Error: expected 1 arguments \n"
+  else
+
+    IS_SKEL=0
+    if [ $1 == 1 ] || [ $1 == 0 ]; then
+      IS_SKEL=$1
+    fi
+
+    TARGET_DIR="~/myShellEnv/"
+    if [ $IS_SKEL == 1 ]; then
+      TARGET_DIR="/etc/skel/myShellEnv/"
+    fi
+
+    TARGET_SCRIPTS=("aliases.sh", "start.sh", "textColors.sh")
+    downloadMyShellEnvScript $URL_MYSHELLENV $TARGET_DIR "${TARGET_SCRIPTS[@]}"
+  fi
+}
+
+
+
+
+#
 # Sendo para instalar no skel...
 if [ "$INSTALL_IN_SKEL" == "1" ]; then
 
-  mkdir -p /etc/skel/myShellEnv
-  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o /etc/skel/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
-  curl -s -o /etc/skel/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
-  curl -s -o /etc/skel/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
+  installMyShellEnvBasicScripts 1
+  #mkdir -p /etc/skel/myShellEnv
+  #curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
+  #curl -s -o /etc/skel/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
+  #curl -s -o /etc/skel/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
+  #curl -s -o /etc/skel/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
 
+  #mkdir -p /etc/skel/myShellEnv/functions
+  #curl -s -o /etc/skel/myShellEnv/functions/globalvars.sh "${URL_MYSHELLENV}functions/globalvars.sh"
+  #curl -s -o /etc/skel/myShellEnv/functions/interface.sh "${URL_MYSHELLENV}functions/interface.sh"
+  #curl -s -o /etc/skel/myShellEnv/functions/string.sh "${URL_MYSHELLENV}functions/string.sh"
 
-  mkdir -p /etc/skel/myShellEnv/functions
-  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}functions/interface.sh"
-  curl -s -o /etc/skel/myShellEnv/aliases.sh "${URL_MYSHELLENV}functions/string.sh"
-
-
-  mkdir -p /etc/skel/myShellEnv/thirdPartFunctions
-  curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
-
+  #mkdir -p /etc/skel/myShellEnv/thirdPartFunctions
+  #curl -s -o /etc/skel/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
   setIMessage "" 1
   setIMessage "${SILVER}Instalação no skel concluída${NONE}"
@@ -321,7 +398,7 @@ fi
 
 #
 # Sendo para instalar a mensagem de login...
-if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
+if [ "$INSTALL_LOGIN_MESSAGE" == "norun" ]; then
   curl -s -o /etc/issue "${URL_ETC}issue"
 
   setIMessage "" 1
@@ -335,16 +412,22 @@ fi
 
 #
 # Sendo para instalar no próprio usuário...
-if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+if [ "$INSTALL_IN_MY_USER" == "norun" ]; then
   mkdir -p ~/myShellEnv
-
   curl -s -o ~/myShellEnv/aliases.sh "${URL_MYSHELLENV}aliases.sh"
-  curl -s -o ~/myShellEnv/interface.sh "${URL_MYSHELLENV}interface.sh"
-  curl -s -o ~/myShellEnv/functions.sh "${URL_MYSHELLENV}functions.sh"
   curl -s -o ~/myShellEnv/prompt.sh "${URL_MYSHELLENV}prompt.sh"
   curl -s -o ~/myShellEnv/start.sh "${URL_MYSHELLENV}start.sh"
   curl -s -o ~/myShellEnv/variables.sh "${URL_MYSHELLENV}variables.sh"
 
+
+  mkdir -p ~/myShellEnv/functions
+  curl -s -o ~/myShellEnv/functions/globalvars.sh "${URL_MYSHELLENV}functions/globalvars.sh"
+  curl -s -o ~/myShellEnv/functions/interface.sh "${URL_MYSHELLENV}functions/interface.sh"
+  curl -s -o ~/myShellEnv/functions/string.sh "${URL_MYSHELLENV}functions/string.sh"
+
+
+  mkdir -p ~/myShellEnv/thirdPartFunctions
+  curl -s -o ~/myShellEnv/thirdPartFunctions/print256colours.sh "${URL_MYSHELLENV}thirdPartFunctions/print256colours.sh"
 
 
   mkdir -p ~/myShellEnv/thirdPartFunctions
@@ -371,10 +454,10 @@ fi
 setIMessage ""
 
 
-rm installMyShellEnv.sh || true
+#rm installMyShellEnv.sh || true
 waitUser
 
 
-if [ "$INSTALL_IN_MY_USER" == "1" ]; then
-  source ~/myShellEnv/start.sh || true
-fi
+#if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+#  source ~/myShellEnv/start.sh || true
+#fi

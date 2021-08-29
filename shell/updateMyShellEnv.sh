@@ -37,6 +37,7 @@ if [ "$UPDATE_MY_USER" == "1" ]; then
 
 
   mkdir -p ~/myShellEnv/functions
+  curl -s -o ~/myShellEnv/functions/globalvars.sh "${URL_MYSHELLENV}functions/globalvars.sh"
   curl -s -o ~/myShellEnv/functions/interface.sh "${URL_MYSHELLENV}functions/interface.sh"
   curl -s -o ~/myShellEnv/functions/string.sh "${URL_MYSHELLENV}functions/string.sh"
 
