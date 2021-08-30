@@ -243,7 +243,7 @@ if [ $ISOK == 1 ]; then
 
 
   #
-  # Havendo erros na instalação remove as alterações feitas
+  # Efetua alterações finais conforme sucesso ou falha da instalação
   if [ $ISOK == 0 ]; then
     if [ "$INSTALL_LOGIN_MESSAGE" == "1" ] && [ -f "/etc/issue_beforeMyShellEnv" ]; then
       cp /etc/issue_beforeMyShellEnv /etc/issue
@@ -256,6 +256,16 @@ if [ $ISOK == 1 ]; then
 
     if [ "$INSTALL_IN_MY_USER" == "1" ]; then
       rm -r "${HOME}/myShellEnv"
+    fi
+  else
+    SOURCE_BASHRC='source ~/myShellEnv/start.sh || true'
+
+    if [ "$INSTALL_IN_SKEL" == "1" ]; then
+      echo $SOURCE_BASHRC >> /etc/skel/.bashrc
+    fi
+
+    if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+      echo $SOURCE_BASHRC >> ${HOME}/.bashrc
     fi
   fi
 

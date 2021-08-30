@@ -64,6 +64,7 @@ uninstallMyShellEnv() {
         alertUser
       else
         setIMessage "... " 1
+        SOURCE_BASHRC='source ~\/myShellEnv\/start.sh || true'
 
         if [ $UNINSTALL_LOGIN_MESSAGE == 1 ] && [ -f "/etc/issue_beforeMyShellEnv" ]; then
           setIMessage "... Redefinindo a mensagem original de login."
@@ -74,11 +75,13 @@ uninstallMyShellEnv() {
         if [ $1 == "skel" ]; then
           setIMessage "... Removendo o ${SILVER}myShellEnv${NONE} do ${LBLUE}skel${NONE}."
           rm -r /etc/skel/myShellEnv
+          sed -i "s/${SOURCE_BASHRC}//g" /etc/skel/.bashrc
         fi
 
         if [ $1 == "user" ]; then
           setIMessage "... Removendo o ${SILVER}myShellEnv${NONE} do seu usuário."
           rm -r "${HOME}/myShellEnv"
+          sed -i "s/${SOURCE_BASHRC}//g" "${HOME}/.bashrc"
         fi
 
         setIMessage "Processo finalizado"
