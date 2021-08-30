@@ -53,7 +53,6 @@ downloadInstallScripts() {
 #
 # prepara o diretório temporário
 # e efetua o download dos scripts básicos para a instalação
-rm -R ~/.tmpMyShellEnv || true
 mkdir -p ~/.tmpMyShellEnv
 
 
