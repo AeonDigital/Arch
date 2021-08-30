@@ -42,7 +42,7 @@ promptUser() {
   PROMPT_RESULT=""
 
   if [ ${#PROMPT_MSG[@]} == 0 ] && [ ${#INTERFACE_MSG[@]} == 0 ]; then
-    printf "${SILVER}${ALERT_INDENT}ERROR (fn promptUser): empty array ${LGREEN}PROMPT_MSG${NONE} \n\n"
+    errorAlert "${FUNCNAME[0]}" "empty array ${LGREEN}PROMPT_MSG${NONE}"
   else
     if [ ${#PROMPT_MSG[@]} == 0 ]; then
       PROMPT_MSG=("${INTERFACE_MSG[@]}")

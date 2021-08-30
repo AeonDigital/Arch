@@ -28,7 +28,7 @@ ALERT_WAIT_PROMPT="Precione qualquer tecla para prosseguir."
 #
 waitUser() {
   if [ ${#ALERT_MSG[@]} == 0 ] && [ ${#INTERFACE_MSG[@]} == 0 ]; then
-    printf "${SILVER}${ALERT_INDENT}ERROR (fn waitUser): empty array ${LGREEN}ALERT_MSG${NONE} \n\n"
+    errorAlert "${FUNCNAME[0]}" "empty array ${LGREEN}ALERT_MSG${NONE}"
   else
     if [ ${#ALERT_MSG[@]} == 0 ]; then
       ALERT_MSG=("${INTERFACE_MSG[@]}")

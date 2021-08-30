@@ -36,8 +36,12 @@ HISTTIMEFORMAT="%d/%m/%y %T "
 # Se $USER está definido...
 if [ "$USER" != "" ]; then
   MYSHELLENV_START=1
-  source ~/myShellEnv/functions/globalvars.sh || true
-  source ~/myShellEnv/functions/interface.sh || true
+  source ~/myShellEnv/functions/textColors.sh || true
+  source ~/myShellEnv/functions/interface/alertUser.sh || true
+  source ~/myShellEnv/functions/interface/errorAlert.sh || true
+  source ~/myShellEnv/functions/interface/promptUser.sh || true
+  source ~/myShellEnv/functions/interface/setIMessage.sh || true
+  source ~/myShellEnv/functions/interface/waitUser.sh || true
 
 
 
@@ -46,7 +50,7 @@ if [ "$USER" != "" ]; then
   # carregar ou não o 'myShellEnv'.
   #
   if [ "$EUID" == 0 ]; then
-    PROMPT_MSG[0]=$(printf "${SILVER}Deseja iniciar o myShellEnv?${NONE}")
+    setIMessage "${SILVER}Deseja iniciar o myShellEnv?${NONE}" 1
 
     promptUser
     MYSHELLENV_START=${PROMPT_RESULT}
@@ -63,12 +67,19 @@ fi
 # carrega o restante dos scripts
 #
 if [ "$MYSHELLENV_START" == 1 ]; then
-  source ~/myShellEnv/aliases.sh || true
-  source ~/myShellEnv/prompt.sh || true
+  BASE_DIR="~/myShellEnv/"
+  DIR_SCRIPTS=("*" "string/*" "terminal/*" "thirdPart/*" "prompts/*")
 
-  source ~/myShellEnv/functions/string.sh || true
+  for tgtdir in "${DIR_SCRIPTS[@]}"; do
+    TMP="${BASE_DIR}${tgtdir}"
 
-  PS1=$PSTYLE03D
+    for script in "${TMP}"; do
+      source "$script" || true
+    done
+  done
+
+
+  #PS1=$PSTYLE03D
 fi
 
 
