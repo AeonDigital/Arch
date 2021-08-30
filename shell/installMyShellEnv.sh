@@ -139,20 +139,20 @@ if [ $ISOK == 1 ]; then
     alertUser
 
     setIMessage "\n" 1
-    setIMessage "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?"
-    setIMessage "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]"
-
-    promptUser
-    INSTALL_IN_SKEL=$PROMPT_RESULT
-    PROMPT_RESULT=""
-
-
-    setIMessage "\n" 1
     setIMessage "Você deseja instalar a mensagem de login?"
     setIMessage "[ ${DGREY}Ela será vista por todos os usuários!${NONE} ]"
 
     promptUser
     INSTALL_LOGIN_MESSAGE=$PROMPT_RESULT
+    PROMPT_RESULT=""
+
+
+    setIMessage "\n" 1
+    setIMessage "Você deseja fazer uma instalação global (${LBLUE}skel${NONE})?"
+    setIMessage "[ ${DGREY}Usuários existentes não serão alterados!${NONE} ]"
+
+    promptUser
+    INSTALL_IN_SKEL=$PROMPT_RESULT
     PROMPT_RESULT=""
   fi
 
