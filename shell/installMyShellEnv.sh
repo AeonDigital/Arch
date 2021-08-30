@@ -241,7 +241,7 @@ if [ $ISOK == 1 ]; then
   setIMessage ""
 
 
-  #rm -R "${HOME}/tmpMyShellEnv"
-  #rm installMyShellEnv.sh
+  rm -R "${HOME}/tmpMyShellEnv"
+  rm installMyShellEnv.sh
   waitUser
 fi
