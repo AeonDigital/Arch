@@ -46,7 +46,7 @@ installMyShellEnvScripts() {
       downloadMyShellEnvScript "$FN_URL" "$FN_DIR"
     fi
 
-
+    : '
     # Funções :: interface
     if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/interface/"
@@ -93,5 +93,6 @@ installMyShellEnvScripts() {
       TARGET_FILES=("prompt.sh")
       downloadMyShellEnvScript "$FN_URL" "$FN_DIR"  fi
     fi
+    '
   fi
 }

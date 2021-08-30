@@ -51,15 +51,16 @@ downloadMyShellEnvScript() {
       else
         ISOK=1
 
-        printf "\n${ALERT_INDENT}Baixando arquivos para o diretório: ...\n"
+        printf "\n${ALERT_INDENT}Baixando arquivos para o diretório: \n"
         printf "\n${ALERT_INDENT}${LBLUE}$2${NONE} ...\n"
 
         for script in "${TARGET_FILES[@]}"; do
           if [ $ISOK == 1 ]; then
-            printf "${ALERT_INDENT} ... ${LBLUE}${script}${NONE}"
-            curl -s -o "${2}${script}" "${1}${script}" || true
+            printf "${ALERT_INDENT} ... ${LBLUE}${script}${NONE} "
+            TMP="${2}${script}"
+            curl -s -o "$TMP" "${1}${script}" || true
 
-            if [ ! f "${2}${script}" ]; then
+            if [ ! -f "$TMP" ]; then
               ISOK=0
               printf " ${LRED}[x]${NONE}\n"
             else
