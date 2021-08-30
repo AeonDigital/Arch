@@ -36,13 +36,15 @@ downloadInstallScripts() {
   if [ $# != 2 ]; then
     printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
   else
-    TMP="~/tmpMyShellEnv/$1"
-    curl -s -o "${TMP}" "$2"
+    TMP="${HOME}/tmpMyShellEnv/$1"
+    curl -s -o "${TMP}" "$2" || true
 
     if [ ! -f "$TMP" ]; then
       ISOK=0
       printf "Não foi possível fazer o download do arquivo de instalação '$1'\n"
       printf "Esta ação foi encerrada.\n"
+      printf "URL: $2 \n"
+      printf "TGT: ${TMP} \n"
     fi
   fi
 }
@@ -54,10 +56,10 @@ downloadInstallScripts() {
 #
 # prepara o diretório temporário
 # e efetua o download dos scripts básicos para a instalação
-mkdir -p ~/tmpMyShellEnv
+mkdir -p ${HOME}/tmpMyShellEnv
 
 
-if [ ! -d ~/tmpMyShellEnv ]; then
+if [ ! -d ${HOME}/tmpMyShellEnv ]; then
   ISOK=0
   printf "Não foi possível criar o diretório temporário de instalação. \n"
   printf "Esta ação foi encerrada.\n"
@@ -107,7 +109,7 @@ if [ $ISOK == 1 ]; then
   )
 
   for fileName in "${INSTALL_FILES[@]}"; do
-    source "~/tmpMyShellEnv/${fileName}"
+    source "${HOME}/tmpMyShellEnv/${fileName}"
   done
 
 
@@ -177,7 +179,7 @@ if [ $ISOK == 1 ]; then
     if [ -f "/etc/issue" ]; then
       cp /etc/issue /etc/issue_beforeMyShellEnv
     fi
-    curl -s -o /etc/issue "${URL_ETC}issue"
+    curl -s -o /etc/issue "${URL_ETC}issue" || true
 
     if [ ! -f /etc/issue ]; then
       setIMessage "" 1
@@ -221,10 +223,10 @@ if [ $ISOK == 1 ]; then
   #
   # Sendo para instalar no no usuário atual...
   if [ "$INSTALL_IN_MY_USER" == "1" ]; then
-    mkdir -p ~/myShellEnv
-    if [ ! -d ~/myShellEnv ]; then
+    mkdir -p ${HOME}/myShellEnv
+    if [ ! -d ${HOME}/myShellEnv ]; then
       setIMessage "\n" 1
-      setIMessage "Não foi possível criar o diretório ${LBLUE}~/myShellEnv${NONE}?"
+      setIMessage "Não foi possível criar o diretório ${LBLUE}${HOME}/myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
       alertUser
     else

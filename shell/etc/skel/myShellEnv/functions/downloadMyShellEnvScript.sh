@@ -27,7 +27,7 @@ ISOK=1
 #
 #   @example
 #     TARGET_FILES=("script01.sh" "script02.sh" "script03.sh")
-#     downloadMyShellEnvScript "https://myrepo/dir" "~/myShellEnv/"
+#     downloadMyShellEnvScript "https://myrepo/dir" "${HOME}/myShellEnv/"
 #
 #   @result
 #     O resultado do sucesso ou falha da instalação dos scripts alvos
@@ -57,7 +57,7 @@ downloadMyShellEnvScript() {
         for script in "${TARGET_FILES[@]}"; do
           if [ $ISOK == 1 ]; then
             printf "${ALERT_INDENT} ... ${LBLUE}${script}${NONE}"
-            curl -s -o "${2}${script}" "${1}${script}"
+            curl -s -o "${2}${script}" "${1}${script}" || true
 
             if [ ! f "${2}${script}" ]; then
               ISOK=0

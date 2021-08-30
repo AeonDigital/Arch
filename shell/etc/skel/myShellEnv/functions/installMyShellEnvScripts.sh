@@ -25,7 +25,7 @@ installMyShellEnvScripts() {
       IS_SKEL=$1
     fi
 
-    TARGET_DIR="~/myShellEnv/"
+    TARGET_DIR="${HOME}/myShellEnv/"
     if [ $IS_SKEL == 1 ]; then
       TARGET_DIR="/etc/skel/myShellEnv/"
     fi
