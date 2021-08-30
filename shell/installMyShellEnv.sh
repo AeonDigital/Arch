@@ -241,6 +241,25 @@ if [ $ISOK == 1 ]; then
   setIMessage ""
 
 
+
+  #
+  # Havendo erros na instalação remove as alterações feitas
+  if [ $ISOK == 0 ]; then
+    if [ "$INSTALL_LOGIN_MESSAGE" == "1" ] && [ -f "/etc/issue_beforeMyShellEnv" ]; then
+      cp /etc/issue_beforeMyShellEnv /etc/issue
+      rm /etc/issue_beforeMyShellEnv
+    fi
+
+    if [ "$INSTALL_IN_SKEL" == "1" ]; then
+      rm -r "/etc/skel/myShellEnv"
+    fi
+
+    if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+      rm -r "${HOME}/myShellEnv"
+    fi
+  fi
+
+
   rm -R "${HOME}/tmpMyShellEnv"
   rm installMyShellEnv.sh
   waitUser
