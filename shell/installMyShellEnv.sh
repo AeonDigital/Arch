@@ -109,6 +109,8 @@ if [ $ISOK == 1 ]; then
   )
 
   for fileName in "${INSTALL_FILES[@]}"; do
+    setIMessage " > Carregando script ${SILVER}${HOME}/tmpMyShellEnv/${fileName}${NONE}" 1
+    alertUser
     source "${HOME}/tmpMyShellEnv/${fileName}"
   done
 
@@ -254,7 +256,7 @@ if [ $ISOK == 1 ]; then
   setIMessage ""
 
 
-  rm -R "${HOME}/tmpMyShellEnv"
-  rm installMyShellEnv.sh
+  #rm -R "${HOME}/tmpMyShellEnv"
+  #rm installMyShellEnv.sh
   waitUser
 fi
