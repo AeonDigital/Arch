@@ -73,7 +73,7 @@ installMyShellEnvScripts() {
       FN_DIR="${TARGET_DIR}functions/terminal/"
       FN_URL="${URL_MYSHELLENV}functions/terminal/"
       TARGET_FILES=("setUTF8.sh" "showPromptOptions.sh" "showScreenColors.sh" "showTextColors.sh")
-      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"  fi
+      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"
     fi
 
 
@@ -82,7 +82,7 @@ installMyShellEnvScripts() {
       FN_DIR="${TARGET_DIR}functions/thirdPart/"
       FN_URL="${URL_MYSHELLENV}functions/thirdPart/"
       TARGET_FILES=("print256colours.sh")
-      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"  fi
+      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"
     fi
 
 
@@ -91,7 +91,7 @@ installMyShellEnvScripts() {
       FN_DIR="${TARGET_DIR}prompts/"
       FN_URL="${URL_MYSHELLENV}prompts/"
       TARGET_FILES=("prompt.sh")
-      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"  fi
+      downloadMyShellEnvScript "$FN_URL" "$FN_DIR"
     fi
   fi
 }
