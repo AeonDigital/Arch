@@ -14,19 +14,47 @@ URL_MYSHELLENV="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/mast
 URL_UPDATE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/"
 
 
+ISOK=1
+
+
+
+#
+# Efetua o download de scripts necessários para a instalação
+# Em caso de falha, altera o valor da variável de controle ${ISOK} para "0".
+# Sendo bem sucedido irá carregar o script.
+#
+#   @param string $1
+#   Nome do script a ser salvo no diretório temporário '.tmpMyShellEnv'.
+#
+#   @param string $2
+#   Url onde está o arquivo a ser baixado.
+#
+#   @example
+#     downloadInstallScripts "textColors.sh" "textColors.sh"
+#
+downloadInstallScripts() {
+  if [ $# != 2 ]; then
+    printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
+  else
+    curl -o "~/.tmpMyShellEnv/$1" "$2"
+
+    if [ ! -f "~/.tmpMyShellEnv/$1" ]; then
+      ISOK=0
+      printf "Não foi possível fazer o download do arquivo de instalação '$1'\n"
+      printf "Esta ação foi encerrada.\n"
+    fi
+  fi
+}
+
+
+
+
 
 #
 # prepara o diretório temporário
 # e efetua o download dos scripts básicos para a instalação
 rm -R ~/.tmpMyShellEnv
 mkdir -p ~/.tmpMyShellEnv
-
-ISOK=1
-INSTALL_FILES=(
-  "alertUser.sh" "errorAlert.sh"
-  "waitUser.sh" "promptUser.sh" "setIMessage.sh"
-)
-INTERFACE_URL="${URL_MYSHELLENV}functions/interface/"
 
 
 if [ ! -d "~/.tmpMyShellEnv" ]; then
@@ -35,39 +63,31 @@ if [ ! -d "~/.tmpMyShellEnv" ]; then
   printf "Esta ação foi encerrada.\n"
 else
 
-  curl -o "~/.tmpMyShellEnv/textColors.sh" "${URL_MYSHELLENV}textColors.sh"
-  if [ ! -f "~/.tmpMyShellEnv/textColors.sh" ]; then
-    ISOK=0
-    printf "Não foi possível fazer o download do arquivo de instalação 'textColors.sh'\n"
-    printf "Esta ação foi encerrada.\n"
-  else
+  if [ ISOK == 1 ]; then
+    downloadInstallScripts "textColors.sh" "${URL_MYSHELLENV}textColors.sh"
+  fi
 
-    curl -o "~/.tmpMyShellEnv/downloadMyShellEnvScript.sh" "${URL_MYSHELLENV}functions/downloadMyShellEnvScript.sh"
-    if [ ! -f "~/.tmpMyShellEnv/downloadMyShellEnvScript.sh" ]; then
-      ISOK=0
-      printf "Não foi possível fazer o download do arquivo de instalação 'downloadMyShellEnvScript.sh'\n"
-      printf "Esta ação foi encerrada.\n"
-    else
+  if [ ISOK == 1 ]; then
+    downloadInstallScripts "downloadMyShellEnvScript.sh" "${URL_MYSHELLENV}functions/downloadMyShellEnvScript.sh"
+  fi
 
-      curl -o "~/.tmpMyShellEnv/installMyShellEnvScripts.sh" "${URL_MYSHELLENV}functions/installMyShellEnvScripts.sh"
-      if [ ! -f "~/.tmpMyShellEnv/installMyShellEnvScripts.sh" ]; then
-        ISOK=0
-        printf "Não foi possível fazer o download do arquivo de instalação 'installMyShellEnvScripts.sh'\n"
-        printf "Esta ação foi encerrada.\n"
-      else
-        for fileName in "${INSTALL_FILES[@]}"; do
-          if [ $ISOK == 1 ]; then
-            curl -o "~/.tmpMyShellEnv/${fileName}" "${INTERFACE_URL}${fileName}"
-            if [ ! -f "~/.tmpMyShellEnv/${fileName}" ]; then
-              ISOK=0
-              printf "Não foi possível fazer o download do arquivo de instalação '${fileName}'\n"
-              printf "Esta ação foi encerrada.\n"
-            fi
-          fi
-        done
+  if [ ISOK == 1 ]; then
+    downloadInstallScripts "installMyShellEnvScripts.sh" "${URL_MYSHELLENV}functions/installMyShellEnvScripts.sh"
+  fi
+
+
+  if [ ISOK == 1 ]; then
+    INSTALL_FILES=(
+      "alertUser.sh" "errorAlert.sh"
+      "waitUser.sh" "promptUser.sh" "setIMessage.sh"
+    )
+
+
+    for fileName in "${INSTALL_FILES[@]}"; do
+      if [ $ISOK == 1 ]; then
+        downloadInstallScripts "${fileName}" "${URL_MYSHELLENV}functions/interface/${fileName}"
       fi
-    fi
-
+    done
   fi
 fi
 
@@ -79,9 +99,12 @@ fi
 # Tendo conseguido carregar todos os arquivos necessários para a instalação
 # prossegue com a instalação
 if [ $ISOK == 1 ]; then
-  source ~/.tmpMyShellEnv/textColors.sh
-  source ~/.tmpMyShellEnv/downloadMyShellEnvScript.sh
-  source ~/.tmpMyShellEnv/installMyShellEnvScripts.sh
+
+
+  INSTALL_FILES=(
+    "textColors.sh" "downloadMyShellEnvScript.sh" "installMyShellEnvScripts.sh"
+      "alertUser.sh" "errorAlert.sh" "waitUser.sh" "promptUser.sh" "setIMessage.sh"
+  )
 
   for fileName in "${INSTALL_FILES[@]}"; do
     source "~/.tmpMyShellEnv/${fileName}"
@@ -89,9 +112,11 @@ if [ $ISOK == 1 ]; then
 
 
 
+
+
   clear
   setIMessage "" 1
-  setIMessage "${SILVER}myShellEnv v 0.9.6 [2021-08-28]${NONE}"
+  setIMessage "${SILVER}myShellEnv v 0.9.7 [2021-08-29]${NONE}"
   setIMessage "Iniciando o processo de instalação."
   alertUser
 
@@ -147,38 +172,73 @@ if [ $ISOK == 1 ]; then
 
 
   #
-  # Sendo para instalar no skel...
-  if [ "$INSTALL_IN_SKEL" == "1" ]; then
-    installMyShellEnvScripts 1
-
-    setIMessage "" 1
-    setIMessage "${SILVER}Instalação no skel concluída${NONE}"
-    alertUser
-  fi
-
-
-
-  #
   # Sendo para instalar a mensagem de login...
   if [ "$INSTALL_LOGIN_MESSAGE" == "1" ]; then
+    if [ -f "/etc/issue" ]; then
+      cp /etc/issue /etc/issue_beforeMyShellEnv
+    fi
     curl -s -o /etc/issue "${URL_ETC}issue"
 
-    setIMessage "" 1
-    setIMessage "${SILVER}Instalação da mensagem de login concluída${NONE}"
-    alertUser
+    if [ ! -f "/etc/issue" ]; then
+      setIMessage "" 1
+      setIMessage "Não foi possível instalar a mensagem de login"
+      setIMessage "Processo abortado."
+    else
+      setIMessage "" 1
+      setIMessage "${SILVER}Instalação da mensagem de login concluída${NONE}"
+      alertUser
+    fi
   fi
+
+
 
 
 
   #
   # Sendo para instalar no skel...
   if [ "$INSTALL_IN_SKEL" == "1" ]; then
-    installMyShellEnvScripts 0
+    mkdir -p /etc/skel/.myShellEnv
+    if [ ! -d "/etc/skel/.myShellEnv" ]; then
+      setIMessage "\n" 1
+      setIMessage "Não foi possível criar o diretório ${LBLUE}/etc/skel/.myShellEnv${NONE}?"
+      setIMessage "Esta ação foi encerrada.\n"
+      alertUser
+    else
+      installMyShellEnvScripts 1
 
-    setIMessage "" 1
-    setIMessage "${SILVER}Instalação para o seu usuário concluída${NONE}"
-    alertUser
+      if [ ISOK == 1 ]; then
+        setIMessage "" 1
+        setIMessage "${SILVER}Instalação no skel concluída${NONE}"
+        alertUser
+      fi
+    fi
   fi
+
+
+
+
+
+  #
+  # Sendo para instalar no no usuário atual...
+  if [ "$INSTALL_IN_MY_USER" == "1" ]; then
+    mkdir -p ~/.myShellEnv
+    if [ ! -d "~/.myShellEnv" ]; then
+      setIMessage "\n" 1
+      setIMessage "Não foi possível criar o diretório ${LBLUE}~/.myShellEnv${NONE}?"
+      setIMessage "Esta ação foi encerrada.\n"
+      alertUser
+    else
+      installMyShellEnvScripts 0
+
+      if [ ISOK == 1 ]; then
+        setIMessage "" 1
+        setIMessage "${SILVER}Instalação para o seu usuário concluída${NONE}"
+        alertUser
+      fi
+    fi
+  fi
+
+
 
 
 
