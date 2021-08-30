@@ -93,4 +93,5 @@ installMyShellEnvScripts() {
       TARGET_FILES=("prompt.sh")
       downloadMyShellEnvScript "$FN_URL" "$FN_DIR"  fi
     fi
+  fi
 }
