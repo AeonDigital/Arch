@@ -36,9 +36,10 @@ downloadInstallScripts() {
   if [ $# != 2 ]; then
     printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
   else
-    curl -o "~/.tmpMyShellEnv/$1" "$2"
+    TMP="~/.tmpMyShellEnv/$1"
+    curl -o "$TMP" "$2"
 
-    if [ ! -f "~/.tmpMyShellEnv/$1" ]; then
+    if [ ! -f "$TMP" ]; then
       ISOK=0
       printf "Não foi possível fazer o download do arquivo de instalação '$1'\n"
       printf "Esta ação foi encerrada.\n"
@@ -56,7 +57,7 @@ downloadInstallScripts() {
 mkdir -p ~/.tmpMyShellEnv
 
 
-if [ ! -d "~/.tmpMyShellEnv" ]; then
+if [ ! -d ~/.tmpMyShellEnv ]; then
   ISOK=0
   printf "Não foi possível criar o diretório temporário de instalação. \n"
   printf "Esta ação foi encerrada.\n"
@@ -178,7 +179,7 @@ if [ $ISOK == 1 ]; then
     fi
     curl -s -o /etc/issue "${URL_ETC}issue"
 
-    if [ ! -f "/etc/issue" ]; then
+    if [ ! -f /etc/issue ]; then
       setIMessage "" 1
       setIMessage "Não foi possível instalar a mensagem de login"
       setIMessage "Processo abortado."
@@ -197,7 +198,7 @@ if [ $ISOK == 1 ]; then
   # Sendo para instalar no skel...
   if [ "$INSTALL_IN_SKEL" == "1" ]; then
     mkdir -p /etc/skel/.myShellEnv
-    if [ ! -d "/etc/skel/.myShellEnv" ]; then
+    if [ ! -d /etc/skel/.myShellEnv ]; then
       setIMessage "\n" 1
       setIMessage "Não foi possível criar o diretório ${LBLUE}/etc/skel/.myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
@@ -221,7 +222,7 @@ if [ $ISOK == 1 ]; then
   # Sendo para instalar no no usuário atual...
   if [ "$INSTALL_IN_MY_USER" == "1" ]; then
     mkdir -p ~/.myShellEnv
-    if [ ! -d "~/.myShellEnv" ]; then
+    if [ ! -d ~/.myShellEnv ]; then
       setIMessage "\n" 1
       setIMessage "Não foi possível criar o diretório ${LBLUE}~/.myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
