@@ -37,7 +37,7 @@ downloadInstallScripts() {
     printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
   else
     TMP="~/.tmpMyShellEnv/$1"
-    curl -o "$TMP" "$2"
+    curl -o -s "$TMP" "$2"
 
     if [ ! -f "$TMP" ]; then
       ISOK=0
