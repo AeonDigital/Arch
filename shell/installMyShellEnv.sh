@@ -24,7 +24,7 @@ ISOK=1
 # Sendo bem sucedido irá carregar o script.
 #
 #   @param string $1
-#   Nome do script a ser salvo no diretório temporário '.tmpMyShellEnv'.
+#   Nome do script a ser salvo no diretório temporário 'tmpMyShellEnv'.
 #
 #   @param string $2
 #   Url onde está o arquivo a ser baixado.
@@ -36,8 +36,8 @@ downloadInstallScripts() {
   if [ $# != 2 ]; then
     printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
   else
-    TMP="~/.tmpMyShellEnv/$1"
-    curl -s -o "$TMP" "$2"
+    TMP="~/tmpMyShellEnv/$1"
+    curl -s -o "${TMP}" "$2"
 
     if [ ! -f "$TMP" ]; then
       ISOK=0
@@ -54,10 +54,10 @@ downloadInstallScripts() {
 #
 # prepara o diretório temporário
 # e efetua o download dos scripts básicos para a instalação
-mkdir -p ~/.tmpMyShellEnv
+mkdir -p ~/tmpMyShellEnv
 
 
-if [ ! -d ~/.tmpMyShellEnv ]; then
+if [ ! -d ~/tmpMyShellEnv ]; then
   ISOK=0
   printf "Não foi possível criar o diretório temporário de instalação. \n"
   printf "Esta ação foi encerrada.\n"
@@ -107,7 +107,7 @@ if [ $ISOK == 1 ]; then
   )
 
   for fileName in "${INSTALL_FILES[@]}"; do
-    source "~/.tmpMyShellEnv/${fileName}"
+    source "~/tmpMyShellEnv/${fileName}"
   done
 
 
@@ -197,10 +197,10 @@ if [ $ISOK == 1 ]; then
   #
   # Sendo para instalar no skel...
   if [ "$INSTALL_IN_SKEL" == "1" ]; then
-    mkdir -p /etc/skel/.myShellEnv
-    if [ ! -d /etc/skel/.myShellEnv ]; then
+    mkdir -p /etc/skel/myShellEnv
+    if [ ! -d /etc/skel/myShellEnv ]; then
       setIMessage "\n" 1
-      setIMessage "Não foi possível criar o diretório ${LBLUE}/etc/skel/.myShellEnv${NONE}?"
+      setIMessage "Não foi possível criar o diretório ${LBLUE}/etc/skel/myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
       alertUser
     else
@@ -221,10 +221,10 @@ if [ $ISOK == 1 ]; then
   #
   # Sendo para instalar no no usuário atual...
   if [ "$INSTALL_IN_MY_USER" == "1" ]; then
-    mkdir -p ~/.myShellEnv
-    if [ ! -d ~/.myShellEnv ]; then
+    mkdir -p ~/myShellEnv
+    if [ ! -d ~/myShellEnv ]; then
       setIMessage "\n" 1
-      setIMessage "Não foi possível criar o diretório ${LBLUE}~/.myShellEnv${NONE}?"
+      setIMessage "Não foi possível criar o diretório ${LBLUE}~/myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
       alertUser
     else
@@ -253,6 +253,6 @@ if [ $ISOK == 1 ]; then
 
 
   rm installMyShellEnv.sh || true
-  rm -R -/.tmpMyShellEnv
+  rm -R -/tmpMyShellEnv
   waitUser
 fi
