@@ -260,6 +260,7 @@ if [ $ISOK == 1 ]; then
   fi
 
 
+
   rm -R "${HOME}/tmpMyShellEnv"
   rm installMyShellEnv.sh
   waitUser
