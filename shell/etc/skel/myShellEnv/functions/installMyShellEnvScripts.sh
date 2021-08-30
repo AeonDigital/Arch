@@ -32,14 +32,14 @@ installMyShellEnvScripts() {
 
 
     # Diretório e arquivos básicos
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       TARGET_FILES=("aliases.sh" "start.sh" "textColors.sh")
       downloadMyShellEnvScript "$URL_MYSHELLENV" "$TARGET_DIR"
     fi
 
 
     # Funções
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/"
       FN_URL="${URL_MYSHELLENV}functions/"
       TARGET_FILES=("downloadMyShellEnvScript.sh" "installMyShellEnvScripts.sh")
@@ -48,7 +48,7 @@ installMyShellEnvScripts() {
 
 
     # Funções :: interface
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/interface/"
       FN_URL="${URL_MYSHELLENV}functions/interface/"
       TARGET_FILES=("alertUser.sh" "errorAlert.sh" "promptUser.sh" "setIMessage.sh" "waitUser.sh")
@@ -57,7 +57,7 @@ installMyShellEnvScripts() {
 
 
     # Funções :: string
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/string/"
       FN_URL="${URL_MYSHELLENV}functions/string/"
       TARGET_FILES=(
@@ -69,7 +69,7 @@ installMyShellEnvScripts() {
 
 
     # Funções :: terminal
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/terminal/"
       FN_URL="${URL_MYSHELLENV}functions/terminal/"
       TARGET_FILES=("setUTF8.sh" "showPromptOptions.sh" "showScreenColors.sh" "showTextColors.sh")
@@ -78,7 +78,7 @@ installMyShellEnvScripts() {
 
 
     # Funções :: thirdPart
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}functions/thirdPart/"
       FN_URL="${URL_MYSHELLENV}functions/thirdPart/"
       TARGET_FILES=("print256colours.sh")
@@ -87,7 +87,7 @@ installMyShellEnvScripts() {
 
 
     # prompts
-    if [ ISOK == 1 ]; then
+    if [ $ISOK == 1 ]; then
       FN_DIR="${TARGET_DIR}prompts/"
       FN_URL="${URL_MYSHELLENV}prompts/"
       TARGET_FILES=("prompt.sh")

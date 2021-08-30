@@ -62,20 +62,20 @@ if [ ! -d "~/.tmpMyShellEnv" ]; then
   printf "Esta ação foi encerrada.\n"
 else
 
-  if [ ISOK == 1 ]; then
+  if [ $ISOK == 1 ]; then
     downloadInstallScripts "textColors.sh" "${URL_MYSHELLENV}textColors.sh"
   fi
 
-  if [ ISOK == 1 ]; then
+  if [ $ISOK == 1 ]; then
     downloadInstallScripts "downloadMyShellEnvScript.sh" "${URL_MYSHELLENV}functions/downloadMyShellEnvScript.sh"
   fi
 
-  if [ ISOK == 1 ]; then
+  if [ $ISOK == 1 ]; then
     downloadInstallScripts "installMyShellEnvScripts.sh" "${URL_MYSHELLENV}functions/installMyShellEnvScripts.sh"
   fi
 
 
-  if [ ISOK == 1 ]; then
+  if [ $ISOK == 1 ]; then
     INSTALL_FILES=(
       "alertUser.sh" "errorAlert.sh"
       "waitUser.sh" "promptUser.sh" "setIMessage.sh"
@@ -205,7 +205,7 @@ if [ $ISOK == 1 ]; then
     else
       installMyShellEnvScripts 1
 
-      if [ ISOK == 1 ]; then
+      if [ $ISOK == 1 ]; then
         setIMessage "" 1
         setIMessage "${SILVER}Instalação no skel concluída${NONE}"
         alertUser
@@ -229,7 +229,7 @@ if [ $ISOK == 1 ]; then
     else
       installMyShellEnvScripts 0
 
-      if [ ISOK == 1 ]; then
+      if [ $ISOK == 1 ]; then
         setIMessage "" 1
         setIMessage "${SILVER}Instalação para o seu usuário concluída${NONE}"
         alertUser

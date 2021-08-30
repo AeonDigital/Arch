@@ -55,7 +55,7 @@ downloadMyShellEnvScript() {
         printf "\n${ALERT_INDENT}${LBLUE}$2${NONE} ...\n"
 
         for script in "${TARGET_FILES[@]}"; do
-          if [ ISOK == 1 ]; then
+          if [ $ISOK == 1 ]; then
             printf "${ALERT_INDENT} ... ${LBLUE}${script}${NONE}"
             curl -s -o "${2}${script}" "${1}${script}"
 
@@ -68,7 +68,7 @@ downloadMyShellEnvScript() {
           fi
         done
 
-        if [ ISOK == 1 ]; then
+        if [ $ISOK == 1 ]; then
           printf "${ALERT_INDENT}Finalizado com sucesso.\n"
         else
           printf "${ALERT_INDENT}Processo abortado.\n"
