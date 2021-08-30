@@ -56,10 +56,10 @@ downloadInstallScripts() {
 #
 # prepara o diretório temporário
 # e efetua o download dos scripts básicos para a instalação
-mkdir -p ${HOME}/tmpMyShellEnv
+mkdir -p "${HOME}/tmpMyShellEnv"
 
 
-if [ ! -d ${HOME}/tmpMyShellEnv ]; then
+if [ ! -d "${HOME}/tmpMyShellEnv" ]; then
   ISOK=0
   printf "Não foi possível criar o diretório temporário de instalação. \n"
   printf "Esta ação foi encerrada.\n"
@@ -181,7 +181,7 @@ if [ $ISOK == 1 ]; then
     fi
     curl -s -o /etc/issue "${URL_ETC}issue" || true
 
-    if [ ! -f /etc/issue ]; then
+    if [ ! -f "/etc/issue" ]; then
       setIMessage "" 1
       setIMessage "Não foi possível instalar a mensagem de login"
       setIMessage "Processo abortado."
@@ -199,8 +199,8 @@ if [ $ISOK == 1 ]; then
   #
   # Sendo para instalar no skel...
   if [ "$INSTALL_IN_SKEL" == "1" ]; then
-    mkdir -p /etc/skel/myShellEnv
-    if [ ! -d /etc/skel/myShellEnv ]; then
+    mkdir -p "/etc/skel/myShellEnv"
+    if [ ! -d "/etc/skel/myShellEnv" ]; then
       setIMessage "\n" 1
       setIMessage "Não foi possível criar o diretório ${LBLUE}/etc/skel/myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
@@ -223,8 +223,8 @@ if [ $ISOK == 1 ]; then
   #
   # Sendo para instalar no no usuário atual...
   if [ "$INSTALL_IN_MY_USER" == "1" ]; then
-    mkdir -p ${HOME}/myShellEnv
-    if [ ! -d ${HOME}/myShellEnv ]; then
+    mkdir -p "${HOME}/myShellEnv"
+    if [ ! -d "${HOME}/myShellEnv" ]; then
       setIMessage "\n" 1
       setIMessage "Não foi possível criar o diretório ${LBLUE}${HOME}/myShellEnv${NONE}?"
       setIMessage "Esta ação foi encerrada.\n"
@@ -254,7 +254,7 @@ if [ $ISOK == 1 ]; then
   setIMessage ""
 
 
-  rm installMyShellEnv.sh || true
-  rm -R -/tmpMyShellEnv
+  rm -R "${HOME}/tmpMyShellEnv"
+  rm installMyShellEnv.sh
   waitUser
 fi
