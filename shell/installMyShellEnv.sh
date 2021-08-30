@@ -45,6 +45,9 @@ downloadInstallScripts() {
       printf "Esta ação foi encerrada.\n"
       printf "URL: $2 \n"
       printf "TGT: ${TMP} \n"
+    else
+      printf " > Carregando script: ${TMP} \n"
+      source "${TMP}"
     fi
   fi
 }
@@ -90,6 +93,7 @@ else
         downloadInstallScripts "${fileName}" "${URL_MYSHELLENV}functions/interface/${fileName}"
       fi
     done
+
   fi
 fi
 
@@ -97,30 +101,11 @@ fi
 
 
 
-#
-# Tendo conseguido carregar todos os arquivos necessários para a instalação
-# prossegue com a instalação
 if [ $ISOK == 1 ]; then
-
-
-  INSTALL_FILES=(
-    "textColors.sh" "downloadMyShellEnvScript.sh" "installMyShellEnvScripts.sh"
-      "alertUser.sh" "errorAlert.sh" "waitUser.sh" "promptUser.sh" "setIMessage.sh"
-  )
-
-  for fileName in "${INSTALL_FILES[@]}"; do
-    setIMessage " > Carregando script ${SILVER}${HOME}/tmpMyShellEnv/${fileName}${NONE}" 1
-    alertUser
-    source "${HOME}/tmpMyShellEnv/${fileName}"
-  done
-
-
-
-
 
   clear
   setIMessage "" 1
-  setIMessage "${SILVER}myShellEnv v 0.9.8 [2021-08-29]${NONE}"
+  setIMessage "${SILVER}myShellEnv v 0.9.9 [2021-08-29]${NONE}"
   setIMessage "Iniciando o processo de instalação."
   alertUser
 
