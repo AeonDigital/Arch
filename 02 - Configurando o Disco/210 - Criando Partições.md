@@ -1,7 +1,7 @@
 # 210 - Criando as partições
 
 O instalador do ``Arch`` traz dois programas que lhe permitem lidar com as partições dos seus HDs.
-Um é o ``fdisk`` cuja interface é mais básica e 'procedural'; Já o outro é o ``cfdisk`` cuja 
+Um é o ``fdisk`` cuja interface é mais básica e procedural; Já o outro é o ``cfdisk`` cuja 
 interface é mais amigável e é a usada neste tutorial para facilitar o entendimento.  
 
 Abaixo há a explicação de ambos os casos de uso; A vantagem do primeiro é que é possível torná-lo

@@ -3,8 +3,8 @@
 Esta é uma das partes mais interessantes pois permite que você organize as informações que aparecem
 no prompt de comando a cada linha executada.  
 
-Uma das variáveis de configuração do ``bash`` é a ``PS1``. Ela geralmente é definida no arquivo 
-``/etc/bash.bachrc`` e fica disponível para todos os usuários. Nela estão as instruções que compõe 
+Uma das variáveis de configuração do ``bash`` é a ``PS1``. Ela geralmente é definida no arquivo
+``/etc/bash.bachrc`` e fica disponível para todos os usuários. Nela estão as instruções que compõe
 o prompt demonstrado no terminal.  
 
 Exemplo:
@@ -13,11 +13,11 @@ Exemplo:
 ```
 
 Isto mostrará um prompt com as seguintes informações:  
-  $ usuario@hostname:   
+  $ usuario@hostname:  
   ou  
   $ rianna@archlinux:  
 
-Se você entendeu bem o tópico ``Como Configurar o Bash`` sabe que pode usar o seu arquivo 
+Se você entendeu bem o tópico ``Como Configurar o Bash`` sabe que pode usar o seu arquivo
 ``~/.bash`` para redefinir esta variável. Como ele será lido por último, o valor que você definir
 desta forma será aquele que será usado pelo seu usuário sempre que fizer o login.
 
@@ -33,35 +33,35 @@ Os seguintes comandos podem ser usados para configurar o prompt:
   \a    Caracter invisível, emite um "beep" quando usado
   \d    Data no formato "Dia Mês Data"
   \D{format}  The format is passed to strftime(3) and the result is inserted in the prompt string;
-              an empty format results in a locale-specific time representation. 
+              an empty format results in a locale-specific time representation.
               The braces are required
   \e    Caracter de escape
   \h    Hostname sem o grupo de trabalho, até o primeiro "."
-  \H    Hostname com o grupo de trabalho . 
-  \j    The number of jobs currently managed by the shell. 
-  \l    The basename of the shell's terminal device name. 
+  \H    Hostname com o grupo de trabalho .
+  \j    The number of jobs currently managed by the shell.
+  \l    The basename of the shell's terminal device name.
   \n    Nova linha
   \r    Retorno de "carro" (retorna para o início da linha)
   \s    Nome do shell
-  \t    Horas no formato (24-horas) HH:MM:SS 
-  \T    Horas no formato (12-horas) HH:MM:SS  
+  \t    Horas no formato (24-horas) HH:MM:SS
+  \T    Horas no formato (12-horas) HH:MM:SS
   \@    Horas no formato AM/PM
-  \A    Horas no formato (24-horas) HH:MM 
+  \A    Horas no formato (24-horas) HH:MM
   \u    Usuário que está usando o shell
   \v    Versão do bash
   \V    Versão + patch do bash
   \w    Caminho completo do diretório atual
         com a abreviação de $HOME com um ~ (usado com a variável $PROMPT_DIRTRIM)
-  \W    Nome do diretório atual 
+  \W    Nome do diretório atual
         com a abreviação de $HOME com um ~
   \!    O número deste comando no histórico
   \#    O número deste comando
-  \$    Simbolo # (caso root) ou $ (outros usuários) 
-  \nnn  Caracter ASCII relativo ao "nnn"
+  \$    Simbolo # (caso root) ou $ (outros usuários)
+  \nnn  Caracter ASCII relativo ao "nnn" (veja as tabelas de caracteres no apendice)
   \\    Contrabarra
-  \[    Begin a sequence of non-printing characters. This could be used to embed a terminal 
-        control sequence into the prompt. 
-  \]    End a sequence of non-printing characters. 
+  \[    Begin a sequence of non-printing characters. This could be used to embed a terminal
+        control sequence into the prompt.
+  \]    End a sequence of non-printing characters.
 </pre>
 
 
@@ -77,7 +77,7 @@ Abaixo segue a cópia dos padrões de definição que você pode utilizar.
   # o exemplo funcione corretamente.
   \e[FUNDO;ATTR;FONTEm
   \e[FUNDO;ATTR;FONTE&lt;r&gt;;FONTE&lt;g&gt;;FONTE&lt;b&gt;m
-  
+
   - Exemplo
   \e[38;2;255m
 </pre>
@@ -91,10 +91,8 @@ Abaixo segue a cópia dos padrões de definição que você pode utilizar.
     44 - Azul         | 07 - Inversa      | 34 - Azul
     45 - Rosa         | 08 - Oculta       | 35 - Rosa/Púrpura
     47 - Azul Claro   |                   | 36 - Azul Claro
-    48 - Branco       |                   | 37 - Branco 
+    48 - Branco       |                   | 37 - Branco
 
-
-Você pode usar o script ``/shell/etc/myShellEnv/thirdPartFunctions/print256colours.sh`` para conhecer qual o código deve usar para cada uma das 256 cores disponíveis caso esteja limitado a um ambiente de 8 bits.
 
 
 
@@ -109,7 +107,7 @@ Você pode armazenar o estado atual da variável ``PS1`` criando uma variável d
   echo $TMPPS1
 ```
 
-Uma vez que o valor inicial está salvo, agora você pode alterar o valor de ``PS1`` e testar 
+Uma vez que o valor inicial está salvo, agora você pode alterar o valor de ``PS1`` e testar
 configurações até chegar em alguma que lhe agrade.
 
 

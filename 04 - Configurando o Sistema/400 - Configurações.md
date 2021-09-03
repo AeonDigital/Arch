@@ -124,6 +124,10 @@ interface gráfica.
 
 ### 400.5.1 - Adicionando seu usuário no ``sudoers`` 
 
+Note, é mais indicado adicionar o seu usuário a um grupo que seja um ``sudoer`` mas há casos em 
+que você quer ou precisa ter um usuário neste grupo sem ser o root... neste caso siga as 
+instruções.
+
 **Edite o seguinte arquivo**
 ``` shell
   vim /etc/sudoers

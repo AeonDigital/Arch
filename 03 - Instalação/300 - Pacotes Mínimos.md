@@ -69,10 +69,7 @@ Com estes itens você instala o Arch Linux com o mínimo possível e pode seguir
 momento você ainda não conseguirá dar um boot e nem acessar a internet.
 
 ``` shell
-  # Para a coleção "base" a partir de 2019-11-13
-  Enter a selection (default=all): 1 12 16 20 23 27
- 
-  # OU, use o comando abaixo
+  # Instale os itens mínimos com o comando a seguir:
   pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux
 ```
 
@@ -101,6 +98,7 @@ necessários para uma instalação mínima +:
 - wpa_supplicant .......... : para configurar a internet sem fio.
 - wget .................... : para fazer downloads "avulsos".
 - tzdata .................. : Fontes para trabalhar com fuso horário.
+- pacman-contrib .......... : Scripts e ferramentas extras para sistemas pacman.
 </pre>
 
 
@@ -136,10 +134,10 @@ Dependendo do caso você pode precisar destes aqui.
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget tzdata
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget tzdata 
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget tzdata
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget tzdata 
 ```
 
 
@@ -149,8 +147,8 @@ Dependendo do caso você pode precisar destes aqui.
 
 ``` shell
   # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget tzdata
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget tzdata 
 
   # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget tzdata
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget tzdata 
 ```
