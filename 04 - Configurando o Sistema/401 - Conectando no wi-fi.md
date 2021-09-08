@@ -1,4 +1,4 @@
-# 401 - Conectando na internet
+# 401 - Conectando no wi-fi
 
 Esta etapa apenas funcionará se você instalou os pacotes do item 320.2
 

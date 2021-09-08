@@ -83,22 +83,22 @@ instalar para uma outra dependência chamada ``initramsf``, selecione o ``mkinit
 ## 300.2 - Pacotes recomendados
 
 Se você quiser se antecipar a este tutorial, segue uma orientação de quais pacotes serão 
-necessários para uma instalação mínima +:
+necessários para uma instalação mínima para tornar a máquina realmente útil:
 
 <pre>
 - sudo .................... : se você não sabe para que serve, você não deveria estar aqui.
 - vim ..................... : editor de arquivos.
 - sshfs ................... : pra dar acesso SSH ao computador onde está sendo instalado o Arch.
 - less .................... : facilita a visualização de textos no terminal.
+- wget .................... : para fazer downloads "avulsos" [eventualmente usado por outros pacotes].
+- tzdata .................. : Fontes para trabalhar com fuso horário.
+- pacman-contrib .......... : Scripts e ferramentas extras para sistemas pacman.
 - grub .................... : para configurar o boot em BIOS.
 - grub-efi-x86_64 ......... : para configurar o boot em UEFI.
 - efibootmgr .............. : para configurar o boot em UEFI.
 - network-manager-applet .. : para configurar a internet.
 - wireless_tools .......... : para configurar a internet sem fio.
 - wpa_supplicant .......... : para configurar a internet sem fio.
-- wget .................... : para fazer downloads "avulsos".
-- tzdata .................. : Fontes para trabalhar com fuso horário.
-- pacman-contrib .......... : Scripts e ferramentas extras para sistemas pacman.
 </pre>
 
 
@@ -106,7 +106,7 @@ necessários para uma instalação mínima +:
 
 **Compilador C**  
 
-Já os usei eventualmente para compilar e instalar programas/pacotes de forma avulsa (sem o 
+Já os usei eventualmente para compilar e/ou instalar programas/pacotes de forma avulsa (sem o 
 ``pacman`` ou ``apt-get`` por exemplo).  
 
 <pre>
@@ -130,25 +130,46 @@ Dependendo do caso você pode precisar destes aqui.
 
 &nbsp;
 
-### Pacote sem Wireless, com Internet e acesso SSH
+### Minha instalação
 
 ``` shell
-  # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wget tzdata 
+  # pack base
+  #   bash gzip pacman sed systemd-sysvcompat linux
+  #
+  # pack mínimo
+  #   sudo vim sshfs less wget tzdata pacman-contrib  
+  # 
+  # pack grub
+  #   [UEFI]
+  #   grub-efi-x86_64 efibootmgr 
+  #   [BIOS]
+  #   grub
+  #
+  # pack internet
+  #   [Wired]
+  #   network-manager-applet
+  #   [Wireless]
+  #   network-manager-applet wireless_tools wpa_supplicant
+  #
+  # opcionais
+  #   gcc make iputils openssl
+  #
+   
 
-  # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wget tzdata 
-```
+  # UEFI [wired]
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less wget tzdata pacman-contrib grub-efi-x86_64 efibootmgr network-manager-applet
+
+  # UEFI [wireless]
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less wget tzdata pacman-contrib grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant
 
 
-&nbsp;
+  # BIOS [wired]
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less wget tzdata pacman-contrib grub network-manager-applet
 
-### Pacote com Wireless, com Internet e acesso SSH
+  # BIOS [wireless]
+  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less wget tzdata pacman-contrib grub network-manager-applet wireless_tools wpa_supplicant
 
-``` shell
-  # UEFI
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub grub-efi-x86_64 efibootmgr network-manager-applet wireless_tools wpa_supplicant wget tzdata 
-
-  # BIOS
-  pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux sudo vim sshfs less grub network-manager-applet wireless_tools wpa_supplicant wget tzdata 
+  
+  # Opcionais
+  pacstrap /mnt gcc make iputils openssl
 ```
