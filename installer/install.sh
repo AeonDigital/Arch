@@ -137,13 +137,10 @@ ISOK=1
 TMP_MB=""
 TMP_CR=""
 
-
-TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
-
-TMP_TGT_URL=""
-TMP_FILE_NAME=""
 TMP_SCODE=""
-
+TMP_TGT_URL=""
+TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
+TMP_FILE_NAME=""
 
 
 loadkeys br-abnt2
@@ -156,7 +153,7 @@ if [ $ISOK == 1 ]; then
   
   TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
-  if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
+  if [ -f "$TMP_FILE_NAME" ] && [ $TMP_SCODE == 200 ]; then
     chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
@@ -174,7 +171,7 @@ if [ $ISOK == 1 ]; then
   
   TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
-  if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
+  if [ -f "$TMP_FILE_NAME" ] && [ $TMP_SCODE == 200 ]; then
     chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
@@ -219,11 +216,10 @@ ISOK=1
 unset TMP_MB
 unset TMP_CR
 
-unset TMP_URL_BASE
-
-unset TMP_TGT_URL
-unset TMP_FILE_NAME
 unset TMP_SCODE
+unset TMP_TGT_URL
+unset TMP_URL_BASE
+unset TMP_FILE_NAME
 
 
 unset downloadInstallScripts
