@@ -1,21 +1,34 @@
-# 300 - Instalação das configurações iniciais e pacotes básicos
+# 300 - Instalação dos pacotes iniciais
 
 Ao final do passo anterior o básico do básico está feito para você começar a efetivamente montar 
-seu S/O. A partir de agora você irá personalizá-lo conforme seu gosto.
+seu S/O. A partir de agora você irá personalizá-lo conforme seu gosto.  
 
 Ao longo deste passo serão feitas descrições de instalações que EU, baseada nas informações 
-colhidas pelos tutoriais, considero realmente mínimos e/ou interessantes de serem instaladas.
+colhidas até aqui, considero realmente mínimos e/ou interessantes de serem instaladas.  
 
-O primeiro passo é instalar uma coleção de pacotes **basicão** para começar esta etapa.  
-Com o comando abaixo, o grupo ``base`` terá seus pacotes listados e enumerados e o prompt 
-aguardará que você indique o número de cada item que deve ser instalado.
+O primeiro passo é instalar uma coleção de pacotes **essenciais** para começar esta etapa.  
+Há uma coleção de pacotes chamados ``base`` que é disponibilizada pelo repositório oficial e que,
+se usado irá instalar todos os pacotes listados abaixo.
 
 ``` shell
-  pacstrap -i /mnt base
+  pacstrap /mnt base
 ```
 
+Na listagem abaixo estão relacionados todos os pacotes que serão instalados com a coleção ``base``.  
+Pela pesquisa e testes que fiz, identifiquei um subgrupo que seria considerado realmente essencial. 
+São aqueles que você só instalará se quiser o mínimo do mínimo.   
 
-Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-11-13]. 
+**Obs:** Note que mesmo assim ocorrerá a instalação de pacotes que são dependências destes e que serão
+instalados de qualquer forma.  
+
+
+- Os itens marcados com [x] são considerados realmente essenciais e deveriam ser mantidos na sua 
+instalação.
+- Os itens cuja descrição é precedida de um ``!`` são aqueles em que a instalação será feita como 
+dependência de um dos que estão selecionados.
+- Já os itens cuja descrição é precedida de um ``>`` são instalados como dependência de um ou outro 
+pacote ou são recomendados por motivos específicos ao longo deste tutorial.
+
 
 <pre>
 [x] [ 1] bash ................... The GNU Bourne Again shell  
@@ -31,7 +44,7 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
     [11] grep ................... ! A string search utility  
 [x] [12] gzip ................... GNU compression utility  
     [13] iproute2 ............... > IP Routing Utilities  [network-manager-applet > networkmanager]  
-    [14] iputils ................ Network monitoring tools, including ping  
+    [14] iputils ................ > Network monitoring tools, including ping  
     [15] licenses ............... Standard licenses distribution package  
 [x] [16] pacman ................. A library-based package manager with dependency support  
     [17] pciutils ............... PCI bus configuration space access library and tools  
@@ -47,29 +60,22 @@ Abaixo está a relação de pacotes que estarão disponíveis [a partir de 2019-
 [x] [27] linux .................. The Linux kernel and modules  
 </pre>
 
-Os itens cuja descrição é precedida de um ``!`` são aqueles em que a instalação será feita como 
-dependência de um dos que estão selecionados.  
-Já os itens cuja descrição é precedida de um ``>`` são instalados como dependência de um ou outro 
-pacote recomendado ao longo deste tutorial.  
-
 
 Para maiores informações visite a relação oficial em:
 > https://archlinux.org/packages/core/any/base/
 
-Os itens marcados com [x] são considerados realmente essenciais e deveriam ser mantidos na sua 
-instalação.
 
 
 
 &nbsp;
 
-## 300.1 - Pacote extremamente mínimo
+## 300.1 - Pacote essenciais
 
 Com estes itens você instala o Arch Linux com o mínimo possível e pode seguir o tutorial. Neste 
 momento você ainda não conseguirá dar um boot e nem acessar a internet.
 
 ``` shell
-  # Instale os itens mínimos com o comando a seguir:
+  # Instale os itens essenciais com o comando a seguir:
   pacstrap /mnt bash gzip pacman sed systemd-sysvcompat linux
 ```
 
@@ -80,10 +86,12 @@ instalar para uma outra dependência chamada ``initramsf``, selecione o ``mkinit
 
 &nbsp;
 
-## 300.2 - Pacotes recomendados
+## 300.2 - Pacotes necessários e recomendados
 
-Se você quiser se antecipar a este tutorial, segue uma orientação de quais pacotes serão 
-necessários para uma instalação mínima para tornar a máquina realmente útil:
+A coleção de pacotes listados abaixo são necessários para que sua máquina tenha o mínimo que normalmente
+é requerido para que ela se torne útil para um usuário humano. Outros são recomendados por mim dada a
+constância de seu uso no dia a dia (ao menos dentro da minha realidade).  
+
 
 <pre>
 - sudo .................... : se você não sabe para que serve, você não deveria estar aqui.
