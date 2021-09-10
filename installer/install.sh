@@ -176,14 +176,6 @@ fi
 
 
 ISOK=1
-unset TMP_MB
-unset TMP_CR
-
-unset TMP_SCODE
-unset TMP_TGT_URL
-unset TMP_URL_BASE
-unset TMP_FILE_NAME
-
 
 unset downloadInstallScripts
 unset createTmpInstallerEnv
