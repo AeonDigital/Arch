@@ -155,10 +155,20 @@ else
     setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais concluída!."
     setIMessage "     Esta parte do processo finalizou."
     setIMessage "     Sua máquina está quase pronta para ser usada."
-    setIMessage "     ${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
-    alertUser
+    setIMessage "     Será executado o switch para o seu novo sistema."
+    setIMessage ""
+    setIMessage "${CYAN}Execute as instruções abaixo${NONE}"
+    setIMessage ""
+    setIMessage "> ${LGREEN}chmod u+x install.sh${NONE}"
+    setIMessage "> ${LGREEN}./install.sh${NONE}"
+    setIMessage ""
+    setIMessage "Precione qualquer tecla para prosseguir."
+    waitUser
 
+    mkdir -p "/mnt/tmpInstaller"
+    cp -a "installerPart02.sh" "/mnt/install.sh"
+    cp -a "tmpInstaller/." "/mnt/tmpInstaller"
+
+    arch-chroot /mnt
   fi
-
-
 fi
