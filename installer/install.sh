@@ -152,7 +152,7 @@ createTmpInstallerEnv
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart01.sh"
-  TMP_FILE_LOCAL="${TMP_FILE_NAME}"
+  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
   TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
   
   TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
@@ -171,7 +171,7 @@ fi
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart02.sh"
-  TMP_FILE_LOCAL="${TMP_FILE_NAME}"
+  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
   TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
   
   TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
@@ -210,8 +210,8 @@ if [ $ISOK == 1 ]; then
 
 
 
-  printf "$TMP_MB" > "/tmpInstaller/varTMP_MB"
-  printf "$TMP_CR" > "/tmpInstaller/varTMP_CR"
+  printf "$TMP_MB" > "${HOME}/tmpInstaller/varTMP_MB"
+  printf "$TMP_CR" > "${HOME}/tmpInstaller/varTMP_CR"
 fi
 
 
