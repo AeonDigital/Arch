@@ -90,32 +90,25 @@ else
   setIMessage "" 1
   setIMessage "${CYAN}Arch Linux${NONE}"
   setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais [para sistemas $TMP_MB]."
-  alertUser
-
-
-  setIMessage "" 1
-  setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais."
   setIMessage "           Serão instalados os seguintes pacotes:"
   setIMessage ""
   setIMessage "${NONE}Essencial\t\tBoot"
-  setIMessage "- ${LCYAN}bash${NONE}\t\t- ${LRED}grub${NONE}  [BIOS]"
-  setIMessage "- ${LCYAN}gzip${NONE}\t\t- ${LRED}grub-efi-x86_64  [UEFI]${NONE}"
-  setIMessage "- ${LCYAN}pacman${NONE}\t\t- ${LRED}efibootmgr  [UEFI]${NONE}"
+  setIMessage "- ${LCYAN}bash${NONE}\t\t- ${LRED}grub${NONE} [BIOS]"
+  setIMessage "- ${LCYAN}gzip${NONE}\t\t- ${LRED}grub-efi-x86_64${NONE} [UEFI]"
+  setIMessage "- ${LCYAN}pacman${NONE}\t\t- ${LRED}efibootmgr${NONE} [UEFI]"
   setIMessage "- ${LCYAN}sed${NONE}"
   setIMessage "- ${LCYAN}systemd-sysvcompat${NONE}"
   setIMessage "- ${LCYAN}linux${NONE}"
   setIMessage ""
-  setIMessage "${NONE}Necessários e recomendados\tCompilador C"
-  setIMessage "- ${LGREEN}sudo${NONE}\t\t- ${LBLUE}gcc{$NONE}"
-  setIMessage "- ${LGREEN}vim${NONE}\t\t- ${LBLUE}make{$NONE}"
+  setIMessage "${NONE}Necessários\t\tCompilador C"
+  setIMessage "- ${LGREEN}sudo${NONE}\t\t- ${LBLUE}gcc${NONE}"
+  setIMessage "- ${LGREEN}vim${NONE}\t\t- ${LBLUE}make${NONE}"
   setIMessage "- ${LGREEN}sshfs${NONE}"
   setIMessage "- ${LGREEN}less${NONE}"
   setIMessage "- ${LGREEN}wget${NONE}\t\tRede e segurança"
   setIMessage "- ${LGREEN}tzdata${NONE}\t\t- ${LPURPLE}network-manager-applet${NONE}"
   setIMessage "- ${LGREEN}pacman-contrib${NONE}\t- ${LPURPLE}iputils${NONE}"
-  setIMessage "- ${LGREEN}less${NONE}\t- ${LPURPLE}openssl${NONE}"
-  setIMessage "- ${LGREEN}less${NONE}"
-  setIMessage "- ${LGREEN}less${NONE}"
+  setIMessage "- ${LGREEN}less${NONE}\t\t- ${LPURPLE}openssl${NONE}"
   alertUser
 
 
@@ -153,14 +146,9 @@ else
 
     setIMessage "" 1
     setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais concluída!."
-    setIMessage "     Esta parte do processo finalizou."
-    setIMessage "     Sua máquina está quase pronta para ser usada."
-    setIMessage "     Será executado o switch para o seu novo sistema."
-    setIMessage ""
-    setIMessage "${CYAN}Execute as instruções abaixo${NONE}"
-    setIMessage ""
-    setIMessage "> ${LGREEN}chmod u+x install.sh${NONE}"
-    setIMessage "> ${LGREEN}./install.sh${NONE}"
+    setIMessage "           Esta parte do processo finalizou."
+    setIMessage "           Sua máquina está quase pronta para ser usada."
+    setIMessage "           Será executado o switch para o seu novo sistema."
     setIMessage ""
     setIMessage "Precione qualquer tecla para prosseguir."
     waitUser
@@ -168,6 +156,14 @@ else
     mkdir -p "/mnt/tmpInstaller"
     cp -a "installerPart02.sh" "/mnt/install.sh"
     cp -a "tmpInstaller/." "/mnt/tmpInstaller"
+
+    setIMessage "" 1
+    setIMessage "${CYAN}Entrando no novo sistema.${NONE}"
+    setIMessage ""
+    setIMessage "Execute as instruções abaixo:"
+    setIMessage "> ${LGREEN}chmod u+x install.sh${NONE}"
+    setIMessage "> ${LGREEN}./install.sh${NONE}"
+    waitUser
 
     arch-chroot /mnt
   fi
