@@ -141,7 +141,6 @@ TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master
 
 TMP_TGT_URL=""
 TMP_FILE_NAME=""
-TMP_FILE_LOCAL=""
 TMP_SCODE=""
 
 
@@ -152,13 +151,12 @@ createTmpInstallerEnv
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart01.sh"
-  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
   TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
   
-  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
+  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_NAME}" "${TMP_TGT_URL}" || true)
 
-  if [ ! -f "$TMP_FILE_LOCAL" ] || [ $TMP_SCODE != 200 ]; then
-    chmod u+x "${TMP_FILE_LOCAL}"
+  if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
+    chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
 
@@ -171,13 +169,12 @@ fi
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart02.sh"
-  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
   TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
   
-  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
+  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_NAME}" "${TMP_TGT_URL}" || true)
 
-  if [ ! -f "$TMP_FILE_LOCAL" ] || [ $TMP_SCODE != 200 ]; then
-    chmod u+x "${TMP_FILE_LOCAL}"
+  if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
+    chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
 
@@ -225,7 +222,6 @@ unset TMP_URL_BASE
 
 unset TMP_TGT_URL
 unset TMP_FILE_NAME
-unset TMP_FILE_LOCAL
 unset TMP_SCODE
 
 
@@ -236,5 +232,5 @@ unset readNCR
 
 
 if [ $ISOK == 1 ]; then
-  .${HOME}/installerPart01.sh
+  ./installerPart01.sh
 fi
