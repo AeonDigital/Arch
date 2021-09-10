@@ -31,7 +31,7 @@ downloadInstallScripts() {
   if [ $# != 2 ]; then
     printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
   else
-    local mseTMP="${HOME}/tmpInstaller/$1"
+    local mseTMP="tmpInstaller/$1"
     local mseSCode=$(curl -s -w "%{http_code}" -o "${mseTMP}" "$2" || true)
 
     if [ ! -f "$mseTMP" ] || [ $mseSCode != 200 ]; then
@@ -60,8 +60,8 @@ downloadInstallScripts() {
 #
 createTmpInstallerEnv() {
 
-  mkdir -p "${HOME}/tmpInstaller"
-  if [ ! -d "${HOME}/tmpInstaller" ]; then
+  mkdir -p "tmpInstaller"
+  if [ ! -d "tmpInstaller" ]; then
     ISOK=0
 
     printf "    Não foi possível criar o diretório temporário de instalação. \n"
@@ -205,8 +205,8 @@ if [ $ISOK == 1 ]; then
 
 
 
-  printf "$TMP_MB" > "${HOME}/tmpInstaller/varTMP_MB"
-  printf "$TMP_CR" > "${HOME}/tmpInstaller/varTMP_CR"
+  printf "$TMP_MB" > "tmpInstaller/varTMP_MB"
+  printf "$TMP_CR" > "tmpInstaller/varTMP_CR"
 fi
 
 
