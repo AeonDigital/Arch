@@ -134,21 +134,58 @@ readNCR() {
 #
 # Efetua o download de todos os scripts necessários para a instalação
 ISOK=1
-TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
 TMP_MB=""
 TMP_CR=""
 
+TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
+
+TMP_TGT_URL=""
+TMP_FILE_NAME=""
+TMP_FILE_LOCAL=""
+TMP_SCODE=""
+
+
 
 loadkeys br-abnt2
-
-
 createTmpInstallerEnv
+
+
 if [ $ISOK == 1 ]; then
-  downloadInstallScripts "installerPart01.sh" "${TMP_URL_BASE}installerPart01.sh"
+  TMP_FILE_NAME="installerPart01.sh"
+  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
+  TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
+  
+  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
+
+  if [ ! -f "$TMP_FILE_LOCAL" ] || [ $TMP_SCODE != 200 ]; then
+    chmod u+x "${TMP_FILE_LOCAL}"
+  else
+    ISOK=0
+
+    printf "    Não foi possível fazer o download do arquivo de instalação 'installerPart01.sh'\n"
+    printf "    A instalação foi encerrada.\n"
+    printf "    FILE: ${TMP_FILE_NAME} \n"
+    printf "    URL: ${TMP_TGT_URL} \n\n"
+  fi
 fi
 
 if [ $ISOK == 1 ]; then
-  downloadInstallScripts "installerPart02.sh" "${TMP_URL_BASE}installerPart02.sh"
+  TMP_FILE_NAME="installerPart02.sh"
+  TMP_FILE_LOCAL="${HOME}/${TMP_FILE_NAME}"
+  TMP_TGT_URL="${TMP_URL_BASE}/tmpInstaller/${TMP_FILE_NAME}"
+  
+  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_LOCAL}" "${TMP_TGT_URL}" || true)
+
+  if [ ! -f "$TMP_FILE_LOCAL" ] || [ $TMP_SCODE != 200 ]; then
+    chmod u+x "${TMP_FILE_LOCAL}"
+  else
+    ISOK=0
+
+    printf "    Não foi possível fazer o download do arquivo de instalação 'installerPart01.sh'\n"
+    printf "    A instalação foi encerrada.\n"
+    printf "    FILE: ${TMP_FILE_NAME} \n"
+    printf "    URL: ${TMP_TGT_URL} \n\n"
+  fi
 fi
 
 
@@ -156,15 +193,10 @@ fi
 
 
 if [ $ISOK == 1 ]; then
-  chmod u+x "${HOME}/tmpInstaller/installerPart01.sh"
-  chmod u+x "${HOME}/tmpInstaller/installerPart02.sh"
-
-
 
   setIMessage "" 1
   setIMessage "Scripts de instalação foram baixados e preparados para uso..."
   alertUser
-
 
 
 
@@ -185,7 +217,17 @@ fi
 
 
 
+ISOK=1
+unset TMP_MB
+unset TMP_CR
+
 unset TMP_URL_BASE
+
+unset TMP_TGT_URL
+unset TMP_FILE_NAME
+unset TMP_FILE_LOCAL
+unset TMP_SCODE
+
 
 unset downloadInstallScripts
 unset createTmpInstallerEnv
