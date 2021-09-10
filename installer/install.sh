@@ -119,7 +119,7 @@ readNCR() {
 
     read -p " > " TMP_CR
 
-    if [ "$TMP_CR" != "" ]; then
+    if [ "$TMP_CR" == "" ]; then
       setIMessage "\n" 1
       setIMessage "Você precisa digitar um nome válido."
       alertUser
