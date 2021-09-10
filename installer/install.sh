@@ -137,6 +137,7 @@ ISOK=1
 TMP_MB=""
 TMP_CR=""
 
+
 TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
 
 TMP_TGT_URL=""
@@ -153,17 +154,17 @@ if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart01.sh"
   TMP_TGT_URL="${TMP_URL_BASE}${TMP_FILE_NAME}"
   
-  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_NAME}" "${TMP_TGT_URL}" || true)
+  TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
   if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
     chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
 
-    printf "    Não foi possível fazer o download do arquivo de instalação 'installerPart01.sh'\n"
+    printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
-    printf "    FILE: ${TMP_FILE_NAME} \n"
-    printf "    URL: ${TMP_TGT_URL} \n\n"
+    printf "    URL: ${TMP_TGT_URL} \n"
+    printf "    FILE: ${TMP_FILE_NAME} \n\n"
   fi
 fi
 
@@ -171,17 +172,17 @@ if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart02.sh"
   TMP_TGT_URL="${TMP_URL_BASE}${TMP_FILE_NAME}"
   
-  TMP_SCODE=$(curl -s -w "%{http_code}" -o "${TMP_FILE_NAME}" "${TMP_TGT_URL}" || true)
+  TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
   if [ ! -f "$TMP_FILE_NAME" ] || [ $TMP_SCODE != 200 ]; then
     chmod u+x "${TMP_FILE_NAME}"
   else
     ISOK=0
 
-    printf "    Não foi possível fazer o download do arquivo de instalação 'installerPart01.sh'\n"
+    printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
-    printf "    FILE: ${TMP_FILE_NAME} \n"
-    printf "    URL: ${TMP_TGT_URL} \n\n"
+    printf "    URL: ${TMP_TGT_URL} \n"
+    printf "    FILE: ${TMP_FILE_NAME} \n\n"
   fi
 fi
 
