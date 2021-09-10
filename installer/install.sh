@@ -236,5 +236,5 @@ unset readNCR
 
 
 if [ $ISOK == 1 ]; then
-  ./installerPart01.sh
+  .${HOME}/installerPart01.sh
 fi
