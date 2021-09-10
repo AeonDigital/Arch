@@ -210,8 +210,8 @@ if [ $ISOK == 1 ]; then
 
 
 
-  printf "$TMP_MB" >> ${HOME}/tmpInstaller/installMB.tmp
-  printf "$TMP_CR" >> ${HOME}/tmpInstaller/installCR.tmp
+  printf "$TMP_MB" > ${HOME}/tmpInstaller/installMB.tmp
+  printf "$TMP_CR" > ${HOME}/tmpInstaller/installCR.tmp
 fi
 
 
