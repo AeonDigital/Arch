@@ -102,7 +102,7 @@ readMotherBoard() {
     alertUser
 
     read -p "   [ BIOS | UEFI ] : " TMP_MB
-    TMP_MB=$(toUpperCase "$TMP_MB")
+    TMP_MB=$(echo "$TMP_MB" | awk '{print toupper($0)}')
   done
 }
 
