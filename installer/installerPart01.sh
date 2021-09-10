@@ -153,24 +153,9 @@ else
     setIMessage "     Esta parte do processo finalizou."
     setIMessage "     Sua máquina está quase pronta para ser usada."
     setIMessage "     ${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
-    #setIMessage "> ${GREEN}chmod u+x install.sh${NONE}"
-    #setIMessage "> ${GREEN}./install.sh${NONE}"
-    #setIMessage ""
-    #setIMessage ""
-    #setIMessage ""
-
-    #cp -a install-02.sh /mnt/install.sh
-    #cp -a installMyShellEnv.sh /mnt/installMyShellEnv.sh
-    #arch-chroot /mnt
-
-
-    #waitUser
 
 
   fi
 
 
 fi
-
-#unset TMP_MB
-#unset TMP_CR
