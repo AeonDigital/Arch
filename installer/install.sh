@@ -102,7 +102,7 @@ else
         printf "    TGT: ${TMP_FILE_NAME} \n\n"        
       else
         printf "    > Carregando script: ${TMP_FILE_NAME} \n"
-        source "${TMP_FILE_NAME}"
+        source "tmpInstaller/${TMP_FILE_NAME}"
       fi
     fi
   done
