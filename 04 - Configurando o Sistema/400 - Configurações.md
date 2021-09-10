@@ -79,6 +79,7 @@ terminais ``tty`` disponíveis (o Arch inicia com 6).
 
 
 ``` /usr/local/bin/numlock
+  # /usr/local/bin/numlock
   #!/bin/bash
 
   for tty in /dev/tty{1..6}; do
@@ -101,6 +102,7 @@ em execução antes, e independente de alguem efetuar o login no mesmo.
 Note que este serviço evoca o script criado anteriormente.  
 
 ``` /etc/systemd/system/numlock.service
+# /etc/systemd/system/numlock.service
 [Unit]
 Description=numlock
 
