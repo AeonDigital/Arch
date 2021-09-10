@@ -106,6 +106,8 @@ else
       fi
     fi
   done
+
+  setIMessage "Teste" 1
 fi
 
 
