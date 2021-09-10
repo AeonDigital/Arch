@@ -12,14 +12,14 @@ set -eu
 clear
 setIMessage "" 1
 setIMessage "${CYAN}Arch Linux${NONE}"
-setIMessage "${CYAN}Etapa 01${NONE} - Preparação do disco [para placa mãe $TMP_MB]."
+setIMessage "${CYAN}Etapa 01${NONE} - Preparação do disco [para sistemas $TMP_MB]."
 alertUser
 
 
 
 setIMessage "" 1
 setIMessage "${CYAN}01.2${NONE} - Iniciando o sistema de partições."
-setIMessage "${CYAN}Etapa 01${NONE} - Preparação do disco para placa mãe $TMP_MB."
+setIMessage "${CYAN}Etapa 01${NONE} - Preparação do disco para sistemas $TMP_MB."
 if [ "$TMP_MB" == "UEFI" ]; then
   setIMessage "${YELLOW}UEFI - GPT${NONE}."
 else
@@ -89,7 +89,7 @@ else
   clear
   setIMessage "" 1
   setIMessage "${CYAN}Arch Linux${NONE}"
-  setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais [para placa mãe $TMP_MB]."
+  setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais [para sistemas $TMP_MB]."
   alertUser
 
 
@@ -116,6 +116,7 @@ else
   setIMessage "- ${LGREEN}less${NONE}\t- ${LPURPLE}openssl${NONE}"
   setIMessage "- ${LGREEN}less${NONE}"
   setIMessage "- ${LGREEN}less${NONE}"
+  alertUser
 
 
   setIMessage "" 1
@@ -155,7 +156,7 @@ else
     setIMessage "     Esta parte do processo finalizou."
     setIMessage "     Sua máquina está quase pronta para ser usada."
     setIMessage "     ${CYAN}Executando o switch para o novo sistema; execute os comandos indicados acima.${NONE}"
-
+    alertUser
 
   fi
 
