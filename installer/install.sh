@@ -14,79 +14,6 @@ set -eu
 
 
 #
-# Efetua o download de scripts necessários para a instalação.
-# Em caso de falha, altera o valor da variável de controle ${ISOK} para "0".
-# Sendo bem sucedido irá carregar o script.
-#
-#   @param string $1
-#   Nome do script a ser salvo no diretório temporário 'tmpInstaller'.
-#
-#   @param string $2
-#   Url onde está o arquivo a ser baixado.
-#
-#   @example
-#     downloadInstallScripts "textColors.sh" "textColors.sh"
-#
-downloadInstallScripts() {
-  if [ $# != 2 ]; then
-    printf "ERROR in ${FUNCNAME[0]}: expected 2 arguments"
-  else
-    local mseTMP="tmpInstaller/$1"
-    local mseSCode=$(curl -s -w "%{http_code}" -o "${mseTMP}" "$2" || true)
-
-    if [ ! -f "$mseTMP" ] || [ $mseSCode != 200 ]; then
-      ISOK=0
-
-      printf "    Não foi possível fazer o download do arquivo de instalação '$1'\n"
-      printf "    A instalação foi encerrada.\n"
-      printf "    TGT: ${mseTMP} \n"
-      printf "    URL: $2 \n\n"
-    else
-      printf "    > Carregando script: ${mseTMP} \n"
-      source "${mseTMP}"
-    fi
-  fi
-}
-
-
-
-#
-# Efetua o download dos scripts mínimos necessários para efetuar a
-# instalação.
-#
-# Um diretório chamado 'tmpInstaller' será criado no diretório $HOME do
-# usuário que iniciou a instalação e nele serão alocados scripts que
-# permitem o seguimento da instalação.
-#
-createTmpInstallerEnv() {
-
-  mkdir -p "tmpInstaller"
-  if [ ! -d "tmpInstaller" ]; then
-    ISOK=0
-
-    printf "    Não foi possível criar o diretório temporário de instalação. \n"
-    printf "    A instalação foi encerrada.\n"
-  else
-    if [ $ISOK == 1 ]; then
-      local mseInstallFiles=(
-        "textColors.sh" "alertUser.sh" "errorAlert.sh"
-        "waitUser.sh" "promptUser.sh" "setIMessage.sh"
-      )
-
-      local mseURLInterface="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/etc/skel/myShellEnv/functions/interface/"
-      local mseFileName
-      for mseFileName in "${mseInstallFiles[@]}"; do
-        if [ $ISOK == 1 ]; then
-          downloadInstallScripts "${mseFileName}" "${mseURLInterface}${mseFileName}"
-        fi
-      done
-    fi
-  fi
-}
-
-
-
-#
 # Questiona ao usuário sobre o tipo de placa mãe
 # na qual a instalação será feita.
 readMotherBoard() {
@@ -133,9 +60,18 @@ readNCR() {
 
 #
 # Efetua o download de todos os scripts necessários para a instalação
+loadkeys br-abnt2
+
+
 ISOK=1
 TMP_MB=""
 TMP_CR=""
+
+TMP_INTERFACE_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/etc/skel/myShellEnv/functions/interface/"
+TMP_INTERFACE=(
+  "textColors.sh" "alertUser.sh" "errorAlert.sh"
+  "waitUser.sh" "promptUser.sh" "setIMessage.sh"
+)
 
 TMP_SCODE=""
 TMP_TGT_URL=""
@@ -143,43 +79,68 @@ TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master
 TMP_FILE_NAME=""
 
 
-loadkeys br-abnt2
-createTmpInstallerEnv
+
+mkdir -p "tmpInstaller"
+if [ ! -d "tmpInstaller" ]; then
+  ISOK=0
+
+  printf "    Não foi possível criar o diretório temporário de instalação. \n"
+  printf "    A instalação foi encerrada.\n"
+else
+  
+  for TMP_FILE_NAME in "${TMP_INTERFACE[@]}"; do
+    if [ $ISOK == 1 ]; then
+      TMP_TGT_URL="${TMP_INTERFACE_URL}${TMP_FILE_NAME}"
+      TMP_SCODE=$(curl -s -w "%{http_code}" -o "tmpInstaller/${TMP_FILE_NAME}" "${TMP_TGT_URL}" || true)
+
+      if [ ! -f "tmpInstaller/${TMP_FILE_NAME}" ] || [ $TMP_SCODE != 200 ]; then
+        ISOK=0
+
+        printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
+        printf "    A instalação foi encerrada.\n"
+        printf "    URL: ${TMP_TGT_URL} \n"
+        printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+      else
+        printf "    > Carregando script: ${TMP_FILE_NAME} \n"
+        source "${TMP_FILE_NAME}"
+      fi
+    fi
+  done
+fi
+
 
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart01.sh"
   TMP_TGT_URL="${TMP_URL_BASE}${TMP_FILE_NAME}"
-  
   TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
-  if [ -f "$TMP_FILE_NAME" ] && [ $TMP_SCODE == 200 ]; then
-    chmod u+x "${TMP_FILE_NAME}"
-  else
+  if [ ! -f "${TMP_FILE_NAME}" ] || [ $TMP_SCODE != 200 ]; then
     ISOK=0
 
     printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
     printf "    URL: ${TMP_TGT_URL} \n"
-    printf "    FILE: ${TMP_FILE_NAME} \n\n"
+    printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+  else
+    chmod u+x "${TMP_FILE_NAME}"
   fi
 fi
 
 if [ $ISOK == 1 ]; then
   TMP_FILE_NAME="installerPart02.sh"
   TMP_TGT_URL="${TMP_URL_BASE}${TMP_FILE_NAME}"
-  
   TMP_SCODE=$(curl -s -w "%{http_code}" -O "${TMP_TGT_URL}" || true)
 
-  if [ -f "$TMP_FILE_NAME" ] && [ $TMP_SCODE == 200 ]; then
-    chmod u+x "${TMP_FILE_NAME}"
-  else
+  if [ ! -f "${TMP_FILE_NAME}" ] || [ $TMP_SCODE != 200 ]; then
     ISOK=0
 
     printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
     printf "    URL: ${TMP_TGT_URL} \n"
-    printf "    FILE: ${TMP_FILE_NAME} \n\n"
+    printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+  else
+    chmod u+x "${TMP_FILE_NAME}"
   fi
 fi
 

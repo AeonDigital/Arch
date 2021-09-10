@@ -7,6 +7,8 @@ set -eu
 
 
 
+
+
 clear
 setIMessage "" 1
 setIMessage "${CYAN}Arch Linux${NONE}"
