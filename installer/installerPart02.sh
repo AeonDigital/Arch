@@ -162,7 +162,7 @@ fi
 
 
 setIMessage "" 1
-setIMessage "${CYAN}03.3${NONE} - Seu computador está pronto para ser reiniciado."
+setIMessage "${CYAN}03.4${NONE} - Seu computador está pronto para ser reiniciado."
 setIMessage ""
 setIMessage "-- Deseja efetuar o reboot agora?"
 promptUser
@@ -177,6 +177,7 @@ if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
   setIMessage "${LGREEN}umount -R /mnt${NONE}"
   setIMessage "${LGREEN}reboot${NONE}"
   setIMessage ""
+  setIMessage "Lembre-se de remover o disco ou flashdrive antes de reiniciar."
   setIMessage ""
   alertUser
 
