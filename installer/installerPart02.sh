@@ -69,6 +69,32 @@ systemctl enable NetworkManager
 
 
 
+setIMessage " - Ativando o numlock por padrão"
+alertUser
+printf "" > /usr/local/bin/numlock
+printf "#!/bin/bash\n\n" >> /usr/local/bin/numlock
+printf "for tty in /dev/tty{1..6}; do\n" >> /usr/local/bin/numlock
+printf "  /usr/bin/setleds -D +num < "$tty";\n" >> /usr/local/bin/numlock
+printf "done" >> /usr/local/bin/numlock
+
+chmod u+x /usr/local/bin/numlock
+
+printf "" > /etc/systemd/system/numlock.service
+printf "[Unit]" >> /etc/systemd/system/numlock.service
+printf "Description=numlock" >> /etc/systemd/system/numlock.service
+printf "" >> /etc/systemd/system/numlock.service
+printf "[Service]" >> /etc/systemd/system/numlock.service
+printf "ExecStart=/usr/local/bin/numlock" >> /etc/systemd/system/numlock.service
+printf "StandardInput=tty" >> /etc/systemd/system/numlock.service
+printf "RemainAfterExit=yes" >> /etc/systemd/system/numlock.service
+printf "" >> /etc/systemd/system/numlock.service
+printf "[Install]" >> /etc/systemd/system/numlock.service
+printf "WantedBy=multi-user.target" >> /etc/systemd/system/numlock.service
+
+systemctl enable numlock
+
+
+
 setIMessage " - Liberar o grupo ${WHITE}'wheel'${NONE} para que ele seja um ${WHITE}'sudoer'${NONE}" 1
 alertUser
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
