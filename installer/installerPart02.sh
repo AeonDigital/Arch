@@ -143,12 +143,31 @@ passwd
 
 
 setIMessage "" 1
+setIMessage "${CYAN}03.3${NONE} - Instalação do ${WHITE}myShellEnv${WHITE}."
+setIMessage ""
+setIMessage "-- Esta ação é opcional e pode ser realizada após o término da instalação principal."
+setIMessage "   Deseja executar esta etapa agora?"
+promptUser
+
+# 
+# prepara o instalador do myShellEnv
+if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
+  TMP_TGT_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/install.sh"
+  $(curl -s -w "%{http_code}" -o "/root/myShellEnvInstall.sh" "${TMP_TGT_URL}" || true)
+
+  chmod u+x "/root/myShellEnvInstall.sh"
+  source /root/myShellEnvInstall.sh
+fi
+
+
+
+setIMessage "" 1
 setIMessage "${CYAN}03.3${NONE} - Seu computador está pronto para ser reiniciado."
 setIMessage ""
 setIMessage "-- Deseja efetuar o reboot agora?"
 promptUser
 
-readNext ""
+
 if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
   setIMessage "" 1
   setIMessage "${CYAN}Etapa 03${NONE} - Configuração do sistema concluída!."
@@ -164,9 +183,6 @@ if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
   rm install.sh
   rm -r tmpInstaller
 
-
-  # 
-  # prepara o instalador do myShellEnv
   TMP_TGT_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/install.sh"
   $(curl -s -w "%{http_code}" -o "/root/myShellEnvInstall.sh" "${TMP_TGT_URL}" || true)
   chmod u+x "/root/myShellEnvInstall.sh"

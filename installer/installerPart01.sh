@@ -92,7 +92,7 @@ else
   setIMessage "${CYAN}Etapa 02${NONE} - Instalação dos pacotes iniciais [para sistemas $TMP_MB]."
   setIMessage "           Serão instalados os seguintes pacotes:"
   setIMessage ""
-  setIMessage "${NONE}Essencial\t\tBoot"
+  setIMessage "${NONE}Core\t\tBoot"
   setIMessage "- ${LCYAN}bash${NONE}\t\t- ${LRED}grub${NONE} [BIOS]"
   setIMessage "- ${LCYAN}gzip${NONE}\t\t- ${LRED}grub-efi-x86_64${NONE} [UEFI]"
   setIMessage "- ${LCYAN}pacman${NONE}\t\t- ${LRED}efibootmgr${NONE} [UEFI]"
