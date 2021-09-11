@@ -16,6 +16,16 @@ for TMP_FILE_NAME in "${TMP_INTERFACE[@]}"; do
 done
 
 
+#
+# Inicia arquivos de configuração do sistema
+# que serão utilizados
+printf "" > /etc/locale.conf
+printf "" > /etc/vconsole.conf
+printf "" > /etc/hostname
+printf "" > /usr/local/bin/numlock
+printf "" > /etc/systemd/system/numlock.service
+
+
 
 
 
@@ -36,19 +46,19 @@ timedatectl set-timezone America/Sao_Paulo
 setIMessage " - Habilitando o idioma ${WHITE}'pt-BR'${NONE}" 1
 alertUser
 sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/g' /etc/locale.gen
-echo LANG=pt_BR.UTF-8 >> /etc/locale.conf
+printf "LANG=pt_BR.UTF-8\n" >> /etc/locale.conf
 
 
 
 setIMessage " - Configurando Layout do teclado ${WHITE}'abnt2'${NONE}" 1
 alertUser
-echo KEYMAP=br-abnt2 >> /etc/vconsole.conf
+printf "KEYMAP=br-abnt2\n" > /etc/vconsole.conf
 
 
 
 setIMessage " - Configurando fonte compatível com caracteres latinos" 1
 alertUser
-echo FONT=lat1-16 >> /etc/vconsole.conf
+printf "FONT=lat1-16\n" >> /etc/vconsole.conf
 
 
 
@@ -56,10 +66,10 @@ TMP_CR=$(cat "tmpInstaller/varTMP_CR")
 setIMessage " - Configurar o nome do computador na rede e o arquivo ${WHITE}'hosts'${NONE}" 1
 setIMessage "   Nome escolhido: ${WHITE}${TMP_CR}${NONE}"
 alertUser
-echo "$TMP_CR" >> /etc/hostname
-echo "127.0.0.1   localhost.localdomain localhost" >> /etc/hosts
-echo "::1         localhost.localdomain localhost" >> /etc/hosts
-echo "127.0.0.1   ${TMP_CR}.localdomain ${TMP_CR}" >> /etc/hosts
+printf "${TMP_CR}\n" >> /etc/hostname
+printf "127.0.0.1   localhost.localdomain localhost\n" >> /etc/hosts
+printf "::1         localhost.localdomain localhost\n" >> /etc/hosts
+printf "127.0.0.1   ${TMP_CR}.localdomain ${TMP_CR}\n" >> /etc/hosts
 
 
 
@@ -71,15 +81,13 @@ systemctl enable NetworkManager
 
 setIMessage " - Ativando o numlock por padrão"
 alertUser
-printf "" > /usr/local/bin/numlock
 printf "#!/bin/bash\n\n" >> /usr/local/bin/numlock
 printf "for tty in /dev/tty{1..6}; do\n" >> /usr/local/bin/numlock
-printf "  /usr/bin/setleds -D +num < "$tty";\n" >> /usr/local/bin/numlock
+printf "  /usr/bin/setleds -D +num < "\$tty";\n" >> /usr/local/bin/numlock
 printf "done" >> /usr/local/bin/numlock
 
 chmod u+x /usr/local/bin/numlock
 
-printf "" > /etc/systemd/system/numlock.service
 printf "[Unit]" >> /etc/systemd/system/numlock.service
 printf "Description=numlock" >> /etc/systemd/system/numlock.service
 printf "" >> /etc/systemd/system/numlock.service
