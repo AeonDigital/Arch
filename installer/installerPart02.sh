@@ -54,24 +54,25 @@ echo FONT=lat1-16 >> /etc/vconsole.conf
 
 TMP_CR=$(cat "tmpInstaller/varTMP_CR")
 setIMessage " - Configurar o nome do computador na rede e o arquivo ${WHITE}'hosts'${NONE}" 1
-setIMessage"    Nome escolhido: ${WHITE}${TMP_CR}${NONE}"
+setIMessage "   Nome escolhido: ${WHITE}${TMP_CR}${NONE}"
 alertUser
 echo "$TMP_CR" >> /etc/hostname
 echo "127.0.0.1   localhost.localdomain localhost" >> /etc/hosts
-echo ""::1        localhost.localdomain localhost" >> /etc/hosts
+echo "::1         localhost.localdomain localhost" >> /etc/hosts
 echo "127.0.0.1   ${TMP_CR}.localdomain ${TMP_CR}" >> /etc/hosts
 
 
 
-setIMessage " - Libera o grupo ${WHITE}'wheel'${NONE} para que ele seja um ${WHITE}'sudoer'${NONE}" 1
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
-alertUser
-
-
-
 setIMessage " - Ativa a internet" 1
-systemctl enable NetworkManager
 alertUser
+systemctl enable NetworkManager
+
+
+
+setIMessage " - Liberar o grupo ${WHITE}'wheel'${NONE} para que ele seja um ${WHITE}'sudoer'${NONE}" 1
+alertUser
+sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+
 
 
 
@@ -80,7 +81,7 @@ alertUser
 TMP_MB=$(cat "tmpInstaller/varTMP_MB")
 setIMessage "" 1
 setIMessage "${CYAN}Etapa 03.1${NONE} - Configurando o ${WHITE}'grub'${NONE}"
-setIMessage "             para o load do sistema [${WHITE}${TMP_MB}]${NONE}."
+setIMessage "             para o load do sistema ${WHITE}[${TMP_MB}]${NONE}."
 setIMessage ""
 alertUser
 
@@ -99,7 +100,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 setIMessage "" 1
 setIMessage "${CYAN}Etapa 03.2${NONE} - Configure uma senha para o usuário root."
-setIMessage "${DGREY}[ Não deixe esta senha vazia ]${NONE}"
+setIMessage "${WHITE}[ Não deixe esta senha vazia ]${NONE}"
 alertUser
 passwd
 
