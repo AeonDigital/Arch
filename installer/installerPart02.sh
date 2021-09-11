@@ -88,16 +88,16 @@ printf "done" >> /usr/local/bin/numlock
 
 chmod u+x /usr/local/bin/numlock
 
-printf "[Unit]" >> /etc/systemd/system/numlock.service
-printf "Description=numlock" >> /etc/systemd/system/numlock.service
-printf "" >> /etc/systemd/system/numlock.service
-printf "[Service]" >> /etc/systemd/system/numlock.service
-printf "ExecStart=/usr/local/bin/numlock" >> /etc/systemd/system/numlock.service
-printf "StandardInput=tty" >> /etc/systemd/system/numlock.service
-printf "RemainAfterExit=yes" >> /etc/systemd/system/numlock.service
-printf "" >> /etc/systemd/system/numlock.service
-printf "[Install]" >> /etc/systemd/system/numlock.service
-printf "WantedBy=multi-user.target" >> /etc/systemd/system/numlock.service
+printf "[Unit]\n" >> /etc/systemd/system/numlock.service
+printf "Description=numlock\n" >> /etc/systemd/system/numlock.service
+printf "\n" >> /etc/systemd/system/numlock.service
+printf "[Service]\n" >> /etc/systemd/system/numlock.service
+printf "ExecStart=/usr/local/bin/numlock\n" >> /etc/systemd/system/numlock.service
+printf "StandardInput=tty\n" >> /etc/systemd/system/numlock.service
+printf "RemainAfterExit=yes\n" >> /etc/systemd/system/numlock.service
+printf "\n" >> /etc/systemd/system/numlock.service
+printf "[Install]\n" >> /etc/systemd/system/numlock.service
+printf "WantedBy=multi-user.target\n" >> /etc/systemd/system/numlock.service
 
 systemctl enable numlock
 
@@ -163,8 +163,7 @@ if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
 
   rm install.sh
   rm -r tmpInstaller
-  rm varTMP_MB
-  rm varTMP_CR
+
 
   # 
   # prepara o instalador do myShellEnv
