@@ -171,7 +171,10 @@ promptUser
 if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
   setIMessage "" 1
   setIMessage "${CYAN}Etapa 03${NONE} - Configuração do sistema concluída!."
-  setIMessage "           Rode os comandos abaixo para executar o reboot."
+  setIMessage "           Rode os comandos abaixo para ajustar o datetime da"
+  setIMessage "           máquina para a região de São Paulo e executar o reboot."
+  setIMessage ""
+  setIMessage "${LBLUE}timedatectl set-timezone America/Sao_Paulo${NONE}"
   setIMessage ""
   setIMessage "${LGREEN}exit${NONE}"
   setIMessage "${LGREEN}umount -R /mnt${NONE}"
