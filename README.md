@@ -36,7 +36,7 @@ Use o boot do Arch na máquina alvo e cegamente use os comandos:
   loadkeys br-abnt2
 
   # faz download do script de instalação; dá permissão de execução e executa-o
-  curl -O https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/shell/install.sh
+  curl -O https://raw.githubusercontent.com/AeonDigital/Arch/master/installer/install.sh
   chmod u+x install.sh
   ./install.sh
 ```

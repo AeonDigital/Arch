@@ -75,7 +75,7 @@ TMP_INTERFACE=(
 
 TMP_SCODE=""
 TMP_TGT_URL=""
-TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Tutorial-Arch/master/installer/"
+TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Arch/master/installer/"
 TMP_FILE_NAME=""
 
 
