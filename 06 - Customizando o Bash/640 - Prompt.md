@@ -71,10 +71,12 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 
 Use as regras expostas no item 604 para entender como se dá a estilização das cores de textos no
 Bash.  
+
 Para o uso de caracteres unicode é aconselhado usar o código octal que representa cada um dos 
 glifos que você deseja representar.  
+
 Use a função ``printCharTable`` do projeto ``myShellEnv`` para conhecer os códigos octais de todos
-os 256 caracteres disponíveis no seu terminal (com a fonte que está sendo usada no momento).
+os 256 caracteres disponíveis no seu terminal (com a fonte que está sendo usada no momento).  
 Você também pode usar o comando ``showkey -a`` para conhecer os códigos correspondentes a cada 
 tecla de caracter do seu teclado.
 
@@ -114,7 +116,7 @@ apresentados abaixo.
 
 #### 640.3.1.1 - Estilo simples
 
-> $ rianna@archlinux : _
+> $ rianna@archlinux : _  
 > PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] :[[NONE]]\040'
 
 
@@ -122,9 +124,9 @@ apresentados abaixo.
 
 #### 640.3.1.2 - Estilo nova linha 01
 
-> $ rianna@archlinux in ~/DirName/SubDir
-> \> _
-> 
+> $ rianna@archlinux in ~/DirName/SubDir  
+> \> _  
+>   
 > PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n\076[[NONE]]\040'
 
 
@@ -132,9 +134,9 @@ apresentados abaixo.
 
 #### 640.3.1.3 - Estilo nova linha 02
 
-> ┌── $ rianna@archlinux in ~/DirName/SubDir
-> └─> _
->
+> ┌── $ rianna@archlinux in ~/DirName/SubDir  
+> └─> _  
+>  
 > PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\224\200\]\076[[NONE]]\040'
 
 
@@ -142,7 +144,7 @@ apresentados abaixo.
 
 #### 640.3.1.4 - Estilo nova linha 03
 
-> ┌── $ rianna@archlinux in ~/DirName/SubDir
-> └─╼ _
->
+> ┌── $ rianna@archlinux in ~/DirName/SubDir  
+> └─╼ _  
+>  
 > PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\225\274\][[NONE]]\040'
