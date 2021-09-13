@@ -1,4 +1,4 @@
-﻿# 604 - 604 - Usando cores em textos
+﻿# 604 - Usando cores em textos
 
 Usando o Bash você pode alterar a cor de textos bastando para isto entender como indicar como um
 determinado texto deve ser apresentado. Para isto é preciso conhecer quais são as configurações
