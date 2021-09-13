@@ -6,13 +6,36 @@ com o boot.
 Se você apenas quer usar ``SSH`` para acessar outros servidores remotamente, não habilite o mesmo, 
 apenas instale o pacote.
 
+
+&nbsp;
+
 ``` shell 
   sudo systemctl enable sshd 
   sudo systemctl restart sshd
 ```
-  Uma vez habilitado, qualquer pessoa que conheça o IP do servidor e tenha credenciais de acesso 
-  poderá conectar-se remotamente no mesmo.
 
+Uma vez habilitado, qualquer pessoa que conheça o IP do servidor e tenha credenciais de acesso 
+poderá conectar-se remotamente no mesmo.
+
+
+
+&nbsp;
+
+**Acesso SSH com o usuário root**  
+Por padrão (e por segurança), o ssh vem com a opção de conexão para o usuário ``root`` desabilitada
+e caso você queira ou precise usa-lo, é preciso proceder com a configuração indicada abaixo:
+
+
+&nbsp;
+
+``` /etc/ssh/sshd_config
+  PermitRootLogin yes
+```
+
+Para os demais usuários não é necessário nenhuma configuração especial além de iniciar o serviço.
+
+
+&nbsp;
 
 **OBSERVAÇÃO**  
 Neste mesmo tutorial há uma explicação mais completa e detalhada sobre como habilitar e configurar 
@@ -72,3 +95,31 @@ Se precisar informar uma porta diferente da 22 use:
 ``` shell
   ssh [user]@[host|ip] -p [port]
 ```
+
+
+
+&nbsp;
+
+## 402.3 - Conectando via SSH em uma VM do Virtual Box 
+
+Se você está usando uma VM do Virtual Box para a instalação será preciso efetuar algumas 
+configurações para conseguir acessar sua máquina 'de fora'.  
+
+Para isto, selecione sua máquina virtual na interface do Virtual Box, vá na aba ``Rede`` e
+confira se ele está usando a opção ``NAT``; se sim, expanda a opção ``avançado`` e aperte no
+botão ``Redirecionamento de portas``.  
+
+Na janela que abrirá, adicione uma entrada referente à configuração abaixo:
+
+```
+  Nome                      : [a sua escolha]
+  Protocolo                 : TCP
+  
+  Endereço IP do Hospedeiro : 127.0.1.1
+  Porta do Hospedeiro       : 2222
+
+  IP do convidado           : 10.0.2.15
+  Porta do convidado        : 22
+```
+
+Com isto sua VM agora pode ser acessada conforme indicado acima, porém, na porta 2222
