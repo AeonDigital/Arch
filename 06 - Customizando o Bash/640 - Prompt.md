@@ -67,32 +67,22 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 
 &nbsp;
 
-## 640.2 - Usando cores
+## 640.2 - Usando cores e caracteres unicode
 
-Abaixo segue a cópia dos padrões de definição que você pode utilizar.
+Use as regras expostas no item 604 para entender como se dá a estilização das cores de textos no
+Bash.  
+Para o uso de caracteres unicode é aconselhado usar o código octal que representa cada um dos 
+glifos que você deseja representar.  
+Use a função ``printCharTable`` do projeto ``myShellEnv`` para conhecer os códigos octais de todos
+os 256 caracteres disponíveis no seu terminal (com a fonte que está sendo usada no momento).
+Você também pode usar o comando ``showkey -a`` para conhecer os códigos correspondentes a cada 
+tecla de caracter do seu teclado.
 
-<pre>
-  # O exemplo abaixo está usando entidades HTML para representar os caracteres '&lt;' e '&gt;'.
-  # Tenha em mente que é preciso substituir tais entidades pelos caracteres originais para que
-  # o exemplo funcione corretamente.
-  \e[FUNDO;ATTR;FONTEm
-  \e[FUNDO;ATTR;FONTE&lt;r&gt;;FONTE&lt;g&gt;;FONTE&lt;b&gt;m
 
-  - Exemplo
-  \e[38;2;255m
-</pre>
-
-    FUNDO             | ATTR              | FONTE
-
-    40 - Preto        | 00 - Nenhum       | 30 - Preto
-    41 - Vermelho     | 01 - Negrito      | 31 - Vermelho
-    42 - Verde        | 04 - Sublinhado   | 32 - Verde
-    43 - Amarelo      | 05 - Piscar       | 33 - Amarelo
-    44 - Azul         | 07 - Inversa      | 34 - Azul
-    45 - Rosa         | 08 - Oculta       | 35 - Rosa/Púrpura
-    47 - Azul Claro   |                   | 36 - Azul Claro
-    48 - Branco       |                   | 37 - Branco
-
+**Obs**  
+Para evitar problemas de interpretação do tamanho do seu prompt no Bash, quando utilizar cores ou
+caracteres não ascii, acostume-se a envolver o código da cor e dos caracteres não ascii em
+volta dos códigos ``\[`` e ``\]``.  
 
 
 
@@ -114,63 +104,45 @@ configurações até chegar em alguma que lhe agrade.
 
 &nbsp;
 
-### 640.3.1 - Padrões que eu curto
+### 640.3.1 - Padrões de prompt que eu curto
 
-#### 640.3.1.1 - Monocolor
+Substitua os ``placeholders`` pelos códigos das cores que você deseja usar para cada um dos estilos
+apresentados abaixo.  
+
+
+&nbsp;
+
+#### 640.3.1.1 - Estilo simples
+
 > $ rianna@archlinux : _
-> PSTYLE01="\$ \u@\h : "
+> PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] :[[NONE]]\040'
 
 
 &nbsp;
 
-#### 640.3.1.2 - Verde Clássico
-##### 640.3.1.2.1 - Minimalista 1
-> $ rianna@archlinux : _
-> PSTYLE02A="\[\e[40;01;32m\]\$ \u@\h : \[\e[40;00;37m\]"
+#### 640.3.1.2 - Estilo nova linha 01
+
+> $ rianna@archlinux in ~/DirName/SubDir
+> \> _
+> 
+> PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n\076[[NONE]]\040'
 
 
 &nbsp;
 
-##### 640.3.1.2.2 - Minimalista 2
-> $ rianna@archlinux : _
-> PSTYLE02B="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u@\h \[\e[40;01;36m\]: \[\e[40;00;37m\]"
+#### 640.3.1.3 - Estilo nova linha 02
+
+> ┌── $ rianna@archlinux in ~/DirName/SubDir
+> └─> _
+>
+> PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\224\200\]\076[[NONE]]\040'
 
 
 &nbsp;
 
-##### 640.3.1.2.3 - Minimalista 3
-> $ rianna@archlinux : _
-> PSTYLE02C="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;36m\] : \[\e[40;00;37m\]"
+#### 640.3.1.4 - Estilo nova linha 03
 
-
-
-&nbsp;
-
-#### 640.3.1.3 - Detalhado, com Prompt na próxima linha
-##### 640.3.1.3.1 - Detalhado 1
-> $ rianna@archlinux in ~/DirName/SubDir  
-> &gt; _  
-> PSTYLE03A="\[\e[40;01;36m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;01;34m\]\076 \[\e[40;00;37m\]"
-
-
-&nbsp;
-
-##### 640.3.1.3.2 - Detalhado 2
-> ┌── $ rianna@archlinux in ~/DirName/SubDir  
-> └──╼ _  
-> PSTYLE03B="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\e[40;00;37m\]"
-
-
-&nbsp;
-
-##### 640.3.1.3.3 - Detalhado 3
-> ┌── $ rianna@archlinux in ~/DirName/SubDir  
-> └──&gt; _  
-> PSTYLE03C="\[\e[40;00;36m\]\342\224\214\342\224\200\342\224\200 \[\e[40;01;34m\]\$ \[\e[40;00;32m\]\u\[\e[40;00;37m\]@\[\e[40;00;32m\]\h\[\e[40;01;34m\] in \[\e[40;00;36m\]\w \n\[\e[40;00;36m\]\342\224\224\342\224\200\342\224\200\076 \[\e[40;00;37m\]"
-
-
-&nbsp;
-
-Se você observou atentamente, notou que coloquei cada definição de prompt dentro de uma variável
-diferente. Fiz isto para que todos fiquem definidos na sessão e possam ser alternados conforme
-a preferência.
+> ┌── $ rianna@archlinux in ~/DirName/SubDir
+> └─╼ _
+>
+> PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\225\274\][[NONE]]\040'

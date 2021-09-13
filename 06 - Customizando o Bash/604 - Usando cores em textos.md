@@ -34,8 +34,8 @@ Importante notar que o início é sempre com os caracteres ``\e`` e finaliza sem
 
 &nbsp;
 
-**Exemplo:**
-\e[0;93;44m Texto estilizado
+**Exemplo:**  
+\e[0;93;44m Texto estilizado  
 O código acima exibirá o texto sem nenhum atributo especial onde a cor da fonte é amarelo claro e 
 o fundo é azul.
 
