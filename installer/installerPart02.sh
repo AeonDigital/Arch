@@ -145,7 +145,7 @@ passwd
 
 
 setIMessage "" 1
-setIMessage "${CYAN}03.3${NONE} - Instalação do ${WHITE}myShellEnv${WHITE}."
+setIMessage "${CYAN}03.3${NONE} - Instalação do ${WHITE}myShellEnv${NONE}."
 setIMessage ""
 setIMessage "-- Esta ação é opcional e pode ser realizada após o término da instalação principal."
 setIMessage "   Deseja executar esta etapa agora?"
