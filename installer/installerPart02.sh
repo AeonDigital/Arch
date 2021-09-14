@@ -46,8 +46,9 @@ timedatectl set-timezone America/Sao_Paulo
 setIMessage " - Habilitando o locale ${WHITE}'pt-BR'${NONE}" 1
 alertUser
 sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/g' /etc/locale.gen
-#printf "LANG=pt_BR.UTF-8\n" >> /etc/locale.conf
-locale-gen
+printf "LANG=pt_BR.UTF-8\n" >> /etc/locale.conf
+locale-gen "pt_BR.UTF-8"
+export LC_ALL="pt_BR.UTF-8"
 
 
 
