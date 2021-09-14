@@ -82,9 +82,21 @@ tecla de caracter do seu teclado.
 
 
 **Obs**  
-Para evitar problemas de interpretação do tamanho do seu prompt no Bash, quando utilizar cores ou
-caracteres não ascii, acostume-se a envolver o código da cor e dos caracteres não ascii em
-volta dos códigos ``\[`` e ``\]``.  
+Para evitar problemas de interpretação do tamanho do seu prompt no Bash, quando utilizar cores, 
+acostume-se a envolver o código da cor entre as seguintes instruções ``\[`` e ``\]``.  
+E, quando precisar de caracteres unicode, usando o código octal dos itens, envolva apenas os dois 
+primeiros octais entre ``\[`` e ``\]``, deixando o último ``livre``.  
+
+**Exemplo**
+```shell
+  # Usando cores:  
+  \[\e[0;91;40m\]  
+
+  # Usando octais de caracteres unicode 
+  \[\342\224\]\214
+```
+
+
 
 
 

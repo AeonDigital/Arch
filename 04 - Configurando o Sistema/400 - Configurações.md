@@ -39,7 +39,7 @@ Procure pelo valor ``pt_BR.UTF-8 UTF-8`` e descomente-o, após, ative-o usando o
 no bloco abaixo
 
 ``` shell
-  # use o comando abaixo para abrir o arquivo. Após alterá-lo, salve
+  # use o comando abaixo para abrir o arquivo de configuração.
   vim /etc/locale.gen
 
   # Se quiser, pode usar o comando abaixo para automatizar esta ação de descomentar
@@ -47,12 +47,13 @@ no bloco abaixo
   sed -i 's/#pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/g' /etc/locale.gen
 
 
-  # Execute o comando abaixo para fixar as alterações.
-  locale-gen
-
-
   # Coloque a variável 'LANG' no arquivo 'locale.conf'
   echo LANG=pt_BR.UTF-8 >> /etc/locale.conf
+
+
+  # Execute o comando abaixo para fixar as alterações.
+  locale-gen "pt_BR.UTF-8"
+
 
   # As configurações abaixo preparam o seu teclado para ser reconhecido como sendo do padrão 
   # brasileiro ABNT2 e seta a fonte para uma que tem maior conformidade com a lingua portuguesa.
