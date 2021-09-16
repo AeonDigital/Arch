@@ -159,7 +159,18 @@ if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
 
   chmod u+x "/root/myShellEnvInstall.sh"
   source /root/myShellEnvInstall.sh
+  rm /root/myShellEnvInstall.sh
 fi
+
+
+
+
+
+setIMessage "" 1
+setIMessage "${CYAN}Etapa 03.3${NONE} - Limpando o disco"
+setIMessage ""
+alertUser
+pacman -Scc
 
 
 
@@ -188,10 +199,6 @@ if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
 
   rm install.sh
   rm -r tmpInstaller
-
-  TMP_TGT_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/install.sh"
-  $(curl -s -w "%{http_code}" -o "/root/myShellEnvInstall.sh" "${TMP_TGT_URL}" || true)
-  chmod u+x "/root/myShellEnvInstall.sh"
 
 else
   setIMessage "" 1
