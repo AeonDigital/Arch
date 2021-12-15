@@ -1,16 +1,16 @@
  Arch Linux
 ============
 
-> [Aeon Digital](http://aeondigital.com.br)  
+> [Aeon Digital](http://aeondigital.com.br)
 > rianna@aeondigital.com.br
 
 Neste repositório pretendo meramente expor informações que estou coletando
-sobre o ambiente Linux.  
-Não há grandes pretenções e o aprendizado vem DO ZERO.  
+sobre o ambiente Linux.
+Não há grandes pretenções e o aprendizado vem DO ZERO.
 
 Optei por usar o Arch Linux como forma de forçar uma imersão profunda e **sem
-dó** para que o máximo possível de informações necessitasse ser pesquisada 
-como forma de aumentar ao máximo a área de contato com este universo.  
+dó** para que o máximo possível de informações necessitasse ser pesquisada
+como forma de aumentar ao máximo a área de contato com este universo.
 
 Antes de iniciar este repositório meu maior contato com o Linux era devido a
 necessidades alheias a minha vontade. Eu sempre soube que este dia chegaria
@@ -27,16 +27,16 @@ eu mesma.
 
 _______________________________________________________________________________
 
-## Shut up and install 
+## Shut up and install
 
-Use o boot do Arch na máquina alvo e cegamente use os comandos:  
+Use o boot do Arch na máquina alvo e cegamente use os comandos:
 
 ``` shell
   # pura comodidade para facilitar o uso de teclados pt-BR
   loadkeys br-abnt2
 
   # faz download do script de instalação; dá permissão de execução e executa-o
-  curl -O https://raw.githubusercontent.com/AeonDigital/Arch/master/installer/install.sh
+  curl -O https://raw.githubusercontent.com/AeonDigital/Arch/main/installer/install.sh
   chmod u+x install.sh
   ./install.sh
 ```
