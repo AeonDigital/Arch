@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/bash -eu
 # Arch Linux Installer [aeondigital.com.br]
 #
-# Torne este arquivo executável executando o comando abaixo
+# Torne este arquivo executável usando o comando abaixo
 # chmod u+x install.sh
 #
 # Execute assim
 # ./install.sh
 #
-set -eu
+
 
 
 
@@ -37,7 +37,7 @@ readMotherBoard() {
 
 #
 # Identifica o nome a ser usado o computador na rede
-# 
+#
 readNCR() {
   while [ "$TMP_CR" == "" ]; do
     setIMessage "\n" 1
@@ -69,13 +69,13 @@ TMP_CR=""
 
 TMP_INTERFACE_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/etc/skel/myShellEnv/functions/interface/"
 TMP_INTERFACE=(
-  "textColors.sh" "alertUser.sh" "errorAlert.sh"
-  "waitUser.sh" "promptUser.sh" "setIMessage.sh"
+  "alertUser.sh" "errorAlert.sh" "promptUser.sh"
+  "setIMessage.sh" "textColors.sh" "waitUser.sh"
 )
 
 TMP_SCODE=""
 TMP_TGT_URL=""
-TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Arch/master/installer/"
+TMP_URL_BASE="https://raw.githubusercontent.com/AeonDigital/Arch/main/installer/"
 TMP_FILE_NAME=""
 
 
@@ -87,7 +87,7 @@ if [ ! -d "tmpInstaller" ]; then
   printf "    Não foi possível criar o diretório temporário de instalação. \n"
   printf "    A instalação foi encerrada.\n"
 else
-  
+
   for TMP_FILE_NAME in "${TMP_INTERFACE[@]}"; do
     if [ $ISOK == 1 ]; then
       TMP_TGT_URL="${TMP_INTERFACE_URL}${TMP_FILE_NAME}"
@@ -99,7 +99,7 @@ else
         printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
         printf "    A instalação foi encerrada.\n"
         printf "    URL: ${TMP_TGT_URL} \n"
-        printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+        printf "    TGT: ${TMP_FILE_NAME} \n\n"
       else
         printf "    > Carregando script: ${TMP_FILE_NAME} \n"
         source "tmpInstaller/${TMP_FILE_NAME}"
@@ -123,7 +123,7 @@ if [ $ISOK == 1 ]; then
     printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
     printf "    URL: ${TMP_TGT_URL} \n"
-    printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+    printf "    TGT: ${TMP_FILE_NAME} \n\n"
   else
     chmod u+x "${TMP_FILE_NAME}"
   fi
@@ -140,7 +140,7 @@ if [ $ISOK == 1 ]; then
     printf "    Não foi possível fazer o download do arquivo de instalação '${TMP_FILE_NAME}'\n"
     printf "    A instalação foi encerrada.\n"
     printf "    URL: ${TMP_TGT_URL} \n"
-    printf "    TGT: ${TMP_FILE_NAME} \n\n"        
+    printf "    TGT: ${TMP_FILE_NAME} \n\n"
   else
     chmod u+x "${TMP_FILE_NAME}"
   fi
@@ -179,7 +179,7 @@ ISOK=1
 
 unset downloadInstallScripts
 unset createTmpInstallerEnv
-unset readMotherBoard 
+unset readMotherBoard
 unset readNCR
 
 

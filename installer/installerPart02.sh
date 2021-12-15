@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/bash -eu
 # Arch Linux Installer [aeondigital.com.br]
 #
 # Parte 2 da instalação
 #
-set -eu
+
 
 
 
 TMP_INTERFACE=(
-  "textColors.sh" "alertUser.sh" "errorAlert.sh"
-  "waitUser.sh" "promptUser.sh" "setIMessage.sh"
+  "alertUser.sh" "errorAlert.sh" "promptUser.sh"
+  "setIMessage.sh" "textColors.sh" "waitUser.sh"
 )
 for TMP_FILE_NAME in "${TMP_INTERFACE[@]}"; do
   source "tmpInstaller/${TMP_FILE_NAME}"
@@ -151,7 +151,7 @@ setIMessage "-- Esta ação é opcional e pode ser realizada após o término da
 setIMessage "   Deseja executar esta etapa agora?"
 promptUser
 
-# 
+#
 # prepara o instalador do myShellEnv
 if [ "$MSE_GB_PROMPT_RESULT" == 1 ]; then
   TMP_TGT_URL="https://raw.githubusercontent.com/AeonDigital/myShellEnv/main/install.sh"

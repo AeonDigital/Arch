@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -eu
 # Arch Linux Installer [aeondigital.com.br]
 #
 # Parte 1 da instalação
 #
-set -eu
+
 
 
 
