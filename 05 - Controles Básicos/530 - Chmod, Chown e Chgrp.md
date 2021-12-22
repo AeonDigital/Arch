@@ -1,8 +1,8 @@
 # 530 - Alterando permissões e atributos de objetos
 
 Sabidamente, é possível alterar as permissões definidas para objetos do sistema podendo inclusive
-alterar quem é seu dono ou o grupo ao qual ele pertence. Para isto, o usuário que efetua tal 
-alteração precisa, ele próprio, ter permissão para efetuar tais alterações.  
+alterar quem é seu dono ou o grupo ao qual ele pertence. Para isto, o usuário que efetua tal
+alteração precisa, ele próprio, ter permissão para efetuar tais alterações.
 Apenas o usuário **root** tem permissão para usar os comandos abaixo.
 
 
@@ -11,8 +11,8 @@ Apenas o usuário **root** tem permissão para usar os comandos abaixo.
 
 ## 530.1 - CHMOD
 
-O comando ``chmod`` (change mod) permite que você edite as permissões atualmente definidas para 
-um objeto.  
+O comando ``chmod`` (change mod) permite que você edite as permissões atualmente definidas para
+um objeto.
 Use a seguinte sintaxe:
 
 ``` shell
@@ -20,7 +20,7 @@ Use a seguinte sintaxe:
 ```
 
 * permissoes    : Aqui você deve indicar quais serão as novas permissões que o objeto irá herdar.
-                  Use o formato de 3 octetos, sendo valores de 000 à 777 conforme descrito na 
+                  Use o formato de 3 octetos, sendo valores de 000 à 777 conforme descrito na
                   etapa sobre Permissões.
 * objeto        : Caminho completo até o objeto apartir do local onde você está no momento.
 * -R            : Este item é opcional e deve ser usado quando trata-se de diretórios.

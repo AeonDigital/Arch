@@ -1,11 +1,11 @@
 # 400 - Configurações
 
-As configurações descritas abaixo são em grande parte opcionais e podem ser feitas antes ou após 
+As configurações descritas abaixo são em grande parte opcionais e podem ser feitas antes ou após
 o primeiro boot.
 
 
 ``` shell
-  # configure o teclado pt-BR 
+  # configure o teclado pt-BR
   # mais abaixo você verá como manter esta opção como padrão.
   loadkeys br-abnt2
 ```
@@ -34,7 +34,7 @@ o primeiro boot.
 
 ## 400.2 - Habilitar o idioma pt-BR; Layout do teclado e Fonte
 
-Primeiro, abra o arquivo ``/etc/locale.gen``.  
+Primeiro, abra o arquivo ``/etc/locale.gen``.
 Procure pelo valor ``pt_BR.UTF-8 UTF-8`` e descomente-o, após, ative-o usando o comando indicado
 no bloco abaixo
 
@@ -55,7 +55,7 @@ no bloco abaixo
   locale-gen "pt_BR.UTF-8"
 
 
-  # As configurações abaixo preparam o seu teclado para ser reconhecido como sendo do padrão 
+  # As configurações abaixo preparam o seu teclado para ser reconhecido como sendo do padrão
   # brasileiro ABNT2 e seta a fonte para uma que tem maior conformidade com a lingua portuguesa.
   echo KEYMAP=br-abnt2 >> /etc/vconsole.conf
   echo FONT=lat1-16 >> /etc/vconsole.conf
@@ -71,12 +71,12 @@ Se você, como eu, gosta de usar o teclado numérico irá reparar rapidamente qu
 terminal **Arch** verá que ele está desabilitado, inclusive, mudando de tty, cada novo estará também
 com este recurso desabilitado.
 
-Abaixo está o passo a passo do que é necessário para mantê-lo ativado sempre.  
-Note que há formas mais simples, mas seguindo estas orientações você aprenderá também como configurar 
-um serviço para começar a rodar ao iniciar seu computador.  
+Abaixo está o passo a passo do que é necessário para mantê-lo ativado sempre.
+Note que há formas mais simples, mas seguindo estas orientações você aprenderá também como configurar
+um serviço para começar a rodar ao iniciar seu computador.
 
-Primeiramente, crie um script que efetivamente fará o trabalho de ativar o ``numlock`` em todos os 
-terminais ``tty`` disponíveis (o Arch inicia com 6).  
+Primeiramente, crie um script que efetivamente fará o trabalho de ativar o ``numlock`` em todos os
+terminais ``tty`` disponíveis (o Arch inicia com 6).
 
 
 ``` /usr/local/bin/numlock
@@ -89,7 +89,7 @@ terminais ``tty`` disponíveis (o Arch inicia com 6).
 ```
 
 
-Uma vez criado, dê permissões de execução para ele usando o comando abaixo:  
+Uma vez criado, dê permissões de execução para ele usando o comando abaixo:
 
 ``` shell
   chmod u+x /usr/local/bin/numlock
@@ -99,8 +99,8 @@ Uma vez criado, dê permissões de execução para ele usando o comando abaixo:
 &nbsp;
 
 O próximo passo será de criar um serviço que será iniciado juntamente com o computador e entrará
-em execução antes, e independente de alguem efetuar o login no mesmo.  
-Note que este serviço evoca o script criado anteriormente.  
+em execução antes, e independente de alguem efetuar o login no mesmo.
+Note que este serviço evoca o script criado anteriormente.
 
 ``` /etc/systemd/system/numlock.service
 # /etc/systemd/system/numlock.service
@@ -119,7 +119,7 @@ WantedBy=multi-user.target
 &nbsp;
 
 Para finalizar agora você precisa registrar o serviço criado para que o computador saiba que precisa
-iniciá-lo juntamente com seu próprio boot. Para isto execute os seguintes comandos:  
+iniciá-lo juntamente com seu próprio boot. Para isto execute os seguintes comandos:
 
 ``` shell
   # o nome do serviço é o mesmo valor indicado na chave 'Description' do serviço criado.
@@ -169,7 +169,7 @@ máquina que está sendo configurada na rede.
 
 ``` shell
   passwd
-  New password: 
+  New password:
   Retype new password
 ```
 
@@ -179,8 +179,8 @@ máquina que está sendo configurada na rede.
 
 ## 400.7 - Criar novos usuários [opcional]
 
-A primeira linha é realmente necessária caso queira criar um novo usuário.  
-As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma 
+A primeira linha é realmente necessária caso queira criar um novo usuário.
+As demais adicionam o seu usuário em grupos que serão uteis caso você pretenda instalar uma
 interface gráfica.
 
 ``` shell
@@ -189,7 +189,7 @@ interface gráfica.
 
   useradd -m [user]
   passwd [user]
-  New password: 
+  New password:
   Retype new password
   gpasswd -a [user] sys
   gpasswd -a [user] lp
@@ -204,10 +204,10 @@ interface gráfica.
 
 &nbsp;
 
-### 400.7.1 - Adicionando seu usuário no ``sudoers`` 
+### 400.7.1 - Adicionando seu usuário no ``sudoers``
 
-Note, é mais indicado adicionar o seu usuário a um grupo que seja um ``sudoer`` mas há casos em 
-que você quer ou precisa ter um usuário neste grupo sem ser o root... neste caso siga as 
+Note, é mais indicado adicionar o seu usuário a um grupo que seja um ``sudoer`` mas há casos em
+que você quer ou precisa ter um usuário neste grupo sem ser o root... neste caso siga as
 instruções.
 
 **Edite o seguinte arquivo**

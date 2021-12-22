@@ -1,6 +1,6 @@
 # 220 - Criando o FileSystem
 
-Neste momento as partições apenas existem de forma lógica no disco mas não estão prontas para uso.  
+Neste momento as partições apenas existem de forma lógica no disco mas não estão prontas para uso.
 Cada partição precisa ser formatada respeitando o tipo que foi definida no passo anterior.
 
 
@@ -67,7 +67,7 @@ Se existir, esta partição também pode ser formatado em ``ext4``.
 ## 230.2 - Criando um ``DUMP`` do seu sistema de partições (opcional)
 
 Se você quiser, pode exportar o esquema de partições criado para ser mais fácil replicá-lo quando
-desejar, ou mesmo, para automatizar processos.  
+desejar, ou mesmo, para automatizar processos.
 O comando abaixo irá exportar as informações de partições que compõe o seu disco e lhe permitirá
 executar tudo de uma só vez conforme mostra o próximo tópico.
 

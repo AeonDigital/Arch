@@ -1,13 +1,13 @@
 # 320 - Outros pacotes
 
-Nesta etapa há vários pacotes e grupos de pacotes que são indicados para serem instalados.  
-Se você reparou bem no que ocorreu no passo anterior deste tutorial, agora você está na sua nova 
+Nesta etapa há vários pacotes e grupos de pacotes que são indicados para serem instalados.
+Se você reparou bem no que ocorreu no passo anterior deste tutorial, agora você está na sua nova
 instalação e passará a usar o ``pacman`` para efetuar a instalação dos novos pacotes.
 
-**Atenção**  
-Os pacotes obrigatórios são aqueles que você PRECISA instalar para conseguir dar um boot na sua 
-máquina então não carecem de especulação sobre sua real necessidade.  
-Os demais podem mesmo variar do uso que você quer dar para a sua máquina e também pela sua 
+**Atenção**
+Os pacotes obrigatórios são aqueles que você PRECISA instalar para conseguir dar um boot na sua
+máquina então não carecem de especulação sobre sua real necessidade.
+Os demais podem mesmo variar do uso que você quer dar para a sua máquina e também pela sua
 preferência por um ou outro aplicativo para resolver cada quesito que você julga importante.
 
 
@@ -16,7 +16,7 @@ preferência por um ou outro aplicativo para resolver cada quesito que você jul
 
 ## 320.1 - grub [obrigatório]
 
-O ``grub`` gerencia o boot do sistema então é necessário para que você consiga dar boot.  
+O ``grub`` gerencia o boot do sistema então é necessário para que você consiga dar boot.
 Atente para a necessidade específica de cada tipo de placa mãe (BIOS e UEFI).
 
 ``` shell
@@ -40,20 +40,20 @@ Atente para a necessidade específica de cada tipo de placa mãe (BIOS e UEFI).
 
 ## 320.3 - Pacotes recomendados
 
-Ao menos 1 editor é necessário para conseguir se virar, recomendo o ``vim``.  
-Se você for precisar se conectar a seu dispositivo por um outro computador, aconselho a 
+Ao menos 1 editor é necessário para conseguir se virar, recomendo o ``vim``.
+Se você for precisar se conectar a seu dispositivo por um outro computador, aconselho a
 instalação do ``sshfs``.
 
 ``` shell
-  # Os itens abaixo 
+  # Os itens abaixo
   # então!
   pacman -S sudo
-  
+
   # Editor
   pacman -S vim
 
   # permite conexão ssh
-  pacman -S sshfs        
+  pacman -S sshfs
 
   # permite realizar downloads
   pacman -S wget
@@ -71,5 +71,5 @@ Para listar os pacotes instalados use:
   pacman -Q -e | less
 ```
   O ``less`` permitirá paginar o resultado.
-  Você pode adicionar o parametro ``-e`` para listar apenas os pacotes instalados explicitamente 
+  Você pode adicionar o parametro ``-e`` para listar apenas os pacotes instalados explicitamente
   ou ``-d`` para listar apenas as dependências.

@@ -14,7 +14,7 @@ As informações abaixo foram extraidas diretamente da URL:
 
 ## 910.1 - Você precisará de fontes de terminal
 
-Em primeiro lugar você precisa conseguir fontes com a extenção ``psf`` para que possamos 
+Em primeiro lugar você precisa conseguir fontes com a extenção ``psf`` para que possamos
 convertê-las num formato que possa ser interpretado pelo kernel.
 Por motivo inicial de praticidade - e por falta de tempo de procurar algo mais específico - optei
 pelo conjunto ``terminus-font``
@@ -56,7 +56,7 @@ Apenas como exemplo, tome a fonte "ter-i32b.psf.gz":
 ```
 
 Para ter uma ideia de como se parece algumas das fontes do pacote você pode verificar as imagens
-adicionada no diretório **fontes-imagens**. Não há imagens para todos os casos mas já é uma orientação 
+adicionada no diretório **fontes-imagens**. Não há imagens para todos os casos mas já é uma orientação
 melhor que nada :P .
 A origem destas imagens são o site:
   > https://www.zap.org.au/software/fonts/console-fonts-distributed/psftx-fedora-28/index.html
@@ -67,12 +67,12 @@ A origem destas imagens são o site:
 
 ## 910.2 - Instale o pacote psftools
 
-Até a data da criação deste documento, este pacote não está disponível no repositório oficial do 
+Até a data da criação deste documento, este pacote não está disponível no repositório oficial do
 **Arch** mas pode ser encontrado no **AUR** (Arch User Repository).
 
   > https://aur.archlinux.org/packages/psftools/
 
-Se você não tem o git instalado pode fazer o download do pacote use o ``wget``. 
+Se você não tem o git instalado pode fazer o download do pacote use o ``wget``.
 Após, descompacte, entre no diretório criado, dê permissão de execução ao ``script configure``,
 rode o ``configure``, compile e instale.
 
@@ -111,15 +111,15 @@ Execute o ``psf2inc`` para converte-lo em um formato **.inc**
 
 ### 910.4 - Efetue a "raspagem" dos bits do arquivo .inc
 
-Sim... nesta parte o negócio complica um pouco mas seguindo as instruções abaixo você verá que é 
+Sim... nesta parte o negócio complica um pouco mas seguindo as instruções abaixo você verá que é
 até simples... para quem chegou aqui, não custa muito.
 
 Dentro do arquivo **.inc** gerado no passo anterior você pode ver o interior da sua fonte.
-Por sorte, na coversão você ganha uns comentários que indicam onde está o que, assim você pode 
-identificar cada linha de dados referente a cada caracter. Eles estão separados por comentários 
+Por sorte, na coversão você ganha uns comentários que indicam onde está o que, assim você pode
+identificar cada linha de dados referente a cada caracter. Eles estão separados por comentários
 começando em /* 0 */ e terminando em /* 255 */.
 
-O que precisamos fazer agora é criar um arquivo **.hex**, cópia do **.inc** e editá-lo para manter 
+O que precisamos fazer agora é criar um arquivo **.hex**, cópia do **.inc** e editá-lo para manter
 neste novo arquivo UNICAMENTE os dados referentes a cada caracter e absolutamente nada além.
 
 Veja abaixo uma representação de como é o arquivo da fonte que eu selecionei aberto num editor:
@@ -183,7 +183,7 @@ Agora veja abaixo tudo o que restou após a **raspagem**:
 ```
 
 
-Faça a mesma **limpeza** no arquivo **.hex** da sua fonte selecionada, salve e estará pronto para 
+Faça a mesma **limpeza** no arquivo **.hex** da sua fonte selecionada, salve e estará pronto para
 ir para o próximo passo.
 
 
@@ -198,13 +198,13 @@ ir para o próximo passo.
   - ``BPL``     : "Bytes Per Line"  padrão = 8 [pode variar conforme a fonte selecionada]
 
   Ao menos entre as fontes da coleção ``terminus`` é fácil identificar estas informações e você
-  pode usar as referencias visuais alocadas na pasta ``Fontes`` desta seção do tutorial. Em cada 
+  pode usar as referencias visuais alocadas na pasta ``Fontes`` desta seção do tutorial. Em cada
   imagem, além dos próprios caracteres você identifica todos os itens acima.
 
   Sabendo estas informações use a seguinte fórmula:
 
   > endChar = 1 + (((NCHARS * W * H) / DPB) / BPL)
-  > Informações da fonte selecionada: 
+  > Informações da fonte selecionada:
   >   lat1-16
   >   - NCHARS  = 256
   >   - W       = 8
@@ -215,7 +215,7 @@ ir para o próximo passo.
   > endChar = 513
 
   Agora use o seguinte comando
-  
+
   ``` shell
     cat lat1-16.inc | sed '0,/Char height/d' | sed '513,$d' > lat1-16.hex
   ```
@@ -227,8 +227,8 @@ ir para o próximo passo.
 
 ### 910.5 - Editando o arquivo de fonte final [não testado]
 
-Quase no fim. 
-Agora você precisa criar um novo arquivo chamado **font_8x16.c** e adicionar nele o template que 
+Quase no fim.
+Agora você precisa criar um novo arquivo chamado **font_8x16.c** e adicionar nele o template que
 será mostrado abaixo:
 
 ``` template
@@ -249,13 +249,13 @@ será mostrado abaixo:
   EXPORT_SYMBOL(font_vga_8x16);
 ```
 
-Substitua no template os valores já conhecidos como ``W`` e ``H``; Faça o cálculo indicado para 
-descobrir o valor que a constante ``FONTDATAMAX`` deve ter; Por fim, aloque todo o conteúdo do 
+Substitua no template os valores já conhecidos como ``W`` e ``H``; Faça o cálculo indicado para
+descobrir o valor que a constante ``FONTDATAMAX`` deve ter; Por fim, aloque todo o conteúdo do
 arquivo **.hex** (devidamente "raspado") criado no passo anterior e salve.
 
-Para facilitar, crie uma cópia do arquivo **.hex** com o nome **font_8x16.c** e então copie as 
+Para facilitar, crie uma cópia do arquivo **.hex** com o nome **font_8x16.c** e então copie as
 primeiras 4 linhas do template acima para o início do novo arquivo e após, tudo o que está a partir
-da linha 6 do template. 
+da linha 6 do template.
 
 
 ### 910.6 - Substitua a fonte do kernel e recompile-o [não testado]

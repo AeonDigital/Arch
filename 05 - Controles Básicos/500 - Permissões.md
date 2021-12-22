@@ -18,7 +18,7 @@ Primeiramente você precisa compreender que existem 3 formas básicas de control
 de arquivos e diretórios, são as permissões **read**, **write** e **execute**, também referenciados
 pelas letras **r**, **w** e **x** respectivamente.
 
-Sabendo disso, e sabendo que cada permissão pode apenas estar ligada (1) ou desligada (0), podemos 
+Sabendo disso, e sabendo que cada permissão pode apenas estar ligada (1) ou desligada (0), podemos
 descrever a configuração referente a um objeto qualquer da seguinte forma:
 
 ```
@@ -27,7 +27,7 @@ descrever a configuração referente a um objeto qualquer da seguinte forma:
 ```
 
 No exemplo acima, os bits ligados (representados pelo número 1) indicam que o item recebe permissão
-para ser lido, escrito e também executado. O valor binário ``111``, transcrito para decimal é 
+para ser lido, escrito e também executado. O valor binário ``111``, transcrito para decimal é
 equivalente ao numeral ``7 (sete)``, portanto, esta é a maior permissão que um usuário poderia ter
 sobre um arquivo ou diretório.
 
@@ -38,9 +38,9 @@ Seguindo o mesmo raciocínio, observe o exemplo abaixo
   101
 ```
 
-Neste exemplo, o usuário teria capacidade apenas de leitura e execução mas não de escrita para o 
-referido arquivo.  
-Novamente, convertendo o valor binário ``101`` para decimal, chegamos no número ``5 (cinco)``.  
+Neste exemplo, o usuário teria capacidade apenas de leitura e execução mas não de escrita para o
+referido arquivo.
+Novamente, convertendo o valor binário ``101`` para decimal, chegamos no número ``5 (cinco)``.
 Sabendo que temos 3 possibilidades diferentes (rwx) e dois estados possíveis (0 e 1), podemos obter
 até 8 combinações diferentes de permissões. São elas:
 
@@ -70,8 +70,8 @@ até 8 combinações diferentes de permissões. São elas:
   111 = 7 [Ler, escrever e executar]
 ```
 
-Observe que um traço "-" representa o bit desligado daquela permissão, ou seja, sem permissão.  
-Além disso, diretórios recebem um "d" inicial.  
+Observe que um traço "-" representa o bit desligado daquela permissão, ou seja, sem permissão.
+Além disso, diretórios recebem um "d" inicial.
 Exemplo:
 
 ```
@@ -80,8 +80,8 @@ Exemplo:
 ```
 
 
-**OBSERVAÇÃO**  
-Quando trata-se de arquivos, as 3 permisões significam exatamente o que seus nomes referem-se.  
+**OBSERVAÇÃO**
+Quando trata-se de arquivos, as 3 permisões significam exatamente o que seus nomes referem-se.
 Já quando tratamos de diretórios, o entendimento das 3 permissões são:
 - read    : Permite listar o que há dentro do diretório
 - write   : Permite criar novos arquivos e diretórios dentro do diretório.
@@ -93,11 +93,11 @@ Já quando tratamos de diretórios, o entendimento das 3 permissões são:
 
 ## 500.2 - Proprietário, Grupo e Outros
 
-As permissões de uso acima são aplicados individualmente a 3 casos de uso diferente para que o 
-sistema saiba exatamente como cada item pode ser usado em cada situação. 
+As permissões de uso acima são aplicados individualmente a 3 casos de uso diferente para que o
+sistema saiba exatamente como cada item pode ser usado em cada situação.
 
-O primeiro caso de uso refere-se ao proprio dono do arquivo ou diretório e é chamado de **owner**.  
-O segundo caso de uso refere-se ao grupo que o objeto pertence e é chamado de **group**.  
+O primeiro caso de uso refere-se ao proprio dono do arquivo ou diretório e é chamado de **owner**.
+O segundo caso de uso refere-se ao grupo que o objeto pertence e é chamado de **group**.
 E o terceiro caso é o "outros" e refere-se a todos os demais grupos e usuários que não é o próprio
 dono e também não pertencem ao mesmo grupo ao qual o objeto faz parte. Chama-se **others**.
 
@@ -115,9 +115,9 @@ No exemplo acima podemos identificar todas as permissões dadas a todos os casos
 * d       : Indica, neste caso, que trata-se de um diretório.
 * rwx     : A primeira coleção de permissões refere-se a como o dono (owner) do objeto pode fazer
             uso do mesmo.
-* r-x     : A segunda coleção de permissões refere-se a como os demais usuários que pertencem a 
+* r-x     : A segunda coleção de permissões refere-se a como os demais usuários que pertencem a
             aquele grupo podem utilizar o referido objeto.
-* ---     : A terceira coleção de permissões refere-se a como todos os demais usuários e grupos 
+* ---     : A terceira coleção de permissões refere-se a como todos os demais usuários e grupos
             podem interagir com este objeto. Neste caso, eles não tem qualquer acesso.
 * [owner] : Nesta posição estará o nome do usuário que é o dono do objeto.
 * [group] : Nesta posição estará o nome do grupo ao qual o objeto pertence.
@@ -137,7 +137,7 @@ em conjunto com o parametro ``-l`` (lista os atributos de cada objeto no local i
   ||  |  |   | |      |     Tamanho do arquivo em bytes
   ||  |  |   | |      Grupo ao qual o objeto pertence
   ||  |  |   | Proprietário do arquivo
-  ||  |  |   Número de links 
+  ||  |  |   Número de links
   ||  |  Permissões para "outros"
   ||  Permissões para o grupo
   |Permissões para o proprietário do arquivo

@@ -42,6 +42,6 @@ Esta etapa apenas funcionará se você instalou os pacotes do item 320.2
 
   # Desliga o wifi:
   nmcli radio wifi off
-  
+
   reboot
 ```

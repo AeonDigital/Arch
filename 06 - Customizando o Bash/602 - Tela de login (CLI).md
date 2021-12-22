@@ -1,24 +1,24 @@
-﻿# 602 - Configurando as informações na tela de login
+# 602 - Configurando as informações na tela de login
 
 As informações mostradas antes do login quando você acessa o Arch estão definidas em um arquivo
 armazenado em ``/etc/issue``. Tipicamente, trata-se de tudo o que aparece antes do cursor de
-login de autenticação.  
+login de autenticação.
 
 Há um outro arquivo, armazenado em ``/etc/motd``, cujo conteúdo é mostrado imediatamente após
-o login e imediatamente ANTES do ``shell`` do usuário ser iniciado.  
+o login e imediatamente ANTES do ``shell`` do usuário ser iniciado.
 
 Na manipulação destes dois arquivos você pode gerar uma tela inicial para a máquina que está
-sendo configurada.  
+sendo configurada.
 
 
-**FONTE**  
+**FONTE**
 https://unix.stackexchange.com/questions/16255/how-can-i-change-whats-displayed-at-a-login-shell
 
 
 
 &nbsp;
 
-## 602.1 - Comandos para a configuração 
+## 602.1 - Comandos para a configuração
 
 Use os comandos abaixo para configurar o seu sistema:
 
@@ -41,7 +41,7 @@ Use os comandos abaixo para configurar o seu sistema:
 
 &nbsp;
 
-## 602.2 - Modelo de configuração 
+## 602.2 - Modelo de configuração
 
 Segue um exemplo de configuração para a 'tela de login' do sistema.
 

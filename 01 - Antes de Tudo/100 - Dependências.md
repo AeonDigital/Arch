@@ -2,9 +2,9 @@
 
 1. **FlashDrive** com ao menos 2Gb.
 2. Arquivo ISO do [Arch Linux](https://www.archlinux.org/)
-3. Aplicativo **Etcher** (responsável por preparar um **FlashDrive** com uma 
+3. Aplicativo **Etcher** (responsável por preparar um **FlashDrive** com uma
 ``ISO`` para faze-lo bootavel)
-4. Descubra como é a placa mae do dispositivo onde será instalado. Se usa 
+4. Descubra como é a placa mae do dispositivo onde será instalado. Se usa
 ``BIOS`` (hardware antigo) ou ``UEFI``.
 
 

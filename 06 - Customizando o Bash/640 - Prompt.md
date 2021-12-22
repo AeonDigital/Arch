@@ -1,21 +1,21 @@
-﻿# 640 - Configurando o Prompt
+# 640 - Configurando o Prompt
 
 Esta é uma das partes mais interessantes pois permite que você organize as informações que aparecem
-no prompt de comando a cada linha executada.  
+no prompt de comando a cada linha executada.
 
 Uma das variáveis de configuração do ``bash`` é a ``PS1``. Ela geralmente é definida no arquivo
 ``/etc/bash.bachrc`` e fica disponível para todos os usuários. Nela estão as instruções que compõe
-o prompt demonstrado no terminal.  
+o prompt demonstrado no terminal.
 
 Exemplo:
 ``` /etc/bash.bachrc
   PS1="\$ \u@\h : "
 ```
 
-Isto mostrará um prompt com as seguintes informações:  
-  $ usuario@hostname:  
-  ou  
-  $ rianna@archlinux:  
+Isto mostrará um prompt com as seguintes informações:
+  $ usuario@hostname:
+  ou
+  $ rianna@archlinux:
 
 Se você entendeu bem o tópico ``Como Configurar o Bash`` sabe que pode usar o seu arquivo
 ``~/.bash`` para redefinir esta variável. Como ele será lido por último, o valor que você definir
@@ -27,7 +27,7 @@ desta forma será aquele que será usado pelo seu usuário sempre que fizer o lo
 
 ## 640.1 - Comandos de personalização
 
-Os seguintes comandos podem ser usados para configurar o prompt:  
+Os seguintes comandos podem ser usados para configurar o prompt:
 
 <pre>
   \a    Caracter invisível, emite um "beep" quando usado
@@ -70,29 +70,29 @@ Os seguintes comandos podem ser usados para configurar o prompt:
 ## 640.2 - Usando cores e caracteres unicode
 
 Use as regras expostas no item 604 para entender como se dá a estilização das cores de textos no
-Bash.  
+Bash.
 
-Para o uso de caracteres unicode é aconselhado usar o código octal que representa cada um dos 
-glifos que você deseja representar.  
+Para o uso de caracteres unicode é aconselhado usar o código octal que representa cada um dos
+glifos que você deseja representar.
 
 Use a função ``printCharTable`` do projeto ``myShellEnv`` para conhecer os códigos octais de todos
-os 256 caracteres disponíveis no seu terminal (com a fonte que está sendo usada no momento).  
-Você também pode usar o comando ``showkey -a`` para conhecer os códigos correspondentes a cada 
+os 256 caracteres disponíveis no seu terminal (com a fonte que está sendo usada no momento).
+Você também pode usar o comando ``showkey -a`` para conhecer os códigos correspondentes a cada
 tecla de caracter do seu teclado.
 
 
-**Obs**  
-Para evitar problemas de interpretação do tamanho do seu prompt no Bash, quando utilizar cores, 
-acostume-se a envolver o código da cor entre as seguintes instruções ``\[`` e ``\]``.  
-E, quando precisar de caracteres unicode, usando o código octal dos itens, envolva apenas os dois 
-primeiros octais entre ``\[`` e ``\]``, deixando o último ``livre``.  
+**Obs**
+Para evitar problemas de interpretação do tamanho do seu prompt no Bash, quando utilizar cores,
+acostume-se a envolver o código da cor entre as seguintes instruções ``\[`` e ``\]``.
+E, quando precisar de caracteres unicode, usando o código octal dos itens, envolva apenas os dois
+primeiros octais entre ``\[`` e ``\]``, deixando o último ``livre``.
 
 **Exemplo**
 ```shell
-  # Usando cores:  
-  \[\e[0;91;40m\]  
+  # Usando cores:
+  \[\e[0;91;40m\]
 
-  # Usando octais de caracteres unicode 
+  # Usando octais de caracteres unicode
   \[\342\224\]\214
 ```
 
@@ -121,14 +121,14 @@ configurações até chegar em alguma que lhe agrade.
 ### 640.3.1 - Padrões de prompt que eu curto
 
 Substitua os ``placeholders`` pelos códigos das cores que você deseja usar para cada um dos estilos
-apresentados abaixo.  
+apresentados abaixo.
 
 
 &nbsp;
 
 #### 640.3.1.1 - Estilo simples
 
-> $ rianna@archlinux : _  
+> $ rianna@archlinux : _
 > PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] :[[NONE]]\040'
 
 
@@ -136,9 +136,9 @@ apresentados abaixo.
 
 #### 640.3.1.2 - Estilo nova linha 01
 
-> $ rianna@archlinux in ~/DirName/SubDir  
-> \> _  
->   
+> $ rianna@archlinux in ~/DirName/SubDir
+> \> _
+>
 > PS1='[[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n\076[[NONE]]\040'
 
 
@@ -146,9 +146,9 @@ apresentados abaixo.
 
 #### 640.3.1.3 - Estilo nova linha 02
 
-> ┌── $ rianna@archlinux in ~/DirName/SubDir  
-> └─> _  
->  
+> ┌── $ rianna@archlinux in ~/DirName/SubDir
+> └─> _
+>
 > PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\224\200\]\076[[NONE]]\040'
 
 
@@ -156,7 +156,7 @@ apresentados abaixo.
 
 #### 640.3.1.4 - Estilo nova linha 03
 
-> ┌── $ rianna@archlinux in ~/DirName/SubDir  
-> └─╼ _  
->  
+> ┌── $ rianna@archlinux in ~/DirName/SubDir
+> └─╼ _
+>
 > PS1='[[DIRECTORY]]\[\342\224\214\]\[\342\224\200\]\[\342\224\200\] [[SYMBOLS]]\$ [[USERNAME]]\u[[SYMBOLS]]@[[USERNAME]]\h[[SYMBOLS]] in [[DIRECTORY]]\w \n[[DIRECTORY]]\[\342\224\224\]\[\342\225\274\][[NONE]]\040'

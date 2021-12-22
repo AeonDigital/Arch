@@ -1,7 +1,7 @@
-﻿# 620 - Aliases
+# 620 - Aliases
 
-Você pode também criar seus próprios apelidos para comandos que você usa com frequencia.  
-Abaixo segue uma lista de sugestões.  
+Você pode também criar seus próprios apelidos para comandos que você usa com frequencia.
+Abaixo segue uma lista de sugestões.
 
 ``` .bashrc
   ## Aliases de comandos

@@ -1,10 +1,10 @@
-﻿# 604 - Usando cores em textos
+# 604 - Usando cores em textos
 
 Usando o Bash você pode alterar a cor de textos bastando para isto entender como indicar como um
 determinado texto deve ser apresentado. Para isto é preciso conhecer quais são as configurações
-possíveis de serem usadas.  
+possíveis de serem usadas.
 Neste tópico estão expostas as informações que você deve conhecer para efetuar as manipulações
-que desejar.  
+que desejar.
 
 
 
@@ -12,10 +12,10 @@ que desejar.
 
 ## 604.1 - Modificadores
 
-Há 3 conjuntos de motificadores que podem ser usados na composição da estilização de uma mensagem 
-de texto; em cada ``família``, cada ítem é representado por um dígito específico.  
+Há 3 conjuntos de motificadores que podem ser usados na composição da estilização de uma mensagem
+de texto; em cada ``família``, cada ítem é representado por um dígito específico.
 Na composição do código que precede o texto que você deseja que herde aquele estilo você precisa
-definir o número que corresponderá a cada um dos modificadores na ordem correta.  
+definir o número que corresponderá a cada um dos modificadores na ordem correta.
 
 
 &nbsp;
@@ -26,17 +26,17 @@ Os modificadores são:
 - Cor de Fundo
 
 Assim sendo, o comando a ser usado deve corresponder à seguinte estrutura:
-\e[ Atributo ; Fonte ; Fundo m  
+\e[ Atributo ; Fonte ; Fundo m
 
 Os espaços adicionados na exposição acima servem apenas para facilitar o entendimento e não devem
-existir quando você compor um código de estilo de fato.  
+existir quando você compor um código de estilo de fato.
 Importante notar que o início é sempre com os caracteres ``\e`` e finaliza sempre com a letra ``m``.
 
 &nbsp;
 
-**Exemplo:**  
-\e[0;93;44m Texto estilizado  
-O código acima exibirá o texto sem nenhum atributo especial onde a cor da fonte é amarelo claro e 
+**Exemplo:**
+\e[0;93;44m Texto estilizado
+O código acima exibirá o texto sem nenhum atributo especial onde a cor da fonte é amarelo claro e
 o fundo é azul.
 
 
@@ -63,7 +63,7 @@ o fundo é azul.
 - 28: Remove o Oculto*
 
 *:  Estes ítens não puderam ser testados direto no terminal via VM possivelmente por que
-    necessitavam de uma fonte que correspondesse a tais atributos.  
+    necessitavam de uma fonte que correspondesse a tais atributos.
 
 
 
@@ -124,7 +124,7 @@ para uso. Nenhuma delas usa um fundo colorido exceto o preto, que, para poder se
 'cinza claro' como fundo para que o contraste permita sua leitura.
 
 
-**Obs**  
+**Obs**
 - ``D`` indica ``Dark``
 - ``L`` indica ``Light``
 
