@@ -32,7 +32,7 @@ _______________________________________________________________________________
 Use o boot do Arch na máquina alvo e cegamente use os comandos:
 
 ``` shell
-  # pura comodidade para facilitar o uso de teclados pt-BR
+  # pura comodidade para facilitar o uso de teclados pt-BR.
   loadkeys br-abnt2
 
   # faz download do script de instalação; dá permissão de execução e executa-o.
